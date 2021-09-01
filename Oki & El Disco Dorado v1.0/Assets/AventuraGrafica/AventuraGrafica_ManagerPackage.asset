@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4a24d0e4a28423fb3249b923d7e418, type: 3}
+  m_Name: AventuraGrafica_ManagerPackage
+  m_EditorClassIdentifier: 
+  actionsManager: {fileID: 11400000, guid: 70e702bb09284c546a9016382899c13a, type: 2}
+  sceneManager: {fileID: 11400000, guid: 77d26de8282baec4eaf3f66121024d24, type: 2}
+  settingsManager: {fileID: 11400000, guid: fe5d0bef2633449479ece764c4d610dd, type: 2}
+  inventoryManager: {fileID: 11400000, guid: b05bad205a852e842bbdfc140ed71d5a, type: 2}
+  variablesManager: {fileID: 11400000, guid: fbd46244980cd044883b433df54938d1, type: 2}
+  speechManager: {fileID: 11400000, guid: 694a9bd9ebde83343b4f17b98eafc5a3, type: 2}
+  cursorManager: {fileID: 11400000, guid: 9e9986746bf5d8043b86033d11c4676d, type: 2}
+  menuManager: {fileID: 11400000, guid: e3ac91871e8868b47b7e33a4c77267bf, type: 2}
