@@ -239,18 +239,14 @@ namespace AC
 		}
 
 
-		/**
-		 * If True, 'ToggleCursor' can be used while the object is held.
-		 */
+		/** If True, 'ToggleCursor' can be used while the object is held. */
 		public virtual bool CanToggleCursor ()
 		{
 			return false;
 		}
 
 
-		/**
-		 * Draws an icon at the point of contact on the object, if appropriate.
-		 */
+		/** Draws an icon at the point of contact on the object, if appropriate. */
 		public virtual void DrawGrabIcon ()
 		{
 			if (isHeld && showIcon && KickStarter.CameraMain.WorldToScreenPoint (Transform.position).z > 0f && icon != null)
@@ -278,9 +274,7 @@ namespace AC
 		}
 
 
-		/**
-		 * Detaches the object from the player's control.
-		 */
+		/** Detaches the object from the player's control. */
 		public virtual void LetGo (bool ignoreInteractions = false)
 		{
 			isHeld = false;

@@ -13,9 +13,7 @@ using System.Collections.Generic;
 namespace AC
 {
 
-	/**
-	 * A data container of preset variable values.
-	 */
+	/** A data container of preset variable values. */
 	[System.Serializable]
 	public class VarPreset
 	{
@@ -193,6 +191,8 @@ namespace AC
 		public Vector3 vector3Val;
 		/** Its value, if a GameObject */
 		public GameObject gameObjectVal;
+		/** Its value if a Unity Object */
+		public Object objectVal;
 
 
 		/**
@@ -207,6 +207,7 @@ namespace AC
 			textVal = _gVar.TextValue;
 			vector3Val = _gVar.Vector3Value;
 			gameObjectVal = _gVar.GameObjectValue;
+			objectVal = _gVar.UnityObjectValue;
 		}
 
 	}

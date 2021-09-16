@@ -7,9 +7,7 @@ using UnityEditor;
 namespace AC
 {
 	
-	/**
-	 * Provides an EditorWindow to manage the export of inventory items
-	 */
+	/** Provides an EditorWindow to manage the export of inventory items */
 	public class InvItemExportWizardWindow : EditorWindow
 	{
 
@@ -29,18 +27,17 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Initialises the window.</summary>
-		 */
+		/** Initialises the window. */
 		public static void Init (InventoryManager _inventoryManager)
 		{
 			if (_inventoryManager == null) return;
 
-			InvItemExportWizardWindow window = EditorWindow.GetWindowWithRect <InvItemExportWizardWindow> (new Rect (0, 0, 350, 500), true, "Inventory item exporter", true);
+			InvItemExportWizardWindow window = (InvItemExportWizardWindow) GetWindow (typeof (InvItemExportWizardWindow));
 
 			window.titleContent.text = "Inventory item exporter";
 			window.position = new Rect (300, 200, 350, 500);
 			window._Init (_inventoryManager);
+			window.minSize = new Vector2 (300, 180);
 		}
 		
 		
@@ -64,7 +61,7 @@ namespace AC
 				exportColumns.Add (new ExportColumn ());
 			}
 
-			EditorGUILayout.LabelField ("Inventory item export wizard", CustomStyles.managerHeader);
+			EditorGUILayout.LabelField ("Inventory item exporter", CustomStyles.managerHeader);
 			scroll = GUILayout.BeginScrollView (scroll);
 
 			EditorGUILayout.HelpBox ("Choose the fields to export as columns below, then click 'Export CSV'.", MessageType.Info);
@@ -83,7 +80,6 @@ namespace AC
 			}
 			GUI.enabled = true;
 
-			EditorGUILayout.Space ();
 			GUILayout.EndScrollView ();
 		}
 
@@ -91,7 +87,6 @@ namespace AC
 		private void ShowColumnsGUI ()
 		{
 			EditorGUILayout.LabelField ("Define columns",  CustomStyles.subHeader);
-			EditorGUILayout.Space ();
 			for (int i=0; i<exportColumns.Count; i++)
 			{
 				CustomGUILayout.BeginVertical ();
@@ -107,7 +102,6 @@ namespace AC
 				CustomGUILayout.EndVertical ();
 			}
 
-			EditorGUILayout.Space ();
 			if (GUILayout.Button ("Add new column"))
 			{
 				exportColumns.Add (new ExportColumn ());

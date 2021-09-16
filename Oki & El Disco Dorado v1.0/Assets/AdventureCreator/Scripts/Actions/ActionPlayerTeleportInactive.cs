@@ -230,7 +230,7 @@ namespace AC
 		{
 			if (newTransformParameterID < 0)
 			{
-				if (newTransform != null && newTransform.gameObject == gameObject) return true;
+				if (newTransform && newTransform.gameObject == gameObject) return true;
 				if (newTransformConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

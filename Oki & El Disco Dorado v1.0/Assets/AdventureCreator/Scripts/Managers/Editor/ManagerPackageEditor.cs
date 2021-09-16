@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 
@@ -59,3 +61,5 @@ namespace AC
 	}
 
 }
+
+#endif

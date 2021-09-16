@@ -1,5 +1,7 @@
-﻿/*
- *
+﻿#if UNITY_EDITOR
+
+/*
+*
  *	Adventure Creator
  *	by Chris Burton, 2013-2021
  *	
@@ -91,15 +93,6 @@ namespace AC
 					//Want to have this open, but Unity 2017.1 has a bug
 					//AboutWindow.Init ();
 				}
-			}
-		}
-
-
-		public static string DefaultReferencesPath
-		{
-			get
-			{
-				return Resource.MainFolderPathRelativeToAssets + System.IO.Path.DirectorySeparatorChar.ToString () + "Resources";
 			}
 		}
 
@@ -315,3 +308,5 @@ namespace AC
 	}
 
 }
+
+#endif

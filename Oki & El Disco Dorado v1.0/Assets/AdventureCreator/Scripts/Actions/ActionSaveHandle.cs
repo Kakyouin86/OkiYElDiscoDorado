@@ -117,7 +117,11 @@ namespace AC
 
 			if (saveHandling == SaveHandling.ContinueFromLastSave)
 			{
-				SaveSystem.ContinueGame ();
+				bool fileFound = SaveSystem.ContinueGame ();
+				if (!fileFound)
+				{
+					OnComplete ();
+				}
 				return;
 			}
 
@@ -179,11 +183,19 @@ namespace AC
 			{
 				if (selectSaveType == SelectSaveType.SetSaveID)
 				{
-					SaveSystem.LoadGame (i);
+					bool fileFound = SaveSystem.LoadGame (i);
+					if (!fileFound)
+					{
+						OnComplete ();
+					}
 				}
 				else
 				{
-					SaveSystem.LoadGame (i, -1, false);
+					bool fileFound = SaveSystem.LoadGame (i, -1, false);
+					if (!fileFound)
+					{
+						OnComplete ();
+					}
 				}
 			}
 			else if (saveHandling == SaveHandling.OverwriteExistingSave || saveHandling == SaveHandling.SaveNewGame)

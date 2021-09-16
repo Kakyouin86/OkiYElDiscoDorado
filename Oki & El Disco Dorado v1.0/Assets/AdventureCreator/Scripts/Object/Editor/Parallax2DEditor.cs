@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 
 namespace AC
@@ -21,6 +23,10 @@ namespace AC
 		{
 			CustomGUILayout.BeginVertical ();
 			_target.reactsTo = (ParallaxReactsTo) CustomGUILayout.EnumPopup ("Reacts to:", _target.reactsTo, "", "What entity affects the parallax behaviour");
+			if (_target.reactsTo == ParallaxReactsTo.Transform)
+			{
+				_target.transformToReactTo = (Transform) EditorGUILayout.ObjectField ("Tranform to react to:", _target.transformToReactTo, typeof (Transform), true);
+			}
 			_target.depth = CustomGUILayout.FloatField ("Depth:", _target.depth, "", "The intensity of the depth effect. Positive values will make the GameObject appear further away (i.e. in the background), negative values will make it appear closer to the camera (i.e. in the foreground).");
 			CustomGUILayout.EndVertical ();
 
@@ -89,3 +95,5 @@ namespace AC
 	}
 
 }
+
+#endif

@@ -147,38 +147,55 @@ namespace AC
 				}
 			}
 
-			if (cursorState == LockType.Disabled)
+			switch (cursorState)
 			{
-				KickStarter.playerInput.SetInGameCursorState (false);
-			}
-			else if (cursorState == LockType.Enabled)
-			{
-				KickStarter.playerInput.SetInGameCursorState (true);
+				case LockType.Disabled:
+					KickStarter.playerInput.SetInGameCursorState (false);
+					break;
+
+				case LockType.Enabled:
+					KickStarter.playerInput.SetInGameCursorState (true);
+					break;
+
+				default:
+					break;
 			}
 
-			if (doRunLock != PlayerMoveLock.NoChange)
+			switch (doRunLock)
 			{
-				KickStarter.player.runningLocked = doRunLock;
+				case PlayerMoveLock.AlwaysRun:
+				case PlayerMoveLock.AlwaysWalk:
+				case PlayerMoveLock.Free:
+					KickStarter.player.runningLocked = doRunLock;
+					break;
+
+				default:
+					break;
 			}
 			
 			if (movePath)
 			{
-				KickStarter.player.SetLockedPath (movePath, lockedPathCanReverse);
+				KickStarter.player.SetLockedPath (movePath, lockedPathCanReverse, PathSnapping.SnapToStart);
 				KickStarter.player.SetMoveDirectionAsForward ();
 			}
 			else if (KickStarter.player.GetPath ())
 			{
 				if (KickStarter.player.IsPathfinding () && !ChangingMovementLock () && (doRunLock == PlayerMoveLock.AlwaysWalk || doRunLock == PlayerMoveLock.AlwaysRun))
 				{
-					if (doRunLock == PlayerMoveLock.AlwaysRun)
+					switch (doRunLock)
 					{
-						KickStarter.player.GetPath ().pathSpeed = PathSpeed.Run;
-						KickStarter.player.isRunning = true;
-					}
-					else if (doRunLock == PlayerMoveLock.AlwaysWalk)
-					{
-						KickStarter.player.GetPath ().pathSpeed = PathSpeed.Walk;
-						KickStarter.player.isRunning = false;
+						case PlayerMoveLock.AlwaysRun:
+							KickStarter.player.GetPath ().pathSpeed = PathSpeed.Run;
+							KickStarter.player.isRunning = true;
+							break;
+
+						case PlayerMoveLock.AlwaysWalk:
+							KickStarter.player.GetPath ().pathSpeed = PathSpeed.Walk;
+							KickStarter.player.isRunning = false;
+							break;
+
+						default:
+							break;
 					}
 				}
 				else

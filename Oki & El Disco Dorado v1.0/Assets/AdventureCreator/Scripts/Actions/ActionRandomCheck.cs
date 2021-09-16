@@ -337,7 +337,7 @@ namespace AC
 		{
 			if (disallowSuccessive && saveToVariable && location == VariableLocation.Component && parameterID < 0)
 			{
-				if (variables != null && variables.gameObject == gameObject) return true;
+				if (variables && variables.gameObject == gameObject) return true;
 				if (variablesConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

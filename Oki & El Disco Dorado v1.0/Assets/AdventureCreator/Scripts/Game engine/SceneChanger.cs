@@ -97,7 +97,13 @@ namespace AC
 					return buildSceneInfo.BuildIndex;
 				}
 			}
-			ACDebug.LogWarning ("The scene named '" + sceneName + "' was not found in the Build settings.");
+
+			if (KickStarter.settingsManager.loadScenesFromAddressable && KickStarter.settingsManager.referenceScenesInSave == ChooseSceneBy.Name)
+			{ }
+			else
+			{
+				ACDebug.LogWarning ("The scene named '" + sceneName + "' was not found in the Build settings.");
+			}
 			return 0;
 		}
 
@@ -232,11 +238,11 @@ namespace AC
 		 * <param name = "doOverlay">If True, an overlay texture will be displayed fullscreen during the transition</param>
 		 * <returns>True if the new scene will be loaded in</returns>
 		 */
-		public void ChangeScene (int nextSceneIndex, bool saveRoomData, bool forceReload = false, bool doOverlay = false)
+		public bool ChangeScene (int nextSceneIndex, bool saveRoomData, bool forceReload = false, bool doOverlay = false)
 		{
 			if (nextSceneIndex < 0)
 			{
-				return;
+				return false;
 			}
 
 			if (!isLoading)
@@ -253,14 +259,14 @@ namespace AC
 					PrepareSceneForExit (!KickStarter.settingsManager.useAsyncLoading, saveRoomData, doOverlay);
 					KickStarter.eventManager.Call_OnBeforeChangeScene (IndexToName (nextSceneIndex));
 					LoadLevel (nextSceneIndex, KickStarter.settingsManager.useLoadingScreen, KickStarter.settingsManager.useAsyncLoading, forceReload, doOverlay);
-					return;
+					return true;
 				}
 			}
 			else
 			{
 				ACDebug.LogWarning ("Cannot switch scene while another scene-loading operation is underway.");
 			}
-			return;
+			return false;
 		}
 
 
@@ -272,11 +278,11 @@ namespace AC
 		 * <param name = "doOverlay">If True, an overlay texture will be displayed fullscreen during the transition</param>
 		 * <returns>True if the new scene will be loaded in</returns>
 		 */
-		public void ChangeScene (string nextSceneName, bool saveRoomData, bool forceReload = false, bool doOverlay = false)
+		public bool ChangeScene (string nextSceneName, bool saveRoomData, bool forceReload = false, bool doOverlay = false)
 		{
 			if (string.IsNullOrEmpty (nextSceneName))
 			{
-				return;
+				return false;
 			}
 
 			if (!isLoading)
@@ -293,18 +299,18 @@ namespace AC
 					PrepareSceneForExit (!KickStarter.settingsManager.useAsyncLoading, saveRoomData, doOverlay);
 					KickStarter.eventManager.Call_OnBeforeChangeScene (nextSceneName);
 					LoadLevel (nextSceneName, KickStarter.settingsManager.useLoadingScreen, KickStarter.settingsManager.useAsyncLoading, forceReload, doOverlay);
-					return;
+					return true;
 				}
 			}
 			else
 			{
 				ACDebug.LogWarning ("Cannot switch scene while another scene-loading operation is underway.");
 			}
-			return;
+			return false;
 		}
 
 
-		/*
+		/**
 		 * <summary>Stores a texture used as an overlay during a scene transition. This texture can be retrieved with GetAndResetTransitionTexture().</summary>
 		 * <param name = "_texture">The Texture2D to store</param>
 		 */
@@ -514,9 +520,13 @@ namespace AC
 			loadingProgress = 0f;
 
 			KickStarter.stateHandler.IgnoreNavMeshCollisions ();
-			preloadAsync = null;
-			preloadSceneIndex = -1;
-			preloadSceneName = string.Empty;
+
+			if (preloadCoroutine == null)
+			{
+				preloadAsync = null;
+				preloadSceneIndex = -1;
+				preloadSceneName = string.Empty;
+			}
 		}
 
 
@@ -934,13 +944,17 @@ namespace AC
 			}
 		}
 
-
+		private Coroutine preloadCoroutine;
 		protected void PreloadLevelAsync (int nextSceneIndex)
 		{
 			SceneInfo nextSceneInfo = GetSceneInfo (nextSceneIndex);
 			if (nextSceneInfo != null)
 			{
-				StartCoroutine (PreloadLevelAsync (nextSceneInfo));
+				if (preloadCoroutine != null)
+				{
+					StopCoroutine (preloadCoroutine);
+				}
+				preloadCoroutine = StartCoroutine (PreloadLevelAsync (nextSceneInfo));
 			}
 		}
 
@@ -950,7 +964,11 @@ namespace AC
 			SceneInfo nextSceneInfo = GetSceneInfo (nextSceneName);
 			if (nextSceneInfo != null)
 			{
-				StartCoroutine (PreloadLevelAsync (nextSceneInfo));
+				if (preloadCoroutine != null)
+				{
+					StopCoroutine (preloadCoroutine);
+				}
+				preloadCoroutine = StartCoroutine (PreloadLevelAsync (nextSceneInfo));
 			}
 		}
 
@@ -962,7 +980,7 @@ namespace AC
 			{
 				yield return null;
 			}
-
+			
 			loadingProgress = 0f;
 			preloadSceneIndex = nextSceneInfo.BuildIndex;
 			preloadSceneName = nextSceneInfo.Filename;
@@ -991,6 +1009,8 @@ namespace AC
 					KickStarter.eventManager.Call_OnCompleteScenePreload (nextSceneInfo.Filename);
 				}
 			}
+
+			preloadCoroutine = null;
 		}
 
 
@@ -1089,7 +1109,7 @@ namespace AC
 		 * <param name = "subSceneIndex">The index of the new scene to open</param>
 		 * <returns>True if the scene was succesfully added</returns>
 		 */
-						public bool AddSubScene (int subSceneIndex)
+		public bool AddSubScene (int subSceneIndex)
 		{
 			// Check if scene is already open
 			if (subSceneIndex == CurrentSceneIndex)

@@ -233,10 +233,10 @@ namespace AC
 		{
 			if (!isPlayer && parameterID < 0)
 			{
-				if (linkedObject != null && linkedObject == gameObject) return true;
+				if (linkedObject && linkedObject == gameObject) return true;
 				if (constantID == id && id != 0) return true;
 			}
-			if (isPlayer && gameObject.GetComponent <Player>() != null) return true;
+			if (isPlayer && gameObject && gameObject.GetComponent <Player>()) return true;
 			return base.ReferencesObjectOrID (gameObject, id);
 		}
 

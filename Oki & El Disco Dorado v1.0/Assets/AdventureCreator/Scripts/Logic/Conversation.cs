@@ -639,6 +639,11 @@ namespace AC
 
 		protected void RunOption (ButtonDialog _option)
 		{
+			if (_option.autoTurnOff)
+			{
+				_option.isOn = false;
+			}
+
 			_option.hasBeenChosen = true;
 			if (options.Contains (_option))
 			{
@@ -759,15 +764,15 @@ namespace AC
 			{
 				foreach (ButtonDialog buttonDialog in options)
 				{
-					if (buttonDialog.conversationAction == ConversationAction.ReturnToConversation)
-					{
-						continue;
-					}
-
 					if (interactionSource == InteractionSource.InScene)
 					{
 						if (buttonDialog.dialogueOption == actionList)
 						{
+							if (buttonDialog.conversationAction == ConversationAction.ReturnToConversation && GetNumEnabledOptions () > 0)
+							{
+								continue;
+							}
+
 							KickStarter.eventManager.Call_OnEndConversation (this);
 							return;
 						}
@@ -776,6 +781,11 @@ namespace AC
 					{
 						if (actionListAsset && buttonDialog.assetFile == actionListAsset)
 						{
+							if (buttonDialog.conversationAction == ConversationAction.ReturnToConversation && GetNumEnabledOptions () > 0)
+							{
+								continue;
+							}
+
 							KickStarter.eventManager.Call_OnEndConversation (this);
 							return;
 						}

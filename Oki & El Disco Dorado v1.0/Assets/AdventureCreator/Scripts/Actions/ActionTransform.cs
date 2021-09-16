@@ -474,13 +474,13 @@ namespace AC
 		{
 			if (!isPlayer && parameterID < 0)
 			{
-				if (linkedProp != null && linkedProp.gameObject == gameObject) return true;
+				if (linkedProp && linkedProp.gameObject == gameObject) return true;
 				if (constantID == id && id != 0) return true;
 			}
-			if (isPlayer && gameObject.GetComponent <Player>() != null) return true;
+			if (isPlayer && gameObject && gameObject.GetComponent <Player>()) return true;
 			if (transformType != TransformType.CopyMarker && setVectorMethod == SetVectorMethod.FromVector3Variable && variableLocation == VariableLocation.Component && vectorVarParameterID < 0)
 			{
-				if (variables != null && variables.gameObject == gameObject) return true;
+				if (variables && variables.gameObject == gameObject) return true;
 				if (variablesConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

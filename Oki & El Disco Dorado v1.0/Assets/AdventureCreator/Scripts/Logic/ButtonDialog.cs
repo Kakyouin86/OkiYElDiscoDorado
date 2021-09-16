@@ -42,6 +42,8 @@ namespace AC
 		public int ID = 0;
 		/** If True, then the option has been chosen at least once by the player */
 		public bool hasBeenChosen = false;
+		/** If True, then the option will be disabled once chosen by the player */
+		public bool autoTurnOff = false;
 
 		/** If True, then the option will only be visible if a given inventory item is being carried */
 		public bool linkToInventory = false;

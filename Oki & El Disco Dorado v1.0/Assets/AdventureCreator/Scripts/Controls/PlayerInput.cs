@@ -51,6 +51,8 @@ namespace AC
 		/** The name of the Input Axis that controls dragging effects. If empty, the default inputs (LMB / "InteractionA") will be used */
 		public string dragOverrideInput = "";
 
+		public float directMenuThreshold = 0.05f;
+
 		protected float clickTime = 0f;
 		protected float doubleClickTime = 0;
 		protected MenuDrag activeDragElement;
@@ -147,6 +149,9 @@ namespace AC
 
 		protected LerpUtils.Vector2Lerp freeAimLerp = new LerpUtils.Vector2Lerp ();
 		private LerpUtils.Vector2Lerp directMoveLerp = new LerpUtils.Vector2Lerp (true);
+		private Vector2 lockedCursorPositionOverride;
+		private bool overrideLockedCursorPosition;
+		private bool resetMouseClickThisFrame;
 
 
 		private void OnEnable ()
@@ -291,6 +296,7 @@ namespace AC
 						dragState = DragState.None;
 					}
 
+					resetMouseClickThisFrame = false;
 					if (InputGetMouseButtonDown (0) || InputGetButtonDown ("InteractionA"))
 					{
 						if (mouseState == MouseState.Normal)
@@ -336,9 +342,14 @@ namespace AC
 						{
 							mouseState = MouseState.LetGo;
 						}
-						else
+						else if (mouseState != MouseState.Normal)
 						{
 							ResetMouseClick ();
+
+							if (!CanClick ())
+							{
+								resetMouseClickThisFrame = true;
+							}
 						}
 					}
 
@@ -439,6 +450,7 @@ namespace AC
 						dragStartPosition = GetInvertedMouse ();
 					}
 
+					resetMouseClickThisFrame = false;
 					if ((touchCount == 1 && KickStarter.stateHandler.gameState == GameState.Cutscene && InputTouchPhase (0) == TouchPhase.Began)
 						|| (touchCount == 1 && !KickStarter.settingsManager.CanDragCursor () && InputTouchPhase (0) == TouchPhase.Began)
 						|| Mathf.Approximately (touchTime, -1f))
@@ -488,9 +500,14 @@ namespace AC
 						{
 							mouseState = MouseState.LetGo;
 						}
-						else
+						else if (mouseState != MouseState.Normal)
 						{
 							ResetMouseClick ();
+
+							if (!CanClick ())
+							{
+								resetMouseClickThisFrame = true;
+							}
 						}
 					}
 
@@ -2033,7 +2050,10 @@ namespace AC
 
 				foreach (HeldObjectData heldObjectData in heldObjectDatas)
 				{
-					heldObjectData.Drag (deltaCamera, deltaDragMouse, unconstrainedMousePosition);
+					if (!heldObjectData.IgnoreBuiltInDragInput)
+					{
+						heldObjectData.Drag (deltaCamera, deltaDragMouse, unconstrainedMousePosition);
+					}
 				}
 
 				lastCameraPosition = cameraPosition;
@@ -2071,6 +2091,17 @@ namespace AC
 				
 				if (Physics.Raycast (ray, out hit, KickStarter.settingsManager.moveableRaycastLength, 1 << LayerMask.NameToLayer (KickStarter.settingsManager.hotspotLayer)))
 				{
+					Hotspot hotspot = hit.collider.GetComponent<Hotspot> ();
+					if (hotspot)
+					{
+						Button button = hotspot.GetFirstUseButton ();
+						if (button != null && 
+							((hotspot.interactionSource == InteractionSource.InScene && button.interaction) || (hotspot.interactionSource == InteractionSource.AssetFile && button.assetFile)))
+						{
+							return;
+						}
+					}
+
 					DragBase dragBase = hit.collider.GetComponent <DragBase>();
 					if (dragBase == null || !dragBase.CanGrab ())
 					{
@@ -2313,10 +2344,39 @@ namespace AC
 
 		/**
 		 * <summary>Gets the current state of the mouse buttons (Normal, SingleClick, RightClick, DoubleClick, HeldDown, LetGo).</summary>
+		 * <param name = "forScene">If True, then SingleClick will swapped with LetGo, allowing for clicks to register upon release, should the current input settings allow for it</param>
 		 * <returns>The current state of the mouse buttons (Normal, SingleClick, RightClick, DoubleClick, HeldDown, LetGo).</returns>
 		 */
-		public MouseState GetMouseState ()
+		public MouseState GetMouseState (bool forScene = true)
 		{
+			if (forScene)
+			{
+				if (!(KickStarter.settingsManager.inputMethod == InputMethod.TouchScreen && KickStarter.settingsManager.offsetTouchCursor && KickStarter.settingsManager.touchUpInteractScene && KickStarter.settingsManager.movementMethod != MovementMethod.FirstPerson))
+				{
+					forScene = false;
+				}
+			}
+			if (forScene && KickStarter.settingsManager.InventoryDragDrop)
+			{
+				if (InvInstance.IsValid (KickStarter.runtimeInventory.HoverInstance) || InvInstance.IsValid (KickStarter.runtimeInventory.SelectedInstance))
+				{
+					// Disallow when drag-dropping
+					forScene = false;
+				}
+			}
+
+			if (forScene)
+			{
+				if (mouseState == MouseState.SingleClick)
+				{
+					return MouseState.Normal;
+				}
+				if (resetMouseClickThisFrame)
+				{
+					return MouseState.SingleClick;
+				}
+			}
+
 			return mouseState;
 		}
 
@@ -2411,7 +2471,6 @@ namespace AC
 			{
 				return Vector2.zero;
 			}
-
 			return freeAim;
 		}
 
@@ -2433,9 +2492,7 @@ namespace AC
 		}
 		
 
-		/**
-		 * Resets the mouse and assigns the correct gameState in StateHandler after loading a save game.
-		 */
+		/** Resets the mouse and assigns the correct gameState in StateHandler after loading a save game. */
 		public void OnLoad ()
 		{
 			pendingOptionConversation = null;
@@ -2515,7 +2572,7 @@ namespace AC
 						Vector2 rawInput = new Vector2 (InputGetAxisRaw (KickStarter.menuManager.horizontalInputAxis), InputGetAxisRaw (KickStarter.menuManager.verticalInputAxis));
 						scrollingLocked = menu.GetNextSlot (rawInput, scrollingLocked);
 						
-						if (rawInput.y < 0.05f && rawInput.y > -0.05f && rawInput.x < 0.05f && rawInput.x > -0.05f)
+						if (rawInput.y < directMenuThreshold && rawInput.y > -directMenuThreshold && rawInput.x < directMenuThreshold && rawInput.x > -directMenuThreshold)
 						{
 							scrollingLocked = false;
 						}
@@ -2589,10 +2646,34 @@ namespace AC
 		}
 
 
-		protected virtual Vector2 LockedCursorPosition
+		/** 
+		 * <summary>Enforces a custom position (in screen coordinates) to apply to the cursor when it is locked</summary>
+		 * <param name="position">The position (in screen coordinates)</param>
+		 */
+		public void OverrideLockedCursorPosition (Vector2 position)
+		{
+			overrideLockedCursorPosition = true;
+			lockedCursorPositionOverride = position;
+		}
+
+
+		/** Releases the custom locked cursor position set with OverrideLockedCursorPosition */
+		public void ReleaseLockedCursorPositionOverride ()
+		{
+			overrideLockedCursorPosition = false;
+			mousePosition = InputMousePosition (cursorIsLocked);
+		}
+
+
+		/** The position of the cursor when it is locked */
+		public virtual Vector2 LockedCursorPosition
 		{
 			get
 			{
+				if (overrideLockedCursorPosition)
+				{
+					return lockedCursorPositionOverride;
+				}
 				return new Vector2 (ACScreen.width / 2f, ACScreen.height / 2f);
 			}
 		}

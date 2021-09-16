@@ -29,7 +29,7 @@ namespace AC
 		public static OptionsData optionsData;
 
 		/** The maximum number of profiles that can be created */
-		public static int maxProfiles = 50;
+		public const int maxProfiles = 50;
 
 		protected static iOptionsFileHandler optionsFileHandlerOverride;
 

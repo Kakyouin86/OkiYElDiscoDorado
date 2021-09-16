@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AC
 {
@@ -130,6 +129,12 @@ namespace AC
 				return;
 			}
 
+			if (Event.current.type == EventType.Layout || Event.current.type == EventType.Repaint)
+			{
+				// Required to get MouseDown event
+				UnityEditor.EditorUtility.SetDirty (this);
+			}
+			
 			if (KickStarter.mainCamera)
 			{
 				KickStarter.mainCamera.DrawBorders ();
@@ -174,7 +179,7 @@ namespace AC
 					}
 				}
 
-				if (UnityEditor.EditorWindow.mouseOverWindow != null && UnityEditor.EditorWindow.mouseOverWindow.ToString () != null && UnityEditor.EditorWindow.mouseOverWindow.ToString ().Contains ("(UnityEditor.GameView)"))
+				if (Event.current.type == EventType.MouseDown && UnityEditor.EditorWindow.mouseOverWindow != null && UnityEditor.EditorWindow.mouseOverWindow.ToString () != null && UnityEditor.EditorWindow.mouseOverWindow.ToString ().Contains ("(UnityEditor.GameView)"))
 				{
 					if (menu.IsPointerOverSlot (element, 0, Event.current.mousePosition + new Vector2 (menu.GetRect ().x, menu.GetRect ().y)))
 					{

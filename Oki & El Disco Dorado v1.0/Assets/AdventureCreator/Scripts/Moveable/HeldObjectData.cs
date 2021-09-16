@@ -24,6 +24,7 @@ namespace AC
 		private Vector3 dragForce;
 		private bool ignoreDragState;
 		private int touchIndex = -1;
+		private bool ignoreBuiltInDragInput;
 
 		#endregion
 
@@ -39,6 +40,7 @@ namespace AC
 			dragBase = _dragBase;
 			touchIndex = -1;
 			ignoreDragState = false;
+			ignoreBuiltInDragInput = false;
 		}
 
 		#endregion
@@ -48,7 +50,7 @@ namespace AC
 
 		/**
 		 * <summary>Attempts to release the object</summary>
-		 * <param name="force">If True, the object will be released for certain. Otherwise, it will only be released if natural conditions mean it should be.</param>
+		 * <param name = "force">If True, the object will be released for certain. Otherwise, it will only be released if natural conditions mean it should be.</param>
 		 */
 		public void AttemptRelease (bool force)
 		{
@@ -108,7 +110,7 @@ namespace AC
 			// Incoporate camera movement
 			if (dragBase.playerMovementInfluence > 0f)
 			{
-				dragForce += deltaCamera * 100000f * dragBase.playerMovementInfluence;
+				dragForce += 100000f * dragBase.playerMovementInfluence * deltaCamera;
 			}
 
 			dragForce /= Time.fixedDeltaTime * 50f;
@@ -150,6 +152,20 @@ namespace AC
 			set
 			{
 				ignoreDragState = value;
+			}
+		}
+
+
+		/** If True, the object will not be moved by AC's built-in calls to the Drag function, allowing values to be set manually */
+		public bool IgnoreBuiltInDragInput
+		{
+			get
+			{
+				return ignoreBuiltInDragInput;
+			}
+			set
+			{
+				ignoreBuiltInDragInput = value;
 			}
 		}
 

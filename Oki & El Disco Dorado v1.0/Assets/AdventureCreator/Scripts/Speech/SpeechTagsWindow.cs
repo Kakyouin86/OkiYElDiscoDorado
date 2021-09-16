@@ -7,23 +7,21 @@ using UnityEditor;
 namespace AC
 {
 	
-	/**
-	 * Provides an EditorWindow to manage speech tags
-	 */
+	/** Provides an EditorWindow to manage speech tags wwith */
 	public class SpeechTagsWindow : EditorWindow
 	{
 
 		private Vector2 scrollPos;
+		private int selectedIndex;
 		
 
-		/**
-		 * Initialises the window.
-		 */
+		/** Initialises the window.  */
 		public static void Init ()
 		{
-			SpeechTagsWindow window = EditorWindow.GetWindowWithRect <SpeechTagsWindow> (new Rect (0, 0, 450, 303), true, "Speech Tags editor", true);
+			SpeechTagsWindow window = (SpeechTagsWindow) GetWindow (typeof (SpeechTagsWindow));
 			window.titleContent.text = "Speech Tags editor";
 			window.position = new Rect (300, 200, 450, 303);
+			window.minSize = new Vector2 (300, 160);
 		}
 		
 		
@@ -34,7 +32,9 @@ namespace AC
 				EditorGUILayout.HelpBox ("A Settings Manager must be assigned before this window can display correctly.", MessageType.Warning);
 				return;
 			}
-			
+
+			EditorGUILayout.LabelField ("Speech Tags editor", CustomStyles.managerHeader);
+
 			SpeechManager speechManager = AdvGame.GetReferences ().speechManager;
 			EditorGUILayout.HelpBox ("Assign any labels you want to be able to tag 'Dialogue: Play speech' Actions as here.", MessageType.Info);
 			EditorGUILayout.Space ();
@@ -42,8 +42,7 @@ namespace AC
 			speechManager.useSpeechTags = EditorGUILayout.Toggle ("Use speech tags?", speechManager.useSpeechTags);
 			if (speechManager.useSpeechTags)
 			{
-				CustomGUILayout.BeginVertical ();
-				scrollPos = EditorGUILayout.BeginScrollView (scrollPos, GUILayout.Height (205f));
+				scrollPos = EditorGUILayout.BeginScrollView (scrollPos);
 
 				if (speechManager.speechTags.Count == 0)
 				{
@@ -62,15 +61,12 @@ namespace AC
 					else
 					{
 						SpeechTag speechTag = speechManager.speechTags[i];
-						speechTag.label = EditorGUILayout.TextField ("Tag " + speechManager.speechTags[i].ID.ToString () + ":", speechTag.label);
+						speechTag.label = EditorGUILayout.DelayedTextField ("Tag " + speechManager.speechTags[i].ID.ToString () + ":", speechTag.label);
 						speechManager.speechTags[i] = speechTag;
 
-						if (GUILayout.Button ("-", GUILayout.MaxWidth (20f)))
+						if (GUILayout.Button (string.Empty, CustomStyles.IconCog))
 						{
-							Undo.RecordObject (speechManager, "Delete tag");
-							speechManager.speechTags.RemoveAt (i);
-							i=0;
-							return;
+							SpeechTagsSideWindow (i);
 						}
 					}
 					EditorGUILayout.EndHorizontal ();
@@ -78,7 +74,6 @@ namespace AC
 				}
 			
 				EditorGUILayout.EndScrollView ();
-				CustomGUILayout.EndVertical ();
 				
 				if (GUILayout.Button ("Add new tag"))
 				{
@@ -92,8 +87,30 @@ namespace AC
 				EditorUtility.SetDirty (speechManager);
 			}
 		}
-		
-		
+
+
+		private void SpeechTagsSideWindow (int i)
+		{
+			GUI.SetNextControlName (string.Empty);
+			GUI.FocusControl (string.Empty);
+
+			selectedIndex = i;
+			GenericMenu menu = new GenericMenu ();
+
+			menu.AddItem (new GUIContent ("Delete"), false, Callback, "Delete");
+			menu.ShowAsContext ();
+		}
+
+
+		private void Callback (object obj)
+		{
+			Undo.RecordObject (AdvGame.GetReferences ().speechManager, "Delete tag");
+			AdvGame.GetReferences ().speechManager.speechTags.RemoveAt (selectedIndex);
+
+			EditorUtility.SetDirty (AdvGame.GetReferences ().speechManager);
+		}
+
+
 		private int[] GetIDArray (SpeechTag[] speechTags)
 		{
 			List<int> idArray = new List<int>();

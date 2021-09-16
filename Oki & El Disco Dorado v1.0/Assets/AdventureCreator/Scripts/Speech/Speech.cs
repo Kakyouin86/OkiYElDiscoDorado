@@ -402,6 +402,7 @@ namespace AC
 						{
 							displayText = log.fullText.Substring (0, speechGaps[gapIndex].characterIndex);
 						}
+						currentCharIndex = speechGaps[gapIndex].characterIndex;
 
 						if (waitTime >= 0)
 						{
@@ -636,7 +637,7 @@ namespace AC
 							else if (KickStarter.speechManager.ifSkipWhileScrolling == IfSkipWhileScrolling.SkipToNextWaitToken && CanScroll () && displayText != log.textWithRichTextTags)
 							{
 								// Stop scrolling
-								if (speechGaps.Count > 0 && speechGaps.Count > gapIndex)
+								if (speechGaps.Count > 0 && gapIndex < speechGaps.Count)
 								{
 									if (gapIndex < speechGaps.Count && speechGaps[gapIndex].waitTime >= 0)
 									{
@@ -658,6 +659,7 @@ namespace AC
 										{
 											displayText = log.fullText.Substring (0, speechGaps[gapIndex].characterIndex);
 										}
+										currentCharIndex = speechGaps[gapIndex].characterIndex;
 										SetPauseGap ();
 									}
 								}
@@ -728,6 +730,7 @@ namespace AC
 										{
 											displayText = log.fullText.Substring (0, speechGaps[gapIndex].characterIndex);
 										}
+										currentCharIndex = speechGaps[gapIndex].characterIndex;
 										SetPauseGap ();
 									}
 								}
@@ -965,7 +968,11 @@ namespace AC
 		{
 			scrollAmount = 1f;
 			displayText = log.textWithRichTextTags;
-			
+
+			//
+			currentCharIndex = FullText.Length;
+			//
+
 			if (holdForever)
 			{
 				continueState = ContinueState.Pending;
@@ -1652,6 +1659,16 @@ namespace AC
 			get
 			{
 				return KickStarter.speechManager.GetLine (LineID);
+			}
+		}
+
+
+		/** The index of the current end of the line, if speech-scrolling is enabled in the Speech Manager */
+		public int CurrentCharIndex
+		{
+			get
+			{
+				return currentCharIndex;
 			}
 		}
 

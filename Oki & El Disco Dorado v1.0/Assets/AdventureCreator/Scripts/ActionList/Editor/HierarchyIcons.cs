@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
+using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -152,7 +154,7 @@ namespace AC
 		}
 
 
-#region CameraPrefabs
+		#region CameraPrefabs
 
 		[MenuItem("GameObject/Adventure Creator/2D/Camera/GameCamera 2D", false, 10)]
 		private static void CreateGameCamera2D (MenuCommand menuCommand)
@@ -208,10 +210,10 @@ namespace AC
 			CreateObjectFromHierarchy (menuCommand, "Camera", "SimpleCamera");
 		}
 
-#endregion
+		#endregion
 
 
-#region LogicPrefabs
+		#region LogicPrefabs
 
 		[MenuItem("GameObject/Adventure Creator/2D/Logic/Arrow prompt", false, 10)]
 		[MenuItem("GameObject/Adventure Creator/2.5D/Logic/Arrow prompt", false, 10)]
@@ -297,10 +299,10 @@ namespace AC
 			CreateObjectFromHierarchy (menuCommand, "Logic", "Trigger");
 		}
 
-#endregion
+		#endregion
 
 
-#region MoveablePrefabs
+		#region MoveablePrefabs
 
 		[MenuItem("GameObject/Adventure Creator/3D/Moveable/Draggable", false, 10)]
 		private static void CreateDraggable (MenuCommand menuCommand)
@@ -332,10 +334,10 @@ namespace AC
 			CreateObjectFromHierarchy (menuCommand, "Moveable", "HingeTrack");
 		}
 
-#endregion
+		#endregion
 
 
-#region NavigationPrefabs
+		#region NavigationPrefabs
 
 		[MenuItem("GameObject/Adventure Creator/2D/Navigation/Sorting map", false, 10)]
 		[MenuItem("GameObject/Adventure Creator/2.5D/Navigation/Sorting map", false, 10)]
@@ -429,7 +431,8 @@ namespace AC
 			CreateObjectFromHierarchy (menuCommand, "Navigation", "PlayerStart");
 		}
 
-#endregion
+		#endregion
+
 
 		private static void CreateObjectFromHierarchy (MenuCommand menuCommand, string folderName, string prefabName)
 		{
@@ -454,3 +457,5 @@ namespace AC
 	}
 
 }
+
+#endif

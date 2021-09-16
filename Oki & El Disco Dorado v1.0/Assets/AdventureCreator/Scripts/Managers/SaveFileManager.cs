@@ -27,14 +27,14 @@ namespace AC
 		private List<SingleLevelData> cachedLevelData;
 
 		private bool runCache = false;
-		private const int windowHeight = 660;
 
 
 		public static void Init ()
 		{
-			SaveFileManager window = GetWindowWithRect<SaveFileManager> (new Rect (0, 0, 450, windowHeight), true, "Save-game Manager", true);
+			SaveFileManager window = (SaveFileManager) GetWindow (typeof (SaveFileManager));
 			window.titleContent.text = "Save-game Manager";
-			window.position = new Rect (300, 200, 450, windowHeight);
+			window.position = new Rect (300, 200, 450, 660);
+			window.minSize = new Vector2 (300, 180);
 		}
 
 
@@ -48,7 +48,7 @@ namespace AC
 				return;
 			}
 
-			_scrollPos = EditorGUILayout.BeginScrollView (_scrollPos, GUILayout.Height (windowHeight));
+			_scrollPos = EditorGUILayout.BeginScrollView (_scrollPos);
 			SaveFileGUI ();
 			EditorGUILayout.EndScrollView ();
 		}
@@ -72,6 +72,8 @@ namespace AC
 				EditorGUILayout.HelpBox ("No Save File Handler assigned - one must be set in order to locate Save Data.", MessageType.Warning);
 				return;
 			}
+
+			EditorGUILayout.LabelField ("Save-game file manager", CustomStyles.managerHeader);
 
 			EditorGUILayout.BeginVertical (CustomStyles.thinBox);
 			showHandlers = CustomGUILayout.ToggleHeader (showHandlers, "File and format handlers");
@@ -166,6 +168,8 @@ namespace AC
 				{
 					EditorGUILayout.LabelField ("Label:", prefsData.label);
 					EditorGUILayout.LabelField ("ID:", prefsData.ID.ToString ());
+					EditorGUILayout.LabelField ("Last save ID:", prefsData.lastSaveID.ToString ());
+					EditorGUILayout.LabelField ("Previous save IDs:", prefsData.previousSaveIDs);
 					EditorGUILayout.LabelField ("Language:", prefsData.language.ToString ());
 					if (prefsData.language != prefsData.voiceLanguage)
 					{

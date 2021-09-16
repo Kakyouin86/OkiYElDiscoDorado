@@ -64,6 +64,41 @@ namespace AC
 				runtimePlayerID = -1;
 			}
 
+			// Check if first scene
+			if (sceneToCheck == SceneToCheck.Previous && chooseSceneBy == ChooseSceneBy.Name && string.IsNullOrEmpty (sceneName))
+			{
+				if (runtimePlayerID >= 0)
+				{
+					ChooseSceneByPlayerSwitching csbps = (ChooseSceneByPlayerSwitching) chooseSceneByPlayerSwitching;
+					if (csbps != ChooseSceneByPlayerSwitching.CurrentMain)
+					{
+						PlayerData playerData = KickStarter.saveSystem.GetPlayerData (runtimePlayerID);
+						if (playerData != null)
+						{
+							switch (intCondition)
+							{
+								case IntCondition.EqualTo:
+									return playerData.previousSceneName == string.Empty;
+
+								case IntCondition.NotEqualTo:
+									return playerData.previousSceneName != string.Empty;
+							}
+						}
+					}
+				}
+				else
+				{
+					switch (intCondition)
+					{
+						case IntCondition.EqualTo:
+							return KickStarter.sceneChanger.PreviousSceneName == string.Empty;
+
+						case IntCondition.NotEqualTo:
+							return KickStarter.sceneChanger.PreviousSceneName != string.Empty;
+					}
+				}
+			}
+
 			switch (KickStarter.settingsManager.referenceScenesInSave)
 			{
 				case ChooseSceneBy.Name:

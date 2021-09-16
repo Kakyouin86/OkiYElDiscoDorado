@@ -128,7 +128,7 @@ namespace AC
 		{
 			if (parameterID < 0)
 			{
-				if (spriteFader != null && spriteFader.gameObject == gameObject) return true;
+				if (spriteFader && spriteFader.gameObject == gameObject) return true;
 				if (constantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

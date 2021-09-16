@@ -43,6 +43,9 @@ namespace AC
 		public bool setPlayer = false;
 		public int playerID;
 
+		public PlayerToCheck playerToCheck;
+		public enum PlayerToCheck { Active, Specific, Any };
+
 		#if UNITY_EDITOR
 		private InventoryManager inventoryManager;
 		private SettingsManager settingsManager;
@@ -60,7 +63,18 @@ namespace AC
 			intValue = AssignInteger (parameters, intValueParameterID, intValue);
 		}
 
-		
+
+		public override void Upgrade ()
+		{
+			if (setPlayer)
+			{
+				setPlayer = false;
+				playerToCheck = PlayerToCheck.Specific;
+			}
+			base.Upgrade ();
+		}
+
+
 		public override bool CheckCondition ()
 		{
 			int count = 0;
@@ -68,9 +82,13 @@ namespace AC
 			switch (invCheckType)
 			{
 				case InvCheckType.CarryingSpecificItem:
-					if (KickStarter.settingsManager.playerSwitching == PlayerSwitching.Allow && !KickStarter.settingsManager.shareInventory && setPlayer)
+					if (KickStarter.settingsManager.playerSwitching == PlayerSwitching.Allow && !KickStarter.settingsManager.shareInventory && playerToCheck == PlayerToCheck.Specific)
 					{
 						count = KickStarter.runtimeInventory.GetCount (invID, playerID);
+					}
+					else if (KickStarter.settingsManager.playerSwitching == PlayerSwitching.Allow && !KickStarter.settingsManager.shareInventory && playerToCheck == PlayerToCheck.Any)
+					{
+						count = KickStarter.runtimeInventory.GetCountFromAllPlayers (invID);
 					}
 					else
 					{
@@ -79,15 +97,26 @@ namespace AC
 					break;
 
 				case InvCheckType.NumberOfItemsCarrying:
-					if (KickStarter.settingsManager.playerSwitching == PlayerSwitching.Allow && !KickStarter.settingsManager.shareInventory && setPlayer)
+					if (KickStarter.settingsManager.playerSwitching == PlayerSwitching.Allow && !KickStarter.settingsManager.shareInventory && playerToCheck == PlayerToCheck.Specific)
 					{
 						if (checkNumberInCategory)
 						{
-							count = KickStarter.runtimeInventory.GetNumberOfItemsCarriedInCategory (playerID, categoryIDToCheck);
+							count = KickStarter.runtimeInventory.GetNumberOfItemsCarriedInCategory (categoryIDToCheck, playerID);
 						}
 						else
 						{
 							count = KickStarter.runtimeInventory.GetNumberOfItemsCarried (playerID);
+						}
+					}
+					else if (KickStarter.settingsManager.playerSwitching == PlayerSwitching.Allow && !KickStarter.settingsManager.shareInventory && playerToCheck == PlayerToCheck.Any)
+					{
+						if (checkNumberInCategory)
+						{
+							count = KickStarter.runtimeInventory.GetNumberOfItemsCarriedInCategoryByAllPlayers (categoryIDToCheck);
+						}
+						else
+						{
+							count = KickStarter.runtimeInventory.GetNumberOfItemsCarriedByAllPlayers ();
 						}
 					}
 					else
@@ -134,7 +163,7 @@ namespace AC
 			
 			return false;	
 		}
-		
+
 
 		#if UNITY_EDITOR
 		
@@ -279,16 +308,16 @@ namespace AC
 			if (settingsManager != null && settingsManager.playerSwitching == PlayerSwitching.Allow && !settingsManager.shareInventory)
 			{
 				EditorGUILayout.Space ();
-				
-				setPlayer = EditorGUILayout.Toggle ("Check specific player?", setPlayer);
-				if (setPlayer)
+
+				playerToCheck = (PlayerToCheck) EditorGUILayout.EnumPopup ("Player to check:", playerToCheck);
+				if (playerToCheck == PlayerToCheck.Specific)
 				{
 					ChoosePlayerGUI ();
 				}
 			}
 			else
 			{
-				setPlayer = false;
+				playerToCheck = PlayerToCheck.Active;
 			}
 		}
 

@@ -15,9 +15,7 @@ using UnityEngine;
 namespace AC
 {
 
-	/**
-	 * When used in 2D games, this script can be attached to scene objects to make them scroll as the camera moves, creating a parallax effect.
-	 */
+	/** When used in 2D games, this script can be attached to scene objects to make them scroll as the camera moves, creating a parallax effect. */
 	[AddComponentMenu("Adventure Creator/Misc/Parallax 2D")]
 	[HelpURL("https://www.adventurecreator.org/scripting-guide/class_a_c_1_1_parallax2_d.html")]
 	public class Parallax2D : MonoBehaviour
@@ -50,8 +48,10 @@ namespace AC
 		/** The maximum scrolling position in the Y-direction, if limitY = True */
 		public float maxY;
 
-		/** What entity affects the parallax behaviour (Camera, Cursor) */
+		/** What entity affects the parallax behaviour (Camera, Cursor, Transform) */
 		public ParallaxReactsTo reactsTo = ParallaxReactsTo.Camera;
+		/** Which GameObject affects behaviour, if reactsTo = ParallaxReactsTo.Transform */
+		public Transform transformToReactTo;
 
 		protected float xStart;
 		protected float yStart;
@@ -100,9 +100,7 @@ namespace AC
 
 		#region PublicFunctions
 
-		/**
-		 * Updates the GameObject's position according to the camera.  This is called every frame by the StateHandler.
-		 */
+		/** Updates the GameObject's position according to the camera.  This is called every frame by the StateHandler. */
 		public void UpdateOffset ()
 		{
 			switch (reactsTo)
@@ -122,6 +120,16 @@ namespace AC
 					Vector2 screenCentre = ACScreen.safeArea.size / 2f;
 					Vector2 mousePosition = KickStarter.playerInput.GetMousePosition ();
 					perspectiveOffset = new Vector2 (((1f - mousePosition.x) / screenCentre.x) + 1f, ((1f - mousePosition.y) / screenCentre.y + 1f));
+					break;
+
+				case ParallaxReactsTo.Transform:
+					if (transformToReactTo)
+					{
+						perspectiveOffset = transformToReactTo.position;
+					}
+					break;
+
+				default:
 					break;
 			}
 

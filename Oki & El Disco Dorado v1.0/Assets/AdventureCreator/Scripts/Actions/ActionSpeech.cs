@@ -95,6 +95,11 @@ namespace AC
 				runtimeSpeaker = AssignFile<Char> (parameters, parameterID, constantID, speaker);
 			}
 
+			if (runtimeSpeaker && !runtimeSpeaker.gameObject.activeInHierarchy && runtimeSpeaker.displayLineID == -1 && runtimeSpeaker.lineID >= 0)
+			{ 
+				runtimeSpeaker.displayLineID = runtimeSpeaker.lineID;
+			}
+
 			#if AddressableIsPresent
 			isAwaitingAddressableAudio = false;
 			isAwaitingAddressableLipsync = false;
@@ -166,6 +171,7 @@ namespace AC
 						}
 
 						string filename = speechLine.GetFilename (overrideName);
+						
 						Addressables.LoadAssetAsync<AudioClip>(filename).Completed += OnCompleteLoadAudio;
 						isAwaitingAddressableAudio = true;
 
@@ -547,10 +553,10 @@ namespace AC
 		{
 			if (!isPlayer && parameterID < 0)
 			{
-				if (speaker != null && speaker.gameObject == gameObject) return true;
+				if (speaker && speaker.gameObject == gameObject) return true;
 				if (constantID == id && id != 0) return true;
 			}
-			if (isPlayer && gameObject.GetComponent <Player>()) return true;
+			if (isPlayer && gameObject && gameObject.GetComponent <Player>()) return true;
 			return base.ReferencesObjectOrID (gameObject, id);
 		}
 

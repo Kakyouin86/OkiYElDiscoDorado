@@ -1,4 +1,6 @@
-﻿#if UNITY_ANDROID || UNITY_IOS
+﻿#if UNITY_EDITOR
+
+#if UNITY_ANDROID || UNITY_IOS
 #define ON_MOBILE
 #endif
 
@@ -970,3 +972,5 @@ namespace AC
 	}
 
 }
+
+#endif

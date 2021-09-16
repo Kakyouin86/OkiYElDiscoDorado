@@ -58,7 +58,7 @@ namespace AC
 
 
 		/**
-		 * <summary></summary>Wipes stored data for a specific scene from memory.</summary>
+		 * <summary>Wipes stored data for a specific scene from memory.</summary>
 		 * <param name="sceneIndex">The build index number of the scene to clear save data for</param>
 		 */
 		public void ClearLevelData (int sceneIndex)
@@ -75,16 +75,48 @@ namespace AC
 		}
 
 
+		/**
+		 * <summary>Wipes stored data for a specific scene from memory.</summary>
+		 * <param name="sceneName">The name of the scene to clear save data for</param>
+		 */
+		public void ClearLevelData (string sceneName)
+		{
+			if (allLevelData == null) return;
+			foreach (SingleLevelData levelData in allLevelData)
+			{
+				if (levelData.sceneName == sceneName)
+				{
+					allLevelData.Remove (levelData);
+					return;
+				}
+			}
+		}
+
+
 		/** Wipes the currently-loaded scene's save data from memory */
 		public void ClearCurrentLevelData ()
 		{
 			if (allLevelData == null) allLevelData = new List<SingleLevelData>();
 			foreach (SingleLevelData levelData in allLevelData)
 			{
-				if (levelData.sceneNumber == SceneChanger.CurrentSceneIndex)
+				switch (KickStarter.settingsManager.referenceScenesInSave)
 				{
-					allLevelData.Remove (levelData);
-					return;
+					case ChooseSceneBy.Name:
+						if (levelData.sceneName == SceneChanger.CurrentSceneName)
+						{
+							allLevelData.Remove (levelData);
+							return;
+						}
+						break;
+
+					case ChooseSceneBy.Number:
+					default:
+						if (levelData.sceneNumber == SceneChanger.CurrentSceneIndex)
+						{
+							allLevelData.Remove (levelData);
+							return;
+						}
+						break;
 				}
 			}
 		}
@@ -99,10 +131,24 @@ namespace AC
 			if (allLevelData == null) allLevelData = new List<SingleLevelData>();
 			foreach (SingleLevelData levelData in allLevelData)
 			{
-				if (levelData.sceneNumber == SceneChanger.CurrentSceneIndex)
+				switch (KickStarter.settingsManager.referenceScenesInSave)
 				{
-					levelData.RemoveDataForID (constantID);
-					return;
+					case ChooseSceneBy.Name:
+						if (levelData.sceneName == SceneChanger.CurrentSceneName)
+						{
+							levelData.RemoveDataForID (constantID);
+							return;
+						}
+						break;
+
+					case ChooseSceneBy.Number:
+					default:
+						if (levelData.sceneNumber == SceneChanger.CurrentSceneIndex)
+						{
+							levelData.RemoveDataForID (constantID);
+							return;
+						}
+						break;
 				}
 			}
 		}
@@ -129,7 +175,19 @@ namespace AC
 		 */
 		public void ReturnSubSceneData (SubScene subScene)
 		{
-			SingleLevelData levelData = GetLevelData (subScene.SceneIndex);
+			SingleLevelData levelData = null;
+			
+			switch (KickStarter.settingsManager.referenceScenesInSave)
+			{
+				case ChooseSceneBy.Name:
+					levelData = GetLevelData (subScene.SceneName);
+					break;
+
+				case ChooseSceneBy.Number:
+				default:
+					levelData = GetLevelData (subScene.SceneIndex);
+					break;
+			}
 
 			if (levelData == null)
 			{
@@ -247,9 +305,7 @@ namespace AC
 		}
 
 
-		/**
-		 * Combs the active scene for data to store, combines it into a SingleLevelData variable, and adds it to the SingleLevelData List, allLevelData.
-		 */
+		/** Combs the active scene for data to store, combines it into a SingleLevelData variable, and adds it to the SingleLevelData List, allLevelData. */
 		public void StoreCurrentLevelData ()
 		{
 			// Active scene
@@ -257,9 +313,7 @@ namespace AC
 		}
 
 
-		/**
-		 * Combs all open scenes for data to store, combines each into a SingleLevelData variable, and adds them to the SingleLevelData List, allLevelData.
-		 */
+		/** Combs all open scenes for data to store, combines each into a SingleLevelData variable, and adds them to the SingleLevelData List, allLevelData. */
 		public void StoreAllOpenLevelData ()
 		{
 			// Active scene
@@ -289,7 +343,15 @@ namespace AC
 
 		private SingleLevelData GetLevelData ()
 		{
-			return GetLevelData (SceneChanger.CurrentSceneIndex);
+			switch (KickStarter.settingsManager.referenceScenesInSave)
+			{
+				case ChooseSceneBy.Name:
+					return GetLevelData (SceneChanger.CurrentSceneName);
+
+				case ChooseSceneBy.Number:
+				default:
+					return GetLevelData (SceneChanger.CurrentSceneIndex);
+			}
 		}
 
 
@@ -301,6 +363,23 @@ namespace AC
 				foreach (SingleLevelData levelData in allLevelData)
 				{
 					if (levelData.sceneNumber == sceneNumber)
+					{
+						return levelData;
+					}
+				}
+			}
+			return null;
+		}
+
+
+		private SingleLevelData GetLevelData (string sceneName)
+		{
+			if (allLevelData == null) allLevelData = new List<SingleLevelData> ();
+			if (allLevelData != null)
+			{
+				foreach (SingleLevelData levelData in allLevelData)
+				{
+					if (levelData.sceneName == sceneName)
 					{
 						return levelData;
 					}
@@ -350,6 +429,7 @@ namespace AC
 
 			SingleLevelData thisLevelData = new SingleLevelData ();
 			thisLevelData.sceneNumber = (subScene == null) ? SceneChanger.CurrentSceneIndex : subScene.SceneIndex;
+			thisLevelData.sceneName = (subScene == null) ? SceneChanger.CurrentSceneName : subScene.SceneName;
 
 			thisLevelData.activeLists = KickStarter.actionListManager.GetSaveData (subScene);
 			
@@ -713,6 +793,8 @@ namespace AC
 		public List<TransformData> allTransformData;
 		/** The scene number this data is for */
 		public int sceneNumber;
+		/** The scene name this data is for */
+		public string sceneName;
 
 		/** The ConstantID number of the default NavMesh */
 		public int navMesh;
@@ -733,9 +815,7 @@ namespace AC
 		public string localVariablesData;
 
 
-		/**
-		 * The default Constructor.
-		 */
+		/** The default Constructor. */
 		public SingleLevelData ()
 		{
 			allScriptData = new List<ScriptData> ();
@@ -750,11 +830,23 @@ namespace AC
 		 */
 		public bool DataMatchesScene (SingleLevelData otherLevelData)
 		{
-			if (otherLevelData.sceneNumber == sceneNumber)
+			switch (KickStarter.settingsManager.referenceScenesInSave)
 			{
-				return true;
+				case ChooseSceneBy.Name:
+					if (otherLevelData.sceneName == sceneName)
+					{
+						return true;
+					}
+					return false;
+
+				case ChooseSceneBy.Number:
+				default:
+					if (otherLevelData.sceneNumber == sceneNumber)
+					{
+						return true;
+					}
+					return false;
 			}
-			return false;
 		}
 
 
@@ -787,6 +879,7 @@ namespace AC
 		public void ShowGUI ()
 		{
 			CustomGUILayout.MultiLineLabelGUI ("Scene number:", sceneNumber.ToString ());
+			CustomGUILayout.MultiLineLabelGUI ("Scene name:", sceneName);
 			CustomGUILayout.MultiLineLabelGUI ("Active NavMesh:", navMesh.ToString ());
 			CustomGUILayout.MultiLineLabelGUI ("Default PlayerStart:", playerStart.ToString ());
 			CustomGUILayout.MultiLineLabelGUI ("Default SortingMap:", sortingMap.ToString ());
@@ -824,9 +917,7 @@ namespace AC
 	}
 
 
-	/**
-	 * A data container for save data returned by each Remember script.  Used by the SingleLevelData class.
-	 */
+	/** A data container for save data returned by each Remember script.  Used by the SingleLevelData class. */
 	[System.Serializable]
 	public struct ScriptData
 	{

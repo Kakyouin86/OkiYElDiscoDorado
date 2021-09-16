@@ -9,11 +9,6 @@
  * 
  */
 
-#if UNITY_EDITOR
-using System.Reflection;
-using System;
-#endif
-
 #if AddressableIsPresent
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.AddressableAssets;
@@ -27,9 +22,7 @@ using UnityEngine.Timeline;
 namespace AC
 {
 
-	/**
-	 * A PlayableBehaviour that allows for AC speech playback in Timelines
-	 */
+	/** A PlayableBehaviour that allows for AC speech playback in Timelines */
 	[System.Serializable]
 	public class SpeechPlayableBehaviour : PlayableBehaviour
 	{
@@ -43,6 +36,7 @@ namespace AC
 		protected int playerID;
 		protected bool isPlaying;
 		protected int trackInstanceID;
+		private Speech speech;
 
 		#if AddressableIsPresent
 		protected bool isAwaitingAddressable = false;
@@ -105,9 +99,9 @@ namespace AC
 					}
 					
 					#if AddressableIsPresent
-					KickStarter.dialog.StartDialog (speaker, messageText, false, speechPlayableData.lineID, false, true, addressableAudioClip);
+					speech = KickStarter.dialog.StartDialog (speaker, messageText, false, speechPlayableData.lineID, false, true, addressableAudioClip);
 					#else
-					KickStarter.dialog.StartDialog (speaker, messageText, false, speechPlayableData.lineID, false, true);
+					speech = KickStarter.dialog.StartDialog (speaker, messageText, false, speechPlayableData.lineID, false, true);
 					#endif
 				}
 				#if UNITY_EDITOR
@@ -199,6 +193,16 @@ namespace AC
 			get
 			{
 				return speaker;
+			}
+		}
+
+
+		/** The Speech line produced by the clip.  This will only be set once the clip has begun playing. */
+		public Speech Speech
+		{
+			get
+			{
+				return speech;
 			}
 		}
 

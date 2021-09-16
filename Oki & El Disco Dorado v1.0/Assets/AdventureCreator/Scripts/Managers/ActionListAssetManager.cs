@@ -70,11 +70,7 @@ namespace AC
 				{
 					if (activeLists[i].IsFor (actionListAsset))
 					{
-						//if (actionListAsset.canRunMultipleInstances && removeMultipleInstances)
-						{
-							activeLists[i].Reset (false);
-						}
-
+						activeLists[i].Reset (false);
 						activeLists.RemoveAt (i);
 					}
 				}

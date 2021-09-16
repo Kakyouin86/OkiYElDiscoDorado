@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -193,7 +195,8 @@ namespace AC
 				}
 			}
 
-			option.linkToInventory = CustomGUILayout.ToggleLeft ("Only show if carrying specific inventory item?", option.linkToInventory, "", " If True, then the option will only be visible if a given inventory item is being carried");
+			option.autoTurnOff = CustomGUILayout.Toggle ("Auto-disable when chosen?", option.autoTurnOff, "", "If True, then the option will be disabled automatically once chosen by the player");
+			option.linkToInventory = CustomGUILayout.Toggle ("Link visibility to inventory item?", option.linkToInventory, "", " If True, then the option will only be visible if a given inventory item is being carried");
 			if (option.linkToInventory)
 			{
 				option.linkedInventoryID = CreateInventoryGUI (option.linkedInventoryID);
@@ -363,3 +366,5 @@ namespace AC
 	}
 
 }
+
+#endif

@@ -158,6 +158,17 @@ namespace AC
 				Action copyAction = Object.Instantiate (actions[i]) as Action;
 				copyAction.name = copyAction.name.Replace ("(Clone)", "");
 				copyAction.isMarked = false;
+
+				for (int e = 0; e < actions[i].endings.Count; e++)
+				{
+					if (actions[i].endings[e].resultAction == ResultAction.Skip && actions[i].endings[e].skipActionActual && actions.Contains (actions[i].endings[e].skipActionActual))
+					{
+						// References an Action inside the copy buffer, so record the index in the buffer
+						copyAction.endings[e].skipAction = -10 - actions.IndexOf (actions[i].endings[e].skipActionActual);
+						copyAction.endings[e].skipActionActual = null;
+					}
+				}
+
 				copiedActions[i] = copyAction;
 			}
 		}
@@ -167,7 +178,7 @@ namespace AC
 		 * <summary>Generates Actions based on the buffer created with ToCopyBuffer</summary>
 		 * <returns>The Actions stored in the buffer, recreated.</returns>
 		 */
-		public static List<Action> CreatePasteBuffer (int index = 0)
+		public static List<Action> CreatePasteBuffer ()
 		{
 			List<AC.Action> tempList = new List<AC.Action>();
 			foreach (AC.Action action in copiedActions)
@@ -179,9 +190,33 @@ namespace AC
 					foreach (ActionEnd ending in copyAction.endings)
 					{
 						ending.skipActionActual = null;
-						if (ending.skipAction >= 0) ending.skipAction += index;
 					}
 					tempList.Add (copyAction);
+				}
+			}
+
+			foreach (AC.Action action in tempList)
+			{
+				foreach (ActionEnd ending in action.endings)
+				{
+					if (ending.resultAction == ResultAction.Skip)
+					{
+						// Correct skip endings for those that reference others in the same list
+						bool endingIsOffset = ending.skipAction <= -10;
+						if (endingIsOffset)
+						{
+							int newIndex = -(ending.skipAction + 10);
+							if (newIndex >= 0 && newIndex < tempList.Count)
+							{
+								ending.skipActionActual = tempList[newIndex];
+								ending.skipAction = -1;
+							}
+						}
+						else
+						{
+							ending.resultAction = ResultAction.Stop;
+						}
+					}
 				}
 			}
 			

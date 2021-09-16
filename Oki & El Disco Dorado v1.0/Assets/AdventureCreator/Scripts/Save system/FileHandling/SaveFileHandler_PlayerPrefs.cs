@@ -13,10 +13,10 @@ namespace AC
 	public class SaveFileHandler_PlayerPrefs : iSaveFileHandler
 	{
 
-		private string screenshotKey = "_screenshot";
+		protected const string screenshotKey = "_screenshot";
 
 
-		public string GetDefaultSaveLabel (int saveID)
+		public virtual string GetDefaultSaveLabel (int saveID)
 		{
 			string label = (saveID == 0)
 							? SaveSystem.AutosaveLabel
@@ -26,7 +26,7 @@ namespace AC
 		}
 
 
-		public void DeleteAll (int profileID)
+		public virtual void DeleteAll (int profileID)
 		{
 			List<SaveFile> allSaveFiles = GatherSaveFiles (profileID);
 			foreach (SaveFile saveFile in allSaveFiles)
@@ -36,7 +36,7 @@ namespace AC
 		}
 
 
-		public bool Delete (SaveFile saveFile)
+		public virtual bool Delete (SaveFile saveFile)
 		{
 			string filename = saveFile.fileName;
 
@@ -58,7 +58,7 @@ namespace AC
 		}
 
 
-		public void Save (SaveFile saveFile, string dataToSave)
+		public virtual void Save (SaveFile saveFile, string dataToSave)
 		{
 			string fullFilename = GetSaveFilename (saveFile.saveID, saveFile.profileID);
 			bool isSuccessful = false;
@@ -85,7 +85,7 @@ namespace AC
 	 			{
 					DateTime startDate = new DateTime (2000, 1, 1, 0, 0, 0).ToUniversalTime ();
 
-					int secs = (int) (System.DateTime.UtcNow - startDate).TotalSeconds;
+					int secs = (int) (DateTime.UtcNow - startDate).TotalSeconds;
 					string timestampData = secs.ToString ();
 
 					PlayerPrefs.SetString (dateKey, timestampData);
@@ -103,7 +103,7 @@ namespace AC
 		}
 
 
-		public string Load (SaveFile saveFile, bool doLog)
+		public virtual string Load (SaveFile saveFile, bool doLog)
 		{
 			string filename = saveFile.fileName;
 			string _data = PlayerPrefs.GetString (filename, string.Empty);
@@ -117,25 +117,25 @@ namespace AC
 		}
 
 
-		public bool SupportsSaveThreading ()
+		public virtual bool SupportsSaveThreading ()
 		{
 			return false;
 		}
 
 
-		public List<SaveFile> GatherSaveFiles (int profileID)
+		public virtual List<SaveFile> GatherSaveFiles (int profileID)
 		{
 			return GatherSaveFiles (profileID, false, -1, string.Empty);
 		}
 
 
-		public SaveFile GetSaveFile (int saveID, int profileID)
+		public virtual SaveFile GetSaveFile (int saveID, int profileID)
 		{
 			return GetSaveFile (saveID, profileID, false, -1, string.Empty);
 		}
 
 
-		protected SaveFile GetSaveFile (int saveID, int profileID, bool isImport, int boolID, string separateFilePrefix)
+		protected virtual SaveFile GetSaveFile (int saveID, int profileID, bool isImport, int boolID, string separateFilePrefix)
 		{
 			bool isAutoSave = (saveID == 0);
 			string filename = (isImport) ? GetImportFilename (saveID, separateFilePrefix, profileID) : GetSaveFilename (saveID, profileID);
@@ -200,7 +200,7 @@ namespace AC
 		}
 
 
-		public List<SaveFile> GatherImportFiles (int profileID, int boolID, string separateProductName, string separateFilePrefix)
+		public virtual List<SaveFile> GatherImportFiles (int profileID, int boolID, string separateProductName, string separateFilePrefix)
 		{
 			if (!string.IsNullOrEmpty (separateProductName) && !string.IsNullOrEmpty (separateFilePrefix))
 			{
@@ -210,11 +210,11 @@ namespace AC
 		}
 
 
-		protected List<SaveFile> GatherSaveFiles (int profileID, bool isImport, int boolID, string separateFilePrefix)
+		protected virtual List<SaveFile> GatherSaveFiles (int profileID, bool isImport, int boolID, string separateFilePrefix)
 		{
 			List<SaveFile> gatheredSaveFiles = new List<SaveFile>();
 
-			for (int i=0; i<50; i++)
+			for (int i = 0; i < SaveSystem.MAX_SAVES; i++)
 			{
 				SaveFile saveFile = GetSaveFile (i, profileID, isImport, boolID, separateFilePrefix);
 				if (saveFile != null)
@@ -227,7 +227,7 @@ namespace AC
 		}
 
 
-		public void SaveScreenshot (SaveFile saveFile)
+		public virtual void SaveScreenshot (SaveFile saveFile)
 		{
 			string fullFilename = GetSaveFilename (saveFile.saveID, saveFile.profileID) + screenshotKey;
 
@@ -249,7 +249,7 @@ namespace AC
 		}
 
 
-		protected string GetSaveFilename (int saveID, int profileID = -1)
+		protected virtual string GetSaveFilename (int saveID, int profileID = -1)
 		{
 			if (profileID == -1)
 			{
@@ -260,7 +260,7 @@ namespace AC
 		}
 
 
-		protected string GetImportFilename (int saveID, string filePrefix, int profileID = -1)
+		protected virtual string GetImportFilename (int saveID, string filePrefix, int profileID = -1)
 		{
 			if (profileID == -1)
 			{
@@ -271,7 +271,7 @@ namespace AC
 		}
 
 
-		protected string GetTimeString (DateTime dateTime)
+		protected virtual string GetTimeString (DateTime dateTime)
 		{
 			if (KickStarter.settingsManager.saveTimeDisplay != SaveTimeDisplay.None)
 			{

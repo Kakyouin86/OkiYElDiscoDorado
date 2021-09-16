@@ -7,9 +7,7 @@ using UnityEditor;
 namespace AC
 {
 	
-	/**
-	 * Provides an EditorWindow to manage which ambience tracks can be played in-game.
-	 */
+	/** Provides an EditorWindow to manage which ambience tracks can be played in-game. */
 	public class AmbienceStorageWindow : SoundtrackStorageWindow
 	{
 
@@ -50,6 +48,8 @@ namespace AC
 				return;
 			}
 
+			EditorGUILayout.LabelField (titleContent.text, CustomStyles.managerHeader);
+
 			if (KickStarter.settingsManager)
 			{
 				EditorGUILayout.BeginVertical (CustomStyles.thinBox);
@@ -74,7 +74,7 @@ namespace AC
 				CustomGUILayout.EndVertical ();
 			}
 
-			SharedGUI("Ambience tracks");
+			SharedGUI ("Ambience tracks");
 		}
 
 	}

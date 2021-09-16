@@ -162,12 +162,12 @@ namespace AC
 		public virtual void UpdateDraggable (Moveable_Drag draggable)
 		{
 			draggable.trackValue = GetDecimalAlong (draggable);
-
+			
+			DoRegionAudioCheck (draggable);
 			if (!onlySnapOnPlayerRelease)
 			{
 				DoSnapCheck (draggable);
 			}
-
 			DoConnectionCheck (draggable);
 		}
 
@@ -305,6 +305,36 @@ namespace AC
 
 
 		#region ProtectedFunctions
+
+		protected void DoRegionAudioCheck (Moveable_Drag draggable)
+		{
+			TrackSnapData trackSnapData = null;
+			for (int i = 0; i < allTrackSnapData.Count; i++)
+			{
+				if (IsWithinTrackRegion (draggable.trackValue, allTrackSnapData[i].ID))
+				{
+					trackSnapData = allTrackSnapData[i];
+					break;
+				}
+			}
+
+			if (trackSnapData != null)
+			{
+				if (draggable.regionID != trackSnapData.ID)
+				{
+					if (trackSnapData.SoundOnEnter)
+					{
+						AudioSource.PlayClipAtPoint (trackSnapData.SoundOnEnter, trackSnapData.GetWorldPosition (this));
+					}
+					draggable.regionID = trackSnapData.ID;
+				}
+			}
+			else
+			{
+				draggable.regionID = -1;
+			}
+		}
+
 
 		protected virtual void AssignColliders (Moveable_Drag draggable)
 		{

@@ -586,14 +586,14 @@ namespace AC
 		{
 			if (parameterID < 0)
 			{
-				if (gameObject != null && gameObject == _gameObject) return true;
+				if (gameObject && gameObject == _gameObject) return true;
 				if (constantID == id) return true;
 			}
 			if (invAction == InvAction.Add && positionRelativeTo == PositionRelativeTo.RelativeToGameObject)
 			{
 				if (relativeGameObjectParameterID < 0)
 				{
-					if (relativeGameObject != null && relativeGameObject == _gameObject) return true;
+					if (relativeGameObject && relativeGameObject == _gameObject) return true;
 					if (relativeGameObjectID == id) return true;
 				}
 			}
@@ -601,7 +601,7 @@ namespace AC
 			{
 				if (replaceParameterID < 0)
 				{
-					if (replaceGameObject != null && replaceGameObject == _gameObject) return true;
+					if (replaceGameObject && replaceGameObject == _gameObject) return true;
 					if (replaceConstantID == id) return true;
 				}
 			}
@@ -609,7 +609,7 @@ namespace AC
 			{
 				if (variableLocation == VariableLocation.Component && vectorVarParameterID < 0)
 				{
-					if (variables != null && variables.gameObject == _gameObject) return true;
+					if (variables && variables.gameObject == _gameObject) return true;
 					if (variablesConstantID == id) return true;
 				}
 			}

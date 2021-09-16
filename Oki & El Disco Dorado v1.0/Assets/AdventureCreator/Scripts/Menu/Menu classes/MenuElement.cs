@@ -89,7 +89,6 @@ namespace AC
 		public int linkedUiID;
 
 		protected int offset = 0;
-		private string idString;
 		private Vector2 dragOffset;
 
 		/** If an AC element and set to scale automatically, how much of the width of the screen it can cover */
@@ -184,8 +183,6 @@ namespace AC
 			cursorID = _element.cursorID;
 			alternativeInputButton = _element.alternativeInputButton;
 			maxAutoWidthFactor = _element.maxAutoWidthFactor;
-
-			idString = ID.ToString ();
 		}
 
 
@@ -1393,15 +1390,15 @@ namespace AC
 		}
 
 
-		/**
-		 * The Menu's id number as a string.
-		 */
-		public string IDString
+		/** Gets the data related to the element's visiblity as a serialized string */
+		public string GetVisibilitySaveData ()
 		{
-			get
-			{
-				return idString;
-			}
+			System.Text.StringBuilder sb = new System.Text.StringBuilder ();
+			sb.Append (ID.ToString ());
+			sb.Append ("=");
+			sb.Append (isVisible.ToString ());
+			sb.Append ("+");
+			return sb.ToString ();
 		}
 
 

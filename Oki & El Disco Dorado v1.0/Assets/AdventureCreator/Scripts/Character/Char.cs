@@ -290,6 +290,7 @@ namespace AC
 		private Vector3 newVel;
 		private float nonFacingFactor = 1f;
 		protected Paths ownPath;
+		protected AC_PathType lockedPathType;
 
 		private Quaternion actualRotation;
 		private Vector3 actualForward = Vector3.forward;
@@ -313,6 +314,9 @@ namespace AC
 		private CapsuleCollider capsuleCollider;
 		private CapsuleCollider[] capsuleColliders;
 		protected CharacterController _characterController;
+		/** The character's simulated mass, if using a Character Controller */
+		public float simulatedMass = 1;
+		public float simulatedVerticalSpeed;
 
 		// Wall detection vargiables
 
@@ -1135,7 +1139,7 @@ namespace AC
 								}
 							}
 						}
-
+						
 						if (!noMove && !AnimationControlledByAnimationShot)
 						{
 							float _deltaTime = (antiGlideMode) ? Time.fixedDeltaTime : Time.deltaTime;
@@ -1150,11 +1154,13 @@ namespace AC
 									{
 										if (IsGrounded ())
 										{
-											newVel.y = -_characterController.stepOffset / Time.deltaTime;
+											newVel.y = -0.001f;
+											simulatedVerticalSpeed = 0f;
 										}
 										else
 										{
-											newVel += Physics.gravity;
+											simulatedVerticalSpeed -= simulatedMass * Time.deltaTime;
+											newVel += simulatedVerticalSpeed * -Physics.gravity;
 										}
 									}
 
@@ -1190,7 +1196,8 @@ namespace AC
 						{
 							if (!_characterController.isGrounded && !ignoreGravity)
 							{
-								_characterController.Move (Physics.gravity * Time.deltaTime);
+								simulatedVerticalSpeed -= simulatedMass * Time.deltaTime;
+								_characterController.Move (simulatedVerticalSpeed * Time.deltaTime * -Physics.gravity);
 							}
 						}
 					}
@@ -1961,15 +1968,8 @@ namespace AC
 
 			int tempPrev = targetNode;
 
-			if (IsPlayer && KickStarter.stateHandler.IsInGameplay ())
-			{
-				targetNode = activePath.GetNextNode (targetNode, prevNode, true);
-			}
-			else
-			{
-				targetNode = activePath.GetNextNode (targetNode, prevNode, false);
-			}
-
+			targetNode = activePath.GetNextNode (targetNode, prevNode, this == KickStarter.player && KickStarter.stateHandler.IsInGameplay () && KickStarter.player.IsLockedToPath (), lockedPathType);
+			
 			prevNode = tempPrev;
 
 			if (targetNode == 0 && activePath.pathType == AC_PathType.Loop && activePath.teleportToStart)

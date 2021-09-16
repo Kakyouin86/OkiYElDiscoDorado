@@ -489,12 +489,12 @@ namespace AC
 		{
 			if (oldParameterID < 0 && oldLocation == VariableLocation.Component)
 			{
-				if (oldVariables != null && oldVariables.gameObject == gameObject) return true;
+				if (oldVariables && oldVariables.gameObject == gameObject) return true;
 				if (oldVariablesConstantID == id && id != 0) return true;
 			}
 			if (newParameterID < 0 && oldLocation == VariableLocation.Component)
 			{
-				if (newVariables != null && newVariables.gameObject == gameObject) return true;
+				if (newVariables && newVariables.gameObject == gameObject) return true;
 				if (newVariablesConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

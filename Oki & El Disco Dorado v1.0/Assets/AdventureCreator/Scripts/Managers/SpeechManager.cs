@@ -395,7 +395,7 @@ namespace AC
 					if (translateAudio)
 					{
 						separateVoiceAndTextLanguages = CustomGUILayout.ToggleLeft ("Speech audio and display text can be different languages?", separateVoiceAndTextLanguages, "AC.KickStarter.speechManager.separateVoiceAndTextLanguages", "If True, then the current voice audio language can be set independently of the the current text language.");
-						if (referenceSpeechFiles == ReferenceSpeechFiles.ByNamingConvention)
+						if (referenceSpeechFiles == ReferenceSpeechFiles.ByNamingConvention || referenceSpeechFiles == ReferenceSpeechFiles.ByDirectReference)
 						{
 							fallbackAudio = CustomGUILayout.ToggleLeft ("Use original language audio if none found?", fallbackAudio, "AC.KickStarter.speechManager.fallbackAudio", "If True, then translations that don't have speech audio files will use the audio files from the game's original language");
 						}

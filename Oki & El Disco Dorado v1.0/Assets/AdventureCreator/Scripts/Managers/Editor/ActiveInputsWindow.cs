@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor;
 
@@ -20,9 +22,10 @@ namespace AC
 		[MenuItem ("Adventure Creator/Editors/Active Inputs Editor", false, 0)]
 		public static void Init ()
 		{
-			ActiveInputsWindow window = GetWindowWithRect <ActiveInputsWindow> (new Rect (0, 0, 450, 490), true, "Active inputs", true);
+			ActiveInputsWindow window = (ActiveInputsWindow) GetWindow (typeof (ActiveInputsWindow)); 
 			window.titleContent.text = "Active Inputs";
 			window.position = new Rect (300, 200, 450, 490);
+			window.minSize = new Vector2 (300, 180);
 		}
 		
 		
@@ -43,6 +46,8 @@ namespace AC
 				return;
 			}
 
+			EditorGUILayout.LabelField ("Active inputs", CustomStyles.managerHeader);
+
 			ActiveInput.Upgrade ();
 			ShowActiveInputsGUI ();
 
@@ -58,7 +63,7 @@ namespace AC
 			showActiveInputsList = CustomGUILayout.ToggleHeader (showActiveInputsList, "Active inputs");
 			if (showActiveInputsList)
 			{
-				scrollPos = EditorGUILayout.BeginScrollView (scrollPos, GUILayout.Height (Mathf.Min (settingsManager.activeInputs.Count * 21, 185f)+5));
+				scrollPos = EditorGUILayout.BeginScrollView (scrollPos);
 				foreach (ActiveInput activeInput in settingsManager.activeInputs)
 				{
 					EditorGUILayout.BeginHorizontal ();
@@ -276,3 +281,5 @@ namespace AC
 	}
 	
 }
+
+#endif

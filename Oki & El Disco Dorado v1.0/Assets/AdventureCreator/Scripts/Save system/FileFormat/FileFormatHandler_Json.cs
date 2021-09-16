@@ -1,6 +1,6 @@
-﻿#if !UNITY_SWITCH
+﻿//#if !UNITY_SWITCH
 #define ALLOW_VIDEO
-#endif
+//#endif
 
 using UnityEngine;
 using System;
@@ -28,19 +28,19 @@ namespace AC
 		}
 
 
-		public string SerializeObject <T> (object dataObject)
+		public virtual string SerializeObject <T> (object dataObject)
 		{
 			return JsonUtility.ToJson (dataObject);
 		}
 
 
-		public T DeserializeObject <T> (string dataString)
+		public virtual T DeserializeObject <T> (string dataString)
 		{
 			return (T) DeserializeObjectJson <T> (dataString);
 		}
 
 
-		protected object DeserializeObjectJson <T> (string jsonString)
+		protected virtual object DeserializeObjectJson <T> (string jsonString)
 		{
 			object jsonData = JsonUtility.FromJson (jsonString, typeof (T));
 
@@ -133,10 +133,12 @@ namespace AC
 			{
 				return null;
 			}
+			#if ALLOW_VIDEO
 			if (jsonData is VideoPlayerData && !jsonString.Contains ("clipAssetID"))
 			{
 				return null;
 			}
+			#endif
 			if (jsonData is VisibilityData && !jsonString.Contains ("useDefaultTintMap"))
 			{
 				return null;
@@ -145,7 +147,7 @@ namespace AC
 		}
 
 
-		public string SerializeAllRoomData (List<SingleLevelData> dataObjects)
+		public virtual string SerializeAllRoomData (List<SingleLevelData> dataObjects)
 		{
 			// Can't serialize a list, so split by delimeter
 			string serializedString = string.Empty;
@@ -164,7 +166,7 @@ namespace AC
 		}
 
 
-		public List<SingleLevelData> DeserializeAllRoomData (string dataString)
+		public virtual List<SingleLevelData> DeserializeAllRoomData (string dataString)
 		{
 			// Can't serialize a list, so split by delimeter
 			List<SingleLevelData> allLevelData = new List<SingleLevelData>();
@@ -179,7 +181,7 @@ namespace AC
 		}
 
 
-		public T LoadScriptData <T> (string dataString) where T : RememberData
+		public virtual T LoadScriptData <T> (string dataString) where T : RememberData
 		{
 			return DeserializeObject <T> (dataString);
 		}

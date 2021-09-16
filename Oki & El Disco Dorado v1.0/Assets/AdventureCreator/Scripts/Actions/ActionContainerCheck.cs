@@ -234,7 +234,7 @@ namespace AC
 		{
 			if (!useActive && parameterID < 0)
 			{
-				if (container != null && container.gameObject == _gameObject) return true;
+				if (container && container.gameObject == _gameObject) return true;
 				if (constantID == id) return true;
 			}
 			return base.ReferencesObjectOrID (_gameObject, id);

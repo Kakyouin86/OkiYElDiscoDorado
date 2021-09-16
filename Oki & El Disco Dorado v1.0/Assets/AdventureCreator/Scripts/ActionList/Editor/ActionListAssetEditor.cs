@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using UnityEditor.Callbacks;
@@ -400,9 +402,9 @@ namespace AC
 			{
 				Undo.SetCurrentGroupName (callback);
 				Undo.RecordObjects (new Object [] { _target }, callback);
-				#if !AC_ActionListPrefabs
+#if !AC_ActionListPrefabs
 				if (_target.actions != null) Undo.RecordObjects (_target.actions.ToArray (), callback);
-				#endif
+#endif
 			}
 
 			switch (callback)
@@ -477,9 +479,9 @@ namespace AC
 			if (doUndo)
 			{
 				Undo.RecordObjects (new Object [] { _target }, callback);
-				#if !AC_ActionListPrefabs
+#if !AC_ActionListPrefabs
 				if (_target.actions != null) Undo.RecordObjects (_target.actions.ToArray (), callback);
-				#endif
+#endif
 				Undo.CollapseUndoOperations (Undo.GetCurrentGroup ());
 				EditorUtility.SetDirty (_target);
 			}
@@ -601,3 +603,5 @@ namespace AC
 	}
 
 }
+
+#endif

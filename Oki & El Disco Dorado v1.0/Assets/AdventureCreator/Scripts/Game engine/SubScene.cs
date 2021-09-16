@@ -136,9 +136,7 @@ namespace AC
 
 		#region GetSet
 
-		/**
-		 * Gets the build index of the scene that this component represents.
-		 */
+		/** Gets the build index of the scene that this component represents. */
 		public int SceneIndex
 		{
 			get
@@ -148,9 +146,7 @@ namespace AC
 		}
 
 
-		/**
-		 * Gets the name the scene that this component represents.
-		 */
+		/** Gets the name the scene that this component represents. */
 		public string SceneName
 		{
 			get
@@ -160,9 +156,7 @@ namespace AC
 		}
 
 
-		/**
-		 * Gets the LocalVariables for the scene that this component represents.
-		 */
+		/** Gets the LocalVariables for the scene that this component represents. */
 		public LocalVariables LocalVariables
 		{
 			get
@@ -172,9 +166,7 @@ namespace AC
 		}
 
 
-		/**
-		 * Gets the SceneSettings for the scene that this component represents.
-		 */
+		/** Gets the SceneSettings for the scene that this component represents. */
 		public SceneSettings SceneSettings
 		{
 			get

@@ -439,6 +439,23 @@ namespace AC
 
 
 		/**
+		 * <summary>Checks if narration is currently playing.</summary>
+		 * <returns>True if narrtion is currently playing</returns>
+		 */
+		public bool NarrationIsPlaying ()
+		{
+			for (int i = 0; i < speechList.Count; i++)
+			{
+				if (speechList[i].GetSpeakingCharacter () == null)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+
+		/**
 		 * <summary>Checks if a speech line with a given ID is currently playing.</summary>
 		 * <param name = "lineID".The line ID to check</param>
 		 * <returns>True if the line is playing</returns>

@@ -74,17 +74,13 @@ namespace AC
 
 		protected float colliderRadius = 0.5f;
 		protected float grabDistance = 0.5f;
-		/** How far along a track the object is, if it is locked to one */
-		[HideInInspector] public float trackValue;
-		/** A vector used in drag calculations */
-		[HideInInspector] public Vector3 _dragVector;
+		
+		protected float _trackValue;
+		protected Vector3 _dragVector;
 
-		/** The upper-limit collider when locked to a DragTrack. */
-		[HideInInspector] public Collider maxCollider;
-		/** The lower-limit collider when locked to a DragTrack */
-		[HideInInspector] public Collider minCollider;
-		/** The number of revolutions the object has been rotated by, if placed on a DragTrack_Hinge */
-		[HideInInspector] public int revolutions = 0;
+		protected Collider _maxCollider;
+		protected Collider _minCollider;
+		protected int _revolutions = 0;
 
 		protected bool canPlayCollideSound = false;
 		protected float screenToWorldOffset;
@@ -94,6 +90,7 @@ namespace AC
 
 		protected AutoMoveTrackData activeAutoMove;
 		public bool canCallSnapEvents = true;
+		[System.NonSerialized] public int regionID = 0;
 
 		private Vector3 thisFrameTorque;
 		/** The amount of damping to apply when rotating an object without a Rigidbody */
@@ -480,7 +477,7 @@ namespace AC
 						else
 						{
 							Vector3 rawTorque = newRot;
-							thisFrameTorque = torqueDampingLerp.Update(thisFrameTorque, rawTorque, toruqeDamping);
+							thisFrameTorque = torqueDampingLerp.Update (thisFrameTorque, rawTorque, toruqeDamping);
 						}
 
 						if (allowZooming)
@@ -874,6 +871,71 @@ namespace AC
 					}
 				}
 				return false;
+			}
+		}
+
+
+		public float trackValue
+		{
+			get
+			{
+				return _trackValue;
+			}
+			set
+			{
+				_trackValue = value;
+			}
+		}
+		
+
+		public Vector3 dragVector
+		{
+			get
+			{
+				return _dragVector;
+			}
+			set
+			{
+				_dragVector = value;
+			}
+		}
+		
+
+		public Collider maxCollider
+		{
+			get
+			{
+				return _maxCollider;
+			}
+			set
+			{
+				_maxCollider = value;
+			}
+		}
+
+
+		public Collider minCollider
+		{
+			get
+			{
+				return _minCollider;
+			}
+			set
+			{
+				_minCollider = value;
+			}
+		}
+
+
+		public int revolutions
+		{
+			get
+			{
+				return _revolutions;
+			}
+			set
+			{
+				_revolutions = value;
 			}
 		}
 

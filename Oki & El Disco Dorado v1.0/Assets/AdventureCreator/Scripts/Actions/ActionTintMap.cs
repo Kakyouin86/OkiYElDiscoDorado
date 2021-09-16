@@ -251,12 +251,12 @@ namespace AC
 		{
 			if (followTintMapParameterID < 0)
 			{
-				if (followTintMap != null && followTintMap.gameObject == gameObject) return true;
+				if (followTintMap && followTintMap.gameObject == gameObject) return true;
 				if (followTintMapConstantID == id && id != 0) return true;
 			}
 			if (newTintMapParameterID < 0 && tintMapMethod == TintMapMethod.ChangeTintMap)
 			{
-				if (newTintMap != null && newTintMap.gameObject == gameObject) return true;
+				if (newTintMap && newTintMap.gameObject == gameObject) return true;
 				if (newTintMapConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

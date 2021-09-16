@@ -405,18 +405,18 @@ namespace AC
 		{
 			if (!isPlayer && obToMoveParameterID < 0)
 			{
-				if (obToMove != null && obToMove == gameObject) return true;
+				if (obToMove && obToMove == gameObject) return true;
 				if (obToMoveID == id && id != 0) return true;
 			}
-			if (isPlayer && gameObject.GetComponent <Player>() != null) return true;
+			if (isPlayer && gameObject && gameObject.GetComponent <Player>()) return true;
 			if (relativeGameObjectParameterID < 0 && positionRelativeTo == PositionRelativeTo.RelativeToGameObject)
 			{
-				if (relativeGameObject != null && relativeGameObject == gameObject) return true;
+				if (relativeGameObject && relativeGameObject == gameObject) return true;
 				if (relativeGameObjectID == id && id != 0) return true;
 			}
 			if (positionRelativeTo == PositionRelativeTo.VectorVariable && variableLocation == VariableLocation.Component && vectorVarParameterID < 0)
 			{
-				if (variables != null && variables.gameObject == gameObject) return true;
+				if (variables && variables.gameObject == gameObject) return true;
 				if (variablesConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

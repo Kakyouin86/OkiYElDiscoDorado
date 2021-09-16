@@ -7,9 +7,7 @@ using UnityEditor;
 namespace AC
 {
 	
-	/**
-	 * Provides an EditorWindow to manage the import of inventory items
-	 */
+	/** Provides an EditorWindow to manage the import of inventory items */
 	public class InvItemImportWizardWindow : EditorWindow
 	{
 
@@ -54,24 +52,23 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Initialises the window.</summary>
-		 */
+		/** Initialises the window. */
 		public static void Init (InventoryManager _inventoryManager, string[,] _csvData)
 		{
 			if (_inventoryManager == null) return;
 
-			InvItemImportWizardWindow window = EditorWindow.GetWindowWithRect <InvItemImportWizardWindow> (new Rect (0, 0, 350, 500), true, "Inventory item importer", true);
+			InvItemImportWizardWindow window = (InvItemImportWizardWindow) GetWindow (typeof (InvItemImportWizardWindow));
 
-			window.titleContent.text = "Inventory importer";
+			window.titleContent.text = "Inventory item importer";
 			window.position = new Rect (300, 200, 350, 500);
 			window._Init (_inventoryManager, _csvData);
+			window.minSize = new Vector2 (300, 180);
 		}
 		
 		
 		private void OnGUI ()
 		{
-			EditorGUILayout.LabelField ("Inventory item import wizard", CustomStyles.managerHeader);
+			EditorGUILayout.LabelField ("Inventory item importer", CustomStyles.managerHeader);
 
 			if (inventoryManager == null)
 			{
@@ -88,7 +85,6 @@ namespace AC
 			scroll = GUILayout.BeginScrollView (scroll);
 
 			EditorGUILayout.LabelField ("Detected columns", CustomStyles.subHeader);
-			EditorGUILayout.Space ();
 
 			EditorGUILayout.HelpBox ("Number of rows: " + (numRows-1).ToString () + "\r\n" + "Number of columns: " + numCols.ToString () + "\r\n" +
 									 "Choose the columns to import below, then click 'Import CSV'.", MessageType.Info);
@@ -107,7 +103,6 @@ namespace AC
 				Import ();
 			}
 
-			EditorGUILayout.Space ();
 			EditorGUILayout.EndScrollView ();
 		}
 

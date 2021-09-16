@@ -137,7 +137,7 @@ namespace AC
 				if (dragMustScrew)
 				{
 					draggable.UpdateScrewVector();
-					dotProduct = Vector3.Dot (force, draggable._dragVector);
+					dotProduct = Vector3.Dot (force, draggable.dragVector);
 				}
 				else dotProduct = Vector3.Dot (force, Transform.up);
 			}
@@ -246,6 +246,8 @@ namespace AC
 			{
 				SetRotation (draggable, draggable.trackValue);
 			}
+
+			DoRegionAudioCheck (draggable);
 
 			if (!onlySnapOnPlayerRelease)
 			{

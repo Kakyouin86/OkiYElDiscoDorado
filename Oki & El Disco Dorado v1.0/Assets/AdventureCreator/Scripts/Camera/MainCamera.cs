@@ -219,7 +219,8 @@ namespace AC
 
 			UpdateCameraFade ();
 			
-			if (attachedCamera && (!(attachedCamera is GameCamera25D)))
+			bool attachedIs25D = (attachedCamera is GameCamera25D);
+			if (attachedCamera && !attachedIs25D)
 			{
 				switch (mainCameraMode)
 				{
@@ -241,7 +242,7 @@ namespace AC
 				}
 			}
 			
-			else if (attachedCamera && (attachedCamera is GameCamera25D))
+			else if (attachedCamera && attachedIs25D)
 			{
 				Transform.position = attachedCamera.CameraTransform.position;
 				Transform.rotation = attachedCamera.CameraTransform.rotation;

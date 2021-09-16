@@ -925,6 +925,10 @@ namespace AC
 		{
 			if (languageNumber > 0)
 			{
+				if (!string.IsNullOrEmpty (altLabel))
+				{
+					return AdvGame.ConvertTokens (KickStarter.runtimeLanguages.GetTranslation (altLabel, lineID, languageNumber, GetTranslationType (0)));
+				}
 				return AdvGame.ConvertTokens (KickStarter.runtimeLanguages.GetTranslation (label, lineID, languageNumber, GetTranslationType (0)));
 			}
 			else

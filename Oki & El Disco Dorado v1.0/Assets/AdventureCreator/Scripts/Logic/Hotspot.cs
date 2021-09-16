@@ -1658,7 +1658,10 @@ namespace AC
 					MeshCollider meshCollider = GetComponent <MeshCollider>();
 					if (meshCollider)
 					{
-						AdvGame.DrawMeshCollider (transform, meshCollider.sharedMesh, gizmoColor);
+						if (meshCollider.sharedMesh)
+						{
+							AdvGame.DrawMeshCollider (transform, meshCollider.sharedMesh, gizmoColor);
+						}
 					}
 					else
 					{

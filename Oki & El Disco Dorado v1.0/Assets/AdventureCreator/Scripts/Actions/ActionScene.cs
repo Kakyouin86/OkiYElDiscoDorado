@@ -219,7 +219,7 @@ namespace AC
 		{
 			if (relativePosition && relativeMarkerParameterID < 0)
 			{
-				if (relativeMarker != null && relativeMarker.gameObject == gameObject) return true;
+				if (relativeMarker && relativeMarker.gameObject == gameObject) return true;
 				if (relativeMarkerID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

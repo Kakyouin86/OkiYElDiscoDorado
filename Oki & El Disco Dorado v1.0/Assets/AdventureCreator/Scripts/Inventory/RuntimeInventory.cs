@@ -451,6 +451,23 @@ namespace AC
 
 
 		/**
+		 * <summary>Gets the amount of a particular inventory item within all player inventories, if multiple Player prefabs are supported.</summary>
+		 * <param name = "_invID">The ID number of the inventory item (InvItem) in question</param>
+		 * <param name = "playerID">The ID number of the Player to refer to</param>
+		 * <returns>The amount of the inventory item within all player inventories.</returns>
+		 */
+		public int GetCountFromAllPlayers (int _invID)
+		{
+			int count = 0;
+			foreach (PlayerPrefab playerPrefab in KickStarter.settingsManager.players)
+			{
+				count += GetCount (_invID, playerPrefab.ID);
+			}
+			return count;
+		}
+
+
+		/**
 		 * <summary>Gets the total number of inventory items currently held by the active Player.</summary>
 		 * <param name="includeMultipleInSameSlot">If True, then multiple items in the same slot will be counted separately</param>
 		 * <returns>The total number of inventory items currently held by the active Player</returns>
@@ -464,6 +481,7 @@ namespace AC
 		/**
 		 * <summary>Gets the total number of inventory items currently held by a given Player, if multiple Players are supported.</summary>
 		 * <param name = "playerID">The ID number of the Player to refer to</param>
+		 * <param name="includeMultipleInSameSlot">If True, then multiple items in the same slot will be counted separately</param>
 		 * <returns>The total number of inventory items currently held by the given Player</returns>
 		 */
 		public int GetNumberOfItemsCarried (int _playerID, bool includeMultipleInSameSlot = false)
@@ -474,6 +492,26 @@ namespace AC
 				return otherPlayerInvCollection.GetCount (includeMultipleInSameSlot);
 			}
 			return 0;
+		}
+
+
+		/**
+		 * <summary>Gets the total number of inventory items currently held by all Players, if multiple Players are supported.</summary>
+		 * <param name="includeMultipleInSameSlot">If True, then multiple items in the same slot will be counted separately</param>
+		 * <returns>The total number of inventory items currently held by all Players</returns>
+		 */
+		public int GetNumberOfItemsCarriedByAllPlayers (bool includeMultipleInSameSlot = false)
+		{
+			int count = 0;
+			foreach (PlayerPrefab playerPrefab in KickStarter.settingsManager.players)
+			{
+				InvCollection otherPlayerInvCollection = KickStarter.saveSystem.GetItemsFromPlayer (playerPrefab.ID);
+				if (otherPlayerInvCollection != null)
+				{
+					count += otherPlayerInvCollection.GetCount (includeMultipleInSameSlot);
+				}
+			}
+			return count;
 		}
 
 
@@ -502,6 +540,26 @@ namespace AC
 				return otherPlayerInvCollection.GetCountInCategory (categoryID, includeMultipleInSameSlot);
 			}
 			return 0;
+		}
+
+
+		/**
+		 * <summary>Gets the total number of inventory items currently held by all Players, if multiple Players are supported.</summary>
+		 * <param name = "categoryID">If >=0, then only items placed in the category with that ID will be counted</param>
+		 * <returns>The total number of inventory items currently held by the all Players</returns>
+		 */
+		public int GetNumberOfItemsCarriedInCategoryByAllPlayers (int categoryID, bool includeMultipleInSameSlot = false)
+		{
+			int count = 0;
+			foreach (PlayerPrefab playerPrefab in KickStarter.settingsManager.players)
+			{
+				InvCollection otherPlayerInvCollection = KickStarter.saveSystem.GetItemsFromPlayer (playerPrefab.ID);
+				if (otherPlayerInvCollection != null)
+				{
+					count += otherPlayerInvCollection.GetCountInCategory (categoryID, includeMultipleInSameSlot);
+				}
+			}
+			return count;
 		}
 
 
@@ -972,9 +1030,14 @@ namespace AC
 
 				case AC_InventoryBoxType.HotspotBased:
 					{
-						if (InvInstance.IsValid (_menu.TargetInvInstance))
+						if (_mouseState == MouseState.LetGo)
+						{
+							// Invalid
+						}
+						else if (InvInstance.IsValid (_menu.TargetInvInstance))
 						{
 							_menu.TargetInvInstance.Combine (inventoryBox.GetInstance (_slot), true);
+							KickStarter.playerInput.ResetMouseClick ();
 							clickConsumed = true;
 						}
 						else if (_menu.TargetHotspot)

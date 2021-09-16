@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using UnityEditor;
 
@@ -78,3 +80,5 @@ namespace AC
 	}
 
 }
+
+#endif

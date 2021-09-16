@@ -1,8 +1,8 @@
-﻿#if !UNITY_SWITCH
+﻿//#if !UNITY_SWITCH
 #define ALLOW_VIDEO
-#endif
+//#endif
 
-#if ALLOW_VIDEO
+#if ALLOW_VIDEO && UNITY_EDITOR
 
 using UnityEditor;
 

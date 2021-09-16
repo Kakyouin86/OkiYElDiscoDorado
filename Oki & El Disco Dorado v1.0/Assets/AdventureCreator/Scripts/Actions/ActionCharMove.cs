@@ -406,13 +406,13 @@ namespace AC
 		{
 			if (!isPlayer && charToMoveParameterID < 0)
 			{
-				if (charToMove != null && charToMove.gameObject == _gameObject) return true;
+				if (charToMove && charToMove.gameObject == _gameObject) return true;
 				if (charToMoveID == id) return true;
 			}
-			if (isPlayer && _gameObject.GetComponent <Player>() != null) return true;
+			if (isPlayer && _gameObject && _gameObject.GetComponent <Player>()) return true;
 			if (movePathMethod == MovePathMethod.MoveOnNewPath && movePathParameterID < 0)
 			{
-				if (movePath != null && movePath.gameObject == _gameObject) return true;
+				if (movePath && movePath.gameObject == _gameObject) return true;
 				if (movePathID == id) return true;
 			}
 			return base.ReferencesObjectOrID (_gameObject, id);

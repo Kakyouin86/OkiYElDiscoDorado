@@ -170,9 +170,7 @@ namespace AC
 		}
 
 
-		/**
-		 * Resets the value that the parameter assigns.
-		 */
+		/** Resets the value that the parameter assigns. */
 		public void Reset ()
 		{
 			intValue = -1;

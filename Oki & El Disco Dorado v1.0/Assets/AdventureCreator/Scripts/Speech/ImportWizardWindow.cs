@@ -7,9 +7,7 @@ using UnityEditor;
 namespace AC
 {
 	
-	/**
-	 * Provides an EditorWindow to manage the import of game text
-	 */
+	/** Provides an EditorWindow to manage the import of game text */
 	public class ImportWizardWindow : EditorWindow
 	{
 
@@ -68,18 +66,17 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Initialises the window.</summary>
-		 */
+		/** Initialises the window. */
 		public static void Init (SpeechManager _speechManager, string[,] _csvData, int _forLanguage = -1)
 		{
 			if (_speechManager == null) return;
 
-			ImportWizardWindow window = EditorWindow.GetWindowWithRect <ImportWizardWindow> (new Rect (0, 0, 350, 500), true, "Game text importer", true);
-
-			window.titleContent.text = "Game text importer";
+			ImportWizardWindow window = (ImportWizardWindow) GetWindow (typeof (ImportWizardWindow));
+			
+			window.titleContent.text = "Text import wizard";
 			window.position = new Rect (300, 200, 350, 500);
 			window._Init (_speechManager, _csvData, _forLanguage);
+			window.minSize = new Vector2 (300, 180);
 		}
 		
 		
@@ -108,7 +105,6 @@ namespace AC
 			scroll = GUILayout.BeginScrollView (scroll);
 
 			EditorGUILayout.LabelField ("Detected columns", CustomStyles.subHeader);
-			EditorGUILayout.Space ();
 
 			List<string> translations = new List<string>();
 			if (speechManager.languages != null && speechManager.languages.Count > 1)
@@ -135,7 +131,6 @@ namespace AC
 				Import ();
 			}
 
-			EditorGUILayout.Space ();
 			EditorGUILayout.EndScrollView ();
 		}
 

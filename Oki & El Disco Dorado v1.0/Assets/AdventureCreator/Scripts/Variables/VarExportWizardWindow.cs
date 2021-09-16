@@ -7,9 +7,7 @@ using UnityEditor;
 namespace AC
 {
 	
-	/**
-	 * Provides an EditorWindow to manage the export of variables
-	 */
+	/** Provides an EditorWindow to manage the export of variables */
 	public class VarExportWizardWindow : EditorWindow
 	{
 
@@ -45,15 +43,15 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Initialises the window.</summary>
-		 */
+		/** Initialises the window. */
 		public static void Init (VariableLocation _variableLocation, bool _allScenes, Variables _variables)
 		{
-			VarExportWizardWindow window = EditorWindow.GetWindowWithRect <VarExportWizardWindow> (new Rect (0, 0, 350, 500), true, "Variables export wizard", true);
-			window.titleContent.text = "Variables export wizard";
+			VarExportWizardWindow window = (VarExportWizardWindow) GetWindow (typeof (VarExportWizardWindow));
+
+			window.titleContent.text = _variableLocation.ToString () + " Variables exporter";
 			window.position = new Rect (300, 200, 350, 500);
 			window._Init (_variableLocation, _allScenes, _variables);
+			window.minSize = new Vector2 (300, 180);
 		}
 		
 		
@@ -90,7 +88,6 @@ namespace AC
 			}
 			GUI.enabled = true;
 
-			EditorGUILayout.Space ();
 			GUILayout.EndScrollView ();
 		}
 
@@ -98,7 +95,6 @@ namespace AC
 		private void ShowColumnsGUI ()
 		{
 			EditorGUILayout.LabelField ("Define columns",  CustomStyles.subHeader);
-			EditorGUILayout.Space ();
 			for (int i=0; i<exportColumns.Count; i++)
 			{
 				CustomGUILayout.BeginVertical ();
@@ -119,7 +115,6 @@ namespace AC
 				CustomGUILayout.EndVertical ();
 			}
 
-			EditorGUILayout.Space ();
 			if (GUILayout.Button ("Add new column"))
 			{
 				exportColumns.Add (new ExportColumn ());

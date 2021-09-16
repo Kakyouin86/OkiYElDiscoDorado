@@ -31,6 +31,7 @@ namespace AC
 		/** The Unity UI Text this is linked to (Unity UI Menus only) */
 		#if TextMeshProIsPresent
 		public TMPro.TextMeshProUGUI uiText;
+		public bool hideScrollingCharacters = false;
 		#else
 		public Text uiText;
 		#endif
@@ -82,9 +83,6 @@ namespace AC
 		#endif
 
 
-		/**
-		 * Initialises the element when it is created within MenuManager.
-		 */
 		public override void Declare ()
 		{
 			uiText = null;
@@ -109,6 +107,9 @@ namespace AC
 			itemPropertyID = 0;
 			itemSlotNumber = 0;
 			multiplyByItemCount = false;
+			#if TextMeshProIsPresent
+			hideScrollingCharacters = false;
+			#endif
 
 			base.Declare ();
 		}
@@ -150,6 +151,9 @@ namespace AC
 			itemPropertyID = _element.itemPropertyID;
 			itemSlotNumber = _element.itemSlotNumber;
 			multiplyByItemCount = _element.multiplyByItemCount;
+			#if TextMeshProIsPresent
+			hideScrollingCharacters = _element.hideScrollingCharacters;
+			#endif
 
 			base.Copy (_element);
 		}
@@ -239,6 +243,12 @@ namespace AC
 				{
 					showPendingWhileMovingToHotspot = CustomGUILayout.ToggleLeft ("Show pending Interaction while moving to Hotspot?", showPendingWhileMovingToHotspot, apiPrefix + ".showPendingWhileMovingToHotspot", "If True, then the label will not change while the player is moving towards a Hotspot in order to run an interaction");
 				}
+				#if TextMeshProIsPresent
+				else if (labelType == AC_LabelType.DialogueLine && (KickStarter.speechManager.scrollSubtitles || KickStarter.speechManager.scrollNarration))
+				{
+					hideScrollingCharacters = CustomGUILayout.Toggle ("TMPro Typewriter effect?", hideScrollingCharacters, apiPrefix + ".hideScrollingCharacters", "If True, all speech text will be fed to the TMPro Text component, and shown as speech scrolls. Otherwise, scrolling text will be fed character-by-character.");
+				}
+				#endif
 			}
 			else if (labelType == AC_LabelType.InventoryProperty)
 			{
@@ -467,6 +477,22 @@ namespace AC
 						if (speech != null)
 						{
 							string line = speech.displayText;
+
+							#if TextMeshProIsPresent
+							if (uiText && hideScrollingCharacters)
+							{
+								if (KickStarter.runtimeLanguages.LanguageReadsRightToLeft (Options.GetLanguageName ()))
+								{
+									ACDebug.LogWarning ("Cannot use TMPro Typewriter effect for RTL speech text.");
+								}
+								else
+								{
+									line = speech.FullText;
+									uiText.maxVisibleCharacters = speech.CurrentCharIndex;
+								}
+							}
+							#endif
+							
 							if (line != string.Empty || updateIfEmpty)
 							{
 								newLabel = line;

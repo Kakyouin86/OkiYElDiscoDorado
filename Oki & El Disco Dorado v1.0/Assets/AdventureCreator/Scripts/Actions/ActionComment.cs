@@ -42,19 +42,25 @@ namespace AC
 
 		public override float Run ()
 		{
-			if (acLogType != ACLogType.No && !string.IsNullOrEmpty (convertedText))
+			if (!string.IsNullOrEmpty (convertedText))
 			{
-				if (acLogType == ACLogType.AsInfo)
+				switch (acLogType)
 				{
-					Log (convertedText);
-				}
-				else if (acLogType == ACLogType.AsWarning)
-				{
-					LogWarning (convertedText);
-				}
-				else if (acLogType == ACLogType.AsError)
-				{
-					LogError (convertedText);
+					case ACLogType.No:
+					default:
+						break;
+
+					case ACLogType.AsInfo:
+						Log (convertedText);
+						break;
+
+					case ACLogType.AsWarning:
+						LogWarning (convertedText);
+						break;
+
+					case ACLogType.AsError:
+						LogError (convertedText);
+						break;
 				}
 			}
 			return 0f;
@@ -69,6 +75,14 @@ namespace AC
 			commentText = CustomGUILayout.TextArea ("Comment:", commentText);
 
 			acLogType = (ACLogType) EditorGUILayout.EnumPopup ("Display in Console?", acLogType);
+
+			if (!string.IsNullOrEmpty (commentText) && acLogType != ACLogType.No)
+			{
+				if (KickStarter.settingsManager.showDebugLogs == ShowDebugLogs.Never || (KickStarter.settingsManager.showDebugLogs == ShowDebugLogs.OnlyWarningsOrErrors && acLogType == ACLogType.AsInfo))
+				{
+					EditorGUILayout.HelpBox ("To enable comment-logging, configure the Settings Manager's 'Show logs in Console' field.", MessageType.Warning);
+				}
+			}
 		}
 		
 		

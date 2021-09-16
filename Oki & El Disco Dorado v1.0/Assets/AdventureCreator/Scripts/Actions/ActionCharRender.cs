@@ -249,13 +249,13 @@ namespace AC
 		{
 			if (!isPlayer && parameterID < 0)
 			{
-				if (_char != null && _char.gameObject == _gameObject) return true;
+				if (_char && _char.gameObject == _gameObject) return true;
 				if (constantID == id) return true;
 			}
-			if (isPlayer && _gameObject.GetComponent <Player>() != null) return true;
+			if (isPlayer && _gameObject && _gameObject.GetComponent <Player>() != null) return true;
 			if (sortingMapParameterID < 0)
 			{
-				if (sortingMap != null && sortingMap.gameObject == _gameObject) return true;
+				if (sortingMap && sortingMap.gameObject == _gameObject) return true;
 				if (sortingMapConstantID == id) return true;
 			}
 			return base.ReferencesObjectOrID (_gameObject, id);

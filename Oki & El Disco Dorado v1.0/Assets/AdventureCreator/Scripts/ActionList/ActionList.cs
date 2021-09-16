@@ -377,6 +377,7 @@ namespace AC
 					actions[i].BreakPoint (i, this);
 					#endif
 					StartCoroutine (RunAction (actions[i]));
+
 				}
 			}
 			else

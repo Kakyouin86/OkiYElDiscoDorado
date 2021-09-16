@@ -62,12 +62,7 @@ namespace AC
 
 				if (runtimeLinkedCamera && mainCam.attachedCamera != runtimeLinkedCamera)
 				{
-					if (runtimeLinkedCamera is GameCameraThirdPerson)
-					{
-						GameCameraThirdPerson tpCam = (GameCameraThirdPerson) runtimeLinkedCamera;
-						tpCam.ResetRotation ();
-					}
-					else if (runtimeLinkedCamera is GameCameraAnimated)
+					if (runtimeLinkedCamera is GameCameraAnimated)
 					{
 						GameCameraAnimated animCam = (GameCameraAnimated) runtimeLinkedCamera;
 						animCam.PlayClip ();
@@ -97,12 +92,7 @@ namespace AC
 
 			if (runtimeLinkedCamera && mainCam.attachedCamera != runtimeLinkedCamera)
 			{
-				if (runtimeLinkedCamera is GameCameraThirdPerson)
-				{
-					GameCameraThirdPerson tpCam = (GameCameraThirdPerson) runtimeLinkedCamera;
-					tpCam.ResetRotation ();
-				}
-				else if (runtimeLinkedCamera is GameCameraAnimated)
+				if (runtimeLinkedCamera is GameCameraAnimated)
 				{
 					GameCameraAnimated animCam = (GameCameraAnimated) runtimeLinkedCamera;
 					animCam.PlayClip ();

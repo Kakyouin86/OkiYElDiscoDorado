@@ -17,8 +17,10 @@ namespace AC
 
 		protected static void Init <T> (string title) where T : SoundtrackStorageWindow
 		{
-			T window = GetWindowWithRect <T> (new Rect (300, 200, 350, 540), true, title, true);
+			T window = (T) GetWindow (typeof (T));
+			window.position = new Rect (300, 200, 350, 440);
 			window.titleContent.text = title;
+			window.minSize = new Vector2 (300, 260);
 		}
 
 
@@ -53,8 +55,7 @@ namespace AC
 				List<MusicStorage> storages = Storages;
 
 				bool showMixerOptions = settingsManager.volumeControl == VolumeControl.AudioMixerGroups;
-				float scrollHeight = Mathf.Min (355f, (storages.Count * (showMixerOptions ? 88f : 66f)) + 5f);
-				scrollPos = EditorGUILayout.BeginScrollView (scrollPos, GUILayout.Height (scrollHeight));
+				scrollPos = EditorGUILayout.BeginScrollView (scrollPos);
 
 				for (int i=0; i<storages.Count; i++)
 				{

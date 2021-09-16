@@ -9,7 +9,6 @@
  * 
  */
  
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -34,6 +33,7 @@ namespace AC
 		[SerializeField] protected int id;
 		[SerializeField] protected List<TrackSnapConnection> connections = new List<TrackSnapConnection>();
 		[SerializeField] protected Cutscene cutsceneOnSnap = null;
+		[SerializeField] protected AudioClip soundOnEnter = null;
 		[SerializeField] protected ActionListAsset actionListAssetOnSnap = null;
 
 		#if UNITY_EDITOR
@@ -102,6 +102,7 @@ namespace AC
 					actionListAssetOnSnap = (ActionListAsset) CustomGUILayout.ObjectField <ActionListAsset> ("ActionList on snap:", actionListAssetOnSnap, false, "", "An optional ActionList asset to run when a Draggable object snaps to this region");
 				}
 			}
+			soundOnEnter = (AudioClip) EditorGUILayout.ObjectField ("Sound on enter:", soundOnEnter, typeof (AudioClip), false);
 
 			if (dragTrack.TypeSupportsSnapConnections ())
 			{
@@ -261,7 +262,7 @@ namespace AC
 		 */
 		public bool IsWithinRegion (float trackValue)
 		{
-			if (IsEnabled && GetDistanceFrom(trackValue) <= width)
+			if (IsEnabled && GetDistanceFrom (trackValue) <= width)
 			{
 				return true;
 			}
@@ -338,6 +339,16 @@ namespace AC
 			set
 			{
 				isDisabled = !value;
+			}
+		}
+
+
+		/** The sound to play when a draggable enters this region */
+		public AudioClip SoundOnEnter
+		{
+			get
+			{
+				return soundOnEnter;
 			}
 		}
 

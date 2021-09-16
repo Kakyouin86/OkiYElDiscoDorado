@@ -46,6 +46,7 @@ namespace AC
 		public string formula;
 		public Vector3 vector3Value;
 		public GameObject gameObjectValue;
+		public Object unityObjectValue;
 
 		private string runtimeFormula;
 
@@ -68,6 +69,7 @@ namespace AC
 		protected Variables runtimeVariables;
 		protected string runtimeStringValue;
 		protected GameObject runtimeGameObjectValue;
+		protected Object runtimeUnityObjectValue;
 
 		#if UNITY_EDITOR
 		[SerializeField] protected VariableType placeholderType;
@@ -91,6 +93,7 @@ namespace AC
 			formula = AssignString (parameters, setParameterID, formula);
 			slotNumber = AssignInteger (parameters, slotNumberParameterID, slotNumber);
 			runtimeGameObjectValue = AssignFile (parameters, setParameterID, 0, gameObjectValue);
+			runtimeUnityObjectValue = AssignObject <Object> (parameters, setParameterID, unityObjectValue);
 
 			runtimeVariable = null;
 			switch (location)
@@ -304,6 +307,12 @@ namespace AC
 				case VariableType.GameObject:
 					{
 						var.GameObjectValue = runtimeGameObjectValue;
+						break;
+					}
+
+				case VariableType.UnityObject:
+					{
+						var.UnityObjectValue = runtimeUnityObjectValue;
 						break;
 					}
 
@@ -799,6 +808,14 @@ namespace AC
 					}
 					break;
 
+				case VariableType.UnityObject:
+					setParameterID = Action.ChooseParameterGUI (label, parameters, setParameterID, ParameterType.UnityObject);
+					if (setParameterID < 0)
+					{
+						unityObjectValue = EditorGUILayout.ObjectField (label, unityObjectValue, typeof (Object), false);
+					}
+					break;
+
 				default:
 					break;
 			}
@@ -965,6 +982,13 @@ namespace AC
 						labelAdd += " = " + gameObjectValue;
 					}
 				}
+				else if (vars[variableNumber].type == VariableType.UnityObject)
+				{
+					if (unityObjectValue)
+					{
+						labelAdd += " = " + unityObjectValue;
+					}
+				}
 			}
 
 			return labelAdd;
@@ -1057,14 +1081,14 @@ namespace AC
 
 		public override bool ReferencesObjectOrID (GameObject gameObject, int id)
 		{
-			if (parameterID < 0 && gameObjectValue == gameObject)
+			if (parameterID < 0 && gameObjectValue && gameObjectValue == gameObject)
 			{
 				return true;
 			}
 
 			if (parameterID < 0 && location == VariableLocation.Component)
 			{
-				if (variables != null && variables.gameObject == gameObject) return true;
+				if (variables && variables.gameObject == gameObject) return true;
 				return (variablesConstantID == id && id != 0);
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

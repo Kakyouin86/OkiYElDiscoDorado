@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
@@ -1468,7 +1470,7 @@ namespace AC
 
 				if (i == 0)
 				{
-					GUI.Label (new Rect (startLabelRect.position - ScrollPosition, startLabelRect.size), startLabel, Resource.NodeSkin.label);
+					GUI.Label (new Rect (startLabelRect.position - ScrollPosition, startLabelRect.size), startLabel, (Resource.NodeSkin != null) ? Resource.NodeSkin.label : new GUIStyle ());
 					if (Mathf.Approximately (_action.NodeRect.x, 50) && Mathf.Approximately (_action.NodeRect.y, 50))
 					{
 						// Upgrade
@@ -1792,8 +1794,8 @@ namespace AC
 				UnityVersionHandler.CustomSetDirty (windowData.target, true);
 			}
 		}
-		
-		
+
+
 		private void Reconnect (Action action1, Action action2, bool isAsset)
 		{
 			dragMode = DragMode.None;
@@ -1806,9 +1808,11 @@ namespace AC
 				ending.skipActionActual = action2;
 			}
 
+			action1.SkipActionGUI (Actions, false); // Force update of ending data in case not on-screen
+
 			actionChanging = null;
 			offsetChanging = 0;
-			
+
 			if (isAsset)
 			{
 				EditorUtility.SetDirty (windowData.targetAsset);
@@ -1818,8 +1822,8 @@ namespace AC
 				UnityVersionHandler.CustomSetDirty (windowData.target, true);
 			}
 		}
-		
-		
+
+
 		private void DrawSockets (Action action, bool isAsset, Event e)
 		{
 			if (action == null) return;
@@ -2227,17 +2231,17 @@ namespace AC
 				{
 					Undo.SetCurrentGroupName (objString);
 					Undo.RecordObjects (new Object [] {  windowData.targetAsset }, objString);
-					#if !AC_ActionListPrefabs
+#if !AC_ActionListPrefabs
 					if (actionsArray.Length > 0) Undo.RecordObjects (actionsArray, objString);
-					#endif
+#endif
 				}
 				else
 				{
 					Undo.SetCurrentGroupName (objString);
 					Undo.RecordObjects (new Object [] {  windowData.target }, objString);
-					#if !AC_ActionListPrefabs
+#if !AC_ActionListPrefabs
 					if (actionsArray.Length > 0) Undo.RecordObjects (actionsArray, objString);
-					#endif
+#endif
 				}
 			}
 
@@ -2276,7 +2280,7 @@ namespace AC
 					return;
 				}
 
-				int offset = actionList.Count;
+				//int offset = actionList.Count;
 				UnmarkAll ();
 
 				Action currentLastAction = actionList[actionList.Count - 1];
@@ -2285,7 +2289,7 @@ namespace AC
 					currentLastAction.endings[0].resultAction = ResultAction.Stop;
 				}
 
-				List<Action> newActions = JsonAction.CreatePasteBuffer (offset);
+				List<Action> newActions = JsonAction.CreatePasteBuffer ();
 				Vector2 firstPosition = new Vector2 (newActions[0].NodeRect.x, newActions[0].NodeRect.y);
 				foreach (Action newAction in newActions)
 				{
@@ -2609,7 +2613,7 @@ namespace AC
 						int offset = actionList.IndexOf (action) + 1;
 						Vector2 initialPosition = new Vector2 (action.NodeRect.x + 50, action.NodeRect.y + 100);
 
-						List<Action> newActions = JsonAction.CreatePasteBuffer (offset);
+						List<Action> newActions = JsonAction.CreatePasteBuffer ();
 						Vector2 firstPosition = new Vector2 (newActions[0].NodeRect.x, newActions[0].NodeRect.y);
 						foreach (Action newAction in newActions)
 						{
@@ -2858,16 +2862,16 @@ namespace AC
 				if (isAsset)
 				{
 					Undo.RecordObjects (new Object [] { windowData.targetAsset }, objString);
-					#if !AC_ActionListPrefabs
+#if !AC_ActionListPrefabs
 					if (actionsArray.Length > 0) Undo.RecordObjects (actionsArray, objString);
-					#endif
+#endif
 				}
 				else
 				{
 					Undo.RecordObjects (new Object [] { windowData.target }, objString);
-					#if !AC_ActionListPrefabs
+#if !AC_ActionListPrefabs
 					if (actionsArray.Length > 0) Undo.RecordObjects (actionsArray, objString);
-					#endif
+#endif
 				}
 				Undo.CollapseUndoOperations (Undo.GetCurrentGroup ());
 			}
@@ -3466,3 +3470,5 @@ namespace AC
 	}
 
 }
+
+#endif

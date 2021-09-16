@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bb4837106a44466aea61fef9b346fe, type: 3}
   m_Name: References
   m_EditorClassIdentifier: 
-  actionsManager: {fileID: 11400000, guid: 70e702bb09284c546a9016382899c13a, type: 2}
-  sceneManager: {fileID: 11400000, guid: 77d26de8282baec4eaf3f66121024d24, type: 2}
-  settingsManager: {fileID: 11400000, guid: fe5d0bef2633449479ece764c4d610dd, type: 2}
-  inventoryManager: {fileID: 11400000, guid: b05bad205a852e842bbdfc140ed71d5a, type: 2}
-  variablesManager: {fileID: 11400000, guid: fbd46244980cd044883b433df54938d1, type: 2}
-  speechManager: {fileID: 11400000, guid: 694a9bd9ebde83343b4f17b98eafc5a3, type: 2}
-  cursorManager: {fileID: 11400000, guid: 9e9986746bf5d8043b86033d11c4676d, type: 2}
-  menuManager: {fileID: 11400000, guid: e3ac91871e8868b47b7e33a4c77267bf, type: 2}
+  actionsManager: {fileID: 11400000, guid: 53b5eeb3551dec1419262c585cb11e96, type: 2}
+  sceneManager: {fileID: 11400000, guid: 37d2a096d6714714da3cdebc78932aad, type: 2}
+  settingsManager: {fileID: 11400000, guid: face614179d0cb94ab7f83caa45c9f45, type: 2}
+  inventoryManager: {fileID: 11400000, guid: e588de5ea22b72d4a9d090f53e8968f0, type: 2}
+  variablesManager: {fileID: 11400000, guid: 691fd475b43f1744ebe4e1181cbade7b, type: 2}
+  speechManager: {fileID: 11400000, guid: aa3e508a484f8424288076f347f8f8c5, type: 2}
+  cursorManager: {fileID: 11400000, guid: a77851c466f85d64ea757904645dc74f, type: 2}
+  menuManager: {fileID: 11400000, guid: 93a0be5132c178841aeeba38de88da29, type: 2}

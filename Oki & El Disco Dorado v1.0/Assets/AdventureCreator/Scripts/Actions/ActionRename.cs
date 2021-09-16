@@ -108,7 +108,7 @@ namespace AC
 		{
 			if (parameterID < 0)
 			{
-				if (hotspot != null && hotspot.gameObject == gameObject) return true;
+				if (hotspot && hotspot.gameObject == gameObject) return true;
 				if (constantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

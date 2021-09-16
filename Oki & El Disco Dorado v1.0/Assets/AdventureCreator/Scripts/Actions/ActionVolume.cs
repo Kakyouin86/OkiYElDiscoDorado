@@ -133,7 +133,7 @@ namespace AC
 		{
 			if (parameterID < 0)
 			{
-				if (soundObject != null && soundObject.gameObject == gameObject) return true;
+				if (soundObject && soundObject.gameObject == gameObject) return true;
 				return (constantID == id && id != 0);
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

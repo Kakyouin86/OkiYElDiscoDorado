@@ -148,7 +148,7 @@ namespace AC
 		{
 			if (parameterID < 0 && !isPlayer)
 			{
-				if (linkedObject != null && linkedObject == gameObject) return true;
+				if (linkedObject && linkedObject == gameObject) return true;
 				if (constantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

@@ -43,6 +43,8 @@ namespace AC
 		protected bool cameraIsOff = false;
 		protected bool triggerIsOff = false;
 		protected bool playerIsOff = false;
+		protected bool applicationIsInFocus = true;
+		protected bool applicationIsPaused = false;
 
 		protected bool runAtLeastOnce = false;
 		protected KickStarter activeKickStarter = null;
@@ -76,15 +78,24 @@ namespace AC
 			EventManager.OnInitialiseScene += OnInitialiseScene;
 			EventManager.OnAddSubScene += OnAddSubScene;
 			EventManager.OnEnterGameState += OnEnterGameState;
+
+			#if UNITY_EDITOR
+			UnityEditor.EditorApplication.pauseStateChanged += OnPauseStateChange;
+			#endif
 		}
+
 
 		private void OnDisable ()
 		{
 			EventManager.OnInitialiseScene -= OnInitialiseScene;
 			EventManager.OnAddSubScene -= OnAddSubScene;
 			EventManager.OnEnterGameState -= OnEnterGameState;
-		}
 
+			#if UNITY_EDITOR
+			UnityEditor.EditorApplication.pauseStateChanged -= OnPauseStateChange;
+			#endif
+		}
+		
 
 		public void Initialise (bool rebuildMenus = true)
 		{
@@ -351,6 +362,18 @@ namespace AC
 		}
 
 
+		private void OnApplicationFocus (bool focus)
+		{
+			applicationIsInFocus = focus;
+		}
+
+
+		private void OnApplicationPause (bool pause)
+		{
+			applicationIsPaused = pause;
+		}
+
+
 		#if ACIgnoreOnGUI
 		#else
 
@@ -466,6 +489,20 @@ namespace AC
 
 
 		#region PublicFunctions
+
+		/** Checks if the application is currently in focus or not */
+		public bool ApplicationIsInFocus ()
+		{
+			return applicationIsInFocus;
+		}
+
+
+		/** Checks if the application is currently paused */
+		public bool ApplicationIsPaused ()
+		{
+			return applicationIsPaused;
+		}
+
 
 		/** The current state of the game (Normal, Cutscene, Paused, DialogOptions) */
 		public GameState gameState
@@ -936,18 +973,25 @@ namespace AC
 
 		protected void OnInitialiseScene ()
 		{
+			previousUpdateState = gameState;
 			EnforceCutsceneMode = false;
 		}
 
 
 		protected void OnEnterGameState (GameState gameState)
 		{
+			StopAllCoroutines ();
+
 			if (gameState == GameState.Paused)
 			{
 				if (Time.time > 0f)
 				{
 					AudioListener.pause = true;
 					Time.timeScale = 0f;
+				}
+				else
+				{
+					StartCoroutine (PauseNextFrame ());
 				}
 			}
 			else
@@ -958,6 +1002,14 @@ namespace AC
 					Time.timeScale = KickStarter.playerInput.timeScale;
 				}
 			}
+		}
+
+
+		private System.Collections.IEnumerator PauseNextFrame ()
+		{
+			yield return null;
+			AudioListener.pause = true;
+			Time.timeScale = 0f;
 		}
 
 
@@ -993,6 +1045,15 @@ namespace AC
 		{
 			return (!isACDisabled && activeKickStarter);
 		}
+
+		
+		#if UNITY_EDITOR
+		protected void OnPauseStateChange (UnityEditor.PauseState state)
+		{
+			applicationIsPaused = (state == UnityEditor.PauseState.Paused);
+		}
+		#endif
+
 
 		#endregion
 

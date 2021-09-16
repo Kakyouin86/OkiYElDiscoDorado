@@ -20,7 +20,7 @@ namespace AC
 	public class SaveFileHandler_SystemFile : iSaveFileHandler
 	{
 
-		public string GetDefaultSaveLabel (int saveID)
+		public virtual string GetDefaultSaveLabel (int saveID)
 		{
 			string label = (saveID == 0)
 							? SaveSystem.AutosaveLabel
@@ -31,7 +31,7 @@ namespace AC
 		}
 
 
-		public void DeleteAll (int profileID)
+		public virtual void DeleteAll (int profileID)
 		{
 			List<SaveFile> allSaveFiles = GatherSaveFiles (profileID);
 			foreach (SaveFile saveFile in allSaveFiles)
@@ -41,7 +41,7 @@ namespace AC
 		}
 
 
-		public bool Delete (SaveFile saveFile)
+		public virtual bool Delete (SaveFile saveFile)
 		{
 			string filename = saveFile.fileName;
 
@@ -67,7 +67,7 @@ namespace AC
 		}
 
 
-		public void Save (SaveFile saveFile, string dataToSave)
+		public virtual void Save (SaveFile saveFile, string dataToSave)
 		{
 			string fullFilename = GetSaveDirectory () + Path.DirectorySeparatorChar.ToString () + GetSaveFilename (saveFile.saveID, saveFile.profileID);
 			bool isSuccessful = false;
@@ -102,7 +102,7 @@ namespace AC
 		}
 
 
-		public string Load (SaveFile saveFile, bool doLog)
+		public virtual string Load (SaveFile saveFile, bool doLog)
 		{
 			string _data = string.Empty;
 			
@@ -124,19 +124,19 @@ namespace AC
 		}
 
 
-		public bool SupportsSaveThreading ()
+		public virtual bool SupportsSaveThreading ()
 		{
 			return true;
 		}
 
 
-		public List<SaveFile> GatherSaveFiles (int profileID)
+		public virtual List<SaveFile> GatherSaveFiles (int profileID)
 		{
 			return GatherSaveFiles (profileID, false, -1, string.Empty, string.Empty);
 		}
 
 
-		public List<SaveFile> GatherImportFiles (int profileID, int boolID, string separateProjectName, string separateFilePrefix)
+		public virtual List<SaveFile> GatherImportFiles (int profileID, int boolID, string separateProjectName, string separateFilePrefix)
 		{
 			if (!string.IsNullOrEmpty (separateProjectName) && !string.IsNullOrEmpty (separateFilePrefix))
 			{
@@ -146,13 +146,13 @@ namespace AC
 		}
 
 
-		public SaveFile GetSaveFile (int saveID, int profileID)
+		public virtual SaveFile GetSaveFile (int saveID, int profileID)
 		{
 			return GetSaveFile (saveID, profileID, false, -1, string.Empty, string.Empty);
 		}
 
 
-		protected SaveFile GetSaveFile (int saveID, int profileID, bool isImport, int boolID, string separateProductName, string separateFilePrefix)
+		protected virtual SaveFile GetSaveFile (int saveID, int profileID, bool isImport, int boolID, string separateProductName, string separateFilePrefix)
 		{
 			string saveDirectory = GetSaveDirectory (separateProductName);
 			string filePrefix = (isImport) ? separateFilePrefix : KickStarter.settingsManager.SavePrefix;
@@ -213,11 +213,11 @@ namespace AC
 		}
 
 
-		protected List<SaveFile> GatherSaveFiles (int profileID, bool isImport, int boolID, string separateProductName, string separateFilePrefix)
+		protected virtual List<SaveFile> GatherSaveFiles (int profileID, bool isImport, int boolID, string separateProductName, string separateFilePrefix)
 		{
 			List<SaveFile> gatheredFiles = new List<SaveFile>();
 
-			for (int i=0; i<50; i++)
+			for (int i = 0; i < SaveSystem.MAX_SAVES; i++)
 			{
 				SaveFile saveFile = GetSaveFile (i, profileID, isImport, boolID, separateProductName, separateFilePrefix);
 				if (saveFile != null)
@@ -230,7 +230,7 @@ namespace AC
 		}
 
 
-		public void SaveScreenshot (SaveFile saveFile)
+		public virtual void SaveScreenshot (SaveFile saveFile)
 		{
 			#if CAN_HANDLE_SCREENSHOTS
 			if (saveFile.screenShot != null)
@@ -249,7 +249,7 @@ namespace AC
 		}
 
 
-		protected void DeleteScreenshot (string sceenshotFilename)
+		protected virtual void DeleteScreenshot (string sceenshotFilename)
 		{
 			#if CAN_HANDLE_SCREENSHOTS
 			if (File.Exists (sceenshotFilename))
@@ -260,7 +260,7 @@ namespace AC
 		}
 
 
-		protected Texture2D LoadScreenshot (string fileName)
+		protected virtual Texture2D LoadScreenshot (string fileName)
 		{
 			#if CAN_HANDLE_SCREENSHOTS
 			if (File.Exists (fileName) && Application.isPlaying && KickStarter.saveSystem)
@@ -276,7 +276,7 @@ namespace AC
 		}
 
 
-		protected string GetSaveFilename (int saveID, int profileID = -1, string extensionOverride = "")
+		protected virtual string GetSaveFilename (int saveID, int profileID = -1, string extensionOverride = "")
 		{
 			if (profileID == -1)
 			{
@@ -288,7 +288,7 @@ namespace AC
 		}
 
 
-		protected string GetSaveDirectory (string separateProjectName = "")
+		protected virtual string GetSaveDirectory (string separateProjectName = "")
 		{
 			string normalSaveDirectory = (KickStarter.saveSystem) 
 										? KickStarter.saveSystem.PersistentDataPath
@@ -305,7 +305,7 @@ namespace AC
 		}
 
 
-		protected string GetTimeString (System.DateTime dateTime)
+		protected virtual string GetTimeString (System.DateTime dateTime)
 		{
 			if (KickStarter.settingsManager.saveTimeDisplay != SaveTimeDisplay.None)
 			{
@@ -329,7 +329,7 @@ namespace AC
 		}
 
 
-		protected string LoadFile (string fullFilename, bool doLog = true)
+		protected virtual string LoadFile (string fullFilename, bool doLog = true)
 		{
 			string _data = string.Empty;
 			
@@ -342,7 +342,7 @@ namespace AC
 				_data = _info;
 			}
 			
-			if (_data != "" && doLog)
+			if (!string.IsNullOrEmpty (_data) && doLog)
 			{
 				ACDebug.Log ("File Read: " + fullFilename);
 			}

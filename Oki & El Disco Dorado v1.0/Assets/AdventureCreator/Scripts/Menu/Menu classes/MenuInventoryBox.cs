@@ -152,7 +152,7 @@ namespace AC
 			}
 			else
 			{
-				uiSlots = new UISlot[_element.uiSlots.Length];
+				uiSlots = (_element.uiSlots != null) ? new UISlot[_element.uiSlots.Length] : new UISlot[0];
 				for (int i=0; i<uiSlots.Length; i++)
 				{
 					uiSlots[i] = new UISlot (_element.uiSlots[i]);
@@ -1698,6 +1698,15 @@ namespace AC
 						newItemList.Add (new InvInstance (_item));
 					}
 				}
+
+				if (newItemList.Count > 0 && newItemList.Count < maxSlots)
+				{
+					InvItem lastItem = newItemList[newItemList.Count-1].InvItem;
+					while (newItemList.Count < maxSlots)
+					{
+						newItemList.Add (new InvInstance (lastItem));
+					}
+				}
 			}
 
 			if (doLimit && CanBeLimitedByCategory ())
@@ -2331,6 +2340,14 @@ namespace AC
 					}
 					break;
 
+				case AC_InventoryBoxType.HotspotBased:
+					clickConsumed = KickStarter.runtimeInventory.ProcessInventoryBoxClick (_menu, this, _slot, _mouseState);
+					if (clickConsumed && KickStarter.stateHandler.IsInGameplay () && KickStarter.settingsManager.alwaysCloseInteractionMenus)
+					{
+						KickStarter.playerMenus.CloseInteractionMenus ();
+					}
+					break;
+
 				default:
 					clickConsumed = KickStarter.runtimeInventory.ProcessInventoryBoxClick (_menu, this, _slot, _mouseState);
 					break;
@@ -2433,9 +2450,7 @@ namespace AC
 		}
 
 
-		/**
-		 * If set, and inventoryBoxType = AC_InventoryBoxType.Container, then this Container will be used instead of the global 'active' one.  Note that its Menu's 'Appear type' should not be set to 'On Container'.
-		 */
+		/** If set, and inventoryBoxType = AC_InventoryBoxType.Container, then this Container will be used instead of the global 'active' one.  Note that its Menu's 'Appear type' should not be set to 'On Container'. */
 		public Container OverrideContainer
 		{
 			get
@@ -2444,7 +2459,11 @@ namespace AC
 			}
 			set
 			{
-				overrideContainer = value;
+				if (overrideContainer != value)
+				{
+					overrideContainer = value;
+					PlayerMenus.ResetInventoryBoxes ();
+				}
 			}
 		}
 

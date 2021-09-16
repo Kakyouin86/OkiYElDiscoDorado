@@ -30,9 +30,6 @@ namespace AC
 		
 		#if UNITY_EDITOR
 
-		/** The folder path to any custom Actions (this is now deprecated) */
-		public string customFolderPath = "AdventureCreator/Scripts/Actions";
-
 		public List<string> customFolderPaths = new List<string>();
 
 		public List<FavouriteActionData> allFavouriteActionData = new List<FavouriteActionData>();
@@ -63,6 +60,8 @@ namespace AC
 		#if UNITY_EDITOR
 
 		private ActionType selectedClass = null;
+
+		[SerializeField] List<DefaultActionCategoryData> defaultActionCategoryDatas = new List<DefaultActionCategoryData>();
 
 		private bool showEditing = true;
 		private bool showCustom = true;
@@ -171,9 +170,11 @@ namespace AC
 			if (!string.IsNullOrEmpty (defaultClassName) && subclass.fileName != defaultClassName)
 											{
 				menu.AddItem (new GUIContent ("Make default"), false, Callback, "Make default");
-				menu.AddItem (new GUIContent ("Edit script"), false, Callback, "EditSource");
-				menu.AddSeparator (string.Empty);
 			}
+
+			menu.AddItem (new GUIContent ("Make default in category"), false, Callback, "Make default in category");
+			menu.AddItem (new GUIContent ("Edit script"), false, Callback, "EditSource");
+			menu.AddSeparator (string.Empty);
 
 			menu.AddItem (new GUIContent ("Search local instances"), false, Callback, "Search local instances");
 			menu.AddItem (new GUIContent ("Search all instances"), false, Callback, "Search all instances");
@@ -195,6 +196,23 @@ namespace AC
 						{
 							defaultClassName = subclass.fileName;
 							subclass.isEnabled = true;
+						}
+						break;
+
+					case "Make default in category":
+						bool updatedExisting = false;
+						foreach (DefaultActionCategoryData defaultActionCategoryData in defaultActionCategoryDatas)
+						{
+							if (defaultActionCategoryData.Category == subclass.category)
+							{
+								defaultActionCategoryData.DefaultClassName = subclass.fileName;
+								updatedExisting = true;
+								break;
+							}
+						}
+						if (!updatedExisting)
+						{
+							defaultActionCategoryDatas.Add (new DefaultActionCategoryData (subclass.category, subclass.fileName));
 						}
 						break;
 
@@ -416,13 +434,23 @@ namespace AC
 					{
 						label += " (DISABLED)";
 					}
+					else
+					{
+						foreach (DefaultActionCategoryData defaultActionCategoryData in defaultActionCategoryDatas)
+						{
+							if (defaultActionCategoryData.Category == actionTypes[i].category && defaultActionCategoryData.DefaultClassName == actionTypes[i].fileName)
+							{
+								label += " (CATEGORY DEFAULT)";
+							}
+						}
+					}
 
 					if (GUILayout.Toggle (actionTypes[i].IsMatch (selectedClass), label, "Button"))
 					{
 						selectedClass = actionTypes[i];
 					}
 
-					if (GUILayout.Button ("", CustomStyles.IconCog))
+					if (GUILayout.Button (string.Empty, CustomStyles.IconCog))
 					{
 						SideMenu (AllActions.IndexOf (actionTypes[i]));
 					}
@@ -460,6 +488,17 @@ namespace AC
 					EditorGUILayout.LabelField ("Is enabled?", GUILayout.Width (85f));
 					selectedClass.isEnabled = EditorGUILayout.Toggle (selectedClass.isEnabled);
 					EditorGUILayout.EndHorizontal ();
+
+					if (selectedClass.isEnabled)
+					{
+						foreach (DefaultActionCategoryData defaultActionCategoryData in defaultActionCategoryDatas)
+						{
+							if (defaultActionCategoryData.Category == selectedClass.category && defaultActionCategoryData.DefaultClassName == selectedClass.fileName)
+							{
+								EditorGUILayout.HelpBox ("This is marked as the default Action", MessageType.Info);
+							}
+						}
+					}
 				}
 			}
 			CustomGUILayout.EndVertical ();
@@ -582,16 +621,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.MainFolderPathRelativeToAssets + "/Scripts/Actions";
-			}
-		}
-
-
-		public bool UsingCustomActionsFolder
-		{
-			get
-			{
-				return (customFolderPath != FolderPath);
+				return Resource.DefaultActionsPath;
 			}
 		}
 
@@ -775,12 +805,9 @@ namespace AC
 
 			foreach (ActionType type in AllActions)
 			{
-				if (type.category == _category)
+				if (type.category == _category &&type.isEnabled)
 				{
-					if (type.isEnabled)
-					{
-						titles.Add (type.title);
-					}
+					titles.Add (type.title);
 				}
 			}
 			
@@ -936,6 +963,58 @@ namespace AC
 				}
 			}
 			return null;
+		}
+
+		
+		public int GetDefaultActionInCategory (ActionCategory category)
+		{
+			foreach (DefaultActionCategoryData defaultActionCategoryData in defaultActionCategoryDatas)
+			{
+				if (defaultActionCategoryData.Category == category)
+				{
+					List<ActionType> types = new List<ActionType> ();
+					foreach (ActionType type in AllActions)
+					{
+						if (type.category == category && type.isEnabled)
+						{
+							types.Add (type);
+						}
+					}
+
+					foreach (ActionType type in types)
+					{
+						if (type.fileName == defaultActionCategoryData.DefaultClassName)
+						{
+							if (type.isEnabled)
+							{
+								return types.IndexOf (type);
+							}
+							return 0;
+						}
+					}
+					return 0;
+				}
+			}
+			return 0;
+		}
+
+
+		[System.Serializable]
+		private class DefaultActionCategoryData
+		{
+
+			[SerializeField] private ActionCategory category;
+			[SerializeField] private string defaultClassName;
+
+			public DefaultActionCategoryData (ActionCategory _category, string _defaultClassName)
+			{
+				category = _category;
+				defaultClassName = _defaultClassName;
+			}
+
+			public ActionCategory Category { get { return category; } }
+			public string DefaultClassName { get { return defaultClassName; } set { defaultClassName = value; } }
+
 		}
 
 		#endif

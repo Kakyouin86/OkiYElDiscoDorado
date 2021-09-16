@@ -23,10 +23,8 @@ namespace AC
 		}
 
 
-		public string SerializeObject <T> (object dataObject)
+		public virtual string SerializeObject <T> (object dataObject)
 		{
-			string XmlizedString = null; 
-			
 			MemoryStream memoryStream = new MemoryStream(); 
 			XmlSerializer xs = new XmlSerializer (typeof (T)); 
 			XmlTextWriter xmlTextWriter = new XmlTextWriter (memoryStream, Encoding.UTF8); 
@@ -34,13 +32,11 @@ namespace AC
 			xs.Serialize (xmlTextWriter, dataObject); 
 			memoryStream = (MemoryStream) xmlTextWriter.BaseStream;
 
-			XmlizedString = UTF8ByteArrayToString (memoryStream.ToArray());
-
-			return XmlizedString;
+			return UTF8ByteArrayToString (memoryStream.ToArray());
 		}
 
 
-		public T DeserializeObject <T> (string dataString)
+		public virtual T DeserializeObject <T> (string dataString)
 		{
 			if (!dataString.Contains ("<?xml") && !dataString.Contains ("xml version"))
 			{
@@ -86,19 +82,19 @@ namespace AC
 		}
 
 
-		public string SerializeAllRoomData (List<SingleLevelData> dataObjects)
+		public virtual string SerializeAllRoomData (List<SingleLevelData> dataObjects)
 		{
 			return SerializeObject <List<SingleLevelData>> (dataObjects);
 		}
 
 
-		public List<SingleLevelData> DeserializeAllRoomData (string dataString)
+		public virtual List<SingleLevelData> DeserializeAllRoomData (string dataString)
 		{
 			return (List<SingleLevelData>) DeserializeObject <List<SingleLevelData>> (dataString);
 		}
 
 
-		public T LoadScriptData <T> (string dataString) where T : RememberData
+		public virtual T LoadScriptData <T> (string dataString) where T : RememberData
 		{
 			return DeserializeObject <T> (dataString);
 		}

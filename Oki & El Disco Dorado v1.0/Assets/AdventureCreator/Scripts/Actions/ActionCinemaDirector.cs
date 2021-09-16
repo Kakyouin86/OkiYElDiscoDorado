@@ -153,7 +153,7 @@ namespace AC
 			if (parameterID < 0)
 			{
 				#if CinemaDirectorIsPresent
-				if (cdCutscene != null && cdCutscene.gameObject == _gameObject) return true;
+				if (cdCutscene && cdCutscene.gameObject == _gameObject) return true;
 				#endif
 				if (constantID == id) return true;
 			}

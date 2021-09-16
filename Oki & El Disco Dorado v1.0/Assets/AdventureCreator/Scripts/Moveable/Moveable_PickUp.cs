@@ -37,6 +37,12 @@ namespace AC
 		public float throwForce = 400f;
 		/** If True, then Rigidbody constraints will be set automatically based on the interaction state */
 		public bool autoSetConstraints = true;
+		/** The maximum angular velocity of the Rigidbody, set if allowRotation = true */
+		public float maxAngularVelocity = 7f;
+		/** The minimum distance to keep from the camera */
+		public float maxDistance = 1f;
+		/** The minimum distance to keep from the camera */
+		public float minDistance = 0.2f;
 
 		/** Where to locate interactions */
 		public ActionListSource actionListSource = ActionListSource.InScene;
@@ -56,19 +62,19 @@ namespace AC
 		/** The lift to give objects picked up, so that they aren't touching the ground when initially held */
 		public float initialLift = 0.05f;
 
+		private const float movementFactor = 10f;
+
 		protected bool isChargingThrow = false;
 		protected float throwCharge = 0f;
 		protected float chargeStartTime;
 		protected bool inRotationMode = false;
-		protected FixedJoint fixedJoint;
-		protected Rigidbody fixedJointRigidbody;
 		protected float originalDistanceToCamera;
+		private Vector3 currentTorque;
 
+		private Vector3 screenMousePosition;
 		protected Vector3 worldMousePosition;
 		protected Vector3 deltaMovement;
 		protected LerpUtils.Vector3Lerp fixedJointLerp = new LerpUtils.Vector3Lerp ();
-
-		protected Vector3 fixedJointOffset;
 
 		#endregion
 
@@ -82,6 +88,10 @@ namespace AC
 			if (_rigidbody == null)
 			{
 				ACDebug.LogWarning ("A Rigidbody component is required for " + name, this);
+			}
+			else if (allowRotation)
+			{
+				_rigidbody.maxAngularVelocity = maxAngularVelocity;
 			}
 		}
 
@@ -140,11 +150,11 @@ namespace AC
 
 		protected void LateUpdate ()
 		{
-			if (!isHeld || inRotationMode) return;
+			if (!isHeld) return;
 
 			worldMousePosition = GetWorldMousePosition ();
 
-			Vector3 deltaPositionRaw = (worldMousePosition - fixedJointOffset - FixedJointPosition) * 100f;
+			Vector3 deltaPositionRaw = (worldMousePosition - _rigidbody.position) * 100f;
 			deltaMovement = Vector3.Lerp (deltaMovement, deltaPositionRaw, Time.deltaTime * 6f);
 		}
 
@@ -152,16 +162,6 @@ namespace AC
 		protected void OnCollisionEnter (Collision collision)
 		{
 			BaseOnCollisionEnter (collision);
-		}
-		
-		
-		protected void OnDestroy ()
-		{
-			if (fixedJoint)
-			{
-				Destroy (fixedJoint.gameObject);
-				fixedJoint = null;
-			}
 		}
 
 		#endregion
@@ -189,16 +189,19 @@ namespace AC
 
 		public override void Grab (Vector3 grabPosition)
 		{
+			Vector3 originalPosition = grabPosition;
+			lockedScreenOffset = Vector2.zero;
+			currentTorque = Vector3.zero;
+
 			inRotationMode = false;
 			isChargingThrow = false;
 			throwCharge = 0f;
 
-			if (fixedJoint == null)
-			{
-				CreateFixedJoint ();
-			}
-			FixedJointPosition = grabPosition;
-			fixedJointOffset = Vector3.zero;
+			float distToCentre = (KickStarter.CameraMainTransform.position - _rigidbody.position).magnitude;
+			distToCentre = Mathf.Clamp (distToCentre, minDistance, maxDistance);
+			grabPosition = KickStarter.CameraMainTransform.position + ((grabPosition - KickStarter.CameraMainTransform.position).normalized * distToCentre);
+			
+			//FixedJointPosition = grabPosition;
 			deltaMovement = Vector3.zero;
 
 			_rigidbody.velocity = _rigidbody.angularVelocity = Vector3.zero;
@@ -210,6 +213,8 @@ namespace AC
 			}
 
 			base.Grab (grabPosition);
+
+			grabPoint.position = originalPosition;
 
 			RunInteraction (true);
 		}
@@ -227,11 +232,6 @@ namespace AC
 				_rigidbody.constraints = RigidbodyConstraints.None;
 			}
 
-			if (fixedJoint && fixedJoint.connectedBody)
-			{
-				fixedJoint.connectedBody = null;
-			}
-
 			_rigidbody.drag = originalDrag;
 			_rigidbody.angularDrag = originalAngularDrag;
 
@@ -241,7 +241,11 @@ namespace AC
 			}
 			else if (!isChargingThrow && !ignoreInteractions)
 			{
-				_rigidbody.AddForce (deltaMovement * Time.deltaTime / Time.fixedDeltaTime * 7f);
+				if (deltaMovement.magnitude > 3f)
+				{
+					deltaMovement = deltaMovement.normalized * 3f;
+				}
+				_rigidbody.AddForce (deltaMovement * _rigidbody.mass * 0.5f / Time.fixedDeltaTime);
 			}
 
 			_rigidbody.useGravity = true;
@@ -279,19 +283,23 @@ namespace AC
 
 				Vector3 newRot = Vector3.Cross (force, KickStarter.CameraMainTransform.forward);
 				newRot /= Mathf.Sqrt ((grabPoint.position - Transform.position).magnitude) * 2.4f * rotationFactor;
-				_rigidbody.AddTorque (newRot);
+
+				currentTorque = newRot;
 			}
 			else
 			{
-				UpdateFixedJoint ();
+				currentTorque = Vector3.Lerp (currentTorque, Vector3.zero, Time.deltaTime * 50f);
 			}
+
+			_rigidbody.AddTorque (currentTorque);
+			
+			UpdateFixedJoint ();
 		}
 
 
 		/** Unsets the FixedJoint used to hold the object in place */
 		public void UnsetFixedJoint ()
 		{
-			fixedJoint = null;
 			isHeld = false;
 		}
 
@@ -388,23 +396,11 @@ namespace AC
 			Vector3 moveVector = (Transform.position - KickStarter.CameraMainTransform.position).normalized;
 			_rigidbody.AddForce (throwForce * throwCharge * moveVector);
 		}
-		
-		
-		protected void CreateFixedJoint ()
-		{
-			GameObject go = new GameObject (this.name + " (Joint)");
-			go.transform.parent = transform;
-			go.transform.localPosition = Vector3.zero;
-			fixedJointRigidbody = go.AddComponent <Rigidbody>();
-			fixedJointRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-			fixedJointRigidbody.useGravity = false;
-			fixedJointRigidbody.isKinematic = true;
-			fixedJoint = go.AddComponent <FixedJoint>();
-			fixedJoint.breakForce = fixedJoint.breakTorque = breakForce;
 
-			go.AddComponent <JointBreaker>();
-		}
 
+		private bool cursorUnlockedWhenRotate;
+		private Vector2 lockedScreenOffset;
+		private Vector2 startRotationMousePosition;
 
 		protected void SetRotationMode (bool on)
 		{
@@ -415,20 +411,31 @@ namespace AC
 			{
 				if (on)
 				{
+					startRotationMousePosition = KickStarter.playerInput.GetMousePosition ();
+					cursorUnlockedWhenRotate = !KickStarter.playerInput.IsCursorLocked ();
 					KickStarter.playerInput.forceGameplayCursor = ForceGameplayCursor.KeepUnlocked;
 
-					fixedJoint.connectedBody = null;
-					_rigidbody.constraints = RigidbodyConstraints.None;
+					if (autoSetConstraints)
+					{
+						_rigidbody.constraints = RigidbodyConstraints.None;
+					}
 				}
 				else
 				{
 					KickStarter.playerInput.forceGameplayCursor = ForceGameplayCursor.None;
-					_rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
-					if (!KickStarter.playerInput.GetInGameCursorState ())
+					if (autoSetConstraints)
 					{
-						fixedJointOffset = GetWorldMousePosition () - FixedJointPosition;
-						deltaMovement = Vector3.zero;
+						_rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+					}
+
+					if (cursorUnlockedWhenRotate)
+					{
+						lockedScreenOffset += startRotationMousePosition - KickStarter.playerInput.GetMousePosition ();
+					}
+					else
+					{
+						lockedScreenOffset = Vector2.zero;
 					}
 				}
 			}
@@ -439,15 +446,7 @@ namespace AC
 
 		protected void UpdateFixedJoint ()
 		{
-			if (fixedJoint)
-			{
-				FixedJointPosition = fixedJointLerp.Update (FixedJointPosition, worldMousePosition - fixedJointOffset, 10f);
-				
-				if (!inRotationMode && fixedJoint.connectedBody != _rigidbody)
-				{
-					fixedJoint.connectedBody = _rigidbody;
-				}
-			}
+			FixedJointPosition = Vector3.MoveTowards (FixedJointPosition, worldMousePosition, movementFactor * Time.fixedDeltaTime);
 		}
 
 
@@ -468,7 +467,17 @@ namespace AC
 
 		protected Vector3 GetWorldMousePosition ()
 		{
-			Vector3 screenMousePosition = KickStarter.playerInput.GetMousePosition ();
+			if (!inRotationMode)
+			{
+				screenMousePosition = KickStarter.playerInput.GetMousePosition ();
+				if (KickStarter.playerInput.IsCursorLocked ())
+				{
+					screenMousePosition = KickStarter.playerInput.LockedCursorPosition;
+				}
+
+				screenMousePosition += new Vector3 (lockedScreenOffset.x, lockedScreenOffset.y);
+			}
+
 			float alignedDistance = GetAlignedDistance (screenMousePosition);
 
 			screenMousePosition.z = alignedDistance - (throwCharge * pullbackDistance);
@@ -499,7 +508,7 @@ namespace AC
 		{
 			get
 			{
-				return fixedJoint.transform.position;
+				return _rigidbody.position;
 			}
 			set
 			{
@@ -514,7 +523,7 @@ namespace AC
 					}
 				}
 
-				fixedJointRigidbody.MovePosition (value);
+				_rigidbody.MovePosition (value);
 			}
 		}
 

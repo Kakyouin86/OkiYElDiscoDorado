@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 
 namespace AC
@@ -20,6 +22,8 @@ namespace AC
 			_target.invertInput = CustomGUILayout.Toggle ("Invert input?", _target.invertInput, string.Empty, "If True, input vectors will be inverted");
 			_target.breakForce = CustomGUILayout.FloatField ("Break force:", _target.breakForce, string.Empty, "The maximum force magnitude that can be applied by the player - if exceeded, control will be removed");
 			_target.initialLift = CustomGUILayout.Slider ("Initial lift:", _target.initialLift, 0f, 1f, string.Empty, "The lift to give objects picked up, so that they aren't touching the ground when initially held");
+			_target.minDistance = CustomGUILayout.FloatField ("Min distance from camera:", _target.minDistance, string.Empty, "The minimum distance to keep from the camera when grabbed");
+			_target.maxDistance = CustomGUILayout.FloatField ("Max distance from camera:", _target.maxDistance, string.Empty, "The maximum distance to keep from the camera when grabbed");
 			_target.autoSetConstraints = CustomGUILayout.Toggle ("Auto set RB constraints?", _target.autoSetConstraints, string.Empty, "If True, the Rigidbody's constraints will be set automatically based on the state of the interaction.");
 
 			_target.offScreenRelease = (OffScreenRelease)CustomGUILayout.EnumPopup ("Off-screen release:", _target.offScreenRelease, string.Empty, "What should cause the object to be automatically released upon leaving the screen");
@@ -117,7 +121,8 @@ namespace AC
 			_target.allowRotation = CustomGUILayout.Toggle ("Allow rotation?", _target.allowRotation, string.Empty, "If True, the object can be rotated");
 			if (_target.allowRotation)
 			{
-				_target.rotationFactor = CustomGUILayout.FloatField ("Rotation factor:", _target.rotationFactor, string.Empty, "The speed by which the object can be rotated");
+				_target.rotationFactor = CustomGUILayout.FloatField ("Rotation factor:", _target.rotationFactor, string.Empty, "Controls the speed by which the object can be rotated (higher values = slower)");
+				_target.maxAngularVelocity = CustomGUILayout.FloatField ("Max angular velocity:", _target.maxAngularVelocity, string.Empty, "The Rigidbody's maxAngularVelocity value");
 			}
 			CustomGUILayout.EndVertical ();
 
@@ -184,3 +189,5 @@ namespace AC
 	}
 
 }
+
+#endif

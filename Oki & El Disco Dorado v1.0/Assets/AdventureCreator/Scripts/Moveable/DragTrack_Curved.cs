@@ -238,6 +238,8 @@ namespace AC
 				UpdateColliders (draggable.trackValue, draggable);
 			}
 
+			DoRegionAudioCheck (draggable);
+
 			if (!onlySnapOnPlayerRelease)
 			{
 				DoSnapCheck (draggable);

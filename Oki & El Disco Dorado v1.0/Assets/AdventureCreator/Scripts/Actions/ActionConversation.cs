@@ -229,7 +229,7 @@ namespace AC
 		{
 			if (parameterID < 0)
 			{
-				if (conversation != null && conversation.gameObject == _gameObject) return true;
+				if (conversation && conversation.gameObject == _gameObject) return true;
 				if (constantID == id) return true;
 			}
 			return base.ReferencesObjectOrID (_gameObject, id);

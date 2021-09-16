@@ -115,7 +115,7 @@ namespace AC
 		{
 			if (parameterID < 0)
 			{
-				if (obToAffect != null && obToAffect == gameObject) return true;
+				if (obToAffect && obToAffect == gameObject) return true;
 				return (constantID == id && id != 0);
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

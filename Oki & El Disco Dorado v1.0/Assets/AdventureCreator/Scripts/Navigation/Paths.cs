@@ -12,7 +12,6 @@
 
 using UnityEngine;
 using System.Collections.Generic;
-using System.Net;
 
 namespace AC
 {
@@ -85,9 +84,9 @@ namespace AC
 
 			if (pathType == AC_PathType.IsRandom && numNodes > 1)
 			{
-				for (i=1; i<numNodes; i++)
+				for (i = 1; i < numNodes; i++)
 				{
-					for (int j=0; j<numNodes; j++)
+					for (int j = 0; j < numNodes; j++)
 					{
 						if (i != j)
 						{
@@ -100,7 +99,7 @@ namespace AC
 			{
 				if (numNodes > 1)
 				{
-					for (i=1; i<numNodes; i++)
+					for (i = 1; i<numNodes; i++)
 					{
 						Gizmos.DrawIcon (nodes[i], string.Empty, true);
 						
@@ -112,7 +111,7 @@ namespace AC
 				{
 					if (numNodes > 2)
 					{
-						ConnectNodes (numNodes-1, 0);
+						ConnectNodes (numNodes - 1, 0);
 					}
 				}
 			}
@@ -227,10 +226,11 @@ namespace AC
 		 * <summary>Gets the next node along a path, given the current one.</summary>
 		 * <param name = "currentNode">The index number of the current node</param>
 		 * <param name = "prevNode">The index number of the previous node (used for determining the direction along which the path is being traversed)</param>
-		 * <param name = "playerControlled">True if the Player prefab is moving along the path during gameplay</param>
+		 * <param name = "playerControlled">True if the Player is moving along the path during gameplay</param>
+		 * <param name = "lockedPathType">The type of Path, if the Player is moving along it during gameplay</param>
 		 * <returns>The index number of the next node</returns>
 		 */
-		public int GetNextNode (int currentNode, int prevNode, bool playerControlled)
+		public int GetNextNode (int currentNode, int prevNode, bool playerControlled = false, AC_PathType lockedPathType = AC_PathType.ForwardOnly)
 		{
 			int numNodes = nodes.Count;
 
@@ -238,16 +238,25 @@ namespace AC
 			{
 				return -1;
 			}
-			else if (playerControlled)
+			
+			if (playerControlled)
 			{
 				switch (pathType)
 				{
 					case AC_PathType.ReverseOnly:
+						if (currentNode <= 0 && lockedPathType == AC_PathType.Loop)
+						{
+							return numNodes - 1;
+						}
 						return currentNode - 1;
 
 					default:
 						if (currentNode >= numNodes - 1)
 						{
+							if (lockedPathType == AC_PathType.Loop)
+							{
+								return 0;
+							}
 							return -1;
 						}
 						return currentNode + 1;
@@ -387,6 +396,30 @@ namespace AC
 			return 0f;
 		}
 
+
+		/**
+		 * <summary>Gets the index of the node that's nearest to a given position</summary>
+		 * <param name = "position">The position to query</param>
+		 * <returns>The index of the node that's nearest to the position</returns>
+		 */
+		public int GetNearestNode (Vector3 position)
+		{
+			int winningIndex = 0;
+			float winningSqrDist = Mathf.Infinity;
+
+			for (int i = 0; i < nodes.Count; i++)
+			{
+				float sqrDist = (position - nodes[i]).sqrMagnitude;
+				if (sqrDist < winningSqrDist)
+				{
+					winningIndex = i;
+					winningSqrDist = sqrDist;
+				}
+			}
+
+			return winningIndex;
+		}
+
 		#endregion
 		
 
@@ -470,7 +503,7 @@ namespace AC
 		#endregion
 
 
-#if UNITY_EDITOR
+		#if UNITY_EDITOR
 		protected bool relativeMode;
 		protected Vector3 lastFramePosition;
 

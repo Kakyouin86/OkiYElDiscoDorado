@@ -744,7 +744,7 @@ namespace AC
 		{
 			if (listSource == ListSource.InScene && parameterID < 0)
 			{
-				if (actionList != null && actionList.gameObject == gameObject) return true;
+				if (actionList && actionList.gameObject == gameObject) return true;
 				if (constantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

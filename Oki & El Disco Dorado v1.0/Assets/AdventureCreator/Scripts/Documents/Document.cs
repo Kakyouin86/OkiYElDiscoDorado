@@ -104,7 +104,7 @@ namespace AC
 		 */
 		public string GetPageText (int pageIndex, int languageNumber = 0)
 		{
-			if (pages != null && pageIndex < pages.Count && pageIndex > 0)
+			if (pages != null && pageIndex < pages.Count && pageIndex >= 0)
 			{
 				JournalPage page = pages[pageIndex];
 				return KickStarter.runtimeLanguages.GetTranslation (page.text, page.lineID, languageNumber, GetTranslationType (0));

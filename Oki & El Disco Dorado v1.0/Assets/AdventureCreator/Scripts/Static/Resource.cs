@@ -20,8 +20,6 @@ namespace AC
 	public class Resource
 	{
 
-		private const string mainFolderPath = "AdventureCreator";
-
 		// Main Reference resource
 		private const string referencesName = "References";
 
@@ -178,22 +176,25 @@ namespace AC
 		{
 			get
 			{
-				return "Assets/" + MainFolderPathRelativeToAssets;
+				return ACEditorPrefs.InstallPath;
 			}
 		}
 
 
-		// Path to root AC folder, relative to the Assets directory
-		public static string MainFolderPathRelativeToAssets
+		public static string DefaultReferencesPath
 		{
 			get
 			{
-				string pluginsAlternative = "Plugins/" + mainFolderPath;
-				if (AssetDatabase.IsValidFolder ("Assets/" + pluginsAlternative))
-				{
-					return pluginsAlternative;
-				}
-				return mainFolderPath;
+				return MainFolderPath + "/Resources";
+			}
+		}
+
+
+		public static string DefaultActionsPath
+		{
+			get
+			{
+				return MainFolderPath + "/Scripts/Actions";
 			}
 		}
 

@@ -51,7 +51,7 @@ namespace AC
 
 		protected virtual void Awake ()
 		{
-			if (Camera && Camera == GetComponent <Camera>())
+			if (Camera /*&& Camera == GetComponent <Camera>()*/)
 			{
 				if (KickStarter.mainCamera)
 				{

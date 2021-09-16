@@ -25,6 +25,9 @@ namespace AC
 	public class ACEditorPrefs : ScriptableObject
 	{
 
+		private const string DefaultInstallPath = "Assets/AdventureCreator";
+
+
 		#if CAN_USE_EDITOR_PREFS
 
 		private const string settingsPath = "/Editor/ACEditorPrefs.asset";
@@ -40,25 +43,45 @@ namespace AC
 		[SerializeField] protected int editorLabelWidth = 0;
 		[SerializeField] protected int actionNodeWidth = 300;
 		[SerializeField] protected bool disableInstaller = false;
+		[SerializeField] protected string installPath = DefaultInstallPath;
 
 
 		internal static ACEditorPrefs GetOrCreateSettings ()
 		{
-			string fullPath = Resource.MainFolderPath + settingsPath;
+			string fullPath = DefaultInstallPath + settingsPath;
 
-			var settings = AssetDatabase.LoadAssetAtPath<ACEditorPrefs> (fullPath);
+			ACEditorPrefs settings = AssetDatabase.LoadAssetAtPath<ACEditorPrefs> (fullPath);
+			
 			if (settings == null)
 			{
-				bool isValid = AssetDatabase.IsValidFolder (Resource.MainFolderPath + "/Editor");
-				if (!isValid)
+				bool canCreateNew = AssetDatabase.IsValidFolder (DefaultInstallPath + "/Editor");
+				
+				if (!canCreateNew)
 				{
-					AssetDatabase.CreateFolder (Resource.MainFolderPath, "Editor");
-					isValid = AssetDatabase.IsValidFolder (Resource.MainFolderPath + "/Editor");
+					AssetDatabase.CreateFolder (DefaultInstallPath, "Editor");
+					canCreateNew = AssetDatabase.IsValidFolder (DefaultInstallPath + "/Editor");
 				}
 
-				if (isValid)
+				if (!canCreateNew)
 				{
-					settings = ScriptableObject.CreateInstance<ACEditorPrefs> ();
+					fullPath = "Assets/" + settingsPath;
+					settings = AssetDatabase.LoadAssetAtPath<ACEditorPrefs> (fullPath);
+
+					if (settings)
+					{
+						return settings;
+					}
+					canCreateNew = AssetDatabase.IsValidFolder ("Assets/Editor");
+					if (!canCreateNew)
+					{
+						AssetDatabase.CreateFolder ("Assets", "Editor");
+						canCreateNew = AssetDatabase.IsValidFolder ("Assets/Editor");
+					}
+				}
+				
+				if (canCreateNew)
+				{
+					settings = CreateInstance<ACEditorPrefs> ();
 					settings.hierarchyIconOffset = DefaultHierarchyIconOffset;
 					settings.hotspotGizmoColor = DefaultHotspotGizmoColor;
 					settings.triggerGizmoColor = DefaultTriggerGizmoColor;
@@ -70,12 +93,14 @@ namespace AC
 					settings.editorLabelWidth = DefaultEditorLabelWidth;
 					settings.actionNodeWidth = DefaultActionNodeWidth;
 					settings.disableInstaller = DefaultDisableInstaller;
+					settings.installPath = DefaultInstallPath;
 					AssetDatabase.CreateAsset (settings, fullPath);
+					Debug.Log ("Created new AC EditorPrefs asset: '" + fullPath + "'", settings);
 					AssetDatabase.SaveAssets ();
 				}
 				else
 				{
-					Debug.LogWarning ("Cannot create AC editor prefs - does the folder '" + Resource.MainFolderPath + "/Editor' exist?");
+					Debug.LogWarning ("Cannot create AC editor prefs - does the folder '" + DefaultInstallPath + "/Editor' exist?");
 					return null;
 				}
 			}
@@ -361,6 +386,20 @@ namespace AC
 			}
 		}
 
+
+		public static string InstallPath
+		{
+			get
+			{
+				#if CAN_USE_EDITOR_PREFS
+				ACEditorPrefs settings = GetOrCreateSettings ();
+				return (settings != null) ? settings.installPath : DefaultInstallPath;
+				#else
+				return DefaultInstallPath;
+				#endif
+			}
+		}
+		
 	}
 
 
@@ -397,6 +436,7 @@ namespace AC
 
 						EditorGUILayout.Space ();
 						EditorGUILayout.LabelField ("Editor settings", EditorStyles.boldLabel);
+						EditorGUILayout.PropertyField (settings.FindProperty ("installPath"), new GUIContent ("Install path:", "The filepath to AC's root folder"));
 						EditorGUILayout.PropertyField (settings.FindProperty ("editorLabelWidth"), new GUIContent ("Label widths:", "How wide to render labels in Managers and other editors"));
 						EditorGUILayout.PropertyField (settings.FindProperty ("menuItemsBeforeScroll"), new GUIContent ("Items before scrolling:", "How many Menus, Inventory items, Variables etc can be listed in the AC Game Editor before scrolling becomes necessary"));
 						EditorGUILayout.PropertyField (settings.FindProperty ("actionNodeWidth"), new GUIContent ("Action node widths:", "How wide Actions are when rendered as nodes in the ActionList Editor window"));
@@ -410,7 +450,7 @@ namespace AC
 					}
 					else
 					{
-						EditorGUILayout.HelpBox ("Cannot create AC editor prefs - does the folder '" + Resource.MainFolderPath + "/Editor' exist?", MessageType.Warning);
+						EditorGUILayout.HelpBox ("Cannot create AC editor prefs - does the folder '/Assets/AdventureCreator/Editor' exist?", MessageType.Warning);
 					}
 				},
 			};

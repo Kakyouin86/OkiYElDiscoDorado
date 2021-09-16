@@ -1090,6 +1090,13 @@ namespace AC
 		{
 			return selectedCursor;
 		}
+
+
+		/** Returns True if the cursor is currently set to walk mode */
+		public virtual bool IsInWalkMode ()
+		{
+			return selectedCursor == -1;
+		}
 		
 
 		/**

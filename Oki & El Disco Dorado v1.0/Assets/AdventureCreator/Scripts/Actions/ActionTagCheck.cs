@@ -111,7 +111,7 @@ namespace AC
 		{
 			if (objectToCheckParameterID < 0)
 			{
-				if (objectToCheck != null && objectToCheck == gameObject) return true;
+				if (objectToCheck && objectToCheck == gameObject) return true;
 				if (objectToCheckConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

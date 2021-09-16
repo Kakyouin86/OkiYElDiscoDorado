@@ -242,6 +242,10 @@ namespace AC
 							_parameter.SetValue (gVar.GameObjectValue);
 							break;
 
+						case ParameterType.UnityObject:
+							_parameter.SetValue (gVar.UnityObjectValue);
+							break;
+
 						case ParameterType.InventoryItem:
 							if (gVar.type == VariableType.Integer)
 							{
@@ -620,6 +624,7 @@ namespace AC
 						case ParameterType.Integer:
 						case ParameterType.String:
 						case ParameterType.GameObject:
+						case ParameterType.UnityObject:
 							globalVariableID = AdvGame.GlobalVariableGUI ("Variable:", globalVariableID);
 							break;
 
@@ -983,10 +988,10 @@ namespace AC
 		{
 			if (!changeOwn && actionListSource == ActionListSource.InScene)
 			{
-				if (actionList != null && actionList.gameObject == _gameObject) return true;
+				if (actionList && actionList.gameObject == _gameObject) return true;
 				if (actionListConstantID == id) return true;
 			}
-			if (gameobjectValue != null && gameobjectValue == _gameObject) return true;
+			if (gameobjectValue && gameobjectValue == _gameObject) return true;
 			if (gameObjectConstantID == id) return true;
 			return base.ReferencesObjectOrID (_gameObject, id);
 		}

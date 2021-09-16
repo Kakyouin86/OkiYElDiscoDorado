@@ -1152,7 +1152,7 @@ namespace AC
 			}
 			else
 			{
-				ACDebug.LogWarning ("No MainCamera found - please click 'Organise room objects' in the Scene Manager to create one.");
+				ACDebug.LogWarning ("No MainCamera found - please organise the scene at the top of the Scene Manager to create one.");
 			}
 
 			playerInput.OnInitGameEngine ();

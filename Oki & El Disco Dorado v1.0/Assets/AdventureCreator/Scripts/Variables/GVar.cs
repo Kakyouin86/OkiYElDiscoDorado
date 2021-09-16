@@ -39,6 +39,7 @@ namespace AC
 		[SerializeField] protected string textVal = "";
 		[SerializeField] protected GameObject gameObjectVal;
 		[SerializeField] protected GameObjectParameterReferences gameObjectSaveReferences = GameObjectParameterReferences.ReferenceSceneInstance;
+		[SerializeField] protected Object objectVal;
 		/** An array of labels, if a popup. */
 		public string[] popUps;
 		/** Its value, if a Vector3 */
@@ -102,6 +103,7 @@ namespace AC
 			popUpID = 0;
 			gameObjectVal = null;
 			gameObjectSaveReferences = GameObjectParameterReferences.ReferenceSceneInstance;
+			objectVal = null;
 
 			AssignUniqueID (idArray);
 
@@ -138,7 +140,9 @@ namespace AC
 			popUpID = assetVar.popUpID;
 			gameObjectVal = assetVar.gameObjectVal;
 			gameObjectSaveReferences = assetVar.gameObjectSaveReferences;
+			objectVal = assetVar.objectVal;
 			if (type == VariableType.GameObject) textVal = (gameObjectVal) ? gameObjectVal.name : string.Empty;
+			if (type == VariableType.UnityObject) textVal = (objectVal) ? objectVal.name : string.Empty;
 
 			#if UNITY_EDITOR
 			description = assetVar.description;
@@ -222,6 +226,10 @@ namespace AC
 						GameObjectValue = PlayMakerIntegration.GetGameObject (pmVar, _variables);
 						break;
 
+					case VariableType.UnityObject:
+						UnityObjectValue = PlayMakerIntegration.GetObject (pmVar, _variables);
+						break;
+
 					default:
 						break;
 				}
@@ -280,6 +288,10 @@ namespace AC
 
 					case VariableType.GameObject:
 						PlayMakerIntegration.SetGameObject (pmVar, gameObjectVal, _variables);
+						break;
+
+					case VariableType.UnityObject:
+						PlayMakerIntegration.SetObject (pmVar, objectVal, _variables);
 						break;
 
 					default:
@@ -438,6 +450,13 @@ namespace AC
 						break;
 					}
 
+				case VariableType.UnityObject:
+					{
+						Object oldValue = oldVar.UnityObjectValue;
+						UnityObjectValue = oldValue;
+						break;
+					}
+
 				default:
 					{
 						int oldValue = oldVar.val;
@@ -513,6 +532,9 @@ namespace AC
 
 				case VariableType.GameObject:
 					return (gameObjectVal) ? gameObjectVal.name : string.Empty;
+
+				case VariableType.UnityObject:
+					return (objectVal) ? objectVal.name : string.Empty;
 
 				default:
 					return string.Empty;
@@ -665,6 +687,10 @@ namespace AC
 					GameObjectValue = presetValue.gameObjectVal;
 					break;
 
+				case VariableType.UnityObject:
+					UnityObjectValue = presetValue.objectVal;
+					break;
+
 				default:
 					IntegerValue = presetValue.val;
 					break;
@@ -812,6 +838,28 @@ namespace AC
 			get
 			{
 				return (type == VariableType.GameObject && gameObjectSaveReferences == GameObjectParameterReferences.ReferencePrefab);
+			}
+		}
+
+
+		/** Its value, if a Unity Object. */
+		public Object UnityObjectValue
+		{
+			get
+			{
+				return objectVal;
+			}
+			set
+			{
+				Object originalValue = objectVal;
+
+				objectVal = value;
+				textVal = (objectVal) ? objectVal.name : string.Empty;
+
+				if (originalValue != objectVal && Application.isPlaying)
+				{
+					KickStarter.eventManager.Call_OnVariableChange (this);
+				}
 			}
 		}
 
@@ -1075,6 +1123,10 @@ namespace AC
 					}
 					break;
 
+				case VariableType.UnityObject:
+					objectVal = CustomGUILayout.ObjectField <Object> (labelPrefix, objectVal, false);
+					break;
+
 				default:
 					break;
 			}
@@ -1157,6 +1209,10 @@ namespace AC
 
 						case VariableType.GameObject:
 							presetValue.gameObjectVal = (GameObject) CustomGUILayout.ObjectField <GameObject> (label, presetValue.gameObjectVal, (location != VariableLocation.Global), apiPrefix2 + ".GameObjectVal");
+							break;
+
+						case VariableType.UnityObject:
+							presetValue.objectVal = CustomGUILayout.ObjectField <Object> (label, presetValue.objectVal, false);
 							break;
 
 						default:

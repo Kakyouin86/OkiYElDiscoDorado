@@ -302,13 +302,13 @@ namespace AC
 		{
 			if (!isPlayer)
 			{
-				if (_char != null && _char.gameObject == _gameObject) return true;
+				if (_char && _char.gameObject == _gameObject) return true;
 				if (_charID == id) return true;
 			}
-			if (isPlayer && _gameObject.GetComponent <Player>() != null) return true;
+			if (isPlayer && _gameObject && _gameObject.GetComponent <Player>() != null) return true;
 			if (objectToHoldParameterID < 0)
 			{
-				if (objectToHold != null && objectToHold == _gameObject) return true;
+				if (objectToHold && objectToHold == _gameObject) return true;
 				if (objectToHoldID == id) return true;
 			}
 			return base.ReferencesObjectOrID (_gameObject, id);

@@ -283,7 +283,7 @@ namespace AC
 				if (animChar && animChar.gameObject == _gameObject) return true;
 				if (constantID == id) return true;
 			}
-			if (isPlayer && _gameObject.GetComponent <Player>() != null) return true;
+			if (isPlayer && _gameObject && _gameObject.GetComponent <Player>() != null) return true;
 			return base.ReferencesObjectOrID (_gameObject, id);
 		}
 

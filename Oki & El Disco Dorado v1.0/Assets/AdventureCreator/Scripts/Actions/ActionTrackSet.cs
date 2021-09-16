@@ -203,7 +203,7 @@ namespace AC
 		{
 			if (dragParameterID < 0)
 			{
-				if (dragObject != null && dragObject.gameObject == gameObject) return true;
+				if (dragObject && dragObject.gameObject == gameObject) return true;
 				if (dragConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

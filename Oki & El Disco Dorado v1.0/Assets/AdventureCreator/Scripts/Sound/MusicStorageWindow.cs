@@ -50,6 +50,8 @@ namespace AC
 				return;
 			}
 
+			EditorGUILayout.LabelField (titleContent.text, CustomStyles.managerHeader);
+
 			if (KickStarter.settingsManager)
 			{
 				EditorGUILayout.BeginVertical (CustomStyles.thinBox);

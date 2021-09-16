@@ -277,15 +277,15 @@ namespace AC
 		{
 			if (npcToMoveParameterID < 0)
 			{
-				if (npcToMove != null && npcToMove.gameObject == _gameObject) return true;
+				if (npcToMove && npcToMove.gameObject == _gameObject) return true;
 				if (npcToMoveID == id) return true;
 			}
 			if (!followPlayer && charToFollowParameterID < 0)
 			{
-				if (charToFollow != null && charToFollow.gameObject == _gameObject) return true;
+				if (charToFollow && charToFollow.gameObject == _gameObject) return true;
 				if (charToFollowID == id) return true;
 			}
-			if (followPlayer && _gameObject.GetComponent <Player>() != null) return true;
+			if (followPlayer && _gameObject && _gameObject.GetComponent <Player>() != null) return true;
 			return base.ReferencesObjectOrID (_gameObject, id);
 		}
 

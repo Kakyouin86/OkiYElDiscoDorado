@@ -7,9 +7,7 @@ using System.Collections.Generic;
 namespace AC
 {
 
-	/**
-	 * Provides an EditorWindow to create Variables in bulk.
-	 */
+	/** Provides an EditorWindow to create Variables in bulk. */
 	public class BulkCreateVarsWindow : EditorWindow
 	{
 
@@ -27,14 +25,16 @@ namespace AC
 		 */
 		public static void Init (VariableLocation _location, Variables _variables = null)
 		{
-			string title = "Bulk-create " + _location + " variables";
-			BulkCreateVarsWindow window = EditorWindow.GetWindowWithRect <BulkCreateVarsWindow> (new Rect (0, 0, 450, 270), true, title, true);
+			string title = "Bulk-create " + _location + " vars";
+			BulkCreateVarsWindow window = (BulkCreateVarsWindow) GetWindow (typeof (BulkCreateVarsWindow));
 			window.titleContent.text = title;
 			window.position = new Rect (300, 200, 450, 270);
 
 			window.location = _location;
 			window.variables = _variables;
 			if (_location != VariableLocation.Component) window.variables = null;
+
+			window.minSize = new Vector2 (300, 180);
 		}
 
 
@@ -42,9 +42,11 @@ namespace AC
 		{
 			scrollPos = EditorGUILayout.BeginScrollView (scrollPos);
 
+			EditorGUILayout.LabelField ("Bulk-create " + location + " variables", CustomStyles.managerHeader);
+
 			if (newVar == null) newVar = new GVar ();
 
-			numVars = EditorGUILayout.IntSlider ("# of new Variables::", numVars, 1, 20);
+			numVars = EditorGUILayout.IntSlider ("# of new variables:", numVars, 1, 20);
 
 			newVar.ShowGUI (location, true, null, string.Empty, variables);
 

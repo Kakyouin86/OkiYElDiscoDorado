@@ -502,7 +502,8 @@ namespace AC
 
 			managerHeader = new GUIStyle (GUI.skin.label);
 			managerHeader.fontSize = 17;
-			managerHeader.alignment = TextAnchor.MiddleCenter;
+			managerHeader.alignment = TextAnchor.UpperCenter;
+			managerHeader.fixedHeight = 30;
 			if (EditorGUIUtility.isProSkin) managerHeader.normal.textColor = Color.white;
 
 			smallCentre = new GUIStyle (GUI.skin.label);
@@ -530,7 +531,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[13];
+				return GetCustomGUIStyle (13);
 			}
 		}
 
@@ -539,7 +540,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[14];
+				return GetCustomGUIStyle (14);
 			}
 		}
 
@@ -548,7 +549,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[0];
+				return GetCustomGUIStyle (0);
 			}
 		}
 
@@ -557,7 +558,7 @@ namespace AC
 		{
 			get
 			{
-				return (EditorGUIUtility.isProSkin) ? Resource.NodeSkin.customStyles[24] : Resource.NodeSkin.customStyles[25];
+				return GetCustomGUIStyle (25, 24);
 			}
 		}
 
@@ -566,7 +567,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[11];
+				return GetCustomGUIStyle (11);
 			}
 		}
 
@@ -575,7 +576,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[12];
+				return GetCustomGUIStyle (12);
 			}
 		}
 
@@ -584,7 +585,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[10];
+				return GetCustomGUIStyle (10);
 			}
 		}
 
@@ -593,7 +594,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[9];
+				return GetCustomGUIStyle (9);
 			}
 		}
 
@@ -602,7 +603,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[8];
+				return GetCustomGUIStyle (8);
 			}
 		}
 
@@ -611,7 +612,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[7];
+				return GetCustomGUIStyle (7);
 			}
 		}
 
@@ -620,7 +621,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[5];
+				return GetCustomGUIStyle (5);
 			}
 		}
 
@@ -629,7 +630,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[6];
+				return GetCustomGUIStyle (6);
 			}
 		}
 
@@ -638,7 +639,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[4];
+				return GetCustomGUIStyle (4);
 			}
 		}
 
@@ -647,7 +648,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[29];
+				return GetCustomGUIStyle (29);
 			}
 		}
 
@@ -656,7 +657,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[3];
+				return GetCustomGUIStyle (3);
 			}
 		}
 
@@ -665,7 +666,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[1];
+				return GetCustomGUIStyle (1);
 			}
 		}
 
@@ -674,7 +675,7 @@ namespace AC
 		{
 			get
 			{
-				return Resource.NodeSkin.customStyles[2];
+				return GetCustomGUIStyle (2);
 			}
 		}
 
@@ -683,7 +684,7 @@ namespace AC
 		{
 			get
 			{
-				return (EditorGUIUtility.isProSkin) ? Resource.NodeSkin.GetStyle ("Window") : Resource.NodeSkin.customStyles[19];
+				return GetCustomGUIStyle (19, "Window");
 			}
 		}
 
@@ -692,7 +693,7 @@ namespace AC
 		{
 			get
 			{
-				return (EditorGUIUtility.isProSkin) ? Resource.NodeSkin.customStyles[16] : Resource.NodeSkin.customStyles[21];
+				return GetCustomGUIStyle (21, 16);
 			}
 		}
 
@@ -701,7 +702,7 @@ namespace AC
 		{
 			get
 			{
-				return (EditorGUIUtility.isProSkin) ? Resource.NodeSkin.customStyles[15] : Resource.NodeSkin.customStyles[20];
+				return GetCustomGUIStyle (20, 15); 
 			}
 		}
 
@@ -710,7 +711,7 @@ namespace AC
 		{
 			get
 			{
-				return (EditorGUIUtility.isProSkin) ? Resource.NodeSkin.customStyles[17] : Resource.NodeSkin.customStyles[22];
+				return GetCustomGUIStyle (22, 17); 
 			}
 		}
 
@@ -719,7 +720,7 @@ namespace AC
 		{
 			get
 			{
-				return (EditorGUIUtility.isProSkin) ? Resource.NodeSkin.customStyles[18] : Resource.NodeSkin.customStyles[23];
+				return GetCustomGUIStyle (23, 18);
 			}
 		}
 
@@ -728,7 +729,7 @@ namespace AC
 		{
 			get
 			{
-				return (EditorGUIUtility.isProSkin) ? Resource.NodeSkin.customStyles[26] : Resource.NodeSkin.customStyles[27];
+				return GetCustomGUIStyle (27, 26);
 			}
 		}
 
@@ -737,7 +738,7 @@ namespace AC
 		{
 			get
 			{
-				return (!EditorGUIUtility.isProSkin) ? Resource.NodeSkin.customStyles[26] : Resource.NodeSkin.customStyles[27];
+				return GetCustomGUIStyle (26, 27);
 			}
 		}
 
@@ -746,8 +747,41 @@ namespace AC
 		{
 			get
 			{
-				return (!EditorGUIUtility.isProSkin) ? Resource.NodeSkin.customStyles[28] : Resource.NodeSkin.customStyles[28];
+
+				return GetCustomGUIStyle (28);
 			}
+		}
+
+
+		private static GUIStyle GetCustomGUIStyle (int index)
+		{
+			return GetCustomGUIStyle (index, index);
+		}
+
+
+		private readonly static GUIStyle notFoundStyle = new GUIStyle ();
+		private static GUIStyle GetCustomGUIStyle (int normalIndex, int proIndex)
+		{
+			int index = EditorGUIUtility.isProSkin ? proIndex : normalIndex;
+			if (Resource.NodeSkin && index >= 0 && index < Resource.NodeSkin.customStyles.Length)
+			{
+				return Resource.NodeSkin.customStyles[index];
+			}
+			return notFoundStyle;
+		}
+
+
+		private static GUIStyle GetCustomGUIStyle (int normalIndex, string proName)
+		{
+			if (EditorGUIUtility.isProSkin)
+			{
+				if (Resource.NodeSkin)
+				{
+					return Resource.NodeSkin.GetStyle (proName);
+				}
+				return notFoundStyle;
+			}
+			return GetCustomGUIStyle (normalIndex);
 		}
 
 	}

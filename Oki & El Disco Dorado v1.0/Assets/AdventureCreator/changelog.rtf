@@ -5,7 +5,107 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww23380\viewh15000\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 Version 1.73.8:\
+\f0\fs24 \cf0 Version 1.74.0:\
+\
+= Upgrade notes =\
+-The GameCamera Third Person component has been updated - existing projects that make use of this will need to check this camera's settings\
+-Save games made while the Settings Manager's "Reference scenes by" field is set to "Name" are incompatible with this update\
+-The scale of the Settings Manager's "Max free-aim speed" value, used in First Person games, has been lowered\
+-The minimum-required Unity version is now 2018.4\
+\
+= Cameras =\
+-Added: Improved Third Person camera, including zooming options, target movement influence options\
+-Changed: The scale of the Settings Manager's "Max free-aim speed" value, used in First Person games, has been lowered\
+-Fixed: First person free-aim input not being framerate-independent\
+\
+= Speech =\
+-Added: Addressable support for individual Player speech audio for games with multiple Player characters\
+-Added: Addressable support for translated speech audio\
+-Added: Option for the "Dialogue: Wait for speech" to wait for speech of any type\
+-Changed: If no speaker if assigned in the "Dialogue: Wait for speech" Action, it will wait while narration is being played\
+\
+= Menus =\
+-Added: Option to include Elements when filtering Menus by name in the Menu Manager\
+-Added: Option to use TextMeshPro's Typewriter effect for scrolling speech text\
+-Fixed: Game not pausing if a Menu that is set to pause the game is enabled when the game begins\
+-Fixed: Button menu elements set to "Offset Element Slot" sometimes not appearing after loading a save game\
+-Fixed: The "Menu: Select" Action's "Select first-visible?" option only working for Unity UI menus\
+-Fixed: InventoryBox elements not previewing the maximum number of slots if it exceeds the number of items defined in the Inventory Manager\
+-Fixed: AC Menu elements sometimes being selected without clicking while previewing in the Game window\
+-Fixed: Issue when creating Menu Elements if there is a conflict in class names\
+-Fixed: Cycle menu element choice labels being linked to copies when copy/pasted in the Menu Manager\
+-Fixed: Issues with inconsistent AC Menu element hover sounds and click behaviour\
+-Fixed: AC menus being clickable when underneath other AC menus\
+\
+= Editor =\
+-Added: Ability to set a custom installation directory in Unity's Player settings\
+-Added: Wrapped Editor scripts around UNITY_EDITOR symbols to aid custom Assembly Definition assets\
+-Added: All Editor windows now support docking and resizing\
+-Fixed: "Find references" Editor operation not working for Menu Elements\
+-Fixed: New Game Wizard hanging indefinitely if the default Actions folder cannot be found\
+-Fixed: Errors when using the Constant ID component's "Find global references" feature\
+\
+= ActionLists =\
+-Added: Ability to mark Actions as the default for their category\
+-Fixed: Newly-created Actions Managers using the default Actions folder as a custom Actions folder\
+-Fixed: Action connections not being retained after copy/pasting multiple Actions together in the ActionList Editor window\
+-Fixed: Error when a scene's OnStart cutscene's first Action is to preload another scene\
+\
+= Characters =\
+-Added: Players can now jump if using a Character Controller\
+-Added: "Simulated mass" field for characters that use a Character Controller component\
+\
+= Variables =\
+-Added: "Link Variable to Animator" component - use to automatically sync a Component variable's value to an Animator parameter\
+-Added: Ability to define Unity Object Variables\
+\
+= Physics =\
+-Added: Ability to assign an AudioClip to a Track region that plays when a Draggable enters it\
+-Added: Ability to define a minimum and maximum distance for PickUps to keep from the camera when initially held\
+-Added: Ability to set the maximum angular velocity of PickUps\
+-Fixed: PickUp Rigidbody constraints being manipulated when rotating even if "Auto-set RB constraints?" is unchecked\
+-Fixed: Draggable objects being interactive if an attached Hotspot with an enabled interaction is clicked\
+-Fixed: Various issues related to PickUp physics\
+\
+= Paths =\
+-Added: "Player: Lock to Path" Action - use to constrain a Direct-controlled Player's movement to a Path during gameplay\
+-Fixed: Players constrained to a Path during gameplay not respecting the Path's Loop state\
+-Fixed: Issues with saving a Player's state when constrained to a Path during gameplay\
+\
+= Save system =\
+-Changed: The default iSaveFileHandler and iFileFormatHandler classes now use virtual functions, to aid custom subclassing\
+-Fixed: Scenes loaded using the Addressables system not having their data recorded correctly in save-game files\
+-Fixed: Loading a save-game sometimes resulting in an indefinite "Paused" state if Unity UI In Scene-based Menus are present\
+-Fixed: The "Save: Save or load" Action sometimes running indefinitely if used to load a save that does not exist\
+-Fixed: The "Save: Save or load" Action's "Continue From Last Save" operation loading the wrong file if the last-recorded save was deleted\
+-Fixed: Error when autosaving when a scene begins while threaded saving is enabled\
+-Fixed: Compilation error when using the Json save file format on the Switch platform\
+-Fixed: WebGL save system not defaulting to PlayerPrefs\
+\
+= Inventory =\
+-Added: Ability for the "Inventory: Check" Action to check if a given Inventory Item is held by any Player, if Player-switching is enabled\
+-Fixed: The "Inventory: Check" Action returning the wrong result when using it to check the number of items held in a given category by a specific Player\
+-Fixed: "Close Interaction menus even if Interaction doesn't block gameplay?" option not being respected by Interaction menus displayed for Inventory items\
+-Fixed: The "Container: Open" Action's "Open in set element?" option not working if the Menu involved is already turned on\
+-Fixed: Inventory Items sometimes displaying the wrong label if it has not been gathered while a translation is active\
+\
+= Cursor =\
+-Added: Experimental option to register clicks when releasing a touch when in touch-screen games that drag the cursor\
+-Added: Ability to override the software cursor's position when locked\
+-Added: Virtual function to PlayerCursor to check if the cursor is currently in "walk mode"\
+\
+= Misc =\
+-Added: Ability for Parallax 2D components to react to a specified Transform\
+-Added: Ability to override moveable object drag vectors through custom scripting\
+-Added: The "Engine: Play movie clip" Action is now compatible with the Switch platform\
+-Added: The "Scene: Check" Action now returns True when checking if the Previous scene name is empty, while in the first scene\
+-Fixed: The Document class's GetPageText function returning an empty string if the page index is zero\
+-Fixed: "Dialogue: Start conversation" Action's "Wait until finish?" option not being respected if the Conversation is ended due to no dialogue options being available\
+-Fixed: "Engine: Control Timeline" Action ending prematurely if the application's focus is lost, or the game is paused in the Editor\
+-Fixed: Sounds sometimes not playing at the correct relative volume for the first frame\
+\
+\
+Version 1.73.8:\
 \
 -Upgrade note: The OnBeforeChangeScene, OnCompleteScenePreload and OnAwaitSceneActivation events now take a string parameter for the relevant scene name\
 \

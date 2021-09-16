@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
+using UnityEditor;
 using System.Collections.Generic;
 
 namespace AC
@@ -89,3 +91,5 @@ namespace AC
 	}
 
 }
+
+#endif

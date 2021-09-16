@@ -247,6 +247,28 @@ namespace AC
 			return KickStarter.player;
 		}
 
+
+		protected SpeechPlayableClip[] GetClipsArray ()
+		{
+			List<SpeechPlayableClip> clipsList = new List<SpeechPlayableClip> ();
+			IEnumerable<TimelineClip> timelineClips = GetClips ();
+			foreach (TimelineClip timelineClip in timelineClips)
+			{
+				if (timelineClip != null && timelineClip.asset is SpeechPlayableClip)
+				{
+					clipsList.Add (timelineClip.asset as SpeechPlayableClip);
+				}
+			}
+
+			return clipsList.ToArray ();
+		}
+
+
+		protected SpeechPlayableClip GetClip (int index)
+		{
+			return GetClipsArray ()[index];
+		}
+
 		#endregion
 
 
@@ -378,32 +400,6 @@ namespace AC
 		}
 
 		#endif
-
-		#endregion
-
-
-		#region ProtectedFunctions
-
-		protected SpeechPlayableClip[] GetClipsArray ()
-		{
-			List<SpeechPlayableClip> clipsList = new List<SpeechPlayableClip>();
-			IEnumerable<TimelineClip> timelineClips = GetClips ();
-			foreach (TimelineClip timelineClip in timelineClips)
-			{
-				if (timelineClip != null && timelineClip.asset is SpeechPlayableClip)
-				{	
-					clipsList.Add (timelineClip.asset as SpeechPlayableClip);
-				}
-			}
-
-			return clipsList.ToArray ();
-		}
-
-
-		protected SpeechPlayableClip GetClip (int index)
-		{
-			return GetClipsArray ()[index];
-		}
 
 		#endregion
 

@@ -7,9 +7,7 @@ using UnityEditor;
 namespace AC
 {
 	
-	/**
-	 * Provides an EditorWindow to manage the export of game text
-	 */
+	/** Provides an EditorWindow to manage the export of game text */
 	public class ExportWizardWindow : EditorWindow
 	{
 
@@ -51,17 +49,16 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Initialises the window.</summary>
-		 */
+		/** Initialises the window. */
 		public static void Init (SpeechManager _speechManager, string[] _sceneNames, int forLanguage = 0)
 		{
 			if (_speechManager == null) return;
 
-			ExportWizardWindow window = EditorWindow.GetWindowWithRect <ExportWizardWindow> (new Rect (0, 0, 350, 500), true, "Game text exporter", true);
-			window.titleContent.text = "Game text exporter";
+			ExportWizardWindow window = (ExportWizardWindow) GetWindow (typeof (ExportWizardWindow));
+			window.titleContent.text = "Text export wizard";
 			window.position = new Rect (300, 200, 350, 500);
 			window._Init (_speechManager, _sceneNames, forLanguage);
+			window.minSize = new Vector2 (300, 180);
 		}
 		
 		
@@ -106,7 +103,6 @@ namespace AC
 			}
 			GUI.enabled = true;
 
-			EditorGUILayout.Space ();
 			GUILayout.EndScrollView ();
 		}
 
@@ -116,7 +112,6 @@ namespace AC
 			string[] languagesArray = speechManager.languages.ToArray ();
 
 			EditorGUILayout.LabelField ("Define columns",  CustomStyles.subHeader);
-			EditorGUILayout.Space ();
 			for (int i=0; i<exportColumns.Count; i++)
 			{
 				CustomGUILayout.BeginVertical ();
@@ -135,7 +130,6 @@ namespace AC
 				CustomGUILayout.EndVertical ();
 			}
 
-			EditorGUILayout.Space ();
 			if (GUILayout.Button ("Add new column"))
 			{
 				exportColumns.Add (new ExportColumn ());
@@ -148,7 +142,6 @@ namespace AC
 		private void ShowRowsGUI ()
 		{
 			EditorGUILayout.LabelField ("Row filtering", CustomStyles.subHeader);
-			EditorGUILayout.Space ();
 
 			filterByType = EditorGUILayout.Toggle ("Filter by type?", filterByType);
 			if (filterByType)
@@ -225,7 +218,6 @@ namespace AC
 		private void ShowSortingGUI ()
 		{
 			EditorGUILayout.LabelField ("Row sorting", CustomStyles.subHeader);
-			EditorGUILayout.Space ();
 
 			doRowSorting = EditorGUILayout.Toggle ("Apply row sorting?", doRowSorting);
 			if (doRowSorting)
@@ -468,6 +460,10 @@ namespace AC
 				if (columnType == ColumnType.AudioFilePresence && KickStarter.speechManager.referenceSpeechFiles == ReferenceSpeechFiles.ByAssetBundle)
 				{
 					EditorGUILayout.HelpBox ("Presence from asset bundles cannot be determined in Edit mode - files will be searched for in Resources folders.", MessageType.Warning);
+				}
+				else if (columnType == ColumnType.AudioFilePresence && KickStarter.speechManager.referenceSpeechFiles == ReferenceSpeechFiles.ByAddressable)
+				{
+					EditorGUILayout.HelpBox ("Presence of Addressable assets cannot be determined in Edit mode.", MessageType.Warning);
 				}
 			}
 

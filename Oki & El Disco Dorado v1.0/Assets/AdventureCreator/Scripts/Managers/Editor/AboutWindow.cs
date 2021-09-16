@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 
 namespace AC
@@ -101,3 +103,5 @@ namespace AC
 	}
 
 }
+
+#endif

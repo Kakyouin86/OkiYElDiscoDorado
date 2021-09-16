@@ -98,7 +98,7 @@ namespace AC
 				normalizedDotProduct = Vector3.Dot (force.normalized, Transform.up);
 
 				// Invert force if on the "back" side
-				axisOffset = GetAxisOffset (draggable._dragVector);
+				axisOffset = GetAxisOffset (draggable.dragVector);
 				if (Vector3.Dot (Transform.right, axisOffset) < 0f)
 				{
 					dotProduct *= -1f;
@@ -294,6 +294,8 @@ namespace AC
 					draggable.Rigidbody.angularVelocity = Vector3.zero;
 				}
 			}
+
+			DoRegionAudioCheck (draggable);
 
 			if (!onlySnapOnPlayerRelease)
 			{

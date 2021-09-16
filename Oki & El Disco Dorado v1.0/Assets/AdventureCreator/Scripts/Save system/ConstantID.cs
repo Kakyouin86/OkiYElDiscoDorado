@@ -493,7 +493,7 @@ namespace AC
 					return;
 				}
 
-				SearchSceneForReferences (_constantID);
+				SearchSceneForReferences (_constantID.gameObject, _constantID.constantID);
 			}
 		}
 
@@ -514,6 +514,9 @@ namespace AC
 				{
 					if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo ())
 					{
+						int CID = _constantID.constantID;
+						GameObject CIDObject = _constantID.gameObject;
+
 						// Menus
 						if (KickStarter.menuManager)
 						{
@@ -521,16 +524,18 @@ namespace AC
 							{
 								if (menu.IsUnityUI ())
 								{
-									if (menu.ReferencesObjectOrID (_constantID.gameObject, _constantID.constantID))
+									if (menu.ReferencesObjectOrID (CIDObject, CID))
 									{
-										Debug.Log ("'" + _constantID.gameObject.name + "' is referenced by Menu '" + menu.title + "'");
+										if (CIDObject) Debug.Log ("'" + CIDObject.name + "' is referenced by Menu '" + menu.title + "'");
+										else Debug.Log ("Constant ID " + CID + "' is referenced by Menu '" + menu.title + "'");
 									}
 
 									foreach (MenuElement element in menu.elements)
 									{
-										if (element != null && element.ReferencesObjectOrID (_constantID.gameObject, _constantID.constantID))
+										if (element && element.ReferencesObjectOrID (CIDObject, CID))
 										{
-											Debug.Log ("'" + _constantID.gameObject.name + "' is referenced by Menu Element '" + element.title + "' in Menu '" + menu.title + "'");
+											if (CIDObject) Debug.Log ("'" + CIDObject.name + "' is referenced by Menu Element '" + element.title + "' in Menu '" + menu.title + "'");
+											else Debug.Log ("Constant ID " + CID + "' is referenced by Menu Element '" + element.title + "' in Menu '" + menu.title + "'");
 										}
 									}
 								}
@@ -543,7 +548,7 @@ namespace AC
 							ActionListAsset[] allActionListAssets = AdvGame.GetReferences ().speechManager.GetAllActionListAssets ();
 							foreach (ActionListAsset actionListAsset in allActionListAssets)
 							{
-								SearchActionListAssetForReferences (_constantID, actionListAsset);
+								SearchActionListAssetForReferences (CIDObject, CID, actionListAsset);
 							}
 						}
 
@@ -556,7 +561,7 @@ namespace AC
 							UnityVersionHandler.OpenScene (sceneFile);
 
 							string suffix = " in scene '" + sceneFile + "'";
-							SearchSceneForReferences (_constantID, suffix);
+							SearchSceneForReferences (null, CID, suffix);
 						}
 
 						UnityVersionHandler.OpenScene (originalScene);
@@ -566,14 +571,15 @@ namespace AC
 		}
 
 
-		private static void SearchSceneForReferences (ConstantID _constantID, string suffix = "")
+		private static void SearchSceneForReferences (GameObject _constantIDObject, int _constantID, string suffix = "")
 		{
 			SetParametersBase[] setParametersBases = FindObjectsOfType <SetParametersBase>();
 			foreach (SetParametersBase setParametersBase in setParametersBases)
 			{
-				if (setParametersBase.ReferencesObjectOrID (_constantID.gameObject, _constantID.constantID))
+				if (setParametersBase.ReferencesObjectOrID (_constantIDObject, _constantID))
 				{
-					Debug.Log ("'" + _constantID.gameObject.name + "' is referenced by '" + setParametersBase.name + "'" + suffix, setParametersBase);
+					if (_constantIDObject) Debug.Log ("'" + _constantIDObject.name + "' is referenced by '" + setParametersBase.name + "'" + suffix, setParametersBase);
+					else Debug.Log ("Constant ID " + _constantID + " is referenced by '" + setParametersBase.name + "'" + suffix, setParametersBase);
 				}
 			}
 
@@ -584,31 +590,33 @@ namespace AC
 				{
 					foreach (Action action in actionList.actions)
 					{
-						if (action != null && action.ReferencesObjectOrID (_constantID.gameObject, _constantID.constantID))
+						if (action != null && action.ReferencesObjectOrID (_constantIDObject, _constantID))
 						{
 							string actionLabel = (KickStarter.actionsManager) ? (" (" + KickStarter.actionsManager.GetActionTypeLabel (action) + ")") : "";
-							Debug.Log ("'" + _constantID.gameObject.name + "' is referenced by Action #" + actionList.actions.IndexOf (action) + actionLabel + " in ActionList '" + actionList.gameObject.name + "'" + suffix, actionList);
+							if (_constantIDObject) Debug.Log ("'" + _constantIDObject.name + "' is referenced by Action #" + actionList.actions.IndexOf (action) + actionLabel + " in ActionList '" + actionList.gameObject.name + "'" + suffix, actionList);
+							else Debug.Log ("Constant ID " + _constantID + " is referenced by Action #" + actionList.actions.IndexOf (action) + actionLabel + " in ActionList '" + actionList.gameObject.name + "'" + suffix, actionList);
 						}
 					}
 				}
 				else if (actionList.source == ActionListSource.AssetFile)
 				{
-					SearchActionListAssetForReferences (_constantID, actionList.assetFile);
+					SearchActionListAssetForReferences (_constantIDObject, _constantID, actionList.assetFile);
 				}
 			}
 		}
 
 
-		private static void SearchActionListAssetForReferences (ConstantID _constantID, ActionListAsset actionListAsset)
+		private static void SearchActionListAssetForReferences (GameObject _constantIDObject, int _constantID, ActionListAsset actionListAsset)
 		{
 			if (actionListAsset == null) return;
 
 			foreach (Action action in actionListAsset.actions)
 			{
-				if (action != null && action.ReferencesObjectOrID (_constantID.gameObject, _constantID.constantID))
+				if (action != null && action.ReferencesObjectOrID (_constantIDObject, _constantID))
 				{
 					string actionLabel = (KickStarter.actionsManager) ? (" (" + KickStarter.actionsManager.GetActionTypeLabel (action) + ")") : "";
-					Debug.Log ("'" + _constantID.gameObject.name + "' is referenced by Action #" + actionListAsset.actions.IndexOf (action) + actionLabel + " in ActionList asset '" + actionListAsset.name + "'", actionListAsset);
+					if (_constantIDObject) Debug.Log ("'" + _constantIDObject.name + "' is referenced by Action #" + actionListAsset.actions.IndexOf (action) + actionLabel + " in ActionList asset '" + actionListAsset.name + "'", actionListAsset);
+					else Debug.Log ("Constant ID " + _constantID + " is referenced by Action #" + actionListAsset.actions.IndexOf (action) + actionLabel + " in ActionList asset '" + actionListAsset.name + "'", actionListAsset);
 				}
 			}
 		}

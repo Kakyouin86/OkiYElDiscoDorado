@@ -188,7 +188,7 @@ namespace AC
 
 		public override bool ReferencesObjectOrID (GameObject _gameObject, int id)
 		{
-			if (linkedConversation != null && linkedConversation.gameObject == _gameObject) return true;
+			if (linkedConversation && linkedConversation.gameObject == _gameObject) return true;
 			if (constantID == id) return true;
 			return base.ReferencesObjectOrID (_gameObject, id);
 		}

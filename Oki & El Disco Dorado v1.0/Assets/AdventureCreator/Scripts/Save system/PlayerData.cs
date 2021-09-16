@@ -91,6 +91,8 @@ namespace AC
 		public bool playerLockedPath = false;
 		/** True if the Player is locked along a Path, and going backwards */
 		public bool playerLockedPathReversing = false;
+		/** The type of Path the Player is locked along, if playerLockedPathReversing = true */
+		public int playerLockedPathType;
 		/** The Constant ID number of the Player's current Path */
 		public int playerActivePath = 0;
 		/** True if the Player's current Path affects the Y position */

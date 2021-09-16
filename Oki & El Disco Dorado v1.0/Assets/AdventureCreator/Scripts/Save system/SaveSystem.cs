@@ -14,7 +14,7 @@
  * 
  */
 
-#if UNITY_WEBPLAYER || UNITY_WINRT || UNITY_WII || UNITY_PS4 || UNITY_WSA
+#if UNITY_WEBPLAYER || UNITY_WINRT || UNITY_WII || UNITY_PS4 || UNITY_WSA || UNITY_WEBGL
 #define SAVE_IN_PLAYERPREFS
 #endif
 
@@ -34,9 +34,7 @@ using System.Collections.Generic;
 namespace AC
 {
 
-	/**
-	 * Processes save game data to and from scene objects.
-	 */
+	/** Processes save game data to and from scene objects. */
 	[HelpURL ("https://www.adventurecreator.org/scripting-guide/class_a_c_1_1_save_system.html")]
 	public class SaveSystem : MonoBehaviour
 	{
@@ -51,6 +49,8 @@ namespace AC
 		public const string colon = ":";
 		public const string mainDataDivider = "||";
 		public const string mainDataDivider_Replacement = "*DOUBLEPIPE*";
+
+		public const int MAX_SAVES = 50;
 		
 		private SaveData saveData = new SaveData ();
 		private SelectiveLoad activeSelectiveLoad = new SelectiveLoad ();
@@ -69,10 +69,6 @@ namespace AC
 
 		protected void OnEnable ()
 		{
-			if (string.IsNullOrEmpty (persistentDataPath))
-			{
-				persistentDataPath = Application.persistentDataPath;
-			}
 			EventManager.OnAddSubScene += OnAddSubScene;
 		}
 
@@ -111,7 +107,7 @@ namespace AC
 					int.TryParse (chunkData[0], out _id);
 					string _label = chunkData[1];
 
-					for (int i = 0; i < Mathf.Min (50, foundSaveFiles.Count); i++)
+					for (int i = 0; i < Mathf.Min (MAX_SAVES, foundSaveFiles.Count); i++)
 					{
 						if (foundSaveFiles[i].saveID == _id)
 						{
@@ -274,24 +270,27 @@ namespace AC
 
 
 		/**
-		 * Loads the last-recorded save game file.
+		 * <summary>Loads the last-recorded save game file.</summary>
+		 * <returns>True if a save-game file was found to load, False otherwise</returns>
 		 */
-		public static void ContinueGame ()
+		public static bool ContinueGame ()
 		{
 			if (Options.optionsData != null && Options.optionsData.lastSaveID >= 0)
 			{
-				SaveSystem.LoadGame (Options.optionsData.lastSaveID);
+				return LoadGame (Options.optionsData.lastSaveID);
 			}
+			return false;
 		}
 
 
 		/**
 		 * <summary>Loads a save game file.</summary>
 		 * <param name = "saveID">The save ID of the file to load</param>
+		 * <returns>True if a file was found</returns>
 		 */
-		public static void LoadGame (int saveID)
+		public static bool LoadGame (int saveID)
 		{
-			LoadGame (0, saveID, true);
+			return LoadGame (0, saveID, true);
 		}
 
 
@@ -300,8 +299,9 @@ namespace AC
 		 * <param name = "elementSlot">The slot index of the MenuSavesList element that was clicked on</param>
 		 * <param name = "saveID">The save ID to load</param>
 		 * <param name = "useSaveID">If True, the saveID overrides the elementSlot to determine which file to load</param>
+		 * <returns>True if a file was found</returns>
 		 */
-		public static void LoadGame (int elementSlot, int saveID, bool useSaveID)
+		public static bool LoadGame (int elementSlot, int saveID, bool useSaveID)
 		{
 			if (KickStarter.saveSystem)
 			{
@@ -323,7 +323,7 @@ namespace AC
 					{
 						SaveFile saveFileToLoad = foundSaveFile;
 						KickStarter.saveSystem.LoadSaveGame (saveFileToLoad);
-						return;
+						return true;
 					}
 				}
 
@@ -331,11 +331,12 @@ namespace AC
 				{
 					SaveFile hiddenSaveFile = SaveFileHandler.GetSaveFile (saveID, Options.GetActiveProfileID ());
 					KickStarter.saveSystem.LoadSaveGame (hiddenSaveFile);
-					return;
+					return true;
 				}
 
 				ACDebug.LogWarning ("Could not load game: file with ID " + saveID + " does not exist.");
 			}
+			return false;
 		}
 
 
@@ -847,6 +848,22 @@ namespace AC
 			KickStarter.eventManager.Call_OnSave (FileAccessState.Before, saveID);
 			KickStarter.levelStorage.StoreAllOpenLevelData ();
 
+			if (KickStarter.settingsManager.saveWithThreading)
+			{
+				// Make sure Persistent components are set, as cannot use GetComponent in a thread
+				if (KickStarter.runtimeVariables == null ||
+					KickStarter.stateHandler == null ||
+					KickStarter.runtimeInventory == null ||
+					KickStarter.runtimeLanguages == null ||
+					KickStarter.runtimeVariables == null ||
+					KickStarter.playerMenus == null ||
+					KickStarter.sceneChanger == null)
+				{
+					Debug.LogWarning ("Cannot save using threading - not all Persistent components found.");
+					return;
+				}
+			}
+
 			StartCoroutine (PrepareSaveCoroutine (saveID, overwriteLabel, newLabel));
 		}
 
@@ -937,7 +954,7 @@ namespace AC
 			// Update label
 			if (!string.IsNullOrEmpty (saveFile.label))
 			{
-				for (int i = 0; i < Mathf.Min (50, foundSaveFiles.Count); i++)
+				for (int i = 0; i < Mathf.Min (MAX_SAVES, foundSaveFiles.Count); i++)
 				{
 					if (foundSaveFiles[i].saveID == saveFile.saveID)
 					{
@@ -950,7 +967,18 @@ namespace AC
 			}
 
 			// Update PlayerPrefs
+			List<int> previousSaveIDs = Options.optionsData.GetPreviousSaveIDs ();
+			if (Options.optionsData.lastSaveID >= 0)
+			{
+				previousSaveIDs.Add (Options.optionsData.lastSaveID);
+			}
 			Options.optionsData.lastSaveID = saveFile.saveID;
+			if (previousSaveIDs.Contains (saveFile.saveID))
+			{
+				previousSaveIDs.Remove (saveFile.saveID);
+			}
+			Options.optionsData.SetPreviousSaveIDs (previousSaveIDs);
+
 			Options.UpdateSaveLabels (foundSaveFiles.ToArray ());
 
 			UpdateSaveFileLabels ();
@@ -1696,6 +1724,13 @@ namespace AC
 							}
 							break;
 
+						case VariableType.UnityObject:
+							if (_var.UnityObjectValue)
+							{
+								variablesString.Append (_var.TextValue);
+							}
+							break;
+
 						default:
 							variablesString.Append (_var.IntegerValue.ToString ());
 							break;
@@ -1871,7 +1906,7 @@ namespace AC
 
 										if (!foundObject)
 										{
-											ACDebug.LogWarning ("Could not find Resources prefab with ID " + chunkData[1] + "- cannot restore variable " + _var.label + " value.  Is it placed in a Resources folder?");
+											ACDebug.LogWarning ("Could not find Resources prefab with ID " + chunkData[1] + "- cannot restore GameObject variable " + _var.label + " value.  Is it placed in a Resources folder?");
 										}
 									}
 									else
@@ -1888,10 +1923,45 @@ namespace AC
 												}
 												else
 												{
-													ACDebug.LogWarning ("Could not find GameObject with ID " + chunkData[1] + " - cannot restore variable " + _var.label + " value");
+													ACDebug.LogWarning ("Could not find GameObject with ID " + chunkData[1] + " - cannot restore GameObject variable " + _var.label + " value");
 												}
 											}
 										}
+									}
+								}
+								break;
+
+							case VariableType.UnityObject:
+								{
+									if (existingVars.Count == 0) break;
+									#if AddressableIsPresent
+									if (KickStarter.settingsManager.saveAssetReferencesWithAddressables)
+									{
+										KickStarter.saveSystem.UnloadVariableDataFromAddressables (_var, chunkData[1]);
+										break;
+									}
+									#endif
+
+									bool foundObject = false;
+
+									if (!searchedResources)
+									{
+										prefabAssets = Resources.LoadAll (string.Empty, typeof (GameObject));
+										searchedResources = true;
+									}
+
+									foreach (Object prefabAsset in prefabAssets)
+									{
+										if (prefabAsset.name == chunkData[1])
+										{
+											_var.UnityObjectValue = prefabAsset;
+											foundObject = true;
+										}
+									}
+
+									if (!foundObject)
+									{
+										ACDebug.LogWarning ("Could not find Resources object with ID " + chunkData[1] + "- cannot restore Unity Object variable " + _var.label + " value.  Is it placed in a Resources folder?");
 									}
 								}
 								break;
@@ -1921,11 +1991,34 @@ namespace AC
 
 		private void UnloadVariableDataFromAddressables (GVar variableToUpdate, string savedData)
 		{
-			StartCoroutine (UnloadVariableDataFromAddressablesCo (variableToUpdate, savedData));
+			switch (variableToUpdate.type)
+			{
+				case VariableType.GameObject:
+					StartCoroutine (UnloadGameObjectVariableDataFromAddressablesCo (variableToUpdate, savedData));
+					break;
+
+				case VariableType.UnityObject:
+					StartCoroutine (UnloadUnityObjectVariableDataFromAddressablesCo (variableToUpdate, savedData));
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		private IEnumerator UnloadUnityObjectVariableDataFromAddressablesCo (GVar variableToUpdate, string savedData)
+		{
+			AsyncOperationHandle<Object> handle = Addressables.LoadAssetAsync<Object> (savedData);
+			yield return handle;
+			if (handle.Status == AsyncOperationStatus.Succeeded)
+			{
+				variableToUpdate.UnityObjectValue = handle.Result;
+			}
+			Addressables.Release (handle);
 		}
 
 
-		private IEnumerator UnloadVariableDataFromAddressablesCo (GVar variableToUpdate, string savedData)
+		private IEnumerator UnloadGameObjectVariableDataFromAddressablesCo (GVar variableToUpdate, string savedData)
 		{
 			AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject> (savedData);
 			yield return handle;
@@ -2178,9 +2271,31 @@ namespace AC
 				}
 			}
 
-			if (Options.optionsData != null && Options.optionsData.lastSaveID == saveID)
+			if (Options.optionsData != null)
 			{
-				Options.optionsData.lastSaveID = -1;
+				List<int> previousSaveIDs = Options.optionsData.GetPreviousSaveIDs ();
+				if (previousSaveIDs.Contains (saveID))
+				{
+					previousSaveIDs.Remove (saveID);
+				}
+
+
+				if (Options.optionsData.lastSaveID == saveID)
+				{
+					// Deleting the "last save", find a replacement
+					if (previousSaveIDs.Count > 0)
+					{
+						Options.optionsData.lastSaveID = previousSaveIDs[previousSaveIDs.Count - 1];
+						previousSaveIDs.RemoveAt (previousSaveIDs.Count - 1);
+					}
+					else
+					{
+						Options.optionsData.lastSaveID = -1;
+					}
+				}
+
+				Options.optionsData.SetPreviousSaveIDs (previousSaveIDs);
+				
 				Options.SavePrefs ();
 			}
 			KickStarter.playerMenus.RecalculateAll ();
@@ -2242,9 +2357,7 @@ namespace AC
 		}
 
 		
-		/**
-		 * The iSaveFileHandler class that handles the creation, loading, and deletion of save files
-		 */
+		/** The iSaveFileHandler class that handles the creation, loading, and deletion of save files */
 		public static iSaveFileHandler SaveFileHandler
 		{
 			get
@@ -2322,6 +2435,10 @@ namespace AC
 		{
 			get
 			{
+				if (string.IsNullOrEmpty (persistentDataPath))
+				{
+					persistentDataPath = Application.persistentDataPath;
+				}
 				return persistentDataPath;
 			}
 		}

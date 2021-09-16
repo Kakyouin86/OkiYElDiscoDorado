@@ -1,4 +1,6 @@
-﻿#if UNITY_2018_2_OR_NEWER
+﻿#if UNITY_EDITOR
+
+#if UNITY_2018_2_OR_NEWER
 #define ALLOW_PHYSICAL_CAMERA
 #endif
 
@@ -68,3 +70,5 @@ namespace AC
 	}
 
 }
+
+#endif

@@ -48,10 +48,10 @@ namespace AC
 		protected List<Menu> dupSpeechMenus = new List<Menu>();
 		protected List<Menu> customMenus = new List<Menu>();
 		protected Texture2D pauseTexture;
-		protected string menuIdentifier = string.Empty;
-		protected string lastMenuIdentifier = string.Empty;
-		protected string elementIdentifier = string.Empty;
-		protected string lastElementIdentifier = string.Empty;
+		protected int menuIdentifier = -1;
+		protected int lastMenuIdentifier = -1;
+		protected int elementIdentifier = -1;
+		protected int lastElementIdentifier = -1;
 		protected MenuInput selectedInputBox;
 		protected string selectedInputBoxMenuName;
 		protected MenuInventoryBox activeInventoryBox;
@@ -104,6 +104,7 @@ namespace AC
 			EventManager.OnAddSubScene += OnAddSubScene;
 			EventManager.OnEnterGameState += OnEnterGameState;
 			EventManager.OnExitGameState += OnExitGameState;
+			EventManager.OnMouseOverMenu += OnMouseOverMenu;
 		}
 
 
@@ -113,6 +114,7 @@ namespace AC
 			EventManager.OnAddSubScene -= OnAddSubScene;
 			EventManager.OnEnterGameState -= OnEnterGameState;
 			EventManager.OnExitGameState -= OnExitGameState;
+			EventManager.OnMouseOverMenu -= OnMouseOverMenu;
 		}
 
 
@@ -312,6 +314,7 @@ namespace AC
 				customMenu.AfterSceneChange ();
 			}
 
+			KickStarter.playerMenus.UpdatePauseMenusRecord ();
 			CycleMouseOverUIs ();
 		}
 
@@ -343,6 +346,22 @@ namespace AC
 			if (gameState == GameState.Cutscene)
 			{
 				MakeUIInteractive ();
+			}
+		}
+
+
+		protected void OnMouseOverMenu (AC.Menu menu, MenuElement element, int slot)
+		{
+			if (element != null)
+			{
+				if (!menu.CanCurrentlyKeyboardControl (KickStarter.stateHandler.gameState) && !menu.ignoreMouseClicks)
+				{
+					if ((!interactionMenuIsOn || menu.appearType == AppearType.OnInteraction)
+						&& (KickStarter.playerInput.GetDragState () == DragState.None || (KickStarter.playerInput.GetDragState () == DragState.Inventory && CanElementBeDroppedOnto (element))))
+					{
+						KickStarter.sceneSettings.PlayDefaultSound (element.GetHoverSound (slot), false);
+					}
+				}
 			}
 		}
 
@@ -1520,7 +1539,7 @@ namespace AC
 				menu.IsPointInside (KickStarter.playerInput.GetInvertedMouse ()) &&
 				!menu.ignoreMouseClicks)
 			{
-				menuIdentifier = menu.IDString;
+				menuIdentifier = menu.ID;
 				mouseOverMenu = menu;
 				mouseOverElement = null;
 				mouseOverElementSlot = 0;
@@ -1584,22 +1603,9 @@ namespace AC
 
 					if (menu.elements[j].IsVisible && SlotIsInteractive (menu, j, i, gameState))
 					{
-						if (!menu.CanCurrentlyKeyboardControl (gameState) && !menu.ignoreMouseClicks)
-						{
-							if ((!interactionMenuIsOn || menu.appearType == AppearType.OnInteraction)
-								&& (KickStarter.playerInput.GetDragState () == DragState.None || (KickStarter.playerInput.GetDragState () == DragState.Inventory && CanElementBeDroppedOnto (menu.elements[j]))))
-							{
-								if (lastElementIdentifier != (menu.IDString + menu.elements[j].IDString + i.ToString ()))
-								{
-									KickStarter.sceneSettings.PlayDefaultSound (menu.elements[j].GetHoverSound (i), false);
-								}
-							}
-						}
-
 						if (!menu.ignoreMouseClicks)
 						{
-							elementIdentifier = menu.IDString + menu.elements[j].IDString + i.ToString ();
-
+							elementIdentifier = (menu.ID * 10000) + (menu.elements[j].ID * 100) + i;
 							mouseOverMenu = menu;
 							mouseOverElement = menu.elements[j];
 							mouseOverElementSlot = i;
@@ -1871,25 +1877,28 @@ namespace AC
 		}
 
 		
-		protected void CheckClicks (AC.Menu menu)
+		protected bool CheckClicks (AC.Menu menu)
 		{
 			if (!menu.HasTransition () && menu.IsFading ())
 			{
 				// Stop until no longer "fading" so that it appears in right place
-				return;
+				return false;
 			}
 
-			if (KickStarter.settingsManager.inputMethod == InputMethod.MouseAndKeyboard &&
-				menu.IsPointInside (KickStarter.playerInput.GetInvertedMouse ()) &&
-				!menu.ignoreMouseClicks)
+			bool mouseOver = false;
+			if (!menu.ignoreMouseClicks &&
+				!menu.CanCurrentlyKeyboardControl (KickStarter.stateHandler.gameState) &&
+				menu.IsPointInside (KickStarter.playerInput.GetInvertedMouse ()))
 			{
-				menuIdentifier = menu.IDString;
+				menuIdentifier = menu.ID;
 				mouseOverMenu = menu;
 				mouseOverElement = null;
 				mouseOverElementSlot = 0;
+				mouseOver = true;
 			}
 
-			for (int j=0; j<menu.NumElements; j++)
+			//for (int j=0; j<menu.NumElements; j++)
+			for (int j=menu.NumElements-1; j>=0; j--)
 			{
 				if (menu.elements[j].IsVisible)
 				{
@@ -1897,18 +1906,20 @@ namespace AC
 					{
 						if (SlotIsInteractive (menu, j, i, KickStarter.stateHandler.gameState))
 						{
-							if (!menu.IsUnityUI () && KickStarter.playerInput.GetMouseState () != MouseState.Normal && (KickStarter.playerInput.GetDragState () == DragState.None || KickStarter.playerInput.GetDragState () == DragState.Menu))
+							MouseState mouseState = KickStarter.playerInput.GetMouseState (false);
+
+							if (!menu.IsUnityUI () && mouseState != MouseState.Normal && (KickStarter.playerInput.GetDragState () == DragState.None || KickStarter.playerInput.GetDragState () == DragState.Menu))
 							{
-								if (KickStarter.playerInput.GetMouseState () == MouseState.SingleClick || KickStarter.playerInput.GetMouseState () == MouseState.LetGo || KickStarter.playerInput.GetMouseState () == MouseState.RightClick)
+								if (mouseState == MouseState.SingleClick || mouseState == MouseState.LetGo || mouseState == MouseState.RightClick)
 								{
 									if (menu.elements[j] is MenuInput) {}
 									else DeselectInputBox ();
 									
-									CheckClick (menu, menu.elements[j], i, KickStarter.playerInput.GetMouseState ());
+									CheckClick (menu, menu.elements[j], i, mouseState);
 								}
-								else if (KickStarter.playerInput.GetMouseState () == MouseState.HeldDown)
+								else if (mouseState == MouseState.HeldDown)
 								{
-									CheckContinuousClick (menu, menu.elements[j], i, KickStarter.playerInput.GetMouseState ());
+									CheckContinuousClick (menu, menu.elements[j], i, mouseState);
 								}
 							}
 							else if (menu.IsUnityUI () &&
@@ -1949,6 +1960,8 @@ namespace AC
 					}
 				}
 			}
+
+			return mouseOver;
 		}
 
 
@@ -1992,28 +2005,38 @@ namespace AC
 			{
 				for (int i=customMenus.Count-1; i>=0; i--)
 				{
-					CheckForInput (customMenus[i]);
+					if (CheckForInput (customMenus[i]))
+					{
+						return;
+					}
 				}
 			}
 
 			for (int i=dupSpeechMenus.Count-1; i>=0; i--)
 			{
-				CheckForInput (dupSpeechMenus[i]);
+				if (CheckForInput (dupSpeechMenus[i]))
+				{
+					return;
+				}
 			}
 
 			for (int i=menus.Count-1; i>=0; i--)
 			{
-				CheckForInput (menus[i]);
+				if (CheckForInput (menus[i]))
+				{
+					return;
+				}
 			}
 		}
 
 
-		private void CheckForInput (Menu menu)
+		private bool CheckForInput (Menu menu)
 		{
 			if (menu.IsEnabled () && !menu.ignoreMouseClicks)
 			{
-				CheckClicks (menu);
+				return CheckClicks (menu);
 			}
+			return false;
 		}
 
 
@@ -2090,7 +2113,7 @@ namespace AC
 				}
 			}
 
-			elementIdentifier = string.Empty;
+			elementIdentifier = -1;
 			foundMouseOverMenu = false;
 			foundMouseOverInteractionMenu = false;
 			foundMouseOverInventory = false;
@@ -2101,9 +2124,9 @@ namespace AC
 			for (int i=0; i<menus.Count; i++)
 			{
 				UpdateMenu (menus[i], languageNumber, false, menus[i].IsEnabled ());
-				if (!menus[i].IsEnabled () && menus[i].IsOff () && menuIdentifier == menus[i].IDString)
+				if (!menus[i].IsEnabled () && menus[i].IsOff () && menuIdentifier == menus[i].ID)
 				{
-					menuIdentifier = string.Empty;
+					menuIdentifier = -1;
 				}
 			}
 
@@ -2127,9 +2150,9 @@ namespace AC
 			for (int i=0; i<customMenus.Count; i++)
 			{
 				UpdateMenu (customMenus[i], languageNumber, false, customMenus[i].IsEnabled ());
-				if (customMenus.Count > i && customMenus[i] != null && !customMenus[i].IsEnabled () && customMenus[i].IsOff () && menuIdentifier == customMenus[i].IDString)
+				if (customMenus.Count > i && customMenus[i] != null && !customMenus[i].IsEnabled () && customMenus[i].IsOff () && menuIdentifier == customMenus[i].ID)
 				{
-					menuIdentifier = string.Empty;
+					menuIdentifier = -1;
 				}
 			}
 
@@ -2451,9 +2474,7 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Closes all "Interaction" Menus.</summary>
-		 */
+		/** Closes all "Interaction" Menus. */
 		public void CloseInteractionMenus ()
 		{
 			SetInteractionMenus (false, null, null);
@@ -3423,7 +3444,7 @@ namespace AC
 			
 			foreach (AC.Menu _menu in menus)
 			{
-				menuString.Append (_menu.IDString);
+				menuString.Append (_menu.ID.ToString ());
 				menuString.Append (SaveSystem.colon);
 				menuString.Append (_menu.isLocked.ToString ());
 				menuString.Append (SaveSystem.pipe);
@@ -3447,7 +3468,7 @@ namespace AC
 				if (_menu.IsManualControlled ())
 				{
 					changeMade = true;
-					menuString.Append (_menu.IDString);
+					menuString.Append (_menu.ID.ToString ());
 					menuString.Append (SaveSystem.colon);
 					menuString.Append (_menu.IsEnabled ().ToString ());
 					menuString.Append (SaveSystem.pipe);
@@ -3470,15 +3491,12 @@ namespace AC
 			{
 				if (_menu.NumElements > 0)
 				{
-					visibilityString.Append (_menu.IDString);
+					visibilityString.Append (_menu.ID.ToString ());
 					visibilityString.Append (SaveSystem.colon);
 					
 					foreach (MenuElement _element in _menu.elements)
 					{
-						visibilityString.Append (_element.IDString);
-						visibilityString.Append ("=");
-						visibilityString.Append (_element.IsVisible.ToString ());
-						visibilityString.Append ("+");
+						visibilityString.Append (_element.GetVisibilitySaveData ());
 					}
 					
 					visibilityString.Remove (visibilityString.Length-1, 1);
@@ -3506,7 +3524,7 @@ namespace AC
 					if (_element is MenuJournal)
 					{
 						MenuJournal journal = (MenuJournal) _element;
-						journalString.Append (_menu.IDString);
+						journalString.Append (_menu.ID.ToString ());
 						journalString.Append (SaveSystem.colon);
 						journalString.Append (journal.ID);
 						journalString.Append (SaveSystem.colon);

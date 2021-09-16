@@ -9,9 +9,9 @@
  * 
  */
 
-#if !UNITY_SWITCH
+//#if !UNITY_SWITCH
 #define ALLOW_VIDEO
-#endif
+//#endif
 
 using UnityEngine;
 using System.Collections;
@@ -124,19 +124,19 @@ namespace AC
 								KickStarter.playerInput.skipMovieKey = string.Empty;
 								runtimeVideoPlayer.Play ();
 
-								if (runtimeVideoPlayer.isLooping)
-								{
-									LogWarning ("Cannot wait for " + runtimeVideoPlayer.name + " to finish because it is looping!");
-									return 0f;
-								}
-
-								if (canSkip && !string.IsNullOrEmpty (skipKey))
-								{
-									KickStarter.playerInput.skipMovieKey = skipKey;
-								}
-
 								if (willWait)
 								{
+									if (runtimeVideoPlayer.isLooping)
+									{
+										LogWarning ("Cannot wait for " + runtimeVideoPlayer.name + " to finish because it is looping!");
+										return 0f;
+									}
+
+									if (canSkip && !string.IsNullOrEmpty (skipKey))
+									{
+										KickStarter.playerInput.skipMovieKey = skipKey;
+									}
+
 									return defaultPauseTime;
 								}
 							}
@@ -409,7 +409,7 @@ namespace AC
 			#if ALLOW_VIDEO
 			if (movieClipType == MovieClipType.VideoPlayer && videoPlayerParameterID < 0)
 			{
-				if (videoPlayer != null && videoPlayer.gameObject == _gameObject) return true;
+				if (videoPlayer && videoPlayer.gameObject == _gameObject) return true;
 				if (videoPlayerConstantID == id) return true;
 			}
 			#endif

@@ -690,53 +690,53 @@ namespace AC
 
 		/**
 		 * <summary>Triggers the OnMenuElementClick event.</summary>
-		 * <param name = "_menu">The Menu that the clicked MenuElement is a part of</param>
-		 * <param name = "_element">The MenuElement that was clicked on</param>
-		 * <param name = "_slot">The slot index that was clicked, if the MenuElement consists of multiple slots (0 otherwise)</param>
-		 * <param name = "_buttonPressed">Equals 1 if a left-click, or 2 if a right-click</param>
+		 * <param name = "menu">The Menu that the clicked MenuElement is a part of</param>
+		 * <param name = "element">The MenuElement that was clicked on</param>
+		 * <param name = "slot">The slot index that was clicked, if the MenuElement consists of multiple slots (0 otherwise)</param>
+		 * <param name = "buttonPressed">Equals 1 if a left-click, or 2 if a right-click</param>
 		 */
-		public void Call_OnMenuElementClick (AC.Menu _menu, MenuElement _element, int _slot, int _buttonPressed)
+		public void Call_OnMenuElementClick (AC.Menu menu, MenuElement element, int slot, int buttonPressed)
 		{
 			if (OnMenuElementClick != null)
 			{
-				OnMenuElementClick (_menu, _element, _slot, _buttonPressed);
+				OnMenuElementClick (menu, element, slot, buttonPressed);
 			}
 		}
 
 
 		/**
 		 * <summary>Triggers the OnMouseOverMenuElement event.</summary>
-		 * <param name = "_menu">The Menu that the mouse is over</param>
-		 * <param name = "_element">The MenuElement that the mouse is over</param>
-		 * <param name = "_slot">The slot index that the mouse is over, if the MenuElement consists of multiple slots (0 otherwise)</param>
+		 * <param name = "menu">The Menu that the mouse is over</param>
+		 * <param name = "element">The MenuElement that the mouse is over</param>
+		 * <param name = "slot">The slot index that the mouse is over, if the MenuElement consists of multiple slots (0 otherwise)</param>
 		 */
-		public void Call_OnMouseOverMenuElement (AC.Menu _menu, MenuElement _element, int _slot)
+		public void Call_OnMouseOverMenuElement (AC.Menu menu, MenuElement element, int slot)
 		{
 			if (OnMouseOverMenu != null)
 			{
-				OnMouseOverMenu (_menu, _element, _slot);
+				OnMouseOverMenu (menu, element, slot);
 			}
 		}
 
 
 		/**
 		 * <summary>Triggers either the OnMenuElementShow or OnMenuElementHide events, depending on the state of the element's isVisible property.</summary>
-		 * <param name = "_element">The MenuElement whose visibility has changed</param>
+		 * <param name = "element">The MenuElement whose visibility has changed</param>
 		 */
-		public void Call_OnMenuElementChangeVisibility (MenuElement _element)
+		public void Call_OnMenuElementChangeVisibility (MenuElement element)
 		{
-			if (_element.IsVisible)
+			if (element.IsVisible)
 			{
 				if (OnMenuElementShow != null)
 				{
-					OnMenuElementShow (_element);
+					OnMenuElementShow (element);
 				}
 			}
 			else
 			{
 				if (OnMenuElementHide != null)
 				{
-					OnMenuElementHide (_element);
+					OnMenuElementHide (element);
 				}
 			}
 		}
@@ -744,14 +744,14 @@ namespace AC
 
 		/**
 		 * <summary>Triggers the OnMenuElementShift</summary>
-		 * <param name = "_element">The MenuElement whose slots have been shifted</param>
+		 * <param name = "element">The MenuElement whose slots have been shifted</param>
 		 * <param name = "shiftType">The direction in which the slots where shifted (ShiftLeft, ShiftRight)</param>
 		 */
-		public void Call_OnMenuElementShift (MenuElement _element, AC_ShiftInventory shiftType)
+		public void Call_OnMenuElementShift (MenuElement element, AC_ShiftInventory shiftType)
 		{
 			if (OnMenuElementShift != null)
 			{
-				OnMenuElementShift (_element, shiftType);
+				OnMenuElementShift (element, shiftType);
 			}
 		}
 
@@ -770,28 +770,28 @@ namespace AC
 
 		/**
 		 * <summary>Triggers the OnMenuTurnOn event.</summary>
-		 * <param name = "_menu">The Menu that is being turned on</param>
+		 * <param name = "menu">The Menu that is being turned on</param>
 		 * <param name = "isInstant">If true, the transition is being skipped and the Menu is being turned on instantly</param>
 		 */
-		public void Call_OnMenuTurnOn (AC.Menu _menu, bool isInstant)
+		public void Call_OnMenuTurnOn (AC.Menu menu, bool isInstant)
 		{
 			if (OnMenuTurnOn != null)
 			{
-				OnMenuTurnOn (_menu, isInstant);
+				OnMenuTurnOn (menu, isInstant);
 			}
 		}
 
 
 		/**
 		 * <summary>Triggers the OnMenuTurnOff event.</summary>
-		 * <param name = "_menu">The Menu that is being turned off</param>
+		 * <param name = "menu">The Menu that is being turned off</param>
 		 * <param name = "isInstant">If true, the transition is being skipped and the Menu is being turned off instantly</param>
 		 */
-		public void Call_OnMenuTurnOff (AC.Menu _menu, bool isInstant)
+		public void Call_OnMenuTurnOff (AC.Menu menu, bool isInstant)
 		{
 			if (OnMenuTurnOff != null)
 			{
-				OnMenuTurnOff (_menu, isInstant);
+				OnMenuTurnOff (menu, isInstant);
 			}
 		}
 

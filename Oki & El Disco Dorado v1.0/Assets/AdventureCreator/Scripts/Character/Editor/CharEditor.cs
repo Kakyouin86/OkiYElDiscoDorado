@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
 using System.Collections.Generic;
@@ -124,6 +126,11 @@ namespace AC
 				}
 			}
 
+			if (!_target.ignoreGravity && _target.GetComponent<CharacterController>())
+			{
+				_target.simulatedMass = EditorGUILayout.FloatField ("Simulated mass:", _target.simulatedMass);
+			}
+
 			if (_target.GetComponent <Collider>() != null && _target.GetComponent <CharacterController>() == null)
 			{
 				_target.groundCheckLayerMask = LayerMaskField ("Ground-check layer(s):", _target.groundCheckLayerMask);
@@ -186,6 +193,11 @@ namespace AC
 					_target.expressions.Add (new Expression (GetExpressionIDArray (_target.expressions)));
 				}
 				CustomGUILayout.EndVertical ();
+
+				if (Application.isPlaying && _target.CurrentExpression != null)
+				{
+					GUILayout.Label ("Current expression:" + _target.CurrentExpression.label, EditorStyles.miniLabel);
+				}
 			}
 
 			CustomGUILayout.EndVertical ();
@@ -308,3 +320,5 @@ namespace AC
 	}
 
 }
+
+#endif

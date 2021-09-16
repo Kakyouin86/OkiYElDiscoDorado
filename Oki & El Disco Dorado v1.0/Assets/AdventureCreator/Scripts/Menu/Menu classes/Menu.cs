@@ -174,8 +174,7 @@ namespace AC
 		private GameState gameStateWhenTurnedOn;
 		private bool isEnabled;
 		private bool isDisabledForScreenshot = false;
-		private string idString;
-
+		
 		private bool canDoSmoothing = false;
 		private int elementCount = -1;
 
@@ -343,7 +342,6 @@ namespace AC
 			hideDuringSaveScreenshots = _menu.hideDuringSaveScreenshots;
 			positionSmoothing = _menu.positionSmoothing;
 
-			idString = id.ToString ();
 			elementCount = -1;
 
 			elements = new List<MenuElement>();
@@ -873,7 +871,7 @@ namespace AC
 				{
 					firstSelectedElement = CustomGUILayout.TextField ("First selected Element:", firstSelectedElement, apiPrefix + ".firstSelectedElement", "The name of the element to automatically select when the Menu is turned on");
 
-					if (string.IsNullOrEmpty (firstSelectedElement) && elements != null && elements.Count > 0)
+					if (!ignoreMouseClicks && string.IsNullOrEmpty (firstSelectedElement) && elements != null && elements.Count > 0)
 					{
 						EditorGUILayout.HelpBox ("For menus to be directly-navigable, an element to select must be defined above.", MessageType.Warning);
 					}
@@ -2530,7 +2528,7 @@ namespace AC
 		}
 
 
-		/*
+		/**
 		 * <summary>Checks if the Menu can be controlled with the keyboard or controller at this time.</summary>
 		 * <returns>True if the Menu can be controlled with the keyboard or controller at this time.</returns>
 		 */
@@ -2580,6 +2578,24 @@ namespace AC
 
 			if (elementToSelect != null)
 			{
+				Select (elementToSelect, slotIndex);
+			}
+			else
+			{
+				ACDebug.LogWarning ("Cannot find element '" + elementName + "' inside Menu '" + title + "'");
+			}
+		}
+
+
+		/**
+		 * <summary>Selects a given element (and optionally, a slot inside it) for direct-controlled menu navigation.</summary>
+		 * <param name = "elementToSelect">The MenuElement to select</param>
+		 * <param name = "slotIndex">The index number of the slot to select, if the MenuElement has multiple slots</param>
+		 */
+		public void Select (MenuElement elementToSelect, int slotIndex = 0)
+		{
+			if (elementToSelect != null)
+			{
 				if (elementToSelect.IsVisible)
 				{
 					selected_element = elementToSelect;
@@ -2596,12 +2612,8 @@ namespace AC
 				}
 				else
 				{
-					ACDebug.LogWarning ("Cannot select element '" + elementName + "' inside Menu '" + title + "' because it is not visible!");
+					ACDebug.LogWarning ("Cannot select element '" + elementToSelect.title + "' inside Menu '" + title + "' because it is not visible!");
 				}
-			}
-			else
-			{
-				ACDebug.LogWarning ("Cannot find element '" + elementName + "' inside Menu '" + title + "'");
 			}
 		}
 
@@ -2874,6 +2886,23 @@ namespace AC
 		}
 
 
+		/** 
+		 * <summary>Gets the first visibla element from the Menu's list of elements, in the order defined in the Menu Manager</summary>
+		 * <returns>The first visibla element from the Menu's list of elements</returns>
+		 */
+		public MenuElement GetFirstVisibleElement ()
+		{
+			foreach (MenuElement element in visibleElements)
+			{
+				if (element.IsVisible)
+				{
+					return element;
+				}
+			}
+			return null;
+		}
+
+
 		/**
 		 * <summary>Gets the GameObject of the first-selected MenuElement, for a Unity UI-based Menu.</summary>
 		 * <returns>The GameObject of the first-selected MenuElement</returns>
@@ -2983,23 +3012,16 @@ namespace AC
 		}
 
 
-		/** The Menu's id number as a string. */
-		public string IDString
-		{
-			get
-			{
-				return idString;
-			}
-		}
-
-
 		/** The Menu's id number, which is a unique identifier. */
 		public int ID
 		{
+			get
+			{
+				return id;
+			}
 			set
 			{
 				id = value;
-				idString = id.ToString ();
 			}
 		}
 

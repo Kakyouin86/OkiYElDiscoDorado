@@ -200,15 +200,15 @@ namespace AC
 		{
 			if (parentAction == ParentAction.SetParent && parentTransformParameterID < 0)
 			{
-				if (parentTransform != null && parentTransform.gameObject == gameObject) return true;
+				if (parentTransform && parentTransform.gameObject == gameObject) return true;
 				if (parentTransformID == id) return true;
 			}
 			if (!isPlayer && obToAffectParameterID < 0)
 			{
-				if (obToAffect != null && obToAffect == gameObject) return true;
+				if (obToAffect && obToAffect == gameObject) return true;
 				if (obToAffectID == id && id != 0) return true;
 			}
-			if (isPlayer && gameObject.GetComponent <Player>() != null) return true;
+			if (isPlayer && gameObject && gameObject.GetComponent <Player>()) return true;
 			return base.ReferencesObjectOrID (gameObject, id);
 		}
 

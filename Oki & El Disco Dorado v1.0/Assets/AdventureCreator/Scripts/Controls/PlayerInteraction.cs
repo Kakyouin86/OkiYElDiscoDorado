@@ -51,7 +51,7 @@ namespace AC
 			EventManager.OnInitialiseScene -= OnInitialiseScene;
 			EventManager.OnInventoryInteract -= OnInventoryInteract;
 			EventManager.OnInventoryCombine -= OnInventoryCombine;
-			EventManager.OnEnterGameState += OnEnterGameState;
+			EventManager.OnEnterGameState -= OnEnterGameState;
 		}
 
 
@@ -782,9 +782,13 @@ namespace AC
 								if (!InvInstance.IsValid (KickStarter.runtimeInventory.SelectedInstance) && hotspot.provideUseInteraction)
 								{
 									// Perform "Use" interaction
-									if (hotspot.IsSingleInteraction())
+									if (hotspot.IsSingleInteraction ())
 									{
 										ClickButton (InteractionType.Use, -1);
+									}
+									else if (KickStarter.playerCursor.IsInWalkMode () && hotspot && hotspot.walkToMarker)
+									{
+										ClickHotspotToWalk (hotspot.walkToMarker);
 									}
 									else if (KickStarter.playerCursor.GetSelectedCursor() >= 0)
 									{
@@ -1573,7 +1577,7 @@ namespace AC
 		{
 			// Return false if we're in "Walk mode" anyway
 			if (KickStarter.settingsManager && KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot
-				&& KickStarter.playerCursor && KickStarter.playerCursor.GetSelectedCursor () == -1)
+				&& KickStarter.playerCursor && KickStarter.playerCursor.IsInWalkMode ())
 			{
 				return false;
 			}
@@ -1656,33 +1660,30 @@ namespace AC
 			{
 				return false;
 			}
-			
-			/*if (!KickStarter.runtimeInventory.PlayerInvCollection.Contains (KickStarter.runtimeInventory.SelectedInstance))
-			{
-				return false;
-			}*/
-			
-			if (KickStarter.settingsManager.InventoryDragDrop && KickStarter.playerInput.GetMouseState () == MouseState.Normal && KickStarter.playerInput.GetDragState () == DragState.Inventory)
+
+			MouseState mouseState = KickStarter.playerInput.GetMouseState (false);
+
+			if (KickStarter.settingsManager.InventoryDragDrop && mouseState == MouseState.Normal && KickStarter.playerInput.GetDragState () == DragState.Inventory)
 			{
 				return true;
 			}
 			
-			if ( KickStarter.settingsManager.InventoryDragDrop && KickStarter.playerInput.CanClick () && KickStarter.playerInput.GetMouseState () == MouseState.Normal && KickStarter.playerInput.GetDragState () == DragState.None)
+			if ( KickStarter.settingsManager.InventoryDragDrop && KickStarter.playerInput.CanClick () && mouseState == MouseState.Normal && KickStarter.playerInput.GetDragState () == DragState.None)
 			{
 				return true;
 			}
 			
-			if (KickStarter.playerInput.GetMouseState () == MouseState.SingleClick && KickStarter.settingsManager.inventoryDisableLeft)
+			if (mouseState == MouseState.SingleClick && KickStarter.settingsManager.inventoryDisableLeft)
 			{
 				return true;
 			}
 			
-			if (KickStarter.playerInput.GetMouseState () == MouseState.RightClick && KickStarter.settingsManager.RightClickInventory == RightClickInventory.DeselectsItem && KickStarter.settingsManager.InventoryInteractions == InventoryInteractions.Single)
+			if (mouseState == MouseState.RightClick && KickStarter.settingsManager.RightClickInventory == RightClickInventory.DeselectsItem && KickStarter.settingsManager.InventoryInteractions == InventoryInteractions.Single)
 			{
 				return true;
 			}
 
-			if (KickStarter.playerInput.GetMouseState () == MouseState.RightClick && KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot && KickStarter.settingsManager.cycleInventoryCursors)
+			if (mouseState == MouseState.RightClick && KickStarter.settingsManager.interactionMethod == AC_InteractionMethod.ChooseInteractionThenHotspot && KickStarter.settingsManager.cycleInventoryCursors)
 			{
 				return true;
 			}
@@ -2027,6 +2028,11 @@ namespace AC
 							//_menu.TurnOff ();
 							ClickButton (InteractionType.Use, iconID, null, _menu.TargetHotspot);
 						}
+
+						if (KickStarter.stateHandler.IsInGameplay () && KickStarter.settingsManager.alwaysCloseInteractionMenus)
+						{
+							_menu.TurnOff ();
+						}
 					}
 					break;
 
@@ -2122,7 +2128,7 @@ namespace AC
 						}
 					}
 
-					if (KickStarter.playerCursor.GetSelectedCursor () == -1 && KickStarter.cursorManager.addWalkPrefix)
+					if (KickStarter.playerCursor.IsInWalkMode () && KickStarter.cursorManager.addWalkPrefix)
 					{
 						// 'Walk to'
 						return KickStarter.runtimeLanguages.GetTranslation (KickStarter.cursorManager.walkPrefix.label, KickStarter.cursorManager.walkPrefix.lineID, _language, KickStarter.cursorManager.walkPrefix.GetTranslationType (0));

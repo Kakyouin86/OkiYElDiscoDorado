@@ -361,7 +361,7 @@ namespace AC
 		{
 			if (parameterID < 0 && location == VariableLocation.Component)
 			{
-				if (variables != null && variables.gameObject == gameObject) return true;
+				if (variables && variables.gameObject == gameObject) return true;
 				return (variablesConstantID == id && id != 0);
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

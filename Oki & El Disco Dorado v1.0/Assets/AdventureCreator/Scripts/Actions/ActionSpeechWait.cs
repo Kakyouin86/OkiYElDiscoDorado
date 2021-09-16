@@ -24,7 +24,7 @@ namespace AC
 	{
 
 		[SerializeField] private SpeechWaitMethod speechWaitMethod = SpeechWaitMethod.Speaker;
-		private enum SpeechWaitMethod { Speaker, LineID };
+		private enum SpeechWaitMethod { Speaker, LineID, AnySpeech };
 		public int lineID = 0;
 		public int lineIDParameterID = -1;
 
@@ -49,7 +49,7 @@ namespace AC
 			switch (speechWaitMethod)
 			{
 				case SpeechWaitMethod.Speaker:
-					runtimeSpeaker = (isPlayer)
+					runtimeSpeaker = isPlayer
 									? AssignPlayer (playerID, parameters, playerParameterID)
 									: AssignFile<Char> (parameters, parameterID, constantID, speaker);
 					break;
@@ -68,6 +68,11 @@ namespace AC
 		{
 			if (!isRunning)
 			{
+				if (speechWaitMethod == SpeechWaitMethod.Speaker && runtimeSpeaker == null)
+				{
+					Log ("No speaker set - checking for narration");
+				}
+
 				if (LineIsPlaying ())
 				{
 					isRunning = true;
@@ -97,13 +102,15 @@ namespace AC
 				case SpeechWaitMethod.Speaker:
 					if (runtimeSpeaker == null)
 					{
-						LogWarning ("No speaker set");
-						return false;
+						return KickStarter.dialog.NarrationIsPlaying ();
 					}
 					return KickStarter.dialog.CharacterIsSpeaking (runtimeSpeaker);
 
 				case SpeechWaitMethod.LineID:
 					return KickStarter.dialog.LineIsPlaying (lineID);
+
+				case SpeechWaitMethod.AnySpeech:
+					return KickStarter.dialog.IsAnySpeechPlaying ();
 
 				default:
 					return false;
@@ -126,45 +133,50 @@ namespace AC
 			switch (speechWaitMethod)
 			{
 				case SpeechWaitMethod.Speaker:
-				{
-					isPlayer = EditorGUILayout.Toggle ("Player line?",isPlayer);
-					if (isPlayer)
 					{
-						if (KickStarter.settingsManager != null && KickStarter.settingsManager.playerSwitching == PlayerSwitching.Allow)
+						isPlayer = EditorGUILayout.Toggle ("Player line?",isPlayer);
+						if (isPlayer)
 						{
-							playerParameterID = ChooseParameterGUI ("Player ID:", parameters, playerParameterID, ParameterType.Integer);
-							if (playerParameterID < 0)
-								playerID = ChoosePlayerGUI (playerID, true);
-						}
-					}
-					else
-					{
-						parameterID = Action.ChooseParameterGUI ("Speaker:", parameters, parameterID, ParameterType.GameObject);
-						if (parameterID >= 0)
-						{
-							constantID = 0;
-							speaker = null;
+							if (KickStarter.settingsManager != null && KickStarter.settingsManager.playerSwitching == PlayerSwitching.Allow)
+							{
+								playerParameterID = ChooseParameterGUI ("Player ID:", parameters, playerParameterID, ParameterType.Integer);
+								if (playerParameterID < 0)
+									playerID = ChoosePlayerGUI (playerID, true);
+							}
 						}
 						else
 						{
-							speaker = (Char) EditorGUILayout.ObjectField ("Speaker:", speaker, typeof(Char), true);
+							parameterID = Action.ChooseParameterGUI ("Speaker:", parameters, parameterID, ParameterType.GameObject);
+							if (parameterID >= 0)
+							{
+								constantID = 0;
+								speaker = null;
+							}
+							else
+							{
+								speaker = (Char) EditorGUILayout.ObjectField ("Speaker:", speaker, typeof(Char), true);
 							
-							constantID = FieldToID <Char> (speaker, constantID);
-							speaker = IDToField <Char> (speaker, constantID, false);
+								constantID = FieldToID <Char> (speaker, constantID);
+								speaker = IDToField <Char> (speaker, constantID, false);
+
+								if (speaker == null && constantID == 0)
+								{
+									EditorGUILayout.HelpBox ("If no speaker is assigned, the Action will wait for narration.", MessageType.Info);
+								}
+							}
 						}
+						break;
 					}
-					break;
-				}
 
 				case SpeechWaitMethod.LineID:
-				{
-					lineIDParameterID = Action.ChooseParameterGUI ("Line ID:", parameters, lineIDParameterID, ParameterType.Integer);
-					if (lineIDParameterID < 0)
 					{
-						lineID = EditorGUILayout.IntField ("Line ID:", lineID);
+						lineIDParameterID = Action.ChooseParameterGUI ("Line ID:", parameters, lineIDParameterID, ParameterType.Integer);
+						if (lineIDParameterID < 0)
+						{
+							lineID = EditorGUILayout.IntField ("Line ID:", lineID);
+						}
+						break;
 					}
-					break;
-				}
 
 				default:
 					break;
@@ -215,10 +227,10 @@ namespace AC
 		{
 			if (!isPlayer && parameterID < 0)
 			{
-				if (speaker != null && speaker.gameObject == gameObject) return true;
+				if (speaker && speaker.gameObject == gameObject) return true;
 				if (constantID == id && id != 0) return true;
 			}
-			if (isPlayer && gameObject.GetComponent <Player>()) return true;
+			if (isPlayer && gameObject && gameObject.GetComponent <Player>()) return true;
 			return base.ReferencesObjectOrID (gameObject, id);
 		}
 

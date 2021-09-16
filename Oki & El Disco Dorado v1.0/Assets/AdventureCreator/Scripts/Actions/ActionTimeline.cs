@@ -147,7 +147,12 @@ namespace AC
 			}
 			else
 			{
-				if (runtimeDirector.state != PlayState.Paused)
+				if (KickStarter.stateHandler.ApplicationIsPaused ())
+				{
+					return defaultPauseTime;
+				}
+
+				if (runtimeDirector.state != PlayState.Paused || (!KickStarter.stateHandler.ApplicationIsInFocus () && !Application.runInBackground))
 				{
 					if (runtimeDirector.extrapolationMode == DirectorWrapMode.Loop)
 					{
@@ -445,7 +450,7 @@ namespace AC
 		{
 			if (directorParameterID < 0)
 			{
-				if (director != null && director.gameObject == gameObject) return true;
+				if (director && director.gameObject == gameObject) return true;
 				if (directorConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

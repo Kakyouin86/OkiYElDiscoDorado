@@ -109,7 +109,7 @@ namespace AC
 	public enum TransformType { Translate, Rotate, Scale, CopyMarker };
 	
 	public enum VariableLocation { Global, Local, Component };
-	public enum VariableType { Boolean, Integer, String, Float, PopUp, Vector3, GameObject };
+	public enum VariableType { Boolean, Integer, String, Float, PopUp, Vector3, GameObject, UnityObject };
 	public enum BoolValue { True=1, False=0 };
 	public enum SetVarMethod { SetValue, IncreaseByValue, SetAsRandom, Formula };
 	public enum SetVarMethodString { EnteredHere=0, SetAsMenuElementText=1, CombinedWithOtherString=2 };
@@ -122,7 +122,7 @@ namespace AC
 	public enum ArrowPromptType { KeyOnly, ClickOnly, KeyAndClick };
 	
 	public enum AC_NavigationMethod { UnityNavigation, meshCollider, PolygonCollider, Custom };
-	public enum AC_PathType { Loop, PingPong, ForwardOnly, IsRandom, ReverseOnly };
+	public enum AC_PathType { Loop=0, PingPong=1, ForwardOnly=2, IsRandom=3, ReverseOnly=4 };
 	public enum PathSpeed { Walk=0, Run=1 };
 	
 	public enum SoundType { SFX, Music, Other, Speech };
@@ -238,7 +238,7 @@ namespace AC
 	public enum DoubleClickMovement { MakesPlayerRun = 0, RequiredToWalk = 1, Disabled = 2 };
 	public enum MusicAction { Play, Stop, Crossfade, ResumeLastStopped };
 	public enum AngleSnapping { None=0, NinetyDegrees=1, FortyFiveDegrees=2 };
-	public enum ParallaxReactsTo { Camera, Cursor };
+	public enum ParallaxReactsTo { Camera, Cursor, Transform };
 	public enum DebugWindowDisplays { Never, EditorOnly, EditorAndBuild };
 	public enum SpeechProximityLimit { NoLimit, LimitByDistanceToPlayer, LimitByDistanceToCamera };
 	public enum SpeechIDRecycling { NeverRecycle, AlwaysRecycle, RecycleHighestOnly };
@@ -281,5 +281,6 @@ namespace AC
 	public enum IfSkipWhileScrolling { DisplayFullText, SkipToNextWaitToken, EndLine, DoNothing };
 	public enum SpeechScrollAudioSource { SFX, Speech };
 	public enum ElementSlotMapping { List, FixedSlotIndex, FixedOptionID };
+	public enum PathSnapping { None, SnapToStart, SnapToNode, SnapToNearest }
 
 }

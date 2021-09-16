@@ -61,11 +61,11 @@ namespace AC
 		/** Deprecated */
 		[SerializeField] private int skipAction = -1;
 		/** Deprecated */
-		[SerializeField] private AC.Action skipActionActual;
+		[SerializeField] private AC.Action skipActionActual = null;
 		/** Deprecated */
-		[SerializeField] private Cutscene linkedCutscene;
+		[SerializeField] private Cutscene linkedCutscene = null;
 		/** Deprecated */
-		[SerializeField] private ActionListAsset linkedAsset;
+		[SerializeField] private ActionListAsset linkedAsset = null;
 
 		/** A List of the various outcomes that running the Action can have */
 		public List<ActionEnd> endings = new List<ActionEnd> ();
@@ -1140,7 +1140,7 @@ namespace AC
 				{
 					if (ending.resultAction == ResultAction.RunCutscene)
 					{
-						if (ending.linkedCutscene != null && ending.linkedCutscene.gameObject == gameObject) return true;
+						if (ending.linkedCutscene && ending.linkedCutscene.gameObject == gameObject) return true;
 					}
 				}
 			}
@@ -1955,11 +1955,7 @@ namespace AC
 		 */
 		public void SetOutput (ActionEnd actionEnd)
 		{
-			endAction = actionEnd.resultAction;
-			skipAction = actionEnd.skipAction;
-			skipActionActual = actionEnd.skipActionActual;
-			linkedCutscene = actionEnd.linkedCutscene;
-			linkedAsset = actionEnd.linkedAsset;
+			SetOutputs (new ActionEnd[1] { actionEnd });
 		}
 
 

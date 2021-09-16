@@ -177,6 +177,13 @@ namespace AC
 					}
 					return string.Empty;
 
+				case VariableType.UnityObject:
+					if (objectVal)
+					{
+						return objectVal.name;
+					}
+					return string.Empty;
+
 				case VariableType.Vector3:
 					return "(" + vector3Val.x.ToString () + ", " + vector3Val.y.ToString () + ", " + vector3Val.z.ToString () + ")";
 			}
@@ -319,6 +326,10 @@ namespace AC
 
 				case VariableType.GameObject:
 					gameObjectVal = (GameObject) CustomGUILayout.ObjectField <GameObject> (_label, gameObjectVal, false, apiPrefix + ".GameObjectValue", "The property's value for this item");
+					break;
+
+				case VariableType.UnityObject:
+					objectVal = CustomGUILayout.ObjectField <Object> (_label, objectVal, false);
 					break;
 			}
 		}

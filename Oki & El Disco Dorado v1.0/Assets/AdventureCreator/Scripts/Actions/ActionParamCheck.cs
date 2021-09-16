@@ -938,12 +938,12 @@ namespace AC
 		{
 			if (!checkOwn && actionListSource == ActionListSource.InScene)
 			{
-				if (actionList != null && actionList.gameObject == _gameObject) return true;
+				if (actionList && actionList.gameObject == _gameObject) return true;
 				if (actionListConstantID == id) return true;
 			}
 			if (compareParameterID < 0)
 			{
-				if (compareObject != null && compareObject == _gameObject) return true;
+				if (compareObject && compareObject == _gameObject) return true;
 				if (compareObjectConstantID == id) return true;
 			}
 			return base.ReferencesObjectOrID (_gameObject, id);

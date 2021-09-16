@@ -222,9 +222,7 @@ namespace AC
 		}
 
 
-		/**
-		 * <summary>Stops the Player from re-calculating pathfinding calculations.</summary>
-		 */
+		/** Stops the Player from re-calculating pathfinding calculations. */
 		public void CancelPathfindRecalculations ()
 		{
 			pathfindUpdateTime = 0f;
@@ -267,7 +265,14 @@ namespace AC
 
 			if (IsGrounded () && activePath == null)
 			{
-				if (_rigidbody && !_rigidbody.isKinematic)
+				if (_characterController)
+				{
+					simulatedVerticalSpeed = KickStarter.settingsManager.jumpSpeed * 0.1f;
+					isJumping = true;
+					_characterController.Move (simulatedVerticalSpeed * Time.deltaTime * Vector3.up);
+					return true;
+				}
+				else if (_rigidbody && !_rigidbody.isKinematic)
 				{
 					if (useRigidbodyForMovement)
 					{	
@@ -310,10 +315,14 @@ namespace AC
 			return false;
 		}
 
-
+		
 		public override void EndPath ()
 		{
-			lockedPath = false;
+			if (lockedPath)
+			{
+				if (activePath) activePath.pathType = lockedPathType;
+				lockedPath = false;
+			}
 			base.EndPath ();
 		}
 
@@ -326,14 +335,17 @@ namespace AC
 				switch (activePath.pathType)
 				{
 					case AC_PathType.ForwardOnly:
+					case AC_PathType.Loop:
 						activePath.pathType = AC_PathType.ReverseOnly;
 						targetNode --;
+						if (targetNode < 0) targetNode = activePath.nodes.Count - 1;
 						PathUpdate ();
 						break;
 
 					case AC_PathType.ReverseOnly:
 						activePath.pathType = AC_PathType.ForwardOnly;
 						targetNode ++;
+						if (targetNode >= activePath.nodes.Count) targetNode = 0;
 						PathUpdate ();
 						break;
 
@@ -348,14 +360,26 @@ namespace AC
 		 * <summary>Locks the Player to a Paths object during gameplay, if using Direct movement.
 		 * This allows the designer to constrain the Player's movement to a Path, even though they can move freely along it.</summary>
 		 * <param name = "pathOb">The Paths to lock the Player to</param>
+		 * <param name="canReverse">If True, the Player can move in both directions along the Path</param>
+		 * <param name="pathSnapping">The type of snapping to enforce when first placing the Player over the Path</param>
+		 * <param name="startingNode">If pathSnapping = PathSnapping.SnapToNode, the node index to snap to</param>
 		 */
-		public void SetLockedPath (Paths pathOb, bool canReverse = false, int startingNode = 0)
+		public void SetLockedPath (Paths pathOb, bool canReverse = false, PathSnapping pathSnapping = PathSnapping.SnapToStart, int startingNode = 0)
 		{
 			// Ignore if using "point and click" or first person methods
-			if (KickStarter.settingsManager.movementMethod == MovementMethod.Direct)
+			if (KickStarter.settingsManager.movementMethod == MovementMethod.Direct || KickStarter.settingsManager.movementMethod == MovementMethod.FirstPerson)
 			{
 				lockedPath = true;
-				lockedPathCanReverse = canReverse;
+				lockedPathType = pathOb.pathType;
+
+				if (KickStarter.settingsManager.movementMethod == MovementMethod.Direct)
+				{
+					lockedPathCanReverse = canReverse;
+				}
+				else
+				{
+					lockedPathCanReverse = false;
+				}
 
 				if (pathOb.pathSpeed == PathSpeed.Run)
 				{
@@ -365,28 +389,57 @@ namespace AC
 				{
 					isRunning = false;
 				}
-				
-				Vector3 pathPosition = pathOb.Transform.position;
-				if (startingNode > 0 && startingNode < pathOb.nodes.Count)
+
+				switch (pathSnapping)
 				{
-					pathPosition = pathOb.nodes[startingNode];
+					default:
+						startingNode = pathOb.GetNearestNode (Transform.position);
+						break;
+
+					case PathSnapping.SnapToStart:
+						startingNode = 0;
+						break;
+
+					case PathSnapping.SnapToNode:
+						break;
 				}
 
-				if (pathOb.affectY)
+				if (pathOb.nodes == null || pathOb.nodes.Count == 0 || startingNode >= pathOb.nodes.Count)
 				{
-					Teleport (pathPosition);
+					lockedPath = false;
+					ACDebug.LogWarning ("Cannot lock Player to path '" + pathOb + "' - invalid node index " + startingNode, pathOb);
+					return;
 				}
-				else if (SceneSettings.IsUnity2D ())
+
+				Vector3 pathPosition = pathOb.nodes[startingNode];
+
+				if (pathSnapping != PathSnapping.None)
 				{
-					Teleport (new Vector3 (pathPosition.x, pathPosition.y, Transform.position.z));
-				}
-				else
-				{
-					Teleport (new Vector3 (pathPosition.x, Transform.position.y, pathPosition.z));
+					if (pathOb.affectY)
+					{
+						Teleport (pathPosition);
+					}
+					else if (SceneSettings.IsUnity2D ())
+					{
+						Teleport (new Vector3 (pathPosition.x, pathPosition.y, Transform.position.z));
+					}
+					else
+					{
+						Teleport (new Vector3 (pathPosition.x, Transform.position.y, pathPosition.z));
+					}
 				}
 					
 				activePath = pathOb;
-				targetNode = startingNode + 1;
+
+				if (startingNode == pathOb.nodes.Count - 1 && lockedPathType == AC_PathType.Loop)
+				{
+					targetNode = 0;
+				}
+				else
+				{
+					targetNode = startingNode + 1;
+				}
+
 				charState = CharState.Idle;
 			}
 			else
@@ -622,7 +675,8 @@ namespace AC
 					playerData.playerPathData = string.Empty;
 					playerData.playerActivePath = Serializer.GetConstantID (GetPath ().gameObject);
 					playerData.playerLockedPath = lockedPath;
-					playerData.playerLockedPathReversing = (GetPath ().pathType == AC_PathType.ReverseOnly);
+					playerData.playerLockedPathReversing = lockedPathCanReverse;
+					playerData.playerLockedPathType = (int) lockedPathType;
 				}
 			}
 			
@@ -891,12 +945,9 @@ namespace AC
 					if (lockedPath)
 					{
 						savedPath.pathType = AC_PathType.ForwardOnly;
-						SetLockedPath (savedPath);
-						Debug.Log (playerData.playerLockedPathReversing);
-						if (playerData.playerLockedPathReversing)
-						{
-							ReverseDirectPathDirection ();
-						}
+						SetLockedPath (savedPath, playerData.playerLockedPathReversing);
+						lockedPathType = (AC_PathType) playerData.playerLockedPathType;
+						
 						Teleport (new Vector3 (playerData.playerLocX, playerData.playerLocY, playerData.playerLocZ));
 						SetRotation (playerData.playerRotY);
 						targetNode = playerData.playerTargetNode;
@@ -1206,7 +1257,6 @@ namespace AC
 				return true;
 			}
 		}
-
 
 		/** The Player's ID number, used to keep track of which Player is currently controlled */
 		public int ID

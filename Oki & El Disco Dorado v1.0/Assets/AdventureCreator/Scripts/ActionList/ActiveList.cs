@@ -298,7 +298,8 @@ namespace AC
 		public void Resume (RuntimeActionList runtimeActionList = null, bool rerunPausedActions = false)
 		{
 			if (runtimeActionList != null)
-			{
+			{ 
+				isRunning = true;
 				actionList = runtimeActionList;
 				runtimeActionList.Resume (startIndex, resumeIndices, parameterData, rerunPausedActions);
 			}

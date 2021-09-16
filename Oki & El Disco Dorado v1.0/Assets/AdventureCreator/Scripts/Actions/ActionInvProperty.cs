@@ -174,6 +174,10 @@ namespace AC
 						runtimeVariable.GameObjectValue = invVar.GameObjectValue;
 						break;
 
+					case VariableType.UnityObject:
+						runtimeVariable.UnityObjectValue = invVar.UnityObjectValue;
+						break;
+
 					default:
 						runtimeVariable.IntegerValue = invVar.IntegerValue;
 						break;
@@ -554,7 +558,7 @@ namespace AC
 		{
 			if (varLocation == VariableLocation.Component && varParameterID < 0)
 			{
-				if (variables != null && variables.gameObject == _gameObject) return true;
+				if (variables && variables.gameObject == _gameObject) return true;
 				if (variablesConstantID == id) return true;
 			}
 			return base.ReferencesObjectOrID (_gameObject, id);

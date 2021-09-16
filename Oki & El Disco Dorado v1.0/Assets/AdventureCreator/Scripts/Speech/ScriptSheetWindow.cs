@@ -111,7 +111,10 @@ namespace AC
 				}
 			}
 
-			limitToMissingAudio = EditorGUILayout.Toggle ("Limit to lines with no audio?", limitToMissingAudio);
+			if (speechManager.referenceSpeechFiles != ReferenceSpeechFiles.ByAddressable)
+			{
+				limitToMissingAudio = EditorGUILayout.Toggle ("Limit to lines with no audio?", limitToMissingAudio);
+			}
 
 			includeDescriptions = EditorGUILayout.Toggle ("Include descriptions?", includeDescriptions);
 			removeTokens = EditorGUILayout.Toggle ("Remove text tokens?", removeTokens);

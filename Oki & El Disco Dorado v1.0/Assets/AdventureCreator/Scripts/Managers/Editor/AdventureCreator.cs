@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -9,7 +11,7 @@ namespace AC
 	public class AdventureCreator : EditorWindow
 	{
 		
-		public static string version = "1.73.8";
+		public const string version = "1.74.0";
 	 
 		private bool showScene = true;
 		private bool showSettings = false;
@@ -27,7 +29,7 @@ namespace AC
 		public static void Init ()
 		{
 			// Get existing open window or if none, make a new one:
-			AdventureCreator window = (AdventureCreator) EditorWindow.GetWindow (typeof (AdventureCreator));
+			AdventureCreator window = (AdventureCreator) GetWindow (typeof (AdventureCreator));
 			window.titleContent.text = "AC Game Editor";
 		}
 
@@ -97,7 +99,7 @@ namespace AC
 		
 				GUILayout.EndHorizontal ();
 				GUILayout.Space (5);
-				
+
 				if (showScene)
 				{
 					GUILayout.Label ("Scene manager",  CustomStyles.managerHeader);
@@ -355,11 +357,11 @@ namespace AC
 			EditorStyles.label.wordWrap = true;
 			GUILayout.Label ("Error - missing References",  CustomStyles.managerHeader);
 			EditorGUILayout.Space ();
-			EditorGUILayout.HelpBox ("A 'References' file must be present in the directory '" + ACInstaller.DefaultReferencesPath + "' - please click to create one.", MessageType.Warning);
+			EditorGUILayout.HelpBox ("A 'References' file must be present in the directory '" + Resource.DefaultReferencesPath + "' - please click to create one.", MessageType.Warning);
 
 			if (GUILayout.Button ("Create 'References' file"))
 			{
-				CustomAssetUtility.CreateAsset<References> ("References", ACInstaller.DefaultReferencesPath);
+				CustomAssetUtility.CreateAsset<References> ("References", Resource.DefaultReferencesPath);
 			}
 		}
 
@@ -490,15 +492,8 @@ namespace AC
 			actionsManager.AllActions.Clear ();
 
 			// Load default Actions
-			AddActionsFromFolder (actionsManager, "Assets/" + actionsManager.FolderPath, oldActionTypes);
+			AddActionsFromFolder (actionsManager, actionsManager.FolderPath, oldActionTypes);
 
-			// Load custom Actions
-			if (!string.IsNullOrEmpty (actionsManager.customFolderPath))
-			{
-				actionsManager.customFolderPaths.Add (actionsManager.customFolderPath);
-				actionsManager.customFolderPath = string.Empty;
-			}
-			
 			for (int i=0; i<actionsManager.customFolderPaths.Count; i++)
 			{
 				string customFolderPath = actionsManager.customFolderPaths[i];
@@ -515,7 +510,7 @@ namespace AC
 
 				if (ignoreMe) continue;
 
-				if (!string.IsNullOrEmpty (customFolderPath) && customFolderPath != actionsManager.FolderPath)
+				if (!string.IsNullOrEmpty (customFolderPath) && actionsManager.FolderPath != ("Assets/" + customFolderPath))
 				{
 					try
 					{
@@ -535,6 +530,12 @@ namespace AC
 		private static void AddActionsFromFolder (ActionsManager actionsManager, string folderPath, List<ActionType> oldActionTypes)
 		{
 			DirectoryInfo dir = new DirectoryInfo (folderPath);
+
+			if (!dir.Exists)
+			{
+				Debug.LogWarning ("Cannot add Actions from folder '" + folderPath + "', because the directory does not exist!");
+				return;
+			}
 
 			FileInfo[] info = dir.GetFiles ("*.cs");
 			foreach (FileInfo f in info)
@@ -596,3 +597,5 @@ namespace AC
 	}
 
 }
+
+#endif

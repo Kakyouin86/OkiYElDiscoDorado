@@ -15,9 +15,7 @@ using System.Collections.Generic;
 namespace AC
 {
 
-	/**
-	 * Animates a SkinnedMeshRenderer's textures based on lipsync animation
-	 */
+	/** Animates a SkinnedMeshRenderer's textures based on lipsync animation */
 	[AddComponentMenu("Adventure Creator/Characters/Lipsync texture")]
 	[HelpURL("https://www.adventurecreator.org/scripting-guide/class_a_c_1_1_lip_sync_texture.html")]
 	public class LipSyncTexture : MonoBehaviour
@@ -39,15 +37,6 @@ namespace AC
 		protected int thisFrameIndex = -1;
 
 		#endregion
-
-		private void OnSpeechToken (AC.Char speakingCharacter, int lineID, string tokenKey, string tokenValue)
-		{
-			float transitionTime = 0f;
-			if (float.TryParse (tokenValue, out transitionTime))
-			{
-				
-			}
-		} 
 
 
 		#region UnityStandards
@@ -71,9 +60,7 @@ namespace AC
 
 		#region PublicFunctions
 
-		/**
-		 * Resizes the textures List to match the number of phonemes defined in the Phonemes Editor
-		 */
+		/** Resizes the textures List to match the number of phonemes defined in the Phonemes Editor */
 		public void LimitTextureArray ()
 		{
 			if (AdvGame.GetReferences () == null || AdvGame.GetReferences ().speechManager == null)

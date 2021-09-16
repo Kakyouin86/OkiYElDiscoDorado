@@ -56,19 +56,23 @@ namespace AC
 				{
 					if (selectFirstVisible)
 					{
-						GameObject elementObject = menu.GetObjectToSelect ();
-						if (elementObject != null)
+						if (menu.menuSource == MenuSource.AdventureCreator)
 						{
-							KickStarter.playerMenus.SelectUIElement (elementObject);
+							MenuElement menuElement = menu.GetFirstVisibleElement ();
+							menu.Select (menuElement, 0);
+						}
+						else
+						{
+							GameObject elementObject = menu.GetObjectToSelect ();
+							if (elementObject != null)
+							{
+								KickStarter.playerMenus.SelectUIElement (elementObject);
+							}
 						}
 					}
 					else if (!string.IsNullOrEmpty (elementName))
 					{
-						MenuElement menuElement = PlayerMenus.GetElementWithName (menuName, elementName);
-						if (menuElement != null)
-						{
-							menu.Select (elementName, slotIndex);
-						}
+						menu.Select (elementName, slotIndex);
 					}
 				}
 			}
@@ -81,19 +85,19 @@ namespace AC
 		
 		public override void ShowGUI (List<ActionParameter> parameters)
 		{
-			menuNameParameterID = Action.ChooseParameterGUI ("Menu containing element:", parameters, menuNameParameterID, ParameterType.String);
+			menuNameParameterID = Action.ChooseParameterGUI ("Menu name:", parameters, menuNameParameterID, ParameterType.String);
 			if (menuNameParameterID < 0)
 			{
-				menuName = EditorGUILayout.TextField ("Menu containing element:", menuName);
+				menuName = EditorGUILayout.TextField ("Menu name:", menuName);
 			}
 
-			selectFirstVisible = EditorGUILayout.Toggle ("Select first-visible element?", selectFirstVisible);
+			selectFirstVisible = EditorGUILayout.Toggle ("Select first-visible?", selectFirstVisible);
 			if (!selectFirstVisible)
 			{
-				elementNameParameterID = Action.ChooseParameterGUI ("Element to select:", parameters, elementNameParameterID, ParameterType.String);
+				elementNameParameterID = Action.ChooseParameterGUI ("Element name:", parameters, elementNameParameterID, ParameterType.String);
 				if (elementNameParameterID < 0)
 				{
-					elementName = EditorGUILayout.TextField ("Element to select:", elementName);
+					elementName = EditorGUILayout.TextField ("Element name:", elementName);
 				}
 
 				slotIndexParameterID = Action.ChooseParameterGUI ("Slot index (optional):", parameters, slotIndexParameterID, ParameterType.Integer);

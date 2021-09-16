@@ -77,6 +77,7 @@ namespace AC
 		private Vector2 scrollPos;
 		private Vector2 elementScrollPos;
 		private string nameFilter = "";
+		private bool filterIncludesElements = false;
 		private bool oldVisibility;
 		private int typeNumber = 0;
 		private string[] elementTypes = { "Button", "Crafting", "Cycle", "DialogList", "Drag", "Graphic", "Input", "Interaction", "InventoryBox", "Journal", "Label", "ProfilesList", "SavesList", "Slider", "Timer", "Toggle" };
@@ -193,12 +194,12 @@ namespace AC
 					EditorGUILayout.Space ();
 					
 					string elementName = selectedMenuElement.title;
-					if (elementName == "")
+					if (string.IsNullOrEmpty (elementName))
 					{
 						elementName = "(Untitled)";
 					}
 					
-					string elementType = "";
+					string elementType = string.Empty;
 					foreach (string _elementType in elementTypes)
 					{
 						if (selectedMenuElement.GetType ().ToString ().Contains (_elementType))
@@ -244,7 +245,10 @@ namespace AC
 			{
 				if (menus != null && menus.Count > 1)
 				{
+					EditorGUILayout.BeginHorizontal ();
 					nameFilter = EditorGUILayout.TextField ("Filter by name:", nameFilter);
+					filterIncludesElements = GUILayout.Toggle (filterIncludesElements, "Include elements", "toolbarbutton", GUILayout.MaxWidth (130f));
+					EditorGUILayout.EndHorizontal ();
 					EditorGUILayout.Space ();
 				}
 
@@ -264,6 +268,20 @@ namespace AC
 					{
 						_menu.showInFilter = true;
 						numInFilter ++;
+						continue;
+					}
+
+					if (filterIncludesElements)
+					{
+						foreach (MenuElement element in _menu.elements)
+						{
+							if (element.title.ToLower ().Contains (nameFilter.ToLower ()))
+							{
+								_menu.showInFilter = true;
+								numInFilter ++;
+								break;
+							}
+						}
 					}
 				}
 
@@ -437,7 +455,7 @@ namespace AC
 		
 		
 		private void CreateElementsGUI (AC.Menu _menu)
-		{	
+		{
 			if (_menu.elements != null && _menu.elements.Count > 0)
 			{
 				elementScrollPos = EditorGUILayout.BeginScrollView (elementScrollPos, GUILayout.Height (Mathf.Min (_menu.elements.Count * 22, 295f) + 9));
@@ -447,8 +465,16 @@ namespace AC
 					if (_element != null)
 					{
 						string elementName = _element.title;
-						
-						if (elementName == "")
+
+						if (filterIncludesElements && !string.IsNullOrEmpty (nameFilter))
+						{
+							if (!elementName.ToLower ().Contains (nameFilter.ToLower ()))
+							{
+								continue;
+							}
+						}
+
+						if (string.IsNullOrEmpty (elementName))
 						{
 							elementName = "(Untitled)";
 						}
@@ -464,7 +490,7 @@ namespace AC
 							}
 						}
 
-						if (GUILayout.Button ("", CustomStyles.IconCog))
+						if (GUILayout.Button (string.Empty, CustomStyles.IconCog))
 						{
 							SideMenu (_menu, _element);
 						}
@@ -520,7 +546,7 @@ namespace AC
 		{
 			foreach (MenuElement menuElement in menu.elements)
 			{
-				UnityEngine.Object.DestroyImmediate (menuElement, true);
+				DestroyImmediate (menuElement, true);
 				AssetDatabase.SaveAssets();
 			}
 			CleanUpAsset ();
@@ -589,7 +615,7 @@ namespace AC
 			idArray.Sort ();
 			
 			className = "Menu" + className;
-			MenuElement newElement = (MenuElement) CreateInstance (className);
+			MenuElement newElement = (MenuElement) CreateInstance ("AC." + className);
 			newElement.Declare ();
 			newElement.title = className.Substring (4);
 			
@@ -886,7 +912,7 @@ namespace AC
 			}
 
 			menu.AddSeparator (string.Empty);
-			menu.AddItem (new GUIContent ("Find references"), false, ElementCallback, "Find refences");
+			menu.AddItem (new GUIContent ("Find references"), false, ElementCallback, "Find references");
 			
 			menu.ShowAsContext ();
 		}

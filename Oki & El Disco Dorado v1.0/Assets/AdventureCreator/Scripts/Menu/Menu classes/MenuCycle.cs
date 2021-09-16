@@ -133,7 +133,13 @@ namespace AC
 			outlineSize = _element.outlineSize;
 			anchor = _element.anchor;
 			selected = _element.selected;
-			optionsArray = _element.optionsArray;
+			
+			optionsArray = new List<string>();
+			foreach (string option in _element.optionsArray)
+			{
+				optionsArray.Add (option);
+			}
+			
 			cycleType = _element.cycleType;
 			splitLanguageType = _element.splitLanguageType;
 			varID = _element.varID;

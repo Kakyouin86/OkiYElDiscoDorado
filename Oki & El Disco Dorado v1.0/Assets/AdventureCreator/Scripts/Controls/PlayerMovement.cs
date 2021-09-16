@@ -866,7 +866,7 @@ namespace AC
 			
 			if ((KickStarter.playerInput.GetMouseState () == MouseState.SingleClick || KickStarter.playerInput.GetMouseState () == MouseState.DoubleClick) && !KickStarter.playerMenus.IsInteractionMenuOn () && !KickStarter.playerMenus.IsMouseOverMenu () && !KickStarter.playerInteraction.IsMouseOverHotspot () && KickStarter.playerCursor)
 			{
-				if (KickStarter.playerCursor.GetSelectedCursor () < 0)
+				if (KickStarter.playerCursor.GetSelectedCursor () < 0 || KickStarter.playerCursor.IsInWalkMode ())
 				{
 					if (KickStarter.settingsManager.doubleClickMovement == DoubleClickMovement.RequiredToWalk && KickStarter.playerInput.GetMouseState () == MouseState.SingleClick)
 					{
@@ -1228,12 +1228,12 @@ namespace AC
 		protected void FirstPersonControlPlayer ()
 		{
 			Vector2 freeAim = KickStarter.playerInput.GetFreeAim ();
-			if (freeAim.magnitude > KickStarter.settingsManager.dragWalkThreshold / 10f)
+			if (freeAim.magnitude > KickStarter.settingsManager.dragWalkThreshold * 30f * Time.deltaTime)
 			{
 				freeAim.Normalize ();
-				freeAim *= KickStarter.settingsManager.dragWalkThreshold / 10f;
+				freeAim *= KickStarter.settingsManager.dragWalkThreshold * 30f * Time.deltaTime;
 			}
-
+			
 			float rotationX = KickStarter.player.TransformRotation.eulerAngles.y;
 			if (KickStarter.player.FirstPersonCameraComponent)
 			{

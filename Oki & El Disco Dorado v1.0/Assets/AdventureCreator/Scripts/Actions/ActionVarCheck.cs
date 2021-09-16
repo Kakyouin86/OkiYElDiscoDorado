@@ -50,6 +50,9 @@ namespace AC
 		public GameObject gameObjectValue;
 		protected GameObject runtimeGameObjectValue;
 
+		public Object unityObjectValue;
+		protected Object runtimeUnityObjectValue;
+
 		public VariableLocation location = VariableLocation.Global;
 		protected LocalVariables localVariables;
 
@@ -81,6 +84,7 @@ namespace AC
 			vector3Value = AssignVector3 (parameters, checkParameterID, vector3Value);
 			stringValue = AssignString (parameters, checkParameterID, stringValue);
 			runtimeGameObjectValue = AssignFile (parameters, checkParameterID, intValue, gameObjectValue);
+			runtimeUnityObjectValue = AssignObject <Object> (parameters, checkParameterID, unityObjectValue);
 
 			runtimeVariable = null;
 			switch (location)
@@ -328,6 +332,27 @@ namespace AC
 							return true;
 						}
 						return false;
+
+					default:
+						break;
+				}
+			}
+
+			else if (_var.type == VariableType.UnityObject)
+			{
+				Object fieldValue = _var.UnityObjectValue;
+				if (_compareVar != null)
+				{
+					runtimeUnityObjectValue = _compareVar.UnityObjectValue;
+				}
+
+				switch (boolCondition)
+				{
+					case BoolCondition.EqualTo:
+						return (runtimeUnityObjectValue == fieldValue);
+
+					case BoolCondition.NotEqualTo:
+						return (runtimeUnityObjectValue != fieldValue);
 
 					default:
 						break;
@@ -603,6 +628,19 @@ namespace AC
 					}
 					break;
 
+				case VariableType.UnityObject:
+					boolCondition = (BoolCondition) EditorGUILayout.EnumPopup ("Condition:", boolCondition);
+					if (getVarMethod == GetVarMethod.EnteredValue)
+					{
+						checkParameterID = Action.ChooseParameterGUI ("Object:", parameters, checkParameterID, ParameterType.UnityObject);
+						if (checkParameterID < 0)
+						{
+							unityObjectValue = EditorGUILayout.ObjectField ("Object:", unityObjectValue, typeof (Object), false);
+						}
+						EditorGUILayout.HelpBox ("A match will be found if the two GameObjects share the same Constant ID value", MessageType.Info);
+					}
+					break;
+
 				case VariableType.Vector3:
 					vectorCondition = (VectorCondition) EditorGUILayout.EnumPopup ("Condition:", vectorCondition);
 					if (getVarMethod == GetVarMethod.EnteredValue)
@@ -745,7 +783,14 @@ namespace AC
 					case VariableType.GameObject:
 						if (gameObjectValue)
 						{
-							labelAdd += " " + boolCondition.ToString () + " " + gameObjectValue;
+							labelAdd += " " + boolCondition.ToString () + " " + gameObjectValue.name;
+						}
+						break;
+
+					case VariableType.UnityObject:
+						if (unityObjectValue)
+						{
+							labelAdd += " " + unityObjectValue.name;
 						}
 						break;
 
@@ -844,19 +889,19 @@ namespace AC
 
 		public override bool ReferencesObjectOrID (GameObject gameObject, int id)
 		{
-			if (gameObjectValue == gameObject)
+			if (gameObjectValue && gameObjectValue == gameObject)
 			{
 				return true;
 			}
 
 			if (parameterID < 0 && location == VariableLocation.Component)
 			{
-				if (variables != null && variables.gameObject == gameObject) return true;
+				if (variables && variables.gameObject && variables.gameObject == gameObject) return true;
 				if (variablesConstantID == id && id != 0) return true;
 			}
 			if (checkParameterID < 0 && getVarMethod == GetVarMethod.ComponentVariable)
 			{
-				if (compareVariables != null && compareVariables.gameObject == gameObject) return true;
+				if (compareVariables && compareVariables.gameObject && compareVariables.gameObject == gameObject) return true;
 				if (compareVariablesConstantID == id && id != 0) return true;
 			}
 			return base.ReferencesObjectOrID (gameObject, id);

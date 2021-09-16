@@ -306,8 +306,10 @@ namespace AC
 		public FirstPersonTouchScreen firstPersonTouchScreen = FirstPersonTouchScreen.OneTouchToMoveAndTurn;
 		/** How Direct movement should work when using touch-screen controls (DragBased, CustomInput) */
 		public DirectTouchScreen directTouchScreen = DirectTouchScreen.DragBased;
-		/** If True, then clicks while the game is paused are performed by releasing a touch, rather than beginning one */
+		/** If True, then menu clicks are performed by releasing a touch, rather than beginning one */
 		public bool touchUpWhenPaused = false;
+		/** If True, then scne clicks are performed by releasing a touch, rather than beginning one */
+		public bool touchUpInteractScene = false;
 
 		// Camera settings
 
@@ -1227,6 +1229,11 @@ namespace AC
 					}
 					doubleTapHotspots = CustomGUILayout.ToggleLeft ("Activate Hotspots with double-tap?", doubleTapHotspots, "AC.KickStarter.settingsManager.doubleTapHotspots", "If True, then Hotspots are activated by double-tapping");
 					touchUpWhenPaused = CustomGUILayout.ToggleLeft ("Release touch to interact with AC Menus?", touchUpWhenPaused, "AC.KickStarter.settingsManager.touchUpWhenPaused", "If True, then menu interactions are performed by releasing a touch, rather than beginning one");
+
+					if (movementMethod != MovementMethod.FirstPerson && offsetTouchCursor)
+					{
+						touchUpInteractScene = CustomGUILayout.ToggleLeft ("Release touch to interact with scene? (Experimental)", touchUpInteractScene, "AC.KickStarter.settingsManager.touchUpInteractScene", "If True, then scene interactions are performed by releasing a touch, rather than beginning one");
+					}
 				}
 				CustomGUILayout.EndVertical ();
 			}
