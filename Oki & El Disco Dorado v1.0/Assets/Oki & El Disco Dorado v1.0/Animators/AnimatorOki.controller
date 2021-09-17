@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OkiTake_D
+  m_Name: OkiTakeGround_D
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -89,55 +89,64 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 7359904823883303319}
-    m_Position: {x: 400, y: 160, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -7434574295917234879}
-    m_Position: {x: 400, y: 240, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1011800528325335791}
-    m_Position: {x: 390, y: 300, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 2176380106342582036}
-    m_Position: {x: 400, y: 350, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -8480854649961114381}
     m_Position: {x: 410, y: 410, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 4916554011830970178}
+    m_State: {fileID: -7434574295917234879}
     m_Position: {x: 410, y: 460, z: 0}
   - serializedVersion: 1
+    m_State: {fileID: 1011800528325335791}
+    m_Position: {x: 180, y: 310, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 2176380106342582036}
+    m_Position: {x: 180, y: 360, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -8480854649961114381}
+    m_Position: {x: 180, y: 410, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 4916554011830970178}
+    m_Position: {x: 180, y: 460, z: 0}
+  - serializedVersion: 1
     m_State: {fileID: -828576493806298129}
-    m_Position: {x: 445, y: 525, z: 0}
+    m_Position: {x: 410, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7043168450257923157}
-    m_Position: {x: 480, y: 590, z: 0}
+    m_Position: {x: 410, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3346133144577978366}
-    m_Position: {x: 515, y: 655, z: 0}
+    m_Position: {x: 640, y: 460, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -848408152450565521}
-    m_Position: {x: 550, y: 720, z: 0}
+    m_Position: {x: 640, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6982885918606187578}
-    m_Position: {x: 585, y: 785, z: 0}
+    m_Position: {x: 640, y: 410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 906090775753453324}
-    m_Position: {x: 620, y: 850, z: 0}
+    m_Position: {x: 640, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9218783731177219540}
-    m_Position: {x: 655, y: 915, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6871524534483616458}
-    m_Position: {x: 690, y: 980, z: 0}
+    m_Position: {x: 870, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1809464330957047228}
-    m_Position: {x: 725, y: 1045, z: 0}
+    m_Position: {x: 870, y: 460, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 609758848259269139}
-    m_Position: {x: 760, y: 1110, z: 0}
+    m_Position: {x: 870, y: 410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3575119360768988940}
-    m_Position: {x: 795, y: 1175, z: 0}
+    m_Position: {x: 870, y: 310, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -3758317561200897308}
+    m_Position: {x: 1100, y: 460, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 6153283803913278137}
+    m_Position: {x: 1100, y: 410, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 285466050109228755}
+    m_Position: {x: 1100, y: 310, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -4225114564333458562}
+    m_Position: {x: 1100, y: 360, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -147,7 +156,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 20, y: 220, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 7359904823883303319}
+  m_DefaultState: {fileID: -7434574295917234879}
 --- !u!1102 &-6982885918606187578
 AnimatorState:
   serializedVersion: 6
@@ -195,6 +204,58 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: d398a8e480e67a54baad2672b02f85a2, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-4225114564333458562
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OkiTakeMid_D
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 4bbfe6879750058429ccc2c756b35a6e, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-3758317561200897308
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OkiTakeMid_R
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 33ccd9f88b1101a4c8fe82b90f3d1340, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -300,6 +361,32 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!1102 &285466050109228755
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OkiTakeMid_U
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: c5a2ab33c5372fd47a2a1a226bf5411b, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &609758848259269139
 AnimatorState:
   serializedVersion: 6
@@ -307,7 +394,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OkiTake_L
+  m_Name: OkiTakeGround_L
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -385,7 +472,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OkiTake_R
+  m_Name: OkiTakeGround_R
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -437,7 +524,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OkiTake_U
+  m_Name: OkiTakeGround_U
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -482,14 +569,14 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &6871524534483616458
+--- !u!1102 &6153283803913278137
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OkiTake_R4
+  m_Name: OkiTakeMid_L
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -502,7 +589,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8980107b8e9277941be17c47402fb0e3, type: 2}
+  m_Motion: {fileID: 7400000, guid: 8e5e418d2563665418f5104df265f7af, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

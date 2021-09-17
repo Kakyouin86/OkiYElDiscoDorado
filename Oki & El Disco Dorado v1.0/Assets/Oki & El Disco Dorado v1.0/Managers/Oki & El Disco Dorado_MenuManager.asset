@@ -218,10 +218,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 2.625
-    y: 2.625
-    width: 33.075
-    height: 21.6
+    x: 3.745
+    y: 3.745
+    width: 47.187
+    height: 20.208
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -402,9 +402,9 @@ MonoBehaviour:
   _isLocked: 0
   id: 4
   title: InGame
-  manualSize: {x: 7.3, y: 5.9666667}
+  manualSize: {x: 7.2999997, y: 6.5790973}
   positionType: 1
-  manualPosition: {x: 19.1625, y: 436.57498}
+  manualPosition: {x: 27.3385, y: 407.151}
   positionSmoothing: 0
   alignment: 6
   toggleKey: 
@@ -473,13 +473,13 @@ MonoBehaviour:
   speechProximityLimit: 0
   speechProximityDistance: 10
   deleteUIWhenTurnOff: 0
-  biggestElementSize: {x: 35.7, y: 24.225}
+  biggestElementSize: {x: 50.932, y: 23.953}
   rect:
     serializedVersion: 2
     x: 0
-    y: 423.15
-    width: 38.325
-    height: 26.85
+    y: 393.302
+    width: 54.677
+    height: 27.698
   showInFilter: 1
 --- !u!114 &-7739778108260654419
 MonoBehaviour:
@@ -2648,7 +2648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   title: SubsSpeakerLabel
-  slotSize: {x: 4.376658, y: 2.5882354}
+  slotSize: {x: 4.4058747, y: 2.6128266}
   sizeType: 0
   positionType: 0
   slotSpacing: 0
@@ -2673,8 +2673,8 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 7.54
-    y: 7.54
+    x: 7.49
+    y: 7.49
     width: 33
     height: 11
   relativePosition: {x: 0, y: 0}
@@ -5320,10 +5320,10 @@ MonoBehaviour:
   biggestElementSize: {x: 0, y: 0}
   rect:
     serializedVersion: 2
-    x: 196.03998
-    y: 331.5
-    width: 377
-    height: 85
+    x: 194.73999
+    y: 328.38
+    width: 374.5
+    height: 84.200005
   showInFilter: 1
 --- !u!114 &5150482690214020741
 MonoBehaviour:
@@ -6336,7 +6336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   title: SubsLineLabel
-  slotSize: {x: 50, y: 4.8}
+  slotSize: {x: 48, y: 9}
   sizeType: 1
   positionType: 0
   slotSpacing: 0
@@ -6361,10 +6361,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 7.54
-    y: 26.080002
-    width: 377
-    height: 20.400002
+    x: 7.49
+    y: 25.98
+    width: 359.52
+    height: 37.89
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiText: {fileID: 0}
