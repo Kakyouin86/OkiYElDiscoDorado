@@ -137,6 +137,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turningStyle: 1
   isSpriteBased: 0
+--- !u!114 &19699409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d33593da7d3524e1998da7151086b1b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -1
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 0
+    skipAction: -1
+    skipActionActual: {fileID: 0}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 0
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 714
+    y: 658
+    width: 300
+    height: 160
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 387834400}
+  parameterID: -1
+  constantID: 2850510
+  obToAffect: {fileID: 943523453}
+  affectChildren: 0
+  visState: 1
 --- !u!1 &25636095
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,67 +693,6 @@ MonoBehaviour:
   obToMoveParameterID: -1
   obToMoveID: 0
   obToMove: {fileID: 0}
-  markerParameterID: -1
-  markerID: 0
-  teleporter: {fileID: 1557340768}
-  relativeGameObject: {fileID: 0}
-  relativeGameObjectID: 0
-  relativeGameObjectParameterID: -1
-  positionRelativeTo: 0
-  relativeVectorParameterID: -1
-  relativeVector: {x: 0, y: 0, z: 0}
-  vectorVarParameterID: -1
-  vectorVarID: 0
-  variableLocation: 0
-  recalculateActivePathFind: 0
-  isPlayer: 0
-  snapCamera: 0
-  copyRotation: 0
-  variables: {fileID: 0}
-  variablesConstantID: 0
---- !u!114 &104866599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0d4ab0f7ce3d4193a55deb9d20a7d66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  isDisplayed: 1
-  showComment: 0
-  comment: 
-  willWait: 0
-  endAction: 0
-  skipAction: -1
-  skipActionActual: {fileID: 0}
-  linkedCutscene: {fileID: 0}
-  linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 0
-    skipAction: -1
-    skipActionActual: {fileID: 0}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
-  isEnabled: 1
-  isAssetFile: 0
-  isBreakPoint: 0
-  nodeRect:
-    serializedVersion: 2
-    x: 714
-    y: 658
-    width: 300
-    height: 172
-  overrideColor: {r: 1, g: 1, b: 1, a: 1}
-  showOutputSockets: 1
-  parentActionListInEditor: {fileID: 387834400}
-  obToMoveParameterID: -1
-  obToMoveID: 0
-  obToMove: {fileID: 943523453}
   markerParameterID: -1
   markerID: 0
   teleporter: {fileID: 1557340768}
@@ -1678,7 +1662,7 @@ MonoBehaviour:
   - {fileID: 649445487}
   - {fileID: 965650017}
   - {fileID: 2034904001}
-  - {fileID: 104866599}
+  - {fileID: 19699409}
   - {fileID: 2103883802}
   - {fileID: 1645211778}
   - {fileID: 194453052}
@@ -4209,7 +4193,7 @@ MonoBehaviour:
   endings:
   - resultAction: 2
     skipAction: 3
-    skipActionActual: {fileID: 104866599}
+    skipActionActual: {fileID: 19699409}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -4575,7 +4559,7 @@ MonoBehaviour:
   endings:
   - resultAction: 1
     skipAction: 3
-    skipActionActual: {fileID: 104866599}
+    skipActionActual: {fileID: 0}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -4592,7 +4576,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 387834400}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1037371289}
+  editingAnimEngine: {fileID: 1153131938}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -4863,20 +4847,6 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
---- !u!114 &1037371289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!1 &1051699768
 GameObject:
   m_ObjectHideFlags: 0
@@ -5206,6 +5176,20 @@ Transform:
   m_Father: {fileID: 1333856372}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1153131938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &1161753652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9047,7 +9031,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 1042
+    y: 1030
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9461,7 +9445,7 @@ MonoBehaviour:
   chooseSceneBy: 0
   previousScene: 2
   previousSceneName: 
-  fadeInOnStart: 0
+  fadeInOnStart: 1
   fadeSpeed: 0.5
   cameraOnStart: {fileID: 5609077497540274071}
   playerIDs: 
@@ -10045,7 +10029,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 860
+    y: 848
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
