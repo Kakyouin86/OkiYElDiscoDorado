@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Oki & El Disco Dorado v1.0/Scenes/Main Menu.unity
+    guid: b7ce6df9231096642afaf4318e50b679
+  - enabled: 1
+    path: Assets/Oki & El Disco Dorado v1.0/Scenes/Interior De La Nave.unity
+    guid: e6e25bc480bde614bbec81ed032100bb
+  - enabled: 1
+    path: "Assets/Oki & El Disco Dorado v1.0/Scenes/Chatarrer\xEDa.unity"
+    guid: 4acf90b0d876403489bbb496d4657786
   m_configObjects: {}
