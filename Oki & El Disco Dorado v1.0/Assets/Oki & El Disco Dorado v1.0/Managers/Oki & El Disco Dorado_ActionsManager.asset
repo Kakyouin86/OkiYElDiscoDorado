@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Oki & El Disco Dorado_ActionsManager
   m_EditorClassIdentifier: 
   customFolderPaths:
+  - Oki & El Disco Dorado v1.0/Action List
   - 
   allFavouriteActionData: []
   displayActionsInInspector: 1
