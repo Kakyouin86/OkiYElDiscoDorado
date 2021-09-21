@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Oki & El Disco Dorado v1.0/Scenes/Exterior De La Nave.unity
     guid: 4acf90b0d876403489bbb496d4657786
+  - enabled: 1
+    path: "Assets/Oki & El Disco Dorado v1.0/Scenes/Chatarrer\xEDa.unity"
+    guid: d8268ca90129021498cbc3249b17d4ca
   m_configObjects: {}
