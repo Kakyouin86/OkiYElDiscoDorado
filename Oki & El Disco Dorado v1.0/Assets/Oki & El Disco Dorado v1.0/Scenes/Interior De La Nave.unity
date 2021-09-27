@@ -3002,7 +3002,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 895302733}
   parameterID: -1
   timeToPause: 1
---- !u!114 &516765770
+--- !u!114 &518068338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3383,8 +3383,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 364
-    y: 204
+    x: 499
+    y: 170
     width: 300
     height: 201
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4078,7 +4078,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 35131621}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 516765770}
+  editingAnimEngine: {fileID: 518068338}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
