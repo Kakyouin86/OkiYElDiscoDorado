@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 35570664}
   - component: {fileID: 35570665}
   m_Layer: 0
-  m_Name: Silla Hablar
+  m_Name: 'Silla: Hablar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 173818331}
   - component: {fileID: 173818332}
   m_Layer: 0
-  m_Name: Palanca Mirar
+  m_Name: 'Palanca: Mirar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3405,20 +3405,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &590142177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!1 &592368298
 GameObject:
   m_ObjectHideFlags: 0
@@ -4907,7 +4893,7 @@ GameObject:
   - component: {fileID: 768672962}
   - component: {fileID: 768672963}
   m_Layer: 0
-  m_Name: Silla  Usar
+  m_Name: 'Silla: Usar/Agarrar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7480,7 +7466,7 @@ GameObject:
   - component: {fileID: 1008093240}
   - component: {fileID: 1008093241}
   m_Layer: 0
-  m_Name: Silla Mirar
+  m_Name: 'Silla: Mirar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7610,7 +7596,7 @@ GameObject:
   - component: {fileID: 1051699769}
   - component: {fileID: 1051699770}
   m_Layer: 0
-  m_Name: Palanca Hablar
+  m_Name: 'Palanca: Hablar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8174,7 +8160,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1022
+    y: 982
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9282,6 +9268,20 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &1319620146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &1329108549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9592,7 +9592,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1204
+    y: 1164
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10013,7 +10013,7 @@ MonoBehaviour:
     x: 364
     y: 204
     width: 300
-    height: 186.28815
+    height: 186.6
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 895302733}
@@ -11794,7 +11794,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 895302733}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 590142177}
+  editingAnimEngine: {fileID: 1319620146}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -15148,7 +15148,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 827
+    y: 820
     width: 300
     height: 132
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -15523,7 +15523,7 @@ GameObject:
   - component: {fileID: 2123134739}
   - component: {fileID: 2123134740}
   m_Layer: 0
-  m_Name: Palanca Usar/Agarrar
+  m_Name: 'Palanca: Usar/Agarrar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
