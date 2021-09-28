@@ -3423,7 +3423,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8585156320507641034}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2.09, y: 0.77, z: 0}
+  m_LocalPosition: {x: 3.32, y: 0.84, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 261428092}
@@ -3460,12 +3460,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapType: 1
   sortingAreas:
-  - z: 3.2497103
+  - z: 0.15299998
     order: -3
     layer: 
     color: {r: 0.124328256, g: 0.2768075, b: 0.3768478, a: 1}
     scale: 70
-  - z: 6.3844433
+  - z: 8.63
     order: 2
     layer: 
     color: {r: 0.32730335, g: 0.31781167, b: 0.08528757, a: 1}
