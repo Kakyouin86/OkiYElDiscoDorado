@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 35131620}
   - component: {fileID: 35131621}
   m_Layer: 0
-  m_Name: "\xC1rbol: Usar"
+  m_Name: "\xC1rbol: Usar/Agarrar"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -712,7 +712,7 @@ MonoBehaviour:
     x: 714
     y: 2730.8994
     width: 300
-    height: 219.77953
+    height: 219.24002
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7310274444063697933}
@@ -2289,7 +2289,7 @@ GameObject:
   - component: {fileID: 360158102}
   - component: {fileID: 360158103}
   m_Layer: 0
-  m_Name: 'Tablero: Usar'
+  m_Name: 'Tablero: Usar/Agarrar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2405,20 +2405,6 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
---- !u!114 &371259733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &381187858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2490,7 +2476,7 @@ GameObject:
   - component: {fileID: 387834399}
   - component: {fileID: 387834400}
   m_Layer: 0
-  m_Name: 'Tik Tak: Usar'
+  m_Name: 'Tik Tak: Usar/Agarrar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2616,12 +2602,12 @@ Transform:
   - {fileID: 1634813411}
   - {fileID: 368918377}
   - {fileID: 2017031812}
-  - {fileID: 1348976959}
-  - {fileID: 1847461875}
   - {fileID: 1922769925}
-  - {fileID: 1769600680}
-  - {fileID: 662149001}
+  - {fileID: 1847461875}
+  - {fileID: 1348976959}
   - {fileID: 766394185}
+  - {fileID: 662149001}
+  - {fileID: 1769600680}
   - {fileID: 6235429041396484110}
   - {fileID: 2123134739}
   - {fileID: 1051699769}
@@ -2724,6 +2710,20 @@ MonoBehaviour:
   relativeMarkerID: 0
   relativeMarkerParameterID: -1
   forceReload: 0
+--- !u!114 &439754393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &449389871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2837,7 +2837,7 @@ MonoBehaviour:
     x: 714
     y: 2515.3796
     width: 300
-    height: 185.51968
+    height: 199.24002
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7310274444063697933}
@@ -3217,8 +3217,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 729.95764
-    y: 345.63812
+    x: 364
+    y: 440.6
     width: 300
     height: 186.6
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3405,7 +3405,7 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &573581571
+--- !u!114 &590142177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3936,6 +3936,20 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 1634813412}
   parameterID: -1
   timeToPause: 1
+--- !u!114 &658884333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!1 &662149000
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,12 +4128,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679841974}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.95, y: -1.3391, z: 0}
   m_LocalScale: {x: 0.20070301, y: 0.20070301, z: 0.20070301}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 778828646}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &688650236
 MonoBehaviour:
@@ -4649,7 +4663,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 35131621}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 573581571}
+  editingAnimEngine: {fileID: 658884333}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -4835,7 +4849,7 @@ GameObject:
   - component: {fileID: 766394185}
   - component: {fileID: 766394186}
   m_Layer: 0
-  m_Name: "Cap\xF3 Abierto Post Cables: Usar"
+  m_Name: "Cap\xF3 Abierto Post Cables: Usar/Agarrar"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4853,7 +4867,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &766394186
 MonoBehaviour:
@@ -4972,6 +4986,7 @@ Transform:
   - {fileID: 880211414}
   - {fileID: 479817482}
   - {fileID: 750039623}
+  - {fileID: 679841976}
   - {fileID: 1831228188}
   - {fileID: 1794615924}
   - {fileID: 843434835}
@@ -5339,7 +5354,7 @@ Transform:
   m_LocalScale: {x: 0.28593, y: 0.28593, z: 0.28593}
   m_Children: []
   m_Father: {fileID: 778828646}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &825318073
 SpriteRenderer:
@@ -5500,7 +5515,7 @@ Transform:
   m_LocalScale: {x: 1.1220232, y: 1.1220232, z: 1.1220232}
   m_Children: []
   m_Father: {fileID: 778828646}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &843434836
 SpriteRenderer:
@@ -6352,7 +6367,7 @@ GameObject:
   - component: {fileID: 895302732}
   - component: {fileID: 895302733}
   m_Layer: 0
-  m_Name: 'Cables: Usar'
+  m_Name: 'Cables: Usar/Agarrar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6450,7 +6465,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 7310274444063697933}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1087524104}
+  editingAnimEngine: {fileID: 1009575082}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -6569,7 +6584,7 @@ MonoBehaviour:
     x: 364
     y: 264
     width: 300
-    height: 201
+    height: 201.57144
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 1634813412}
@@ -6738,7 +6753,7 @@ Transform:
   m_LocalScale: {x: 0.17766981, y: 0.17766981, z: 0.17766981}
   m_Children: []
   m_Father: {fileID: 778828646}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: -0.429, y: -2.405, z: 54.915}
 --- !u!212 &943523455
 SpriteRenderer:
@@ -6997,7 +7012,7 @@ MonoBehaviour:
     x: 714
     y: 1838
     width: 300
-    height: 186.6
+    height: 186.25717
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7310274444063697933}
@@ -7021,20 +7036,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &963815458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &965650017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7077,7 +7078,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 387834400}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1326281736}
+  editingAnimEngine: {fileID: 1599827060}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -7526,6 +7527,20 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
+--- !u!114 &1009575082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!1 &1026304532
 GameObject:
   m_ObjectHideFlags: 0
@@ -7883,20 +7898,6 @@ Transform:
   m_Father: {fileID: 1656627437}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1087524104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &1092941096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8279,7 +8280,7 @@ MonoBehaviour:
     x: 364
     y: 454
     width: 300
-    height: 172.2
+    height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 1634813412}
@@ -8493,7 +8494,7 @@ Transform:
   m_LocalScale: {x: 1.0043726, y: 1.0043726, z: 1.0043726}
   m_Children: []
   m_Father: {fileID: 778828646}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1210771889
 SpriteRenderer:
@@ -8642,7 +8643,7 @@ MonoBehaviour:
     x: 714
     y: 2285.6
     width: 300
-    height: 199.77953
+    height: 199.24002
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7310274444063697933}
@@ -9149,7 +9150,7 @@ MonoBehaviour:
     x: 714
     y: 2054.6
     width: 300
-    height: 201
+    height: 185.16
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7310274444063697933}
@@ -9281,20 +9282,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &1326281736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &1329108549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9469,7 +9456,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1348976960
 MonoBehaviour:
@@ -10026,7 +10013,7 @@ MonoBehaviour:
     x: 364
     y: 204
     width: 300
-    height: 186.6
+    height: 186.28815
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 895302733}
@@ -10086,7 +10073,7 @@ MonoBehaviour:
     x: 14
     y: 1020
     width: 300
-    height: 172.2
+    height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7310274444063697933}
@@ -10898,6 +10885,20 @@ Transform:
   m_Father: {fileID: 1457557576}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1599827060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!1 &1608469188
 GameObject:
   m_ObjectHideFlags: 0
@@ -11000,6 +11001,20 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &1615569112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &1631879824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11072,7 +11087,7 @@ GameObject:
   - component: {fileID: 1634813411}
   - component: {fileID: 1634813412}
   m_Layer: 0
-  m_Name: "Cap\xF3 Cerrado: Usar"
+  m_Name: "Cap\xF3 Cerrado: Usar/Agarrar"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11779,7 +11794,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 895302733}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1796949669}
+  editingAnimEngine: {fileID: 590142177}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -12154,7 +12169,7 @@ GameObject:
   - component: {fileID: 1725454671}
   - component: {fileID: 1725454672}
   m_Layer: 0
-  m_Name: 'AVGN: Usar'
+  m_Name: 'AVGN: Usar/Agarrar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12399,8 +12414,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 3.7872467
-    y: 691.3192
+    x: 14
+    y: 516
     width: 300
     height: 232
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -12408,7 +12423,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 1922769926}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 371259733}
+  editingAnimEngine: {fileID: 439754393}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -12678,7 +12693,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1769600681
 MonoBehaviour:
@@ -12798,7 +12813,7 @@ Transform:
   m_LocalScale: {x: 0.11871291, y: 0.11871291, z: 0.11871291}
   m_Children: []
   m_Father: {fileID: 778828646}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1794615925
 SpriteRenderer:
@@ -12926,20 +12941,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &1796949669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!1 &1818344681
 GameObject:
   m_ObjectHideFlags: 0
@@ -13281,7 +13282,7 @@ Transform:
   m_LocalScale: {x: 0.53214, y: 0.53214, z: 0.53214}
   m_Children: []
   m_Father: {fileID: 778828646}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1831228189
 SpriteRenderer:
@@ -13746,7 +13747,7 @@ GameObject:
   - component: {fileID: 1922769925}
   - component: {fileID: 1922769926}
   m_Layer: 0
-  m_Name: "Cap\xF3 Abierto: Usar"
+  m_Name: "Cap\xF3 Abierto: Usar/Agarrar"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13764,7 +13765,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1922769926
 MonoBehaviour:
@@ -14316,8 +14317,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 370.80853
-    y: 512.5957
+    x: 364
+    y: 516
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -14787,7 +14788,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 1634813412}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 963815458}
+  editingAnimEngine: {fileID: 1615569112}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -15522,7 +15523,7 @@ GameObject:
   - component: {fileID: 2123134739}
   - component: {fileID: 2123134740}
   m_Layer: 0
-  m_Name: Palanca Usar
+  m_Name: Palanca Usar/Agarrar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15760,7 +15761,7 @@ GameObject:
   - component: {fileID: 3365086912771235668}
   - component: {fileID: 3365086912780990100}
   m_Layer: 0
-  m_Name: 'Puerta: Usar'
+  m_Name: 'Puerta: Usar/Agarrar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
