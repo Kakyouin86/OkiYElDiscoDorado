@@ -2699,7 +2699,7 @@ MonoBehaviour:
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3488676530061502355}
   chooseSceneBy: 0
-  sceneNumber: 2
+  sceneNumber: 4
   sceneNumberParameterID: -1
   sceneName: 
   sceneNameParameterID: -1

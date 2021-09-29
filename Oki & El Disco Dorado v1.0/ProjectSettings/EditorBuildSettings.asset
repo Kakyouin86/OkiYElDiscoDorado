@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Oki & El Disco Dorado v1.0/Scenes/Main Menu.unity
     guid: b7ce6df9231096642afaf4318e50b679
