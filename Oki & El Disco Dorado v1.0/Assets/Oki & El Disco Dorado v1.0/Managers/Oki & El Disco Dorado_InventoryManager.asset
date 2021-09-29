@@ -346,7 +346,7 @@ MonoBehaviour:
   - label: Ramita
     id: 6
     altLabel: 
-    carryOnStart: 1
+    carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
     vars: []

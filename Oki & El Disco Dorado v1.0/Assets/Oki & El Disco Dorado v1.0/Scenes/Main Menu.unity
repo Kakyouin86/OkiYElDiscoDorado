@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f9f8f85ed1bae4692ba7e9bead3d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScene: Interior De La Nave
+  startScene: PreLoad 01
 --- !u!1 &982065904
 GameObject:
   m_ObjectHideFlags: 0
