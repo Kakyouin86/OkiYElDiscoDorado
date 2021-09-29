@@ -501,13 +501,13 @@ MonoBehaviour:
       label: on
       lineID: -1
     useActionList: {fileID: 0}
-    lookActionList: {fileID: 0}
+    lookActionList: {fileID: 11400000, guid: 32efd02bb81a664489989701e53ffffd, type: 2}
     interactions: []
     combineInteractions: []
     combineActionList: []
     combineID: 
-    unhandledActionList: {fileID: 0}
-    unhandledCombineActionList: {fileID: 0}
+    unhandledActionList: {fileID: 11400000, guid: c1089decc7294b945981f22b384892b0, type: 2}
+    unhandledCombineActionList: {fileID: 11400000, guid: eb65073a8f92cdc4d9a2bb7cbd964c1d, type: 2}
     carryOnStartID: -1
     useSeparateSlots: 0
     selectSingle: 0

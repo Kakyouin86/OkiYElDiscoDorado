@@ -1,30 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc1f751990d444ef9e1381090933b8b, type: 3}
-  m_Name: Cables_Unhandled_Hotspot
-  m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 4411771378856898228}
-  isSkippable: 1
-  actionListType: 0
-  unfreezePauseMenus: 1
-  useParameters: 0
-  canRunMultipleInstances: 0
-  canSurviveSceneChanges: 0
-  revertToDefaultParametersAfterRunning: 0
-  parameters: []
-  tagID: 0
-  backupData: []
---- !u!114 &4411771378856898228
+--- !u!114 &-3537015330536583086
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed656dc9f403a441f8fe89408c7a7189, type: 3}
-  m_Name: (Clone)
+  m_Name: 
   m_EditorClassIdentifier: 
   id: 0
   isDisplayed: 1
@@ -47,7 +23,7 @@ MonoBehaviour:
   linkedCutscene: {fileID: 0}
   linkedAsset: {fileID: 0}
   endings:
-  - resultAction: 1
+  - resultAction: 0
     skipAction: -1
     skipActionActual: {fileID: 0}
     linkedCutscene: {fileID: 0}
@@ -70,7 +46,7 @@ MonoBehaviour:
   isPlayer: 1
   playerID: -1
   speaker: {fileID: 0}
-  messageText: No tiene mucho sentido.
+  messageText: No... jajajaja. Ciertamente, no.
   lineID: -1
   multiLineIDs: 
   isBackground: 0
@@ -84,3 +60,27 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc1f751990d444ef9e1381090933b8b, type: 3}
+  m_Name: CablesTirantes_Unhandled_Hotspot
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: -3537015330536583086}
+  isSkippable: 1
+  actionListType: 0
+  unfreezePauseMenus: 1
+  useParameters: 0
+  canRunMultipleInstances: 0
+  canSurviveSceneChanges: 0
+  revertToDefaultParametersAfterRunning: 0
+  parameters: []
+  tagID: 0
+  backupData: []
