@@ -8,10 +8,6 @@ public class ChangebtwScenes : MonoBehaviour
 {
 
     public string sceneName;
-
-
-
-
     void ChangeScene()
 
     {

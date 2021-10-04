@@ -16,7 +16,7 @@ MonoBehaviour:
   - label: Has Played?
     id: 0
     type: 0
-    val: 0
+    val: 1
     floatVal: 0
     textVal: 
     gameObjectVal: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
     popUpsLineID: -1
     description: 
     showInFilter: 1
-  - label: Dog Has Flown?
+  - label: Dog Has Fled?
     id: 5
     type: 0
     val: 0
