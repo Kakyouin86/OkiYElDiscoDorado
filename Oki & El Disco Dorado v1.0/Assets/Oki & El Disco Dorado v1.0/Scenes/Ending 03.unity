@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90537d66b01c06a4f87e2b01e49e1a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Main Menu
+  sceneName: Credits
 --- !u!1 &457181385
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,17 +666,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 53
-    m_Alignment: 3
+    m_MaxSize: 84
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Producido, dirigido, ideado, programado y testeado por:\n\"Los Manny Calavera\".\n\n\nGalindo,
-    Jaime\r\n\nGonz\xE1lez Jim\xE9nez, C\xE9sar\r\n\nGuerra, Tom\xE1s\r\n\nMastrandrea,
-    Iv\xE1n Jes\xFAs\r\n\nMonge, Leonardo Jorge\r (kakyouin.itch.io)\n\nVercelli,
-    Marti"
+  m_Text: "LAS AVENTURAS DE OKI CONTINUAR\xC1N \nEN EL PR\xD3XIMO EPISODIO."
 --- !u!222 &1587484656
 CanvasRenderer:
   m_ObjectHideFlags: 0

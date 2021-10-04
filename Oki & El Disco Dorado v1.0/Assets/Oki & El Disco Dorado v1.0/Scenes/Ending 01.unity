@@ -362,7 +362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &951479730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 951479731}
-  fadeSpeed: 1
+  fadeSpeed: 0.5
 --- !u!1 &1587484653
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,10 +673,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "En el a\xF1o 1977 la NASA envi\xF3 un disco de oro al espacio exterior
-    con sonidos de la Tierra, para ser encontrado por los extraterrestres y recibir
-    un mensaje de paz.\n\n\n\n\nEn medio del jolgorio, este equipo encabezado por
-    Carl Sagan descubre que el disco se pierde y desaparece del radar."
+  m_Text: "Las palabras de paz, amor, y felicidad han desconcertado a Oki.\n\n\nAl
+    tener reparada su nave, y no necesitar m\xE1s fertilizante, reprograma su rumbo
+    a la Tierra porque su obsesi\xF3n es irremediable\u2026 \n\n\n...la curiosidad
+    y la emoci\xF3n lo invaden."
 --- !u!222 &1587484656
 CanvasRenderer:
   m_ObjectHideFlags: 0

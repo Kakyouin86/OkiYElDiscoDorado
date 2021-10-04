@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90537d66b01c06a4f87e2b01e49e1a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Credits
+  sceneName: Ending 03
 --- !u!1 &457181385
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 951479731}
-  fadeSpeed: 1
+  fadeSpeed: 0.5
 --- !u!1 &1587484653
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,10 +673,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "En el a\xF1o 1977 la NASA envi\xF3 un disco de oro al espacio exterior
-    con sonidos de la Tierra, para ser encontrado por los extraterrestres y recibir
-    un mensaje de paz.\n\n\n\n\nEn medio del jolgorio, este equipo encabezado por
-    Carl Sagan descubre que el disco se pierde y desaparece del radar."
+  m_Text: "Mientras tanto, en el centro de radares del \"\xC1rea 51\".\r\n\n- \xA1Supervisor,
+    supervisoooooor tengo algo, tengo algo!\n\n- \u201CGe faso, gue so, je es brost
+    aje gog\u201D\r\n\n- No entiendo nada.\r\n\n- \xBFQu\xE9 pas\xF3? \xBFa d\xF3nde
+    se dirige el objeto?\n\n- \xBFSon los rusos? \xBFlos japoneses?, o... \xBFes
+    un ovni...\u201D\n\n\n\nEl supervisor 24 levanta la bocina de tel\xE9fono que
+    est\xE1 en la mesa:\n\n- Se\xF1or, hemos encontrado ALGO."
 --- !u!222 &1587484656
 CanvasRenderer:
   m_ObjectHideFlags: 0
