@@ -157,7 +157,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5635.8
+    y: 5820.787
     width: 300
     height: 235.4
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -278,7 +278,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5920.0444
+    y: 6105.7197
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -781,20 +781,6 @@ MonoBehaviour:
   audioSourceParameterID: -1
   audioClip: {fileID: 8300000, guid: e8daffeb43de96b499e1ee1b18e51e75, type: 3}
   audioClipParameterID: -1
---- !u!114 &29244656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &29343383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,7 +820,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3246.8
+    y: 3245.6897
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1142,9 +1128,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2139.2
+    y: 2139.4287
     width: 300
-    height: 206.6
+    height: 206.7143
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 795019211981172362}
@@ -1228,6 +1214,92 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!1 &75020910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75020911}
+  - component: {fileID: 75020912}
+  - component: {fileID: 75020913}
+  m_Layer: 0
+  m_Name: Hole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &75020911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75020910}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.21, y: -1.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 388491827}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &75020912
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75020910}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.1628425, y: 0.07226014}
+      - {x: 1.0961852, y: 0.58342516}
+      - {x: 0.41209257, y: 0.71360016}
+      - {x: -0.13752508, y: 0.78081614}
+      - {x: -0.9967141, y: 0.70498323}
+      - {x: -1.6539049, y: 0.41796148}
+      - {x: -1.8842605, y: -0.15645707}
+      - {x: -1.5463216, y: -0.68421936}
+      - {x: -0.61260086, y: -0.8059485}
+      - {x: -0.38148552, y: -0.8246031}
+      - {x: -0.12542343, y: -0.84267116}
+      - {x: 0.47567463, y: -0.86190593}
+      - {x: 0.7987648, y: -0.7843958}
+      - {x: 1.1080794, y: -0.3846547}
+--- !u!114 &75020913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75020910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f08ce9290d27d437eb69598fee423f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 1857880
+  retainInPrefab: 0
+  autoManual: 0
 --- !u!114 &80391209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,7 +1334,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 3903
+    y: 4090.8286
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1470,7 +1542,7 @@ MonoBehaviour:
     x: 364
     y: 204
     width: 300
-    height: 186.6
+    height: 185.09756
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7142744049827890694}
@@ -1636,7 +1708,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &127216251
 MonoBehaviour:
@@ -1698,7 +1770,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &135161723
 MonoBehaviour:
@@ -1884,48 +1956,6 @@ MonoBehaviour:
   obToAffect: {fileID: 201228756}
   affectChildren: 0
   visState: 0
---- !u!114 &145870562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9289eb0ca58ef471f9062a5f77161403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 3
-  isDisplayed: 1
-  showComment: 0
-  comment: 
-  willWait: 0
-  endAction: 0
-  skipAction: -1
-  skipActionActual: {fileID: 0}
-  linkedCutscene: {fileID: 0}
-  linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 2
-    skipAction: 35
-    skipActionActual: {fileID: 575784486}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
-  isEnabled: 1
-  isAssetFile: 0
-  isBreakPoint: 0
-  nodeRect:
-    serializedVersion: 2
-    x: 364
-    y: 5512.6445
-    width: 300
-    height: 112
-  overrideColor: {r: 1, g: 1, b: 1, a: 1}
-  showOutputSockets: 1
-  parentActionListInEditor: {fileID: 0}
-  parameterID: -1
-  timeToPause: 1
 --- !u!114 &151017287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,9 +2049,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2754.6
+    y: 2753.6897
     width: 300
-    height: 192.2
+    height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7142744049827890694}
@@ -2221,7 +2251,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3767.8
+    y: 3750.7874
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2514,7 +2544,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 3766.4668
+    y: 3764.836
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2724,7 +2754,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3265.6443
+    y: 3265.16
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2969,9 +2999,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3516.8
+    y: 3515.6897
     width: 300
-    height: 206.6
+    height: 205.09756
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7142744049827890694}
@@ -3029,7 +3059,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2370.6
+    y: 2369.6897
     width: 300
     height: 212
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3125,7 +3155,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &249224947
 MonoBehaviour:
@@ -3193,7 +3223,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3265.6443
+    y: 3265.16
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3329,7 +3359,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 2807.6
+    y: 2793.4287
     width: 300
     height: 132
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3443,7 +3473,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4190.6445
+    y: 4174.32
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3591,9 +3621,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 4156.244
+    y: 4154.32
     width: 300
-    height: 206.6
+    height: 205.16
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 126607405589751171}
@@ -3842,7 +3872,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3753.4001
+    y: 3750.7874
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3906,7 +3936,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &289813190
 MonoBehaviour:
@@ -4133,7 +4163,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &314125854
 MonoBehaviour:
@@ -4457,7 +4487,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3969.8
+    y: 3952.7874
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4580,7 +4610,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 1769.6
+    y: 1770.2858
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4696,7 +4726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &351075733
 MonoBehaviour:
@@ -4823,7 +4853,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &355215310
 MonoBehaviour:
@@ -4886,7 +4916,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4986.6445
+    y: 4970.32
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4931,9 +4961,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1518.6
+    y: 1518.7144
     width: 300
-    height: 206.6
+    height: 206.7143
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 795019211981172362}
@@ -5045,6 +5075,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3589038703044799824}
+  - {fileID: 75020911}
   m_Father: {fileID: 1457557576}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5162,7 +5193,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2389.4443
+    y: 2389.16
     width: 300
     height: 212
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5313,7 +5344,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &402369448
 MonoBehaviour:
@@ -5372,7 +5403,6 @@ Transform:
   - {fileID: 3440794405756551083}
   - {fileID: 2664342326585972134}
   - {fileID: 3983152569930772173}
-  - {fileID: 9040709487555952868}
   - {fileID: 4058583156502363170}
   - {fileID: 289813189}
   - {fileID: 402369447}
@@ -5411,6 +5441,7 @@ Transform:
   - {fileID: 1819203779}
   - {fileID: 1452367612}
   - {fileID: 3099859538150205857}
+  - {fileID: 9040709487555952868}
   - {fileID: 795019211969939274}
   - {fileID: 364792591350657501}
   m_Father: {fileID: 0}
@@ -5661,7 +5692,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5512.6445
+    y: 5698.32
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5748,7 +5779,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3187
+    y: 3389
     width: 300
     height: 235.4
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5997,7 +6028,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4663.8
+    y: 4646.787
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -6252,7 +6283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471552352}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.86, y: -1.2, z: 0}
+  m_LocalPosition: {x: 2.51, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 928405464}
@@ -7067,7 +7098,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2577.8
+    y: 2578.143
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -7167,7 +7198,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4441.8
+    y: 4424.787
     width: 300
     height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -7218,7 +7249,7 @@ MonoBehaviour:
     x: 714
     y: 1703
     width: 300
-    height: 192.2
+    height: 192.1579
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 9040709487566858532}
@@ -7340,7 +7371,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &514842860
 MonoBehaviour:
@@ -7745,7 +7776,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3786.6443
+    y: 3770.3198
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -7814,7 +7845,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2167.4443
+    y: 2167.16
     width: 300
     height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -7924,7 +7955,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 3637.6
+    y: 3825.4287
     width: 300
     height: 235.4
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -7985,7 +8016,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 2969.6
+    y: 2955.4287
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -8211,7 +8242,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5654.6445
+    y: 5840.32
     width: 300
     height: 235.4
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -8446,7 +8477,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &602338101
 MonoBehaviour:
@@ -8957,7 +8988,7 @@ MonoBehaviour:
     x: 14
     y: 14
     width: 300
-    height: 254
+    height: 253
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6674711778338061402}
@@ -9113,7 +9144,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 3992.6443
+    y: 3986.4
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9243,7 +9274,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2148.6
+    y: 2147.6897
     width: 300
     height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9322,7 +9353,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 4374.0005
+    y: 4369.885
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9333,8 +9364,8 @@ MonoBehaviour:
   setVarMethodIntBool: 0
   setVarMethodVector: 0
   parameterID: -1
-  variableID: 3
-  variableNumber: 3
+  variableID: 4
+  variableNumber: 4
   setParameterID: -1
   slotNumber: 0
   slotNumberParameterID: -1
@@ -9637,7 +9668,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3772.2444
+    y: 3770.3198
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9885,7 +9916,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 1769.6
+    y: 1755.4287
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9949,7 +9980,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &731599648
 MonoBehaviour:
@@ -10015,7 +10046,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5901.1997
+    y: 6086.187
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10063,9 +10094,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 4137.4004
+    y: 4134.787
     width: 300
-    height: 206.6
+    height: 205.09756
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7142744049827890694}
@@ -10183,7 +10214,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 3151.6
+    y: 3137.4287
     width: 300
     height: 132
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10295,7 +10326,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1248.6
+    y: 1248.7144
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10365,7 +10396,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &772028772
 MonoBehaviour:
@@ -10428,7 +10459,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 3495.6
+    y: 3683.4287
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10560,7 +10591,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3045
+    y: 3247
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10715,7 +10746,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1755.2
+    y: 1755.4287
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10784,9 +10815,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3516.8
+    y: 3515.6897
     width: 300
-    height: 221
+    height: 205.09756
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7142744049827890694}
@@ -10839,7 +10870,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &819640435
 MonoBehaviour:
@@ -10963,9 +10994,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 1518.6
+    y: 1518.7144
     width: 300
-    height: 221
+    height: 221.57144
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 795019211981172362}
@@ -11026,7 +11057,7 @@ MonoBehaviour:
     x: 364
     y: 224
     width: 300
-    height: 186.6
+    height: 185.16
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 126607405589751171}
@@ -11149,7 +11180,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4967.8
+    y: 4950.787
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -11237,7 +11268,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &852561398
 MonoBehaviour:
@@ -11698,7 +11729,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3988.6443
+    y: 3972.3198
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -11823,7 +11854,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 38
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &890299019
 MonoBehaviour:
@@ -11895,7 +11926,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3955.4001
+    y: 3952.7874
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -11993,7 +12024,7 @@ MonoBehaviour:
     x: 1064
     y: 1068
     width: 300
-    height: 220.63638
+    height: 222.4737
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 9040709487566858532}
@@ -12577,9 +12608,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 3535.6443
+    y: 3535.16
     width: 300
-    height: 225
+    height: 219.24002
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 126607405589751171}
@@ -12699,7 +12730,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 2173.6
+    y: 2159.4287
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -12854,7 +12885,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1026825002
 MonoBehaviour:
@@ -12981,7 +13012,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 7142744049827890694}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 2049965157}
+  editingAnimEngine: {fileID: 2100411216}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -13049,7 +13080,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2631.4443
+    y: 2631.16
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -13091,7 +13122,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 3968.4668
+    y: 3966.836
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -13655,7 +13686,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 1971.6
+    y: 1972.2858
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -14342,7 +14373,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1186886201
 MonoBehaviour:
@@ -14371,48 +14402,6 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
---- !u!114 &1189348621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9289eb0ca58ef471f9062a5f77161403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 2
-  isDisplayed: 1
-  showComment: 0
-  comment: 
-  willWait: 0
-  endAction: 0
-  skipAction: -1
-  skipActionActual: {fileID: 0}
-  linkedCutscene: {fileID: 0}
-  linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 2
-    skipAction: 21
-    skipActionActual: {fileID: 434386264}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
-  isEnabled: 1
-  isAssetFile: 0
-  isBreakPoint: 0
-  nodeRect:
-    serializedVersion: 2
-    x: 364
-    y: 3045
-    width: 300
-    height: 112
-  overrideColor: {r: 1, g: 1, b: 1, a: 1}
-  showOutputSockets: 1
-  parentActionListInEditor: {fileID: 0}
-  parameterID: -1
-  timeToPause: 1
 --- !u!114 &1194813065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14577,7 +14566,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4682.6445
+    y: 4666.32
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -14784,7 +14773,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 34
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1230406625
 MonoBehaviour:
@@ -14847,7 +14836,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 1971.6
+    y: 1957.4287
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -14979,6 +14968,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1245237730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &1248052660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15013,7 +15016,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5149.8
+    y: 5132.787
     width: 300
     height: 132
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -15053,7 +15056,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1249385099
 MonoBehaviour:
@@ -15432,7 +15435,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1262983524
 MonoBehaviour:
@@ -15938,7 +15941,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5493.8
+    y: 5678.787
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -15994,7 +15997,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2612.6
+    y: 2611.6897
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -16028,7 +16031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294719415}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.59, y: -1.83, z: 0}
+  m_LocalPosition: {x: 3.81, y: -1.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 928405464}
@@ -16131,9 +16134,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3535.6443
+    y: 3535.16
     width: 300
-    height: 221
+    height: 205.16
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 126607405589751171}
@@ -16744,7 +16747,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 2443.6
+    y: 2429.4287
     width: 300
     height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -16858,7 +16861,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3246.8
+    y: 3245.6897
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -16998,7 +17001,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2995.6443
+    y: 2995.16
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -17192,7 +17195,7 @@ MonoBehaviour:
     x: 364
     y: 1912
     width: 300
-    height: 206.6
+    height: 205.68967
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7142744049827890694}
@@ -17315,7 +17318,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2976.8
+    y: 2975.6897
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -17416,20 +17419,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &1416939164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &1417824896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17491,6 +17480,60 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &1419248105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1532532f8c184eb78970e085394e564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -1
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 2
+    skipAction: 29
+    skipActionActual: {fileID: 773825581}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 0
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 14
+    y: 3481.4287
+    width: 300
+    height: 172
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 795019211981172362}
+  constantID: 0
+  parameterID: -1
+  replaceConstantID: 0
+  replaceParameterID: -1
+  newNavMesh: {fileID: 0}
+  sortingMap: {fileID: 0}
+  playerStart: {fileID: 0}
+  cutscene: {fileID: 0}
+  tintMap: {fileID: 0}
+  sceneSetting: 0
+  changeNavMeshMethod: 1
+  holeAction: 0
+  hole: {fileID: 75020912}
+  replaceHole: {fileID: 0}
 --- !u!114 &1426056179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17525,7 +17568,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 3452.4
+    y: 3654.4
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -17738,7 +17781,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 1248.6
+    y: 1248.7144
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -17813,7 +17856,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 2665.6
+    y: 2651.4287
     width: 300
     height: 112
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -17855,7 +17898,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2375.8
+    y: 2376.143
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -18028,9 +18071,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3535.6443
+    y: 3535.16
     width: 300
-    height: 206.6
+    height: 205.16
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 126607405589751171}
@@ -18083,7 +18126,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 40
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1452367613
 MonoBehaviour:
@@ -18299,8 +18342,8 @@ MonoBehaviour:
   linkedAsset: {fileID: 0}
   endings:
   - resultAction: 2
-    skipAction: 28
-    skipActionActual: {fileID: 1189348621}
+    skipAction: 29
+    skipActionActual: {fileID: 1671693152}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -19651,7 +19694,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 36
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1570184668
 MonoBehaviour:
@@ -19788,7 +19831,7 @@ MonoBehaviour:
     x: 14
     y: 742
     width: 300
-    height: 206.6
+    height: 206.7143
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 795019211981172362}
@@ -20055,8 +20098,8 @@ MonoBehaviour:
   linkedAsset: {fileID: 0}
   endings:
   - resultAction: 2
-    skipAction: 42
-    skipActionActual: {fileID: 2072645710}
+    skipAction: 43
+    skipActionActual: {fileID: 2114487784}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -20065,7 +20108,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5311.8
+    y: 5294.787
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -20190,7 +20233,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4460.6445
+    y: 4444.32
     width: 300
     height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -20334,7 +20377,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 3790.6443
+    y: 3784.4
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -20676,20 +20719,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1652127412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!1 &1656627436
 GameObject:
   m_ObjectHideFlags: 0
@@ -20826,6 +20855,60 @@ MonoBehaviour:
   hotspot: {fileID: 1916024874}
   affectChildren: 0
   changeType: 1
+--- !u!114 &1671693152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1532532f8c184eb78970e085394e564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -1
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 2
+    skipAction: 28
+    skipActionActual: {fileID: 784057003}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 0
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 364
+    y: 3045
+    width: 300
+    height: 172
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 9040709487566858532}
+  constantID: 0
+  parameterID: -1
+  replaceConstantID: 0
+  replaceParameterID: -1
+  newNavMesh: {fileID: 0}
+  sortingMap: {fileID: 0}
+  playerStart: {fileID: 0}
+  cutscene: {fileID: 0}
+  tintMap: {fileID: 0}
+  sceneSetting: 0
+  changeNavMeshMethod: 1
+  holeAction: 0
+  hole: {fileID: 75020912}
+  replaceHole: {fileID: 0}
 --- !u!1 &1675271823
 GameObject:
   m_ObjectHideFlags: 0
@@ -21081,7 +21164,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4171.8
+    y: 4154.787
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -21398,7 +21481,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 978.6
+    y: 978.7143
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -21889,7 +21972,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1750910187
 MonoBehaviour:
@@ -21955,7 +22038,7 @@ MonoBehaviour:
     x: 364
     y: 1068
     width: 300
-    height: 221
+    height: 207.3158
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 9040709487566858532}
@@ -22073,7 +22156,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 795019211981172362}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1652127412}
+  editingAnimEngine: {fileID: 1821341667}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -22136,7 +22219,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1775182185
 MonoBehaviour:
@@ -22288,7 +22371,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1792734395
 MonoBehaviour:
@@ -22346,7 +22429,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 31
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1807025834
 MonoBehaviour:
@@ -22447,48 +22530,6 @@ MonoBehaviour:
   animationEngine: 2
   customClassName: 
   animEngine: {fileID: 1778399391}
---- !u!114 &1814249122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9289eb0ca58ef471f9062a5f77161403, type: 3}
-  m_Name: (Clone)
-  m_EditorClassIdentifier: 
-  id: 3
-  isDisplayed: 1
-  showComment: 0
-  comment: 
-  willWait: 0
-  endAction: 0
-  skipAction: -1
-  skipActionActual: {fileID: 0}
-  linkedCutscene: {fileID: 0}
-  linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 2
-    skipAction: 22
-    skipActionActual: {fileID: 542365797}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
-  isEnabled: 1
-  isAssetFile: 0
-  isBreakPoint: 0
-  nodeRect:
-    serializedVersion: 2
-    x: 14
-    y: 3495.6
-    width: 300
-    height: 112
-  overrideColor: {r: 1, g: 1, b: 1, a: 1}
-  showOutputSockets: 1
-  parentActionListInEditor: {fileID: 0}
-  parameterID: -1
-  timeToPause: 1
 --- !u!1 &1819203778
 GameObject:
   m_ObjectHideFlags: 0
@@ -22518,7 +22559,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 39
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1819203780
 MonoBehaviour:
@@ -22547,6 +22588,20 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
+--- !u!114 &1821341667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &1822236753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22581,9 +22636,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 1518.6
+    y: 1518.7144
     width: 300
-    height: 221
+    height: 206.7143
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 795019211981172362}
@@ -23040,7 +23095,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3974.2444
+    y: 3972.3198
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -23430,7 +23485,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 4392.844
+    y: 4389.48
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -23441,8 +23496,8 @@ MonoBehaviour:
   setVarMethodIntBool: 0
   setVarMethodVector: 0
   parameterID: -1
-  variableID: 3
-  variableNumber: 3
+  variableID: 4
+  variableNumber: 4
   setParameterID: -1
   slotNumber: 0
   slotNumberParameterID: -1
@@ -23541,8 +23596,8 @@ MonoBehaviour:
   linkedAsset: {fileID: 0}
   endings:
   - resultAction: 2
-    skipAction: 29
-    skipActionActual: {fileID: 1814249122}
+    skipAction: 30
+    skipActionActual: {fileID: 1419248105}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -23551,7 +23606,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 3313.6
+    y: 3299.4287
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -24371,7 +24426,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 9040709487566858532}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 29244656}
+  editingAnimEngine: {fileID: 1941526376}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -24439,9 +24494,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2773.4443
+    y: 2773.16
     width: 300
-    height: 192.2
+    height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 126607405589751171}
@@ -24465,6 +24520,20 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &1941526376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!1 &1946664379
 GameObject:
   m_ObjectHideFlags: 0
@@ -24494,7 +24563,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 37
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1946664381
 MonoBehaviour:
@@ -24634,6 +24703,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1950929621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1532532f8c184eb78970e085394e564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -1
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 2
+    skipAction: 42
+    skipActionActual: {fileID: 427956588}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 0
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 364
+    y: 5496.32
+    width: 300
+    height: 172
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 126607405589751171}
+  constantID: 0
+  parameterID: -1
+  replaceConstantID: 0
+  replaceParameterID: -1
+  newNavMesh: {fileID: 0}
+  sortingMap: {fileID: 0}
+  playerStart: {fileID: 0}
+  cutscene: {fileID: 0}
+  tintMap: {fileID: 0}
+  sceneSetting: 0
+  changeNavMeshMethod: 1
+  holeAction: 0
+  hole: {fileID: 75020912}
+  replaceHole: {fileID: 0}
 --- !u!1 &1955417056
 GameObject:
   m_ObjectHideFlags: 0
@@ -24701,9 +24824,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 3516.8
+    y: 3515.6897
     width: 300
-    height: 219.66666
+    height: 219.14636
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 7142744049827890694}
@@ -24762,7 +24885,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5168.6445
+    y: 5152.32
     width: 300
     height: 132
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -24972,7 +25095,7 @@ MonoBehaviour:
     x: 364
     y: 1932
     width: 300
-    height: 205.44444
+    height: 205.16
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 126607405589751171}
@@ -25648,7 +25771,7 @@ MonoBehaviour:
     x: 714
     y: 1068
     width: 300
-    height: 221
+    height: 222.4737
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 9040709487566858532}
@@ -25697,8 +25820,8 @@ MonoBehaviour:
   linkedAsset: {fileID: 0}
   endings:
   - resultAction: 2
-    skipAction: 42
-    skipActionActual: {fileID: 145870562}
+    skipAction: 43
+    skipActionActual: {fileID: 1950929621}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -25707,7 +25830,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 5330.6445
+    y: 5314.32
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -25975,7 +26098,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2049662260
 MonoBehaviour:
@@ -26004,20 +26127,6 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
---- !u!114 &2049965157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!1 &2050836140
 GameObject:
   m_ObjectHideFlags: 0
@@ -26082,7 +26191,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1957.2
+    y: 1957.4287
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26130,7 +26239,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 4594.844
+    y: 4591.48
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26204,48 +26313,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &2072645710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9289eb0ca58ef471f9062a5f77161403, type: 3}
-  m_Name: (Clone)
-  m_EditorClassIdentifier: 
-  id: 3
-  isDisplayed: 1
-  showComment: 0
-  comment: 
-  willWait: 0
-  endAction: 0
-  skipAction: -1
-  skipActionActual: {fileID: 0}
-  linkedCutscene: {fileID: 0}
-  linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 2
-    skipAction: 35
-    skipActionActual: {fileID: 999138}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
-  isEnabled: 1
-  isAssetFile: 0
-  isBreakPoint: 0
-  nodeRect:
-    serializedVersion: 2
-    x: 364
-    y: 5493.8
-    width: 300
-    height: 112
-  overrideColor: {r: 1, g: 1, b: 1, a: 1}
-  showOutputSockets: 1
-  parentActionListInEditor: {fileID: 0}
-  parameterID: -1
-  timeToPause: 1
 --- !u!114 &2079244494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26280,7 +26347,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4805.8
+    y: 4788.787
     width: 300
     height: 132
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26320,7 +26387,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2083428444
 MonoBehaviour:
@@ -26433,7 +26500,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2097862805
 MonoBehaviour:
@@ -26463,6 +26530,20 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
+--- !u!114 &2100411216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &2108170674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26505,7 +26586,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 126607405589751171}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1416939164}
+  editingAnimEngine: {fileID: 1245237730}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -26568,7 +26649,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2109974669
 MonoBehaviour:
@@ -26602,6 +26683,60 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
+--- !u!114 &2114487784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1532532f8c184eb78970e085394e564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -1
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 2
+    skipAction: 42
+    skipActionActual: {fileID: 1281323300}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 0
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 364
+    y: 5476.787
+    width: 300
+    height: 172
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 7142744049827890694}
+  constantID: 0
+  parameterID: -1
+  replaceConstantID: 0
+  replaceParameterID: -1
+  newNavMesh: {fileID: 0}
+  sortingMap: {fileID: 0}
+  playerStart: {fileID: 0}
+  cutscene: {fileID: 0}
+  tintMap: {fileID: 0}
+  sceneSetting: 0
+  changeNavMeshMethod: 1
+  holeAction: 0
+  hole: {fileID: 75020912}
+  replaceHole: {fileID: 0}
 --- !u!114 &2114890127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26636,7 +26771,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 4824.6445
+    y: 4808.32
     width: 300
     height: 132
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26833,7 +26968,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 4576.0005
+    y: 4571.885
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26916,6 +27051,7 @@ MonoBehaviour:
   - {fileID: 1206711586}
   - {fileID: 1606850035}
   - {fileID: 427956588}
+  - {fileID: 1950929621}
   isSkippable: 1
   triggerTime: 0
   autosaveAfter: 0
@@ -26958,7 +27094,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &364792591350361597
 GameObject:
@@ -27127,7 +27263,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &547150402841115782
 GameObject:
@@ -27254,6 +27390,7 @@ MonoBehaviour:
   - {fileID: 1438534291}
   - {fileID: 1347481221}
   - {fileID: 773825581}
+  - {fileID: 1419248105}
   isSkippable: 1
   triggerTime: 0
   autosaveAfter: 0
@@ -27356,7 +27493,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 41
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3099859538160336993
 MonoBehaviour:
@@ -27603,7 +27740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableRenderer: 1
   ignoreCollisions: 1
-  polygonColliderHoles: []
+  polygonColliderHoles:
+  - {fileID: 75020912}
   characterEvasion: 1
   characterEvasionPoints: 0
   characterEvasionYScale: 1
@@ -27750,7 +27888,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3957845603688873082
 MonoBehaviour:
@@ -27908,7 +28046,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4154348145001856157
 GameObject:
@@ -28786,7 +28924,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7142744049827890694
 MonoBehaviour:
@@ -28844,6 +28982,7 @@ MonoBehaviour:
   - {fileID: 460623967}
   - {fileID: 508741192}
   - {fileID: 1281323300}
+  - {fileID: 2114487784}
   isSkippable: 1
   triggerTime: 0
   autosaveAfter: 0
@@ -29043,7 +29182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8068699921479073780}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.86, y: -1.2, z: 0}
+  m_LocalPosition: {x: 1.58, y: -1.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 928405464}
@@ -29145,15 +29284,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapType: 1
   sortingAreas:
-  - z: 0.15299998
+  - z: 0.027000006
     order: -3
     layer: 
     color: {r: 0.124328256, g: 0.2768075, b: 0.3768478, a: 1}
     scale: 70
-  - z: 8.63
-    order: 2
+  - z: 2.51
+    order: 1
     layer: 
     color: {r: 0.32730335, g: 0.31781167, b: 0.08528757, a: 1}
+    scale: 85
+  - z: 9.63
+    order: 3
+    layer: 
+    color: {r: 0.2892974, g: 0.14538193, b: 0.29619652, a: 1}
     scale: 105
   affectScale: 1
   affectSpeed: 1
@@ -29176,7 +29320,7 @@ GameObject:
   - component: {fileID: 9040709487555952868}
   - component: {fileID: 9040709487566858532}
   m_Layer: 0
-  m_Name: 'Agujeritos Hotspot2D: Semillas De Morrones'
+  m_Name: 'Agujeritos: Semillas De Morrones'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29194,7 +29338,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410146249}
-  m_RootOrder: 3
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9040709487566858532
 MonoBehaviour:
@@ -29238,6 +29382,7 @@ MonoBehaviour:
   - {fileID: 1843358247}
   - {fileID: 779017622}
   - {fileID: 784057003}
+  - {fileID: 1671693152}
   isSkippable: 1
   triggerTime: 0
   autosaveAfter: 0
