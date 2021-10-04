@@ -236,7 +236,7 @@ MonoBehaviour:
   - label: Disco Roto Y Sucio
     id: 4
     altLabel: 
-    carryOnStart: 1
+    carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
     vars: []
@@ -460,7 +460,7 @@ MonoBehaviour:
   - label: Cables Tirantes
     id: 8
     altLabel: 
-    carryOnStart: 1
+    carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
     vars: []
@@ -570,7 +570,7 @@ MonoBehaviour:
   - label: Bebedero Lleno De Agua
     id: 10
     altLabel: 
-    carryOnStart: 1
+    carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
     vars: []
