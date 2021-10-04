@@ -8957,20 +8957,20 @@ MonoBehaviour:
     x: 14
     y: 14
     width: 300
-    height: 254
+    height: 274
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6674711778338061402}
   trackID: 1
   trackIDParameterID: -1
-  fadeTime: 0
+  fadeTime: 1
   fadeTimeParameterID: -1
   loop: 1
   isQueued: 0
   resumeFromStart: 1
   resumeIfPlayedBefore: 0
   willWaitComplete: 0
-  musicAction: 0
+  musicAction: 2
   loopingOverlapTime: 0
 --- !u!114 &671712705
 MonoBehaviour:
