@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90537d66b01c06a4f87e2b01e49e1a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: PreLoad 02
+  sceneName: Credits
 --- !u!1 &457181385
 GameObject:
   m_ObjectHideFlags: 0

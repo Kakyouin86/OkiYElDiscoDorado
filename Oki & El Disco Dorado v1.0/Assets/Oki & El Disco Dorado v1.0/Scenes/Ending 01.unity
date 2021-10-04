@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90537d66b01c06a4f87e2b01e49e1a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: PreLoad 02
+  sceneName: Ending 02
 --- !u!1 &457181385
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,8 +300,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.24700928, y: -6.3499756}
+  m_SizeDelta: {x: 1175.702, y: 675.559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &720521059
 MonoBehaviour:
@@ -362,7 +362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &951479730
 RectTransform:
   m_ObjectHideFlags: 0
