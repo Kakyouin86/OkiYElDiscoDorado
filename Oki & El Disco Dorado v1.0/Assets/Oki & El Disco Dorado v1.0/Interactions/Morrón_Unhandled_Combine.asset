@@ -46,8 +46,8 @@ MonoBehaviour:
   isPlayer: 1
   playerID: -1
   speaker: {fileID: 0}
-  messageText: Es combinable con salsas, salteados y otras verduas, pero no con ese
-    objeto.
+  messageText: Es combinable con salsas, salteados y otras verduras, pero no con
+    ese objeto.
   lineID: -1
   multiLineIDs: 
   isBackground: 0
