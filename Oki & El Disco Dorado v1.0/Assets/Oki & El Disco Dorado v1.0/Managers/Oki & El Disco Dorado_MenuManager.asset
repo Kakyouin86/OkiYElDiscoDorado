@@ -2750,7 +2750,7 @@ MonoBehaviour:
   anchor: 3
   selected: 0
   optionsArray:
-  - Original
+  - "Espa\xF1ol"
   cycleType: 0
   splitLanguageType: 0
   varID: 0
@@ -3898,7 +3898,7 @@ MonoBehaviour:
   uiSelectableHideStyle: 0
   onText: On
   onTextLineID: -1
-  offText: Off
+  offText: On
   offTextLineID: -1
 --- !u!114 &936922780603478195
 MonoBehaviour:
@@ -6185,7 +6185,7 @@ MonoBehaviour:
   fixedOption: 0
   optionToShow: 0
   parameterID: -1
-  newSaveText: New save
+  newSaveText: Nueva partida
   emptySlotText: 
   emptySlotTextLineID: -1
   showNewSaveOption: 1

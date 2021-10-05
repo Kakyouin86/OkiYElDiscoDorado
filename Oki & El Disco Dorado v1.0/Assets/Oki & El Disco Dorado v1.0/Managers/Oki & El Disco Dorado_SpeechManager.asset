@@ -53,7 +53,7 @@ MonoBehaviour:
   resetExpressionsEachLine: 1
   lines: []
   languages:
-  - Original
+  - "Espa\xF1ol"
   languageIsRightToLeft: 00
   languageAudioAssetBundles:
   - 
