@@ -236,7 +236,7 @@ MonoBehaviour:
   - label: Disco Roto Y Sucio
     id: 4
     altLabel: 
-    carryOnStart: 1
+    carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
     vars: []
@@ -291,7 +291,7 @@ MonoBehaviour:
   - label: Disco Roto Pero Limpio
     id: 5
     altLabel: 
-    carryOnStart: 1
+    carryOnStart: 0
     carryOnStartNotDefault: 0
     carryOnStartIDs: 00000000
     vars: []
