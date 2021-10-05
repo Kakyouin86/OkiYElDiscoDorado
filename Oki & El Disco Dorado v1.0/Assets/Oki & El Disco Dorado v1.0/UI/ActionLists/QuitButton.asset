@@ -44,7 +44,7 @@ MonoBehaviour:
   chooseSceneBy: 1
   sceneNumber: 0
   sceneName: Main Menu
-  resetMenus: 0
+  resetMenus: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

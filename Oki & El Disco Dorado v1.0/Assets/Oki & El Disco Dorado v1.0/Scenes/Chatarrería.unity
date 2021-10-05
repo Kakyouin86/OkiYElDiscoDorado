@@ -226,10 +226,10 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 455443379}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 821702818}
+  editingAnimEngine: {fileID: 1520361526}
   isPlayer: 1
   playerID: -1
-  animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
+  animChar: {fileID: 7952526632702253696}
   clip: {fileID: 0}
   clipParameterID: -1
   clip2D: OkiTakeGround
@@ -1155,20 +1155,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &166605882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!1 &169020703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,20 +1213,6 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
---- !u!114 &180112654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!1 &180541755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,10 +1790,10 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 1112333682}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1991472852}
+  editingAnimEngine: {fileID: 1240777992}
   isPlayer: 1
   playerID: -1
-  animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
+  animChar: {fileID: 7952526632702253696}
   clip: {fileID: 0}
   clipParameterID: -1
   clip2D: OkiThrow_L
@@ -2094,20 +2066,6 @@ Transform:
   m_Father: {fileID: 1457557576}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &268849626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &281670064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5239,6 +5197,7 @@ GameObject:
   - component: {fileID: 606722485}
   - component: {fileID: 606722484}
   - component: {fileID: 606722483}
+  - component: {fileID: 606722486}
   m_Layer: 2
   m_Name: Tobby
   m_TagString: Untagged
@@ -5596,6 +5555,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b591419ee344469da92bd1bb7e1a1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 1713072
+  retainInPrefab: 0
+  autoManual: 0
+  startState: 0
+--- !u!114 &606722486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606722477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5edd9ceeb2c9f4824959ed66e3adedce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   constantID: 1713072
@@ -6628,10 +6603,10 @@ MonoBehaviour:
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 4154348145008904573}
-  chooseSceneBy: 0
-  sceneNumber: 4
+  chooseSceneBy: 1
+  sceneNumber: 0
   sceneNumberParameterID: -1
-  sceneName: 
+  sceneName: Exterior De La Nave
   sceneNameParameterID: -1
   assignScreenOverlay: 1
   onlyPreload: 0
@@ -7430,20 +7405,6 @@ Transform:
   m_Father: {fileID: 661708624}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &821702818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!1 &830255052
 GameObject:
   m_ObjectHideFlags: 0
@@ -7871,10 +7832,10 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 1109076410}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 268849626}
+  editingAnimEngine: {fileID: 1648227667}
   isPlayer: 1
   playerID: -1
-  animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
+  animChar: {fileID: 7952526632702253696}
   clip: {fileID: 0}
   clipParameterID: -1
   clip2D: OkiTakeGround
@@ -8341,10 +8302,10 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 7836434094105549822}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1570404040}
+  editingAnimEngine: {fileID: 1038817401}
   isPlayer: 1
   playerID: -1
-  animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
+  animChar: {fileID: 7952526632702253696}
   clip: {fileID: 0}
   clipParameterID: -1
   clip2D: OkiTakeGround_L
@@ -9293,6 +9254,20 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &1038817401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!1 &1042073950
 GameObject:
   m_ObjectHideFlags: 0
@@ -10900,6 +10875,20 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &1240777992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!1 &1248964293
 GameObject:
   m_ObjectHideFlags: 0
@@ -11761,10 +11750,10 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 7836434094105549822}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1856814289}
+  editingAnimEngine: {fileID: 1442453879}
   isPlayer: 1
   playerID: -1
-  animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
+  animChar: {fileID: 7952526632702253696}
   clip: {fileID: 0}
   clipParameterID: -1
   clip2D: OkiThrow_L
@@ -12254,7 +12243,7 @@ MonoBehaviour:
   playMode: 0
   animationEngine: 2
   customClassName: 
-  animEngine: {fileID: 2045753398}
+  animEngine: {fileID: 1616541468}
 --- !u!114 &1409952421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12361,6 +12350,20 @@ MonoBehaviour:
   hotspot: {fileID: 1301319707}
   affectChildren: 0
   changeType: 1
+--- !u!114 &1442453879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &1452217584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12985,10 +12988,10 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 3843650740937557613}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 180112654}
+  editingAnimEngine: {fileID: 1916998869}
   isPlayer: 1
   playerID: -1
-  animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
+  animChar: {fileID: 7952526632702253696}
   clip: {fileID: 0}
   clipParameterID: -1
   clip2D: OkiTakeMid_R
@@ -13110,6 +13113,20 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &1520361526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &1538221711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13380,20 +13397,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &1570404040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &1571492511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14022,6 +14025,20 @@ MonoBehaviour:
   constantID: 1476666
   retainInPrefab: 0
   autoManual: 0
+--- !u!114 &1616541468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &1645958657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14074,6 +14091,20 @@ MonoBehaviour:
   playerID: 0
   addToFront: 0
   removeLast: 0
+--- !u!114 &1648227667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!1 &1649715158
 GameObject:
   m_ObjectHideFlags: 0
@@ -15759,7 +15790,7 @@ MonoBehaviour:
   playMode: 0
   animationEngine: 2
   customClassName: 
-  animEngine: {fileID: 166605882}
+  animEngine: {fileID: 1753231766}
 --- !u!114 &1748245373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15866,6 +15897,20 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
+--- !u!114 &1753231766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!1 &1771777957
 GameObject:
   m_ObjectHideFlags: 0
@@ -16812,20 +16857,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &1856814289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &1859651741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17276,6 +17307,20 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 455443379}
   parameterID: -1
   timeToPause: 0.8
+--- !u!114 &1916998869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!1 &1944041627
 GameObject:
   m_ObjectHideFlags: 0
@@ -17609,20 +17654,6 @@ Transform:
   m_Father: {fileID: 928405464}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1991472852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &1993077218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18310,20 +18341,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &2045753398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!1 &2050836140
 GameObject:
   m_ObjectHideFlags: 0
@@ -20053,6 +20070,7 @@ GameObject:
   - component: {fileID: 3745667184080988285}
   - component: {fileID: 3745667184079451773}
   - component: {fileID: 3745667184070214077}
+  - component: {fileID: 3745667184080958558}
   m_Layer: 2
   m_Name: NavCam 1
   m_TagString: Untagged
@@ -20060,6 +20078,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3745667184080958558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745667184080958557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72e60470f1fa4fd1825cd67ce482cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 201458
+  retainInPrefab: 0
+  autoManual: 0
 --- !u!4 &3745667184080988285
 Transform:
   m_ObjectHideFlags: 0
@@ -20252,6 +20285,7 @@ GameObject:
   - component: {fileID: 4154348145001947325}
   - component: {fileID: 4154348145007914525}
   - component: {fileID: 4154348145008904573}
+  - component: {fileID: 4154348145001856158}
   m_Layer: 2
   m_Name: Trigger2D
   m_TagString: Untagged
@@ -20259,6 +20293,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4154348145001856158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154348145001856157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb1b5b6755a54313af56b3103eaf284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantID: 201460
+  retainInPrefab: 0
+  autoManual: 0
+  startState: 0
 --- !u!4 &4154348145001947325
 Transform:
   m_ObjectHideFlags: 0
@@ -21157,6 +21207,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
+--- !u!114 &7952526632702253696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
+  m_PrefabInstance: {fileID: 7952526632702253695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e75a04a147624aa9b6f89d5d4759155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8585156320507273450
 Transform:
   m_ObjectHideFlags: 0
