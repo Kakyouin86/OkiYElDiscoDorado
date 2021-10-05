@@ -164,7 +164,7 @@ MonoBehaviour:
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiText: {fileID: 0}
-  label: Save game
+  label: Salvar Partida
   anchor: 4
   textEffects: 0
   outlineSize: 2
@@ -296,7 +296,7 @@ MonoBehaviour:
   numSlots: 1
   uiButton: {fileID: 0}
   uiPointerState: 0
-  label: Load
+  label: Cargar
   hotspotLabel: 
   hotspotLabelID: -1
   anchor: 4
@@ -1216,7 +1216,7 @@ MonoBehaviour:
   numSlots: 1
   uiButton: {fileID: 0}
   uiPointerState: 0
-  label: Options
+  label: Opciones
   hotspotLabel: 
   hotspotLabelID: -1
   anchor: 4
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   amount: 9
   minValue: 0
   maxValue: 1
-  label: SFX volume
+  label: SFX
   textEffects: 0
   outlineSize: 2
   anchor: 3
@@ -2744,12 +2744,13 @@ MonoBehaviour:
   uiButton: {fileID: 0}
   uiDropdown: {fileID: 0}
   actionListOnClick: {fileID: 0}
-  label: Language
+  label: Idioma
   textEffects: 0
   outlineSize: 2
   anchor: 3
   selected: 0
-  optionsArray: []
+  optionsArray:
+  - Original
   cycleType: 0
   splitLanguageType: 0
   varID: 0
@@ -2806,7 +2807,7 @@ MonoBehaviour:
   amount: 1
   minValue: 0
   maxValue: 1
-  label: Speech volume
+  label: Voz
   textEffects: 0
   outlineSize: 2
   anchor: 3
@@ -3823,7 +3824,7 @@ MonoBehaviour:
   amount: 3
   minValue: 0
   maxValue: 1
-  label: Music volume
+  label: "M\xFAsica"
   textEffects: 0
   outlineSize: 2
   anchor: 3
@@ -3885,7 +3886,7 @@ MonoBehaviour:
   uiToggle: {fileID: 0}
   toggleType: 0
   actionListOnClick: {fileID: 0}
-  label: Subtitles
+  label: "Subt\xEDtulos"
   isOn: 1
   textEffects: 0
   outlineSize: 2
@@ -4016,7 +4017,7 @@ MonoBehaviour:
   numSlots: 1
   uiButton: {fileID: 0}
   uiPointerState: 0
-  label: Save
+  label: Grabar
   hotspotLabel: 
   hotspotLabelID: -1
   anchor: 4
@@ -4727,7 +4728,7 @@ MonoBehaviour:
   numSlots: 1
   uiButton: {fileID: 0}
   uiPointerState: 0
-  label: Back
+  label: Volver
   hotspotLabel: 
   hotspotLabelID: -1
   anchor: 4
@@ -5502,7 +5503,7 @@ MonoBehaviour:
   numSlots: 1
   uiButton: {fileID: 0}
   uiPointerState: 0
-  label: Quit
+  label: Salir
   hotspotLabel: 
   hotspotLabelID: -1
   anchor: 4
@@ -5513,7 +5514,7 @@ MonoBehaviour:
   parameterID: -1
   parameterValue: 0
   doFade: 0
-  switchMenuTitle: 
+  switchMenuTitle: Main Menu
   inventoryBoxTitle: 
   shiftInventory: 0
   shiftAmount: 1
@@ -5860,7 +5861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  title: TitleLabel
+  title: Options
   slotSize: {x: 36, y: 5}
   sizeType: 1
   positionType: 0
@@ -5893,7 +5894,7 @@ MonoBehaviour:
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiText: {fileID: 0}
-  label: Options
+  label: Opciones
   anchor: 4
   textEffects: 0
   outlineSize: 2
@@ -6017,7 +6018,7 @@ MonoBehaviour:
   numSlots: 1
   uiButton: {fileID: 0}
   uiPointerState: 0
-  label: Back
+  label: Volver
   hotspotLabel: 
   hotspotLabelID: -1
   anchor: 4
@@ -6501,7 +6502,7 @@ MonoBehaviour:
   numSlots: 1
   uiButton: {fileID: 0}
   uiPointerState: 0
-  label: Back
+  label: Volver
   hotspotLabel: 
   hotspotLabelID: -1
   anchor: 4
@@ -6570,7 +6571,7 @@ MonoBehaviour:
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiText: {fileID: 0}
-  label: Load game
+  label: Cargar Partida
   anchor: 4
   textEffects: 0
   outlineSize: 2
@@ -6702,7 +6703,7 @@ MonoBehaviour:
   numSlots: 1
   uiButton: {fileID: 0}
   uiPointerState: 0
-  label: Resume
+  label: Resumir
   hotspotLabel: 
   hotspotLabelID: -1
   anchor: 4
