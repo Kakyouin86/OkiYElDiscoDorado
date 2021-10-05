@@ -678,7 +678,7 @@ MonoBehaviour:
   endings:
   - resultAction: 2
     skipAction: 2
-    skipActionActual: {fileID: 1400074002}
+    skipActionActual: {fileID: 1710920063}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   - resultAction: 2
@@ -694,7 +694,7 @@ MonoBehaviour:
     x: 14
     y: 14
     width: 300
-    height: 240
+    height: 200
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3365086912780990100}
@@ -709,8 +709,8 @@ MonoBehaviour:
   linkedCutsceneFail: {fileID: 0}
   linkedAssetFail: {fileID: 0}
   parameterID: -1
-  variableID: 0
-  variableNumber: 0
+  variableID: -1
+  variableNumber: -1
   checkParameterID: -1
   getVarMethod: 0
   compareVariableID: 0
@@ -3455,20 +3455,6 @@ MonoBehaviour:
   returnToLast: 1
   retainPreviousSpeed: 0
   waitForAnimation: 0
---- !u!114 &333311290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &342181813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5134,6 +5120,20 @@ MonoBehaviour:
   isPlayer: 1
   playerID: -1
   relativeTo: 0
+--- !u!114 &510388851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &510482225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6529,10 +6529,10 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 29.483887
-    y: 395.61295
+    x: 364
+    y: 244
     width: 300
-    height: 200.35484
+    height: 201
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3365086912780990100}
@@ -10205,8 +10205,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 353.2449
-    y: 407.742
+    x: 364
+    y: 414
     width: 300
     height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10516,7 +10516,7 @@ MonoBehaviour:
     x: 14
     y: 467
     width: 300
-    height: 201
+    height: 215.4
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 360158103}
@@ -10526,8 +10526,8 @@ MonoBehaviour:
   isPlayer: 1
   playerID: -1
   speaker: {fileID: 0}
-  messageText: Primero, tengo que reemplazar los cables que fueron masticados por
-    las termitas-octo-roedoras.
+  messageText: Primero, tengo unos cables pelados que fueron masticados por las termitas-octo-roedoras.
+    Peligro de hacer un corto.
   lineID: -1
   multiLineIDs: 
   isBackground: 0
@@ -13776,66 +13776,6 @@ MonoBehaviour:
   playerID: 0
   addToFront: 0
   removeLast: 0
---- !u!114 &1400074002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43d93df5227e14ac692429ea860d7d05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  isDisplayed: 1
-  showComment: 0
-  comment: 
-  willWait: 0
-  endAction: 0
-  skipAction: -1
-  skipActionActual: {fileID: 0}
-  linkedCutscene: {fileID: 0}
-  linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 2
-    skipAction: 4
-    skipActionActual: {fileID: 0}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
-  - resultAction: 0
-    skipAction: -1
-    skipActionActual: {fileID: 0}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
-  isEnabled: 1
-  isAssetFile: 0
-  isBreakPoint: 0
-  nodeRect:
-    serializedVersion: 2
-    x: 219.03232
-    y: 205.16135
-    width: 300
-    height: 140
-  overrideColor: {r: 1, g: 1, b: 1, a: 1}
-  showOutputSockets: 1
-  parentActionListInEditor: {fileID: 0}
-  resultActionTrue: 0
-  skipActionTrue: -1
-  skipActionTrueActual: {fileID: 0}
-  linkedCutsceneTrue: {fileID: 0}
-  linkedAssetTrue: {fileID: 0}
-  resultActionFail: 1
-  skipActionFail: -1
-  skipActionFailActual: {fileID: 0}
-  linkedCutsceneFail: {fileID: 0}
-  linkedAssetFail: {fileID: 0}
-  inputName: 
-  parameterID: -1
-  checkType: 3
-  axisCondition: 0
-  axisValue: 0
 --- !u!114 &1406232057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16700,10 +16640,10 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 1769600681}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 333311290}
+  editingAnimEngine: {fileID: 510388851}
   isPlayer: 1
   playerID: -1
-  animChar: {fileID: 1471119406}
+  animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
   clip: {fileID: 0}
   clipParameterID: -1
   clip2D: OkiTakeMid_L
@@ -16869,7 +16809,7 @@ MonoBehaviour:
   endings:
   - resultAction: 2
     skipAction: 4
-    skipActionActual: {fileID: 0}
+    skipActionActual: {fileID: 2117176117}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   - resultAction: 0
@@ -16882,8 +16822,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 219.03232
-    y: 205.16135
+    x: 14
+    y: 244
     width: 300
     height: 140
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -21998,8 +21938,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 621.632
-    y: 210.06451
+    x: 14
+    y: 414
     width: 300
     height: 164
   overrideColor: {r: 1, g: 1, b: 1, a: 1}

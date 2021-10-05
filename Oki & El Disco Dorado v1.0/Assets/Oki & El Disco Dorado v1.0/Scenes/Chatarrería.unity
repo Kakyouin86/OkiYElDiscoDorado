@@ -420,7 +420,7 @@ MonoBehaviour:
     x: 14
     y: 368
     width: 300
-    height: 172.18643
+    height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 2028.9575
+    y: 2311.9624
     width: 300
     height: 185.16
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1620,7 +1620,7 @@ MonoBehaviour:
     x: 1064
     y: 368
     width: 300
-    height: 186.28815
+    height: 186.53847
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -1723,7 +1723,7 @@ MonoBehaviour:
     x: 364
     y: 994
     width: 300
-    height: 219.24002
+    height: 234.96228
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -2672,7 +2672,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 2246.2734
+    y: 2527.1223
     width: 300
     height: 219.24002
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2735,7 +2735,7 @@ MonoBehaviour:
     x: 14
     y: 1264
     width: 300
-    height: 225.16
+    height: 225.98114
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -3063,8 +3063,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 1024.7549
-    y: 194.41504
+    x: 1064
+    y: 368
     width: 300
     height: 256
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3662,7 +3662,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 2151.27
+    y: 2140.3018
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3815,7 +3815,7 @@ MonoBehaviour:
     x: 364
     y: 368
     width: 300
-    height: 172.18643
+    height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -4030,9 +4030,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 1616.7234
+    y: 1610.3773
     width: 300
-    height: 233.32002
+    height: 234.96228
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -4342,7 +4342,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2281.4312
+    y: 2561.2024
     width: 300
     height: 242.47371
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4640,9 +4640,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 599.93616
+    y: 583.0976
     width: 300
-    height: 225.16
+    height: 225.98114
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -4822,7 +4822,7 @@ MonoBehaviour:
     x: 1064
     y: 654
     width: 300
-    height: 199.24002
+    height: 200.47171
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -5152,7 +5152,7 @@ MonoBehaviour:
     x: 1064
     y: 583.98114
     width: 300
-    height: 234.49153
+    height: 236.07693
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -5266,8 +5266,8 @@ MonoBehaviour:
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   - resultAction: 2
-    skipAction: 14
-    skipActionActual: {fileID: 1855848221}
+    skipAction: 13
+    skipActionActual: {fileID: 1715974844}
     linkedCutscene: {fileID: 0}
     linkedAsset: {fileID: 0}
   isEnabled: 1
@@ -5412,7 +5412,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1414
-    y: 870.95746
+    y: 869.0976
     width: 300
     height: 253.19516
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -6087,7 +6087,7 @@ MonoBehaviour:
     x: 364
     y: 570
     width: 300
-    height: 212.18643
+    height: 212
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -7343,9 +7343,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 1369.8085
+    y: 1365.415
     width: 300
-    height: 213.32002
+    height: 214.96228
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -7406,7 +7406,7 @@ MonoBehaviour:
     x: 14
     y: 570
     width: 300
-    height: 212.18643
+    height: 212
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -8174,7 +8174,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1414
-    y: 590
+    y: 590.1579
     width: 300
     height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -8310,7 +8310,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1414
-    y: 2028.9575
+    y: 2311.9624
     width: 300
     height: 187.3158
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -8843,7 +8843,7 @@ MonoBehaviour:
     x: 1064
     y: 848.9434
     width: 300
-    height: 172.18643
+    height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -8901,9 +8901,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 1117.8723
+    y: 1114.9434
     width: 300
-    height: 219.24002
+    height: 220.47171
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -8962,7 +8962,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 2513.905
+    y: 2776.3623
     width: 300
     height: 207.3158
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9125,7 +9125,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2028.9575
+    y: 2311.9624
     width: 300
     height: 219.24002
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9334,7 +9334,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3438.326
+    y: 3700.7834
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9586,7 +9586,7 @@ MonoBehaviour:
     x: 714
     y: 368
     width: 300
-    height: 172.18643
+    height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -10390,7 +10390,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 2998.8523
+    y: 3261.3098
     width: 300
     height: 207.3158
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -11107,7 +11107,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 2751.2207
+    y: 3013.6782
     width: 300
     height: 217.6316
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -11293,9 +11293,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 885.93616
+    y: 884.4717
     width: 300
-    height: 199.24002
+    height: 200.47171
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -12420,7 +12420,7 @@ MonoBehaviour:
     x: 1414
     y: 368
     width: 300
-    height: 172.18643
+    height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -12843,7 +12843,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3236.168
+    y: 3498.6255
     width: 300
     height: 172.1579
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -13002,8 +13002,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 400.8
-    y: 20.55693
+    x: 364
+    y: 1957.9624
     width: 300
     height: 324
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -13761,7 +13761,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1500.9575
+    y: 1735.9624
     width: 300
     height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -14016,9 +14016,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 1883.6383
+    y: 1875.3396
     width: 300
-    height: 233.32002
+    height: 234.96228
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -15221,7 +15221,7 @@ MonoBehaviour:
     x: 714
     y: 570
     width: 300
-    height: 240.38983
+    height: 241.3077
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -15232,7 +15232,7 @@ MonoBehaviour:
   playerID: -1
   speaker: {fileID: 606722479}
   messageText: "Est\xE1 ah\xED al lado tuyo. Parece que no durmi\xF3 bien anoche.
-    Est\xE1 de mal humor-"
+    Est\xE1 de mal humor..."
   lineID: -1
   multiLineIDs: 
   isBackground: 0
@@ -15678,10 +15678,10 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 14
-    y: 1520.9575
+    x: 696.07556
+    y: 1220.2266
     width: 300
-    height: 205.16
+    height: 205.98114
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -16114,7 +16114,7 @@ MonoBehaviour:
     x: 714
     y: 368
     width: 300
-    height: 185.16
+    height: 200.47171
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -16173,7 +16173,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1260.9149
+    y: 1258.9623
     width: 300
     height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -17310,10 +17310,10 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 364
-    y: 1264
+    x: 634.1888
+    y: 1463.7548
     width: 300
-    height: 205.16
+    height: 205.98114
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -17373,7 +17373,7 @@ MonoBehaviour:
     x: 364
     y: 812
     width: 300
-    height: 172.18643
+    height: 172
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
@@ -18956,7 +18956,7 @@ MonoBehaviour:
     x: 1414
     y: 570.2
     width: 300
-    height: 192.18643
+    height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 485422827}
