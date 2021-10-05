@@ -4199,7 +4199,7 @@ MonoBehaviour:
   positionSmoothing: 0
   alignment: 4
   toggleKey: Menu
-  ignoreMouseClicks: 1
+  ignoreMouseClicks: 0
   pauseWhenEnabled: 1
   showWhenPaused: 0
   canClickInCutscene: 0
