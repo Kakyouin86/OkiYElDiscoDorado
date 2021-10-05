@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Oki & El Disco Dorado v1.0/Scenes/Credits.unity
     guid: 96870e5e141572f469fed2fd4a423cae
+  - enabled: 1
+    path: Assets/Oki & El Disco Dorado v1.0/Scenes/Reset.unity
+    guid: 0bcf21af66c5e18428ece73b9e99a70d
   m_configObjects: {}
