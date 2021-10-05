@@ -288,10 +288,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 2.625
-    y: 78
-    width: 84
-    height: 22.5
+    x: 3.78
+    y: 78.87
+    width: 120.96
+    height: 21.25
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -1208,10 +1208,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 2.625
-    y: 27.75
-    width: 84
-    height: 22.5
+    x: 3.78
+    y: 28.810001
+    width: 120.96
+    height: 21.25
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -4009,10 +4009,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 2.625
-    y: 52.875
-    width: 84
-    height: 22.5
+    x: 3.78
+    y: 53.84
+    width: 120.96
+    height: 21.25
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -4193,18 +4193,18 @@ MonoBehaviour:
   _isLocked: 0
   id: 12
   title: Pause
-  manualSize: {x: 17, y: 28.5}
+  manualSize: {x: 17, y: 30.336472}
   positionType: 0
-  manualPosition: {x: 262.5, y: 225}
+  manualPosition: {x: 378, y: 212.5}
   positionSmoothing: 0
   alignment: 4
   toggleKey: Menu
-  ignoreMouseClicks: 0
+  ignoreMouseClicks: 1
   pauseWhenEnabled: 1
   showWhenPaused: 0
   canClickInCutscene: 0
   enabledOnStart: 0
-  actionListOnTurnOn: {fileID: 11400000, guid: 188a8e264a161d04487a772d6105515d, type: 2}
+  actionListOnTurnOn: {fileID: 0}
   actionListOnTurnOff: {fileID: 0}
   updateWhenFadeOut: 1
   hideDuringSaveScreenshots: 1
@@ -4273,13 +4273,13 @@ MonoBehaviour:
   speechProximityLimit: 0
   speechProximityDistance: 10
   deleteUIWhenTurnOff: 0
-  biggestElementSize: {x: 86.625, y: 125.625}
+  biggestElementSize: {x: 124.74, y: 125.15}
   rect:
     serializedVersion: 2
-    x: 217.875
-    y: 160.875
-    width: 89.25
-    height: 128.25
+    x: 313.74
+    y: 148.035
+    width: 128.52
+    height: 128.93001
   showInFilter: 1
 --- !u!114 &2568411815835417153
 MonoBehaviour:
@@ -4539,8 +4539,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 4.845
     y: 133.225
-    width: 84
-    height: 22.5
+    width: 120.96
+    height: 21.25
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -5495,15 +5495,15 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 2.625
-    y: 103.125
-    width: 84
-    height: 22.5
+    x: 3.78
+    y: 103.9
+    width: 120.96
+    height: 21.25
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
   uiPointerState: 0
-  label: Salir
+  label: Salir al menu
   hotspotLabel: 
   hotspotLabelID: -1
   anchor: 4
@@ -6695,10 +6695,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 2.625
-    y: 2.625
-    width: 84
-    height: 22.5
+    x: 3.78
+    y: 3.78
+    width: 120.96
+    height: 21.25
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
