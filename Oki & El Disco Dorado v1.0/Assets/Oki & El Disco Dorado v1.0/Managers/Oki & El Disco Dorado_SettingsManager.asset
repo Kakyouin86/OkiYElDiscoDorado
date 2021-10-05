@@ -32,7 +32,7 @@ MonoBehaviour:
     importLabelID: -1
     defaultAutosaveLabel: Autosave
     autosaveLabelID: -1
-  referenceScenesInSave: 0
+  referenceScenesInSave: 1
   sceneAttributes: []
   actionListOnStart: {fileID: 0}
   blackOutWhenSkipping: 0
@@ -179,10 +179,10 @@ MonoBehaviour:
   useLoadingScreen: 0
   manualSceneActivation: 0
   loadingSceneIs: 0
-  loadScenesFromAddressable: 0
+  loadScenesFromAddressable: 1
   loadingSceneName: 
   loadingScene: 0
-  useAsyncLoading: 0
+  useAsyncLoading: 1
   loadingDelay: 0
   blackOutWhenInitialising: 1
   spawnPersistentEnginePrefab: 1
