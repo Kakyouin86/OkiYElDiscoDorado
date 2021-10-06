@@ -7195,7 +7195,7 @@ MonoBehaviour:
   title: ShiftRight
   slotSize: {x: 2.5, y: 11}
   sizeType: 1
-  positionType: 2
+  positionType: 0
   slotSpacing: 0
   lineID: 83
   alternativeInputButton: 
