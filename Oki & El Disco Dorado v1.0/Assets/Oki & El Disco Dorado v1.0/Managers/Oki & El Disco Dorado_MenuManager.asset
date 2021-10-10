@@ -2904,7 +2904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   title: SubsSpeakerLabel
-  slotSize: {x: 4.4414535, y: 2.631579}
+  slotSize: {x: 4.359313, y: 2.5821595}
   sizeType: 0
   positionType: 0
   slotSpacing: 0
@@ -2929,10 +2929,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 7.43
-    y: 7.43
+    x: 7.57
+    y: 7.57
     width: 33
-    height: 10.999999
+    height: 11
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiText: {fileID: 0}
@@ -5678,17 +5678,17 @@ MonoBehaviour:
   fadeSpeed: 0.2
   zoomAnchor: 4
   zoomElements: 0
-  oneMenuPerSpeech: 1
+  oneMenuPerSpeech: 0
   speechProximityLimit: 0
   speechProximityDistance: 10
   deleteUIWhenTurnOff: 0
   biggestElementSize: {x: 0, y: 0}
   rect:
     serializedVersion: 2
-    x: 193.18
-    y: 326.04
-    width: 371.5
-    height: 83.6
+    x: 196.82
+    y: 332.28
+    width: 378.5
+    height: 85.200005
   showInFilter: 1
 --- !u!114 &4995813201432175653
 MonoBehaviour:
@@ -6956,10 +6956,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 7.43
-    y: 25.859999
-    width: 356.63998
-    height: 37.62
+    x: 7.57
+    y: 26.14
+    width: 363.36002
+    height: 38.340004
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiText: {fileID: 0}
