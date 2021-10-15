@@ -29,7 +29,7 @@ MonoBehaviour:
   cycleCursors: 1
   onlyAnimateOverHotspots: 1
   leftClickExamine: 0
-  onlyWalkWhenOverNavMesh: 1
+  onlyWalkWhenOverNavMesh: 0
   onlyShowInventoryLabelOverHotspots: 0
   inventoryCursorSize: 0.06
   allowIconInput: 1
