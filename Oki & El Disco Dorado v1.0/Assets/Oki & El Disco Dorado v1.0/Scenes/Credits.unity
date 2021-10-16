@@ -690,9 +690,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Producido, dirigido, ideado, programado y testeado por:\n\"Los Manny Calavera\".\n\nGalindo,
-    Jaime (monsterdroid.itch.io)\r\n\nGonz\xE1lez Jim\xE9nez, C\xE9sar\r\n\r\nGuerra,
-    Tom\xE1s (tguerra517.itch.io)\n\r\nMastrandrea, Iv\xE1n Jes\xFAs\r (diskeletton-studios.itch.io)\n\r\nMonge,
-    Leonardo Jorge (kakyouin.itch.io\u200B)\r\n\r\nVercelli, Marti (martiver.itch.io\u200B)\u200B"
+    Jaime (monsterdroid.itch.io)\r\n\r\nGuerra, Tom\xE1s (tguerra517.itch.io)\n\r\nMastrandrea,
+    Iv\xE1n Jes\xFAs\r (diskeletton-studios.itch.io)\n\r\nMonge, Leonardo Jorge (kakyouin.itch.io\u200B)\r\n\r\nVercelli,
+    Marti (martiver.itch.io\u200B)\u200B"
 --- !u!222 &1587484656
 CanvasRenderer:
   m_ObjectHideFlags: 0
