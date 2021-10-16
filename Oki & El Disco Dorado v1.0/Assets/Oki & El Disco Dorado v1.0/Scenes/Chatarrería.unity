@@ -853,7 +853,7 @@ MonoBehaviour:
     x: 1764
     y: 654
     width: 300
-    height: 172
+    height: 172.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 2311.9624
+    y: 2327.5813
     width: 300
     height: 185.16
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1675,9 +1675,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 994
+    y: 994.60004
     width: 300
-    height: 234.96228
+    height: 235.4
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -2618,7 +2618,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 2527.1223
+    y: 2542.7412
     width: 300
     height: 219.24002
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2679,9 +2679,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 1264
+    y: 1264.6001
     width: 300
-    height: 225.98114
+    height: 226.6
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -3267,6 +3267,67 @@ MonoBehaviour:
   relativeMarkerID: 0
   relativeMarkerParameterID: -1
   forceReload: 0
+--- !u!114 &399158109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed656dc9f403a441f8fe89408c7a7189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isDisplayed: 1
+  showComment: 0
+  comment: 
+  willWait: 0
+  endAction: 0
+  skipAction: -1
+  skipActionActual: {fileID: 0}
+  linkedCutscene: {fileID: 0}
+  linkedAsset: {fileID: 0}
+  endings:
+  - resultAction: 1
+    skipAction: -1
+    skipActionActual: {fileID: 0}
+    linkedCutscene: {fileID: 0}
+    linkedAsset: {fileID: 0}
+  isEnabled: 1
+  isAssetFile: 0
+  isBreakPoint: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 14
+    y: 230.6
+    width: 300
+    height: 201
+  overrideColor: {r: 1, g: 1, b: 1, a: 1}
+  showOutputSockets: 1
+  parentActionListInEditor: {fileID: 3051266273336313469}
+  constantID: 0
+  parameterID: -1
+  messageParameterID: -1
+  isPlayer: 1
+  playerID: -1
+  speaker: {fileID: 0}
+  messageText: "Dicen que lleva al infierno, pero nadie ha tenido una raz\xF3n para
+    hacerlo."
+  lineID: -1
+  multiLineIDs: 
+  isBackground: 0
+  noAnimation: 0
+  headClip: {fileID: 0}
+  mouthClip: {fileID: 0}
+  play2DHeadAnim: 0
+  headClip2D: 
+  headLayer: 0
+  play2DMouthAnim: 0
+  mouthClip2D: 
+  mouthLayer: 0
+  waitTimeOffset: 0
 --- !u!1 &410146248
 GameObject:
   m_ObjectHideFlags: 0
@@ -3622,7 +3683,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 2140.3018
+    y: 2156.7246
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3989,7 +4050,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 1610.3773
+    y: 1626.8
     width: 300
     height: 234.96228
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4301,7 +4362,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2561.2024
+    y: 2576.8213
     width: 300
     height: 242.47371
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4599,9 +4660,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 583.0976
+    y: 599
     width: 300
-    height: 225.98114
+    height: 226.6
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -4781,7 +4842,7 @@ MonoBehaviour:
     x: 1064
     y: 654
     width: 300
-    height: 200.47171
+    height: 201
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -5287,7 +5348,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 994
+    y: 994.60004
     width: 300
     height: 240
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5437,9 +5498,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1414
-    y: 869.0976
+    y: 870.6
     width: 300
-    height: 253.19516
+    height: 255.4
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -6858,7 +6919,7 @@ MonoBehaviour:
     x: 1414
     y: 368
     width: 300
-    height: 192.1579
+    height: 192.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -7259,9 +7320,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 1365.415
+    y: 1367
     width: 300
-    height: 214.96228
+    height: 229.8
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -7434,7 +7495,7 @@ MonoBehaviour:
     x: 364
     y: 368
     width: 300
-    height: 172
+    height: 172.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -7444,7 +7505,7 @@ MonoBehaviour:
   isPlayer: 1
   playerID: -1
   speaker: {fileID: 0}
-  messageText: Bonitas vestimentas
+  messageText: Bonitas vestimentas.
   lineID: -1
   multiLineIDs: 
   isBackground: 0
@@ -7566,67 +7627,6 @@ MonoBehaviour:
   speaker: {fileID: 0}
   messageText: "Ni loco hablo con el \xE1cido. A ver si me pasa lo mismo que con
     los seres de los agujeritos..."
-  lineID: -1
-  multiLineIDs: 
-  isBackground: 0
-  noAnimation: 0
-  headClip: {fileID: 0}
-  mouthClip: {fileID: 0}
-  play2DHeadAnim: 0
-  headClip2D: 
-  headLayer: 0
-  play2DMouthAnim: 0
-  mouthClip2D: 
-  mouthLayer: 0
-  waitTimeOffset: 0
---- !u!114 &813748002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed656dc9f403a441f8fe89408c7a7189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  isDisplayed: 1
-  showComment: 0
-  comment: 
-  willWait: 0
-  endAction: 0
-  skipAction: -1
-  skipActionActual: {fileID: 0}
-  linkedCutscene: {fileID: 0}
-  linkedAsset: {fileID: 0}
-  endings:
-  - resultAction: 1
-    skipAction: -1
-    skipActionActual: {fileID: 0}
-    linkedCutscene: {fileID: 0}
-    linkedAsset: {fileID: 0}
-  isEnabled: 1
-  isAssetFile: 0
-  isBreakPoint: 0
-  nodeRect:
-    serializedVersion: 2
-    x: 14
-    y: 230.6
-    width: 300
-    height: 201
-  overrideColor: {r: 1, g: 1, b: 1, a: 1}
-  showOutputSockets: 1
-  parentActionListInEditor: {fileID: 0}
-  constantID: 0
-  parameterID: -1
-  messageParameterID: -1
-  isPlayer: 1
-  playerID: -1
-  speaker: {fileID: 0}
-  messageText: "Dicen que lleva al infierno, pero nadie ha tenido una raz\xF3n para
-    hacerlo."
   lineID: -1
   multiLineIDs: 
   isBackground: 0
@@ -8203,9 +8203,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1414
-    y: 590.1579
+    y: 590.2
     width: 300
-    height: 192
+    height: 192.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -8339,7 +8339,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1414
-    y: 2311.9624
+    y: 2327.5813
     width: 300
     height: 187.3158
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -8930,9 +8930,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 1114.9434
+    y: 1116
     width: 300
-    height: 220.47171
+    height: 221
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -8991,7 +8991,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 2776.3623
+    y: 2791.9812
     width: 300
     height: 207.3158
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9154,7 +9154,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 2311.9624
+    y: 2327.5813
     width: 300
     height: 219.24002
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9273,9 +9273,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1764
-    y: 856
+    y: 856.2
     width: 300
-    height: 192.1579
+    height: 192.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -9363,7 +9363,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3700.7834
+    y: 3716.402
     width: 300
     height: 152
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -10419,7 +10419,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3261.3098
+    y: 3276.9285
     width: 300
     height: 207.3158
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -11094,7 +11094,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3013.6782
+    y: 3029.2969
     width: 300
     height: 217.6316
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -11280,9 +11280,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 884.4717
+    y: 885
     width: 300
-    height: 200.47171
+    height: 201
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -11881,7 +11881,7 @@ MonoBehaviour:
     x: 1414
     y: 654
     width: 300
-    height: 185.09758
+    height: 186.6
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -12331,9 +12331,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 792
+    y: 792.4
     width: 300
-    height: 172
+    height: 172.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -12564,9 +12564,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 14
-    y: 570
+    y: 570.2
     width: 300
-    height: 192
+    height: 192.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -12802,7 +12802,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 714
-    y: 3498.6255
+    y: 3514.2441
     width: 300
     height: 172.1579
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -12962,7 +12962,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1957.9624
+    y: 1973.5813
     width: 300
     height: 324
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -13259,9 +13259,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 792
+    y: 792.4
     width: 300
-    height: 172
+    height: 172.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -13697,9 +13697,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 570
+    y: 570.2
     width: 300
-    height: 192
+    height: 192.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -13757,7 +13757,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1735.9624
+    y: 1751.5813
     width: 300
     height: 192
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -14012,7 +14012,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 1064
-    y: 1875.3396
+    y: 1891.7623
     width: 300
     height: 234.96228
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -15674,10 +15674,10 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 696.07556
-    y: 1220.2266
+    x: 364
+    y: 1264.6001
     width: 300
-    height: 205.98114
+    height: 221
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -16162,7 +16162,7 @@ MonoBehaviour:
     x: 714
     y: 368
     width: 300
-    height: 200.47171
+    height: 201
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -16221,9 +16221,9 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 364
-    y: 1258.9623
+    y: 1260
     width: 300
-    height: 192
+    height: 192.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -17344,8 +17344,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 634.1888
-    y: 1463.7548
+    x: 364
+    y: 1515.6001
     width: 300
     height: 205.98114
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -17626,7 +17626,7 @@ MonoBehaviour:
     x: 14
     y: 368
     width: 300
-    height: 172
+    height: 172.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 3657728175205795411}
@@ -20378,7 +20378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 1513532998}
-  - {fileID: 813748002}
+  - {fileID: 399158109}
   isSkippable: 1
   triggerTime: 0
   autosaveAfter: 0
