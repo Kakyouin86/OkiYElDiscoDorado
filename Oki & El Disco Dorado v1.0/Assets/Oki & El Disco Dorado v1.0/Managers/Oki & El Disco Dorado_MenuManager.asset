@@ -218,10 +218,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 3.715
-    y: 3.715
-    width: 46.809002
-    height: 20.064
+    x: 3.785
+    y: 3.785
+    width: 47.691
+    height: 20.448002
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -402,9 +402,9 @@ MonoBehaviour:
   _isLocked: 0
   id: 4
   title: InGame
-  manualSize: {x: 7.3, y: 6.577512}
+  manualSize: {x: 7.3, y: 6.576996}
   positionType: 1
-  manualPosition: {x: 27.119501, y: 404.25302}
+  manualPosition: {x: 27.6305, y: 411.991}
   positionSmoothing: 0
   alignment: 6
   toggleKey: 
@@ -473,13 +473,13 @@ MonoBehaviour:
   speechProximityLimit: 0
   speechProximityDistance: 10
   deleteUIWhenTurnOff: 0
-  biggestElementSize: {x: 50.524002, y: 23.779}
+  biggestElementSize: {x: 51.476, y: 24.233002}
   rect:
     serializedVersion: 2
     x: 0
-    y: 390.506
-    width: 54.239002
-    height: 27.494
+    y: 397.982
+    width: 55.261
+    height: 28.018002
   showInFilter: 1
 --- !u!114 &-7739778108260654419
 MonoBehaviour:
@@ -1470,10 +1470,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 3.715
-    y: 28.33
-    width: 222.9
-    height: 83.6
+    x: 3.785
+    y: 28.87
+    width: 227.1
+    height: 85.200005
   relativePosition: {x: 0, y: 0}
   numSlots: 4
   uiSlots:
@@ -1868,8 +1868,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 53.496
-    height: 27.588
+    width: 54.504
+    height: 28.116001
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -2645,9 +2645,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f455f0e4a864975bf60bc153fbe20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSource: 0
+  menuSource: 2
   canvas: {fileID: 0}
-  canvasID: 0
+  canvasID: 366114
   rectTransform: {fileID: 0}
   rectTransformID: 0
   uiTransitionType: 1
@@ -2657,7 +2657,7 @@ MonoBehaviour:
   title: Cargar Partida
   manualSize: {x: 7.1, y: 6.4}
   positionType: 1
-  manualPosition: {x: 26.376501, y: 404.624}
+  manualPosition: {x: 26.8735, y: 412.36798}
   positionSmoothing: 0
   alignment: 6
   toggleKey: 
@@ -2666,7 +2666,7 @@ MonoBehaviour:
   showWhenPaused: 0
   canClickInCutscene: 0
   enabledOnStart: 0
-  actionListOnTurnOn: {fileID: 11400000, guid: 2b6238c0a2752e14196c0f2118486a7d, type: 2}
+  actionListOnTurnOn: {fileID: 11400000, guid: 3d0482e8dddcf6042aa554c68f7cdd7a, type: 2}
   actionListOnTurnOff: {fileID: 0}
   updateWhenFadeOut: 1
   hideDuringSaveScreenshots: 1
@@ -2730,9 +2730,9 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 0
-    y: 391.248
-    width: 52.753002
-    height: 26.752
+    y: 398.736
+    width: 53.747
+    height: 27.264002
   showInFilter: 1
 --- !u!114 &-1346331356677112027
 MonoBehaviour:
@@ -3479,9 +3479,9 @@ MonoBehaviour:
   _isLocked: 0
   id: 17
   title: Cargar Partida Guardada
-  manualSize: {x: 30.999998, y: 33.555023}
+  manualSize: {x: 31.000002, y: 33.553993}
   positionType: 0
-  manualPosition: {x: 371.5, y: 209}
+  manualPosition: {x: 378.5, y: 213}
   positionSmoothing: 0
   alignment: 0
   toggleKey: 
@@ -3554,13 +3554,13 @@ MonoBehaviour:
   speechProximityLimit: 0
   speechProximityDistance: 10
   deleteUIWhenTurnOff: 0
-  biggestElementSize: {x: 226.61499, y: 136.545}
+  biggestElementSize: {x: 230.88501, y: 139.15501}
   rect:
     serializedVersion: 2
-    x: 256.33502
-    y: 138.87
-    width: 230.32999
-    height: 140.26
+    x: 261.16498
+    y: 141.53
+    width: 234.67001
+    height: 142.94002
   showInFilter: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -5729,10 +5729,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 3.715
-    y: 3.715
-    width: 222.9
-    height: 20.9
+    x: 3.785
+    y: 3.785
+    width: 227.1
+    height: 21.300001
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiText: {fileID: 0}
@@ -5902,9 +5902,9 @@ MonoBehaviour:
   _isLocked: 0
   id: 18
   title: Title
-  manualSize: {x: 0.5, y: 0.8899522}
+  manualSize: {x: 0.5, y: 0.88849765}
   positionType: 0
-  manualPosition: {x: 372, y: 209}
+  manualPosition: {x: 378.5, y: 213}
   positionSmoothing: 0
   alignment: 4
   toggleKey: 
@@ -5974,10 +5974,10 @@ MonoBehaviour:
   biggestElementSize: {x: 0, y: 0}
   rect:
     serializedVersion: 2
-    x: 370.14
-    y: 207.14
-    width: 3.72
-    height: 3.72
+    x: 376.6075
+    y: 211.1075
+    width: 3.785
+    height: 3.785
   showInFilter: 1
 --- !u!114 &5471612302315320819
 MonoBehaviour:
@@ -6755,10 +6755,10 @@ MonoBehaviour:
   maxAutoWidthFactor: 0.5
   relativeRect:
     serializedVersion: 2
-    x: 3.715
-    y: 115.645
-    width: 222.9
-    height: 20.9
+    x: 3.785
+    y: 117.85501
+    width: 227.1
+    height: 21.300001
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}

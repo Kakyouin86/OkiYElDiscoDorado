@@ -6,15 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public string startScene;
+    public string loadScene;
+    public string creditsScene;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Cursor.visible = true;
@@ -26,6 +20,17 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(loadScene);
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene(creditsScene);
+        PlayerPrefs.DeleteAll();
+    }
 
     public void QuitGame()
     {
