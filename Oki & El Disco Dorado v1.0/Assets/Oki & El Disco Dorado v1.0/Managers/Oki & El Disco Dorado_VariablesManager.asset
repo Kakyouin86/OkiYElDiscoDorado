@@ -196,7 +196,7 @@ MonoBehaviour:
   - label: About To Take Off?
     id: 9
     type: 0
-    val: 1
+    val: 0
     floatVal: 0
     textVal: 
     gameObjectVal: {fileID: 0}
