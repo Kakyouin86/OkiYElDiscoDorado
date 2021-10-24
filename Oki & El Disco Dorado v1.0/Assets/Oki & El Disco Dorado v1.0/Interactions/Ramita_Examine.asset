@@ -36,7 +36,7 @@ MonoBehaviour:
     x: 14
     y: 14
     width: 300
-    height: 172.2
+    height: 201
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 0}
@@ -46,7 +46,8 @@ MonoBehaviour:
   isPlayer: 1
   playerID: -1
   speaker: {fileID: 0}
-  messageText: Es una ramita. Bastaaaante dura.
+  messageText: Es una ramita. Bastaaaante dura. Creo que puedo usarla como soporte,
+    traba o palanca.
   lineID: -1
   multiLineIDs: 
   isBackground: 0

@@ -188,9 +188,26 @@ MonoBehaviour:
     label: Exit Right
     lineID: -1
     id: 4
+  - texture: {fileID: 2800000, guid: 437083fb0b1df5140bb5a17bab7c4c57, type: 3}
+    isAnimated: 0
+    numFrames: 1
+    numRows: 1
+    numCols: 1
+    size: 0.015
+    animSpeed: 4
+    endAnimOnLastFrame: 0
+    skipFirstFrameWhenLooping: 0
+    clickOffset: {x: 0, y: 0}
+    frameSpeeds: []
+    alwaysAnimate: 0
+    dontCycle: 1
+    label: Cables Cortos
+    lineID: -1
+    id: 5
   unhandledCursorInteractions:
   - {fileID: 11400000, guid: f71c7984852a50346b61702d15919bf2, type: 2}
   - {fileID: 11400000, guid: 2de455f4e534145478aba1d7e9bb2e1c, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
