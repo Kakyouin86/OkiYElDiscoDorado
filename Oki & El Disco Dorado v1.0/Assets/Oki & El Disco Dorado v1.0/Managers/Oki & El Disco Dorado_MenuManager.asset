@@ -1868,8 +1868,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 54.648
-    height: 28.182
+    width: 53.856
+    height: 27.786
   relativePosition: {x: 0, y: 0}
   numSlots: 1
   uiButton: {fileID: 0}
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f455f0e4a864975bf60bc153fbe20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSource: 0
+  menuSource: 1
   canvas: {fileID: 0}
   canvasID: 366114
   rectTransform: {fileID: 0}
@@ -2657,7 +2657,7 @@ MonoBehaviour:
   title: Cargar Partida
   manualSize: {x: 7.1, y: 6.4}
   positionType: 1
-  manualPosition: {x: 26.9445, y: 413.336}
+  manualPosition: {x: 26.554, y: 407.528}
   positionSmoothing: 0
   alignment: 6
   toggleKey: 
@@ -2730,9 +2730,9 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 0
-    y: 399.672
-    width: 53.889
-    height: 27.328001
+    y: 394.056
+    width: 53.108
+    height: 26.944002
   showInFilter: 1
 --- !u!114 &-1346331356677112027
 MonoBehaviour:
