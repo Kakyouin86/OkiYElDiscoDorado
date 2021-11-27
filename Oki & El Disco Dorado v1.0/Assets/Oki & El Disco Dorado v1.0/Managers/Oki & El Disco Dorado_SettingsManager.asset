@@ -205,6 +205,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 42d7200eeedbc6f47a5e8f9f87e658d7, type: 3}
     relativeVolume: 1
     overrideMixerGroup: {fileID: 0}
+  - ID: 4
+    audioClip: {fileID: 8300000, guid: 1fe23098a73b61447b94be40d82b1928, type: 3}
+    relativeVolume: 1
+    overrideMixerGroup: {fileID: 0}
   ambienceStorages:
   - ID: 0
     audioClip: {fileID: 8300000, guid: 42d7200eeedbc6f47a5e8f9f87e658d7, type: 3}
