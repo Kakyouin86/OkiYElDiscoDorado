@@ -1058,16 +1058,18 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 53
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Producido, dirigido, ideado, programado y testeado por:\n\"Los Manny Calavera\".\n\nGalindo,
-    Jaime (monsterdroid.itch.io)\r\n\r\nGuerra, Tom\xE1s (tguerra517.itch.io)\n\r\nMastrandrea,
-    Iv\xE1n Jes\xFAs\r (diskeletton-studios.itch.io)\n\r\nMonge, Leonardo Jorge (kakyouin.itch.io\u200B)\r\n\r\nVercelli,
-    Marti (martiver.itch.io\u200B)\u200B"
+  m_Text: "Producido, dirigido, ideado, programado y testeado por:\r\n\"Los Manny
+    Calavera\"\r\n\r\nGalindo, Jaime\nCinem\xE1tica del disco & arte\r | monsterdroid.itch.io\r\n\r\nGuerra,
+    Tom\xE1s\nQA advisor\r | tguerra517.itch.io\n\r\nMastrandrea, Iv\xE1n Jes\xFAs\nM\xFAsica
+    & SFX\r | diskeletton-studios.itch.io\n\r\nMonge, Leonardo Jorge\nProgramaci\xF3n,
+    l\xF3gicas & gui\xF3n\r | kakyouin.itch.io\u200B\r\n\r\nVercelli, Marti\nPersonajes,
+    cinem\xE1ticas, backgrounds, animaciones & gui\xF3n\r\nmartiver.itch.io\u200B"
 --- !u!222 &1587484656
 CanvasRenderer:
   m_ObjectHideFlags: 0
