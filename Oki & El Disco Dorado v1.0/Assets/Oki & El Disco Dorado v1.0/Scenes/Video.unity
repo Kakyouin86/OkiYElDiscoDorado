@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90537d66b01c06a4f87e2b01e49e1a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Interior De La Nave
+  sceneName: "Cient\xEDfica"
 --- !u!222 &1137679413
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1657,7 +1657,7 @@ MonoBehaviour:
   chooseSceneBy: 1
   sceneNumber: 0
   sceneNumberParameterID: -1
-  sceneName: Interior De La Nave
+  sceneName: "Cient\xEDfica"
   sceneNameParameterID: -1
   assignScreenOverlay: 1
   onlyPreload: 0
