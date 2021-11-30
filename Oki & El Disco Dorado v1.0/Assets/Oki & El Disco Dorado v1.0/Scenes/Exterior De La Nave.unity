@@ -12802,7 +12802,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.29500675, y: 0.44217497}
+  m_Offset: {x: 0.6559645, y: 0.41655636}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12813,7 +12813,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7473507, y: 1.7270135}
+  m_Size: {x: 2.8157861, y: 1.7782507}
   m_EdgeRadius: 0
 --- !u!114 &942239548
 MonoBehaviour:
@@ -27742,7 +27742,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.587026, y: 2.0186346}
+  m_Offset: {x: 1.5870261, y: 1.9844768}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -27753,7 +27753,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.1740522, y: 6.2836967}
+  m_Size: {x: 4.1740522, y: 6.215381}
   m_EdgeRadius: 0
 --- !u!1 &2049662258
 GameObject:
@@ -29754,8 +29754,8 @@ MonoBehaviour:
   limitHorizontal: 1
   limitVertical: 1
   backgroundConstraint: {fileID: 0}
-  constrainHorizontal: {x: 15.25, y: -6}
-  constrainVertical: {x: 1, y: 1}
+  constrainHorizontal: {x: 15.25, y: -5.5}
+  constrainVertical: {x: 1.43, y: 4.24}
   freedom: {x: 0, y: 0}
   dampSpeed: 6
   directionInfluence: {x: 0, y: 0}
