@@ -176,7 +176,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147601242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90537d66b01c06a4f87e2b01e49e1a19, type: 3}
   m_Name: 
@@ -215,8 +215,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 14
-    y: 1570
+    x: 9
+    y: 1612
     width: 300
     height: 164
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -227,7 +227,7 @@ MonoBehaviour:
   sceneNumberParameterID: -1
   sceneName: Interior De La Nave
   sceneNameParameterID: -1
-  assignScreenOverlay: 1
+  assignScreenOverlay: 0
   onlyPreload: 0
   relativePosition: 0
   relativeMarker: {fileID: 0}
@@ -787,14 +787,14 @@ MonoBehaviour:
     x: 14
     y: 1328
     width: 300
-    height: 212
+    height: 232
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 6277122003293167043}
   movieClipType: 2
   movieMaterialMethod: 0
-  skipKey: 
-  canSkip: 0
+  skipKey: Submit
+  canSkip: 1
   videoPlayer: {fileID: 1031118980}
   videoPlayerParameterID: -1
   videoPlayerConstantID: 0

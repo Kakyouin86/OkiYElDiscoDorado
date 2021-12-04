@@ -19934,7 +19934,7 @@ MonoBehaviour:
   displayLineID: -1
   iconSortingLayer: 
   iconSortingOrder: 0
-  doubleClickingHotspot: 0
+  doubleClickingHotspot: 1
   playerTurnsHead: 1
 --- !u!114 &1764323926
 MonoBehaviour:
