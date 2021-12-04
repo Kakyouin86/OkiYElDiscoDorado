@@ -13,7 +13,7 @@ A todos los que existen en el universo, saludos.
 4
 00:00:20,001 --> 00:00:25,000
 Saludos de un programador de computadoras 
-desde una pequeña ciudad universitaria de Ithaca.
+desde la ciudad de Ithaca.
 
 5
 00:00:25,001 --> 00:00:30,000
@@ -26,10 +26,10 @@ con los pueblos de todo el mundo...
 
 7
 00:00:35,000 --> 00:00:40,000
-Saludos, quienesquiera que sean.
+Saludos, quienes quiera que sean.
 Tenemos buena voluntad para con ustedes...
 
 8
 00:00:40,001 --> 00:00:45,000
 ...y llevamos paz...
-...a través del espacio....
+...a través del espacio...
