@@ -644,7 +644,7 @@ MonoBehaviour:
     x: 714
     y: 4092.2
     width: 300
-    height: 240.38985
+    height: 241
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -1882,7 +1882,7 @@ MonoBehaviour:
     x: 714
     y: 4822.0005
     width: 300
-    height: 172.18645
+    height: 172.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -2104,7 +2104,7 @@ MonoBehaviour:
     x: 714
     y: 2028
     width: 300
-    height: 172.18645
+    height: 172.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -2347,7 +2347,7 @@ MonoBehaviour:
     x: 714
     y: 3322.4
     width: 300
-    height: 226.28815
+    height: 226.6
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -6224,7 +6224,7 @@ MonoBehaviour:
     x: 714
     y: 3579
     width: 300
-    height: 240.38985
+    height: 241
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -8332,6 +8332,20 @@ MonoBehaviour:
   tagID: 0
   syncParamValues: 1
   backupData: []
+--- !u!114 &785434403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningStyle: 1
+  isSpriteBased: 0
 --- !u!114 &786003392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13699,7 +13713,7 @@ MonoBehaviour:
     x: 714
     y: 554
     width: 300
-    height: 214.49155
+    height: 215.4
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -16631,20 +16645,6 @@ MonoBehaviour:
   mouthClip2D: 
   mouthLayer: 0
   waitTimeOffset: 0
---- !u!114 &1504696747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aeb4ee5eba44c0ab014fd7e3900911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningStyle: 1
-  isSpriteBased: 0
 --- !u!114 &1513980611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17020,7 +17020,7 @@ MonoBehaviour:
   parentActionListInEditor: {fileID: 2123134740}
   parameterID: -1
   constantID: 0
-  editingAnimEngine: {fileID: 1504696747}
+  editingAnimEngine: {fileID: 785434403}
   isPlayer: 1
   playerID: -1
   animChar: {fileID: 7952526633142762190, guid: 33e462c886a538940a71c937ddc2908e, type: 3}
@@ -17326,7 +17326,7 @@ MonoBehaviour:
     x: 714
     y: 799.4
     width: 300
-    height: 186.28815
+    height: 186.6
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -17494,7 +17494,7 @@ MonoBehaviour:
     x: 714
     y: 5024.2007
     width: 300
-    height: 260.38983
+    height: 275.4
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -18748,7 +18748,7 @@ MonoBehaviour:
     x: 14
     y: 284
     width: 300
-    height: 172.18645
+    height: 172.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -18895,7 +18895,7 @@ MonoBehaviour:
     x: 714
     y: 3080.4
     width: 300
-    height: 212.18645
+    height: 212.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -19107,7 +19107,7 @@ MonoBehaviour:
     x: 714
     y: 4565.4004
     width: 300
-    height: 226.28815
+    height: 226.6
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -20370,7 +20370,7 @@ MonoBehaviour:
     x: 714
     y: 4363.2
     width: 300
-    height: 172.18645
+    height: 172.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -20893,7 +20893,7 @@ MonoBehaviour:
     x: 714
     y: 2838.2
     width: 300
-    height: 212.18645
+    height: 212.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
@@ -24417,7 +24417,7 @@ MonoBehaviour:
     x: 714
     y: 3850
     width: 300
-    height: 212.18645
+    height: 212.2
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
   showOutputSockets: 1
   parentActionListInEditor: {fileID: 2123134740}
