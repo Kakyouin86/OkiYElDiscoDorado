@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cc1f751990d444ef9e1381090933b8b, type: 3}
-  m_Name: SemillasDeMorrones_Unhandled_Combine
+  m_Name: Semillasdemorrones_Unhandled_Combine
   m_EditorClassIdentifier: 
   actions:
   - {fileID: -4622403959333634684}
