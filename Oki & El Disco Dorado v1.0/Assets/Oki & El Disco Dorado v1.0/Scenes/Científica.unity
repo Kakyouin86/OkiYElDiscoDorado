@@ -215,8 +215,8 @@ MonoBehaviour:
   isBreakPoint: 0
   nodeRect:
     serializedVersion: 2
-    x: 9
-    y: 1612
+    x: 14
+    y: 1590
     width: 300
     height: 164
   overrideColor: {r: 1, g: 1, b: 1, a: 1}
@@ -644,7 +644,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031118978}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: 4d2657d36cc390c478355a1a06661a1d, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 457181387}
@@ -800,7 +800,8 @@ MonoBehaviour:
   videoPlayerConstantID: 0
   prepareOnly: 0
   pauseWithGame: 0
-  newClip: {fileID: 32900000, guid: 4d2657d36cc390c478355a1a06661a1d, type: 3}
+  movieURL: 
+  movieURLParameterID: -1
 --- !u!114 &1371947500
 MonoBehaviour:
   m_ObjectHideFlags: 0

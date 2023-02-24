@@ -736,7 +736,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053958640}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: f941cbd26d3d6624b87805dec9dcba2c, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 457181387}
@@ -905,7 +905,8 @@ MonoBehaviour:
   videoPlayerConstantID: 0
   prepareOnly: 0
   pauseWithGame: 0
-  newClip: {fileID: 32900000, guid: f941cbd26d3d6624b87805dec9dcba2c, type: 3}
+  movieURL: 
+  movieURLParameterID: -1
 --- !u!114 &1376183155
 MonoBehaviour:
   m_ObjectHideFlags: 0

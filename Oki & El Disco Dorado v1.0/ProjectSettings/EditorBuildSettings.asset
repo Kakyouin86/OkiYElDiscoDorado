@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Oki & El Disco Dorado v1.0/Scenes/PreLoad 01.unity
     guid: 90c59af8b5edde047953de043f396290
   - enabled: 1
-    path: Assets/Oki & El Disco Dorado v1.0/Scenes/PreLoad 02.unity
-    guid: ffccf598c804f3b41bc9e76f9b8e4d49
-  - enabled: 1
     path: Assets/Oki & El Disco Dorado v1.0/Scenes/Interior De La Nave.unity
     guid: e6e25bc480bde614bbec81ed032100bb
   - enabled: 1
